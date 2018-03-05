@@ -1,0 +1,23 @@
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .nav-sections {
+        margin-bottom: 10px;
+    }
+
+    .navigation {
+        border-radius: 0 0 5px 5px;
+        box-shadow: 2px 3px 2px -1px rgba(0, 0, 0, 0.3);
+
+        ul {
+            padding: 0;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.13) 0%,rgba(255,255,255,0) 65%,rgba(255,255,255,0) 100%);
+        }
+
+        li.level-top {
+            border-right: 1px solid rgba(255,255,255,0.17);
+
+            &.last {
+                border-right: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+& when (@media-common = true) {
+    .filter {
+        &-title {
+            strong {
+                .lib-css(box-shadow, none);
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .filter .filter-current {
+        &-subtitle {
+            .lib-icon-font(
+                @_icon-font-content: @icon-down,
+                @_icon-font-size: 18px,
+                @_icon-font-position: before,
+                @_icon-font-display: block
+            );
+        }
+    }
+}
+
+.filter .block-subtitle {
+    .lib-heading(block-title);
+    .lib-css(text-transform, @block-title__text-transform);
+    line-height: inherit;
+    border: none;
+    margin: 0;
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .filter .block-subtitle {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .filter.active .filter-title strong:after {
+        vertical-align: top;
+    }
+}

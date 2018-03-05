@@ -1,0 +1,16 @@
+{
+    "name": "swissup/theme-editor-argento-essence",
+    "description": "Theme styles for Argento Essence theme",
+    "type": "magento2-module",
+    "version": "1.2.4",
+    "license": "OSL-3.0",
+    "require": {
+        "swissup/theme-editor": "*"
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Swissup\\ThemeEditorArgentoEssence\\": ""
+        }
+    }
+}

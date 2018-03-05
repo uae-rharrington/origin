@@ -1,0 +1,44 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ajaxsearch>
+            <main>
+                <!-- <placeholder>Search entire store here...</placeholder> -->
+                <limit>10</limit>
+                <highlight>1</highlight>
+                <hint>1</hint>
+                <minLength>3</minLength>
+                <classNames>
+                    <input>tt-input</input>
+                    <hint>tt-hint</hint>
+                    <menu>tt-menu block-swissup-ajaxsearch-results</menu>
+                    <dataset>tt-dataset products wrapper list products-list</dataset>
+                    <suggestion>tt-suggestion</suggestion>
+                    <empty>tt-empty</empty>
+                    <open>tt-open</open>
+                    <cursor>tt-cursor</cursor>
+                    <highlight>tt-highlight</highlight>
+                </classNames>
+            </main>
+            <folded>
+                <enable>0</enable>
+                <effect>zoom-in</effect>
+            </folded>
+            <product>
+                <enable>1</enable>
+                <limit>10</limit>
+            </product>
+            <category>
+                <enable>1</enable>
+                <limit>10</limit>
+            </category>
+            <page>
+                <enable>1</enable>
+                <limit>10</limit>
+            </page>
+            <autocomplete>
+                <enable>1</enable>
+                <limit>10</limit>
+            </autocomplete>
+        </ajaxsearch>
+    </default>
+</config>

@@ -1,0 +1,28 @@
+{
+    "name": "swissup/theme-frontend-absolute",
+    "description": "Absolute Theme for Magento 2",
+    "keywords": [
+        "absolute",
+        "free theme",
+        "responsive theme",
+        "responsive template",
+        "theme",
+        "template"
+    ],
+    "type": "magento2-theme",
+    "version": "1.1.2",
+    "license": "OSL-3.0",
+    "autoload": {
+        "files": [ "registration.php" ]
+    },
+    "extra": {
+        "swissup": {
+            "links": {
+                "marketplace"   : "https://marketplace.magento.com/swissup-absolute-metapackage.html",
+                "store"         : "https://swissuplabs.com/free-magento-2-theme-absolute.html",
+                "docs"          : "http://docs.swissuplabs.com/m2/themes/absolute/",
+                "changelog"     : "http://docs.swissuplabs.com/m2/themes/absolute/changelog/"
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+<?php
+    $isLoggedIn   = $block->isCustomerLoggedIn();
+    $configHelper = $block->getConfigHelper();
+    $urlHelper    = $block->getUrlHelper();
+    $currentUrl   = $urlHelper->getCurrentUrl();
+
+    $isAllowHint             = $configHelper->isAllowedHint();
+    $isShareCustomerName     = $configHelper->isAllowedShareCustomerName();
+    $isShowItem              = $configHelper->isAllowedShareItem();
+    $isEnabledGravatar       = $configHelper->isEnabledGravatar();
+
+    $question = $block->getQuestion();
+?>
+
+<div class="askit-item-avatar">
+    <?php if ($isEnabledGravatar) {
+        /* @escapeNotVerified */ echo $urlHelper->getGravatar($question->getEmail(), 100);
+    }?>
+</div>
+<?php if ($isShareCustomerName) :?>
+<h3 class="askit-item-author"><?php /* @escapeNotVerified */ echo $block->escapeHtml($question->getCustomerName());?></h3>
+<?php endif;?>
+
+<?php if ($isShowItem) :
+    $a = $urlHelper->get($question['item_type_id'], $question['item_id'], false);
+    if ($a['href'] != $currentUrl) :
+?>
+    <h5 class="askit-item-parent">
+        <a href="<?php /* @escapeNotVerified */ echo $a['href'] ?>"><?php /* @escapeNotVerified */echo $a['label']?></a>
+    </h5>
+    <?php endif;?>
+<?php endif;?>
+
+<h4 class="askit-item-timestamp"><?php /* @escapeNotVerified */ echo $block->escapeHtml($question->getCreatedTime());?></h4>
+<p class="askit-item-body"><?php /* @escapeNotVerified */ echo nl2br($block->escapeHtml($question->getText()))?></p>
+<?php if (0 < $question->getHint()) : ?>
+    <div class="askit-item-same">
+        <?php /* @escapeNotVerified */ echo __("%1 people had same question.", $question->getHint()); ?>
+    </div>
+<?php endif; ?>
+<?php if ($isAllowHint && $isLoggedIn && $this->canVoted($question->getId())) :?>
+    <div class="askit-item-vote clearer">
+        <small>
+            <?php /* @escapeNotVerified */ echo __('Do you have same question?'); ?>
+            <a href="#" data-post='<?php /* @escapeNotVerified */ echo $block->getPostDataHelper()->getPostData($block->getUrl('askit/vote/inc'), ['id' => $question->getId()]);?>' class="action">
+                <span>
+                    <?php /* @escapeNotVerified */ echo __('Vote for It') ?>
+                </span>
+            </a>
+        </small>
+    </div>
+<?php endif;?>

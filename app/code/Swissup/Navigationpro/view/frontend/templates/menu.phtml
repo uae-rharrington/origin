@@ -1,0 +1,18 @@
+<?php
+    $_menu = $block->getHtml('level-top');
+    $_additionalHtml = $block->getChildHtml();
+
+    if (empty($_menu) && empty($_additionalHtml)) {
+        return;
+    }
+?>
+
+<nav class="swissup-navigationpro navpro <?php echo $block->escapeHtml($block->getNavCssClass()) ?>"
+     data-action="navigation">
+    <ul data-mage-init='{"navpro":<?php echo $block->getJsonConfig() ?>}'
+        class="navpro-menu <?php echo $block->escapeHtml($block->getCssClass()) ?>">
+        <?php /* @escapeNotVerified */ echo $_menu; ?>
+        <?php /* @escapeNotVerified */ echo $_additionalHtml; ?>
+    </ul>
+    <div class="navpro-mobile"></div>
+</nav>

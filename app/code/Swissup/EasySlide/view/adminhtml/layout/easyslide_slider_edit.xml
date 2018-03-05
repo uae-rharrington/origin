@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+        <css src="Swissup_EasySlide::slider/easyslide.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Swissup\EasySlide\Block\Adminhtml\Slider\Edit" name="easyslide_slider_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Swissup\EasySlide\Block\Adminhtml\Slider\Edit\Tabs" name="easyslide_slider_edit_tabs">
+                <block class="Swissup\EasySlide\Block\Adminhtml\Slider\Edit\Tab\Main" name="easyslide_slider_edit_tab_main"/>
+                <block class="Swissup\EasySlide\Block\Adminhtml\Slider\Edit\Tab\Config" name="easyslide_slider_edit_tab_config"/>
+                <!-- <block class="Swissup\EasySlide\Block\Adminhtml\Slider\Edit\Tab\Slides" name="easyslide_slider_edit_tab_slides"/> -->
+                <block class="Swissup\EasySlide\Block\Adminhtml\Slider\Helper\Form\SlideGallery" name="easyslide_slider_edit_tab_slides"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">easyslide_slider_edit_tab_main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">config_section</argument>
+                    <argument name="block" xsi:type="string">easyslide_slider_edit_tab_config</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">slides_section</argument>
+                    <argument name="block" xsi:type="string">easyslide_slider_edit_tab_slides</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

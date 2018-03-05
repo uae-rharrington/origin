@@ -1,0 +1,20 @@
+.navpro {
+    &-stacked ul {
+        li.ui-menu-item {
+            position: static;
+            > .navpro-dropdown {
+                top: -1px !important;
+                left: 100% !important;
+            }
+        }
+
+        .navpro-dropdown {
+            & when (@navpro-dropdown__use-animation = true) {
+                transition-delay: .3s;
+            }
+            &.shown {
+                transition-delay: 0s;
+            }
+        }
+    }
+}

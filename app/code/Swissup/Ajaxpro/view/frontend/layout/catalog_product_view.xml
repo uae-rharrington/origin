@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="ajaxpro_add_checkout_cart"/>
+    <body>
+        <!-- <referenceContainer name="page.wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="ajaxpro.checkout.cart" template="Swissup_Ajaxpro::checkout.cart.phtml" before="product.info.main" ifconfig="ajaxpro/main/cart"/>
+        </referenceContainer> -->
+
+        <referenceContainer name="product.info.form.content">
+            <block class="Swissup\Ajaxpro\Block\Config" name="product.info.addtocart.ajaxpro.after" template="Swissup_Ajaxpro::product/view/after.addtocart.phtml" after="-"/>
+        </referenceContainer>
+    </body>
+</page>

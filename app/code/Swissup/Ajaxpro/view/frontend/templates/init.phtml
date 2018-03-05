@@ -1,0 +1,39 @@
+<?php $helper = $this->helper('Magento\Framework\Json\Helper\Data');
+    $sectionLoadUrl = $block->getUrl('customer/section/load', ['_secure' => $block->getRequest()->isSecure()]);
+    $uenc = $this->helper('Magento\Framework\Url\Helper\Data')->getEncodedUrl();
+    $isLoggedIn = $block->isLoggedIn();
+    $ajaxcianSelectors = [
+        '.action.tocart',
+        '.ajaxpro-modal-popup #shopping-cart-table .action-delete',
+        // '.ajaxpro-modal-popup #shopping-cart-table .cart.actions .update',
+        '.action.tocompare',
+        '.block-compare .action.delete',
+        // '.table-comparison .action.delete',
+    ];
+    if ($isLoggedIn) {
+        $ajaxcianSelectors[] = '.action.towishlist';
+        $ajaxcianSelectors[] = '.ajaxpro-modal-popup #shopping-cart-table .action.action-towishlist';
+        // $ajaxcianSelectors[] = '.products-grid.wishlist .action.tocart';
+        $ajaxcianSelectors[] = '.block-wishlist .action.delete';
+        $ajaxcianSelectors[] = '.block-wishlist .action.tocart';
+    }
+    // \Zend_Debug::dump(implode(', ', $ajaxcianSelectors));
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>,
+        "AjaxproCatalogProductView": <?php /* @escapeNotVerified */ echo $helper->jsonEncode([
+            'sectionLoadUrl' => $sectionLoadUrl,
+            'refererParam' => \Magento\Framework\App\ActionInterface::PARAM_NAME_URL_ENCODED,
+            'refererValue' => $uenc
+        ])?>
+    },
+    "<?php echo implode(', ', $ajaxcianSelectors) ?>": {
+        "AjaxproAjaxcianDataPost": {
+            "loaderImage": "<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('images/loader-1.gif'); ?>",
+            "loaderImageMaxWidth": "20px"
+        }
+    }
+}
+</script>

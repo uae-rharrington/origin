@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <body>
+        <referenceBlock name="product_tabs">
+            <block class="Magento\Backend\Block\Widget\Tab" name="catalog.product.edit.tab.soldtogether.order" as="soldtogether.order">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Frequently Bought Together</argument>
+                    <argument name="url" xsi:type="url" path="soldtogether/product/order">
+                        <param name="_current">1</param>
+                    </argument>
+                    <argument name="class" xsi:type="string">ajax</argument>
+                </arguments>
+                <action method="setGroupCode">
+                    <argument name="group_code" xsi:type="string">advanced</argument>
+                </action>
+            </block>
+            <action method="addTab">
+                <argument name="name" xsi:type="string">soldtogether.order</argument>
+                <argument name="block" xsi:type="string">soldtogether.order</argument>
+            </action>
+            <block class="Magento\Backend\Block\Widget\Tab" name="catalog.product.edit.tab.soldtogether.customer" as="soldtogether.customer">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Customers Who Bought This Item Also Bought</argument>
+                    <argument name="url" xsi:type="url" path="soldtogether/product/customer">
+                        <param name="_current">1</param>
+                    </argument>
+                    <argument name="class" xsi:type="string">ajax</argument>
+                </arguments>
+                <action method="setGroupCode">
+                    <argument name="group_code" xsi:type="string">advanced</argument>
+                </action>
+            </block>
+            <action method="addTab">
+                <argument name="name" xsi:type="string">soldtogether.customer</argument>
+                <argument name="block" xsi:type="string">soldtogether.customer</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

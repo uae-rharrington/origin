@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Swissup\ProLabels\Api\Data\LabelInterface" type="Swissup\ProLabels\Model\Label" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="prolabels_label_listing_data_source" xsi:type="string">Swissup\ProLabels\Model\ResourceModel\Label\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Swissup\ProLabels\Model\ResourceModel\Label\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">swissup_prolabels_label</argument>
+            <argument name="eventPrefix" xsi:type="string">prolabels_label_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">prolabels_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Swissup\ProLabels\Model\ResourceModel\Label</argument>
+        </arguments>
+    </type>
+    <virtualType name="ProLabelsGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ProLabelsGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Swissup\ProLabels\Model\ResourceModel\Label\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">ProLabelsGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="reindexAllCommand" xsi:type="object">Swissup\ProLabels\Console\Command\ReindexAllCommand</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

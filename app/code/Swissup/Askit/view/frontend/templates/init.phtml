@@ -1,0 +1,13 @@
+<script type="text/javascript">
+//<![CDATA[
+require([
+        'jquery', 'Askit'
+    ], function ($, Askit) {
+        $(function() {
+            if ('undefined' !== typeof Askit) {
+                Askit.setConfig(<?php /* @escapeNotVerified */ echo $block->getJsConfig()?>).init();
+            }
+        });
+    });
+//]]>
+</script>

@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="ajaxsearch" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Ajaxsearch</label>
+            <tab>swissup</tab>
+            <resource>Swissup_Ajaxsearch::config</resource>
+            <group id="main" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Main</label>
+                <!-- <field id="placeholder" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Placeholder text</label>
+                </field> -->
+                <field id="limit" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Limit</label>
+                    <validate>validate-digits validate-digits-range digits-range-0-100</validate>
+                    <comment>The max number of suggestions to be displayed.Defaults to 10.</comment>
+                </field>
+                <field id="highlight" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Highlight</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment> If true, when suggestions are rendered, pattern matches for the current query in text nodes will be wrapped in a strong element with its class set to {{classNames.highlight}}. Defaults to true.</comment>
+                </field>
+                <!--
+                    prefetch need
+
+                    https://mycodde.blogspot.com/2014/12/typeaheadjs-autocomplete-suggestion.html
+                <field id="hint" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hint</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If false, the typeahead will not show a hint. Defaults to true.</comment>
+                </field> -->
+                <field id="minLength" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minimal Query Length</label>
+                    <validate>validate-digits</validate>
+                    <config_path>catalog/search/min_query_length</config_path>
+                    <comment>The minimum character length needed before suggestions start getting rendered. Defaults to 3.</comment>
+                </field>
+                <!-- <field id="maxLength" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximum Query Length</label>
+                    <validate>validate-digits</validate>
+                    <config_path>catalog/search/max_query_length</config_path>
+                    <comment>The maximum character length needed before suggestions start getting rendered.</comment>
+                </field> -->
+            </group>
+            <group id="folded" translate="label" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Folded Design</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use Folded Design</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="effect" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Effect</label>
+                    <source_model>Swissup\Ajaxsearch\Model\Config\Source\FoldedDesign\Effect</source_model>
+                </field>
+            </group>
+            <group id="product" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Suggestions</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="limit" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Limit</label>
+                    <comment>Defaults 10</comment>
+                    <validate>validate-digits validate-digits-range digits-range-0-100</validate>
+                </field>
+            </group>
+            <group id="category" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category Suggestions</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="limit" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Limit</label>
+                    <comment>Defaults 10</comment>
+                    <validate>validate-digits validate-digits-range digits-range-0-100</validate>
+                </field>
+            </group>
+            <group id="page" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Page Suggestions</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="limit" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Limit</label>
+                    <comment>Defaults 10</comment>
+                    <validate>validate-digits validate-digits-range digits-range-0-100</validate>
+                </field>
+            </group>
+            <group id="autocomplete" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Autocomplete Suggestions</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="limit" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Limit</label>
+                    <comment>Defaults 10</comment>
+                    <validate>validate-digits validate-digits-range digits-range-0-100</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+
+</config>

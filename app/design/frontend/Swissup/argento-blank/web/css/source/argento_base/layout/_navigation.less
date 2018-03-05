@@ -1,0 +1,73 @@
+.navigation {
+    li {
+        .lib-css(margin, @navigation-desktop-item-margin);
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .navigation {
+        .parent {
+            > a {
+                .lib-icon-font(
+                    @icon-next,
+                    @_icon-font-margin: 0 0 0 3px,
+                    @_icon-font-position: after
+                );
+                &:after {
+                    .float(right);
+                    line-height: normal;
+                }
+            }
+            &.level-top > a {
+                .lib-icon-font-symbol(@icon-down, after);
+                &:after {
+                    .float(none);
+                    vertical-align: baseline;
+                }
+            }
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .nav-sections .switcher-trigger strong:after {
+        .lib-font-size(21);
+        top: -3px;
+    }
+    .navigation .parent .level-top:after {
+        .lib-font-size(21);
+        top: 5px;
+    }
+    .nav-sections {
+        &-item-title {
+            &:first-child {
+                .border-left-width(0);
+            }
+        }
+
+        /* Theme editor overrides */
+        background-color: @navigation__background !important;
+        .navigation {
+            a.level-top {
+                color: @navigation-level0-item__color !important;
+            }
+        }
+    }
+}
+// sticky navigation
+.nav-sections {
+    &.is_stuck {
+        // cover other sticked elements
+        z-index: @sticky-kit__z-index + 5;
+
+        .lib-css(box-shadow, @navigation-sticked-level0__box-shadow);
+        .lib-css(background, @navigation-sticked-section__background);
+
+        .navigation {
+            .lib-css(max-width, @navigation-sticked-level0__max-width);
+            .lib-css(background, @navigation-sticked-level0__background);
+
+            .level0 > .level-top {
+                .lib-css(color, @navigation-sticked-level0__color);
+            }
+        }
+    }
+}

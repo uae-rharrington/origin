@@ -1,0 +1,18 @@
+{
+    "name": "swissup/theme-frontend-argento-blank",
+    "description": "Basic theme for all Argento themes",
+    "keywords": [
+        "argento",
+        "blank",
+        "responsive theme",
+        "responsive template",
+        "theme",
+        "template"
+    ],
+    "type": "magento2-theme",
+    "version": "1.2.0",
+    "license": "OSL-3.0",
+    "autoload": {
+        "files": [ "registration.php" ]
+    }
+}

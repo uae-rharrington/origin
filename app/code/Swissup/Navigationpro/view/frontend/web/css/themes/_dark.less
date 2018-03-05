@@ -1,0 +1,80 @@
+@navpro-theme__dark-bar__background: #4a4a4a;
+@navpro-theme__dark-bar__color: #eaeaea;
+@navpro-theme__dark-bar__caret-image: @navpro-parent-item__caret-light;
+
+@navpro-theme__dark-dropdown__background: #4a4a4a;
+@navpro-theme__dark-dropdown__border-color: @navpro-theme__dark-dropdown__background;
+@navpro-theme__dark-dropdown__shadow: 0 0 50px -10px rgba(0, 0, 0, 0.5);
+@navpro-theme__dark-dropdown__color: #eaeaea;
+@navpro-theme__dark-dropdown__caret-image: @navpro-parent-item__caret-light;
+
+.navpro-theme-dark-dropdown() {
+    background: @navpro-theme__dark-dropdown__background;
+    border-color: @navpro-theme__dark-dropdown__border-color;
+    color: @navpro-theme__dark-dropdown__color;
+
+    h3,
+    .children a,
+    .children .parent > a {
+        color: @navpro-theme__dark-dropdown__color;
+    }
+
+    .navpro-icon-caret::before {
+        background-image: url(@navpro-theme__dark-dropdown__caret-image);
+    }
+}
+
+.navpro {
+    &-theme {
+        &-dark,
+        &-dark-bar {
+            background: @navpro-theme__dark-bar__background;
+            .level0 > a {
+                color: @navpro-theme__dark-bar__color;
+            }
+            a.level-top > .navpro-icon-caret::before {
+                background-image: url(@navpro-theme__dark-bar__caret-image);
+            }
+        }
+        &-dark-bar {
+            .navpro-dropdown {
+                @media @navpro-breakpoint-accordion {
+                    .navpro-theme-dark-dropdown();
+                }
+            }
+        }
+        &-dark,
+        &-dark-dropdown {
+            .navpro-dropdown {
+                .navpro-theme-dark-dropdown();
+                @media @navpro-breakpoint-md {
+                    box-shadow: @navpro-theme__dark-dropdown__shadow;
+                }
+            }
+            &.navpro {
+                li.level-top.parent {
+                    a.level-top {
+                        &::before,
+                        &::after {
+                            border-bottom-color: @navpro-theme__dark-dropdown__background;
+                        }
+                    }
+                }
+                &.dropdown-top {
+                    li.level-top.parent {
+                        a.level-top {
+                            &::before,
+                            &::after {
+                                border-top-color: @navpro-theme__dark-dropdown__background;
+                                border-bottom-color: transparent;
+                            }
+                            &::after {
+                                border-top-color: @navpro-theme__dark-dropdown__border-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

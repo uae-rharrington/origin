@@ -1,0 +1,121 @@
+<?php
+$helper = $this->helper('Swissup\Lightboxpro\Helper\Config')->init($block);
+$mainImageWidth = $helper->getMainImageWidth();
+$mainImageHeight = $helper->getMainImageHeight();
+$thumbnailWidth = $helper->getThumbnailWidth();
+$thumbnailHeight = $helper->getThumbnailHeight();
+?>
+<div class="gallery-placeholder _block-content-loading" data-gallery-role="gallery-placeholder">
+    <div data-role="loader" class="loading-mask">
+        <div class="loader">
+            <img src="<?= /* @escapeNotVerified */ $block->getViewFileUrl('images/loader-1.gif') ?>"
+                 alt="<?= /* @escapeNotVerified */ __('Loading...') ?>">
+        </div>
+    </div>
+</div>
+<!--Fix for jumping content. Loader must be the same size as gallery.-->
+<script>
+    var config = {
+            "width": <?= /* @escapeNotVerified */ $mainImageWidth ?>,
+            "thumbheight": <?php /* @escapeNotVerified */ echo $thumbnailHeight ?: $thumbnailWidth; ?>,
+            "navtype": "<?= /* @escapeNotVerified */ $block->getVar("gallery/navtype") ?>",
+            "height": <?= /* @escapeNotVerified */ $mainImageHeight ?>
+        },
+        thumbBarHeight = 0,
+        loader = document.querySelectorAll('[data-gallery-role="gallery-placeholder"] [data-role="loader"]')[0];
+
+    if (config.navtype === 'horizontal') {
+        thumbBarHeight = config.thumbheight;
+    }
+
+    loader.style.paddingBottom = ( config.height / config.width * 100) + "%";
+</script>
+<script type="text/x-magento-init">
+    {
+        "[data-gallery-role=gallery-placeholder]": {
+            "mage/gallery/gallery": {
+                "mixins":["magnifier/magnify"],
+                "magnifierOpts": <?= /* @escapeNotVerified */ $helper->getMagnifierJson() ?>,
+                "data": <?= /* @escapeNotVerified */ $block->getGalleryImagesJson() ?>,
+                "options": {
+                    "nav": "<?= $helper->getNav() ?>",
+                    <?php if (($block->getVar("gallery/loop"))): ?>
+                        "loop": <?= /* @escapeNotVerified */ $block->getVar("gallery/loop") ?>,
+                    <?php endif; ?>
+                    <?php if (($block->getVar("gallery/keyboard"))): ?>
+                        "keyboard": <?= /* @escapeNotVerified */ $block->getVar("gallery/keyboard") ?>,
+                    <?php endif; ?>
+                    <?php if (($block->getVar("gallery/arrows"))): ?>
+                        "arrows": <?= /* @escapeNotVerified */ $block->getVar("gallery/arrows") ?>,
+                    <?php endif; ?>
+                    "allowfullscreen": <?= $helper->getPopupEnabled() ?>,
+                    <?php if (($block->getVar("gallery/caption"))): ?>
+                        "showCaption": <?= /* @escapeNotVerified */ $block->getVar("gallery/caption") ?>,
+                    <?php endif; ?>
+                    "width": "<?= /* @escapeNotVerified */ $mainImageWidth ?>",
+                    "thumbwidth": "<?= /* @escapeNotVerified */ $thumbnailWidth ?>",
+                    <?php if ($thumbnailHeight || $thumbnailWidth): ?>
+                        "thumbheight": <?php /* @escapeNotVerified */ echo $thumbnailHeight ?: $thumbnailWidth; ?>,
+                    <?php endif; ?>
+                    <?php if ($mainImageHeight || $mainImageWidth): ?>
+                        "height": <?php /* @escapeNotVerified */ echo $mainImageHeight ?: $mainImageWidth; ?>,
+                    <?php endif; ?>
+                    <?php if ($block->getVar("gallery/transition/duration")): ?>
+                        "transitionduration": <?= /* @escapeNotVerified */ $block->getVar("gallery/transition/duration") ?>,
+                    <?php endif; ?>
+                    "transition": "<?= /* @escapeNotVerified */ $block->getVar("gallery/transition/effect") ?>",
+                    <?php if (($block->getVar("gallery/navarrows"))): ?>
+                        "navarrows": <?= /* @escapeNotVerified */ $block->getVar("gallery/navarrows") ?>,
+                    <?php endif; ?>
+                    "navtype": "<?= /* @escapeNotVerified */ $block->getVar("gallery/navtype") ?>",
+                    "navdir": "<?= $helper->getNavDir() ?>"
+                },
+                "fullscreen": {
+                    "nav": "<?php echo $helper->showFullscreenNav() ? 'thumbs' : 'false' ?>",
+                    <?php if (!$helper->showFullscreenNav()): ?>
+                        "thumbheight": 20,
+                    <?php elseif ($helper->isAdvancedPopup()): ?>
+                        "thumbheight": "100%",
+                    <?php endif; ?>
+                    "thumbwidth": <?php echo $helper->isAdvancedPopup() ?
+                        $helper->getAdvancedLayoutThumbWidth() : $thumbnailWidth ?>,
+                    <?php if ($block->getVar("gallery/fullscreen/loop")): ?>
+                        "loop": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/loop") ?>,
+                    <?php endif; ?>
+                    "navdir": "<?= $helper->getFullscreenNavDir() ?>",
+                    "navarrows": <?= $helper->getFullscreenNavArrows() ?>,
+                    "navtype": "<?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/navtype") ?>",
+                    "arrows": <?= $helper->getFullscreenArrows() ?>,
+                    <?php if ($block->getVar("gallery/fullscreen/caption")): ?>
+                        "showCaption": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/caption") ?>,
+                    <?php endif; ?>
+                    <?php if ($block->getVar("gallery/fullscreen/transition/duration")): ?>
+                        "transitionduration": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/transition/duration") ?>,
+                    <?php endif; ?>
+                    "transition": "<?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/transition/effect") ?>"
+                },
+                "breakpoints": <?php echo $helper->getBreakpoints() ?>
+            }
+        }
+    }
+</script>
+
+<!--Fix for broken fullscreen on mobile with "navdir": "vertical"-->
+<?php if ($helper->isAdvancedPopup()): ?>
+<script type="text/javascript">
+    require([
+        'jquery'
+    ], function ($) {
+        var element = $('[data-gallery-role=gallery-placeholder]');
+
+        element.on('gallery:loaded', function (e) {
+            element.find('[data-gallery-role="gallery"]')
+                .on('fotorama:fullscreenenter', function() {
+                    setTimeout(function(){
+                        $(window).trigger('resize');
+                    }, 0);
+            });
+        });
+    });
+</script>
+<?php endif; ?>

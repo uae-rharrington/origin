@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Swissup\ProLabels\Block\Adminhtml\Label\Edit" name="prolabels_label_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Swissup\ProLabels\Block\Adminhtml\Label\Edit\Tabs" name="prolabels_label_edit_tabs">
+                <block class="Swissup\ProLabels\Block\Adminhtml\Label\Edit\Tab\Main" name="prolabels_label_edit_tab_main"/>
+                <block class="Swissup\ProLabels\Block\Adminhtml\Label\Edit\Tab\Conditions" name="prolabels_label_edit_tab_conditions"/>
+                <block class="Swissup\ProLabels\Block\Adminhtml\Label\Edit\Tab\Product" name="prolabels_label_edit_tab_product"/>
+                <block class="Swissup\ProLabels\Block\Adminhtml\Label\Edit\Tab\Category" name="prolabels_label_edit_tab_category"/>
+                <block class="Swissup\ProLabels\Block\Adminhtml\Label\Edit\Tab\Index" name="prolabels_label_edit_tab_index"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">prolabels_label_edit_tab_main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">conditions_section</argument>
+                    <argument name="block" xsi:type="string">prolabels_label_edit_tab_conditions</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">product_section</argument>
+                    <argument name="block" xsi:type="string">prolabels_label_edit_tab_product</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">category_section</argument>
+                    <argument name="block" xsi:type="string">prolabels_label_edit_tab_category</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">index_section</argument>
+                    <argument name="block" xsi:type="string">prolabels_label_edit_tab_index</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="footer">
+            <block class="Swissup\ProLabels\Block\Adminhtml\Label\Apply" name="prolabels.apply.script" template="Swissup_ProLabels::apply/label.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

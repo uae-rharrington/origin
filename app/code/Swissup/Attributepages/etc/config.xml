@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <attributepages>
+            <image>
+                <background>255,255,255</background>
+            </image>
+            <seo>
+                <allow_direct_option_link>0</allow_direct_option_link>
+                <!-- <url_suffix>.html</url_suffix> -->
+            </seo>
+            <option_list>
+                <hide_description_when_filter_is_used>1</hide_description_when_filter_is_used>
+            </option_list>
+            <product_list>
+                <use_layered_navigation>1</use_layered_navigation>
+                <layer_block_name>catalog.leftnav,enterprisecatalog.leftnav,tm.catalog.left.navigation</layer_block_name>
+                <hide_description_when_filter_is_used>1</hide_description_when_filter_is_used>
+            </product_list>
+        </attributepages>
+    </default>
+</config>

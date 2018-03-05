@@ -1,0 +1,30 @@
+<!-- <?php //echo __FILE__; ?> -->
+<?php $helper = $this->helper("Swissup\Ajaxpro\Helper\Data");?>
+<div data-bind="scope: 'ajaxpro'">
+    <div class="ajaxpro-wrapper" data-block="ajaxpro" data-bind="visible: isActive()">
+        <!-- <button
+            type="button"
+            class="action action-auth-toggle"
+            data-trigger="ajaxpro">
+            <span data-bind="i18n: 'Modal Ajaxpro'"></span>
+        </button> -->
+        <div class="block-ajaxpro"
+             style="display: none"
+             data-bind="mageInit: {
+                'AjaxproModal':{
+                    'modalClass': '<?php echo $helper->getCartPopupClassName() ?>',
+                    'responsive': true,
+                    'innerScroll': true,
+                    'buttons': [{
+                        text: '<?= /* @escapeNotVerified */ __('Continue Shopping')?>',
+                        class: 'ajaxpro-continue-button',
+                        click: function() {
+                            this.closeModal();
+                        }
+                    }]
+                }}">
+            <div id="ajaxpro-checkout.cart" data-bind="afterRender: setModalElement, bindHtml: getAjaxproParam('checkout.cart')"></div>
+        </div>
+    </div>
+    <div id="ajaxpro-checkout.cart.after" data-bind="html: getAjaxproParam('checkout.cart.after')"></div>
+</div>

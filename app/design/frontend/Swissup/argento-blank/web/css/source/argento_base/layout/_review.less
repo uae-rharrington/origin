@@ -1,0 +1,66 @@
+.review-add {
+    .block-title {
+        display: block;
+    }
+    .review-legend.legend,
+    .review-field-ratings > legend.label {
+        display: none;
+    }
+}
+.review {
+    &-control-vote label:before,
+    &-control-vote:before {
+        font-size: 38px;
+        line-height: 38px;
+        height: 38px;
+        letter-spacing: 5px;
+    }
+}
+@media (min-width: (@screen__l + 1)) {
+    #product-review-container {
+        .float(left);
+        width: 60%;
+        .review-item:last-child {
+            padding-bottom: 0;
+        }
+        .review-toolbar {
+            display: none;
+        }
+    }
+    .review-add {
+        .float(right);
+        width: 35%;
+        position: relative;
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    & when (@review-ratings-left < @indent__xl) {
+        .review {
+            &-ratings {
+                float: none;
+                margin-bottom: 10px;
+                max-width: none;
+            }
+
+            &-ratings ~ &-content,
+            &-ratings ~ &-details {
+                .clear(left);
+            }
+        }
+    }
+}
+@media (max-width: @screen__l) {
+    .review {
+        &-ratings {
+            float: none;
+            margin-bottom: 10px;
+            max-width: none;
+        }
+
+        &-ratings ~ &-content,
+        &-ratings ~ &-details {
+            margin: 0;
+            .clear(left);
+        }
+    }
+}

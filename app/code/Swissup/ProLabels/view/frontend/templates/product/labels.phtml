@@ -1,0 +1,101 @@
+<?php
+    $productLabels = $block->getLabels();
+    $helper = $this->helper('Magento\Framework\Json\Helper\Data');
+?>
+<div class="prolabels-product-image-labels">
+    <?php foreach ($productLabels as $position => $labels) : ?>
+        <?php if ('content' == $position) { continue; } ?>
+        <div class="<?php echo $position ?> absolute">
+            <?php foreach ($labels as $label) : ?>
+                <?php if ($label->getImage()) : ?>
+                    <?php
+                        $labelImage = $block->getLabelImage($label->getImage());
+                        $labelImagePath = $block->getLabelImagePath($label->getImage());
+                        list($productImageWidth, $productImageHeight) = getimagesize($labelImagePath);
+                        $dim = 'width: ' . $productImageWidth . 'px;height: ' . $productImageHeight. 'px;';
+                        $customStyle = $label->getCustom() . "background: url(" . $labelImage . ");" . $dim;
+                        $customUrl = $label->getCustomUrl();
+                    ?>
+                    <?php if ($customUrl) : ?>
+                        <a href="<?php echo $customUrl ?>" target="_blank">
+                    <?php endif; ?>
+                    <span class="prolabel" style="<?php echo $customStyle ?>">
+                        <span class="prolabel__inner">
+                            <span class="prolabel__wrapper">
+                                <span class="prolabel__content">
+                                    <?php echo $label->getText() ?>
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                    <?php if ($customUrl) : ?>
+                        </a>
+                    <?php endif; ?>
+                <?php else : ?>
+                    <?php if ($label->getCustomUrl()) : ?>
+                        <a href="<?php echo $label->getCustomUrl() ?>" target="_blank">
+                    <?php endif; ?>
+                    <span class="prolabel" style="<?php echo $label->getCustom() ?>">
+                        <span class="prolabel__inner">
+                            <span class="prolabel__wrapper">
+                                <span class="prolabel__content">
+                                    <?php echo $label->getText() ?>
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                    <?php if ($label->getCustomUrl()) : ?>
+                        </a>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
+<div class="prolabels-content-labels">
+<div class="prolabels-content-wrapper">
+    <?php if (array_key_exists('content', $productLabels)) : ?>
+        <?php foreach ($productLabels['content'] as $label) : ?>
+            <?php if ($label->getImage()) : ?>
+                <?php
+                    $labelImage = $block->getLabelImage($label->getImage());
+                    $labelImagePath = $block->getLabelImagePath($label->getImage());
+                    list($productImageWidth, $productImageHeight) = getimagesize($labelImagePath);
+                    $dim = 'width: ' . $productImageWidth . 'px;height: ' . $productImageHeight. 'px;';
+                    $customStyle = $label->getCustom() . "background: url(" . $labelImage . ");" . $dim;
+                ?>
+                <span class="prolabel content" style="<?php echo $customStyle ?>">
+                    <span class="prolabel__inner">
+                        <span class="prolabel__wrapper">
+                            <span class="prolabel__content">
+                                <?php echo $label->getText() ?>
+                            </span>
+                        </span>
+                    </span>
+                </span>
+            <?php else : ?>
+                <span class="prolabel content" style="<?php echo $label->getCustom() ?>">
+                    <span class="prolabel__inner">
+                        <span class="prolabel__wrapper">
+                            <span class="prolabel__content">
+                                <?php echo $label->getText() ?>
+                            </span>
+                        </span>
+                    </span>
+                </span>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "ProLabelsProductInit": <?php /* @escapeNotVerified */ echo $helper->jsonEncode([
+            'baseImageWrapper' => $block->getBaseImageWrapConfig(),
+            'contentContainer' => $block->getContentWrapConfig()
+        ]) ?>
+    }
+}
+</script>

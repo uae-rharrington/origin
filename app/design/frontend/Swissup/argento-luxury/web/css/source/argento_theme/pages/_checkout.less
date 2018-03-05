@@ -1,0 +1,96 @@
+& when (@media-common = true) {
+    .checkout-index-index {
+        .authentication-wrapper {
+            .action-auth-toggle:active,
+            .action-auth-toggle:focus {
+                color: #2e2e2e;
+            }
+        }
+
+        .opc-estimated-wrapper .minicart-wrapper {
+            button.action.showcart {
+                .luxury-icon('cart');
+
+                .counter.qty {
+                    margin: 2px;
+                }
+            }
+        }
+
+        .opc-block-summary {
+            padding: 22px 5px;
+
+            .minicart-items-wrapper {
+                margin: 0;
+            }
+
+            .details-qty .qty-wrapper {
+                .qty-less,
+                .qty-more {
+                    width: 20px;
+                }
+
+                .qty {
+                    width: 32px;
+                }
+            }
+        }
+    }
+
+    .firecheckout {
+        .page-title-wrapper {
+            .text-align(left);
+
+            h1.page-title {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .checkout-index-index {
+        .opc-block-summary {
+            .lib-css(padding, @checkout-summary__padding);
+
+            .minicart-items-wrapper {
+                .lib-css(margin, 0 -(@checkout-summary-items__padding) 0 0);
+            }
+
+            .details-qty .qty-wrapper {
+                .qty-less,
+                .qty-more {
+                    width: 32px;
+                }
+
+                .qty {
+                    width: 36px;
+                }
+            }
+        }
+    }
+
+    .opc-progress-bar-item {
+        &:before { // Horizontal line
+            .lib-css(top, (@checkout-progress-bar-item-element__width - @checkout-progress-bar-item-element-horizontal-line__height)/2);
+            height: @checkout-progress-bar-item-element-horizontal-line__height;
+        }
+    }
+
+    .firecheckout {
+        .page-title-wrapper {
+            .text-align(left);
+
+            h1.page-title {
+                .lib-heading(h2);
+                letter-spacing: 1.38px;
+                text-transform: none;
+                width: auto;
+
+                &:after {
+                    margin: 16px 0 0 0;
+                }
+            }
+        }
+    }
+}

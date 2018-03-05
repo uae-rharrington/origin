@@ -1,0 +1,20 @@
+<?php $config = $block->getLikeButtonConfig(); ?>
+<?php if ($config["enabled"]) : ?>
+    <?php if ($config["layout"] === "custom") : ?>
+        <p class="fbl-custom">
+            <a class="like"
+                data-url="<?php echo $block->getProductUrl();?>"
+                title="<?php echo __('Like product on Facebook')?>">
+            </a>
+        </p>
+    <?php else : ?>
+        <div class="fb-like"
+            data-href="<?php echo $block->getProductUrl() ?>"
+            data-layout="<?php echo $config['layout'] ?>"
+            data-action="<?php echo $config['action'] ?>"
+            data-colorscheme="<?php echo $config['colorscheme'] ?>"
+            data-share="<?php echo $config['share'] ?>"
+            data-show-faces="<?php echo $config['show_faces'] ?>">
+        </div>
+    <?php endif; ?>
+<?php endif ?>

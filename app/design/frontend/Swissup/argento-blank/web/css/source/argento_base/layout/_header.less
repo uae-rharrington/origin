@@ -1,0 +1,114 @@
+& when (@media-common = true) {
+    .page-header {
+        .lib-css(box-shadow, @header__box-shadow);
+    }
+}
+
+.header {
+    &.panel {
+        > .header.links {
+            &.header-cms-links {
+                .float(left);
+                > li {
+                    .margin(0, 15px, 0, 0);
+                }
+            }
+        }
+    }
+    .header-cms-content {
+        .float(left);
+        margin: -10px 20px 0;
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .nav-sections {
+        .header.links {
+            + .header.links {
+                margin-top: -1px;
+            }
+        }
+    }
+    .header {
+        .header-cms-content {
+            display: none;
+        }
+    }
+}
+// sticky header
+.header.wrapper {
+    &.is_stuck {
+        .lib-css(box-shadow, @header-sticked__box-shadow);
+        .lib-css(background, @header-sticked__background);
+    }
+}
+
+//  Justify cart and search blocks
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .block-search,
+    .minicart-wrapper {
+        margin-top: @indent__s;
+    }
+}
+// Justify cart and search icons
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .minicart-wrapper {
+        .action.showcart,
+        .action.showcart.active {
+            &:before,
+            &:after {
+                line-height: 30px;
+            }
+        }
+    }
+    .block-search {
+        .action.search {
+            &:before {
+                line-height: 30px;
+            }
+        }
+    }
+}
+
+//
+//  Reset lib-dropdown styles in navigation sidebar
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-header {
+        .nav-sections-items {
+            .switcher {
+                .label {
+                    .lib-visually-hidden-reset();
+                }
+                .options {
+                    .argento-lib-dropdown-reset();
+                }
+            }
+        }
+    }
+}
+
+//
+//  Customer welcome message fixes
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .customer-welcome {
+        .action.switch {
+            .lib-css(color, inherit);
+            &:hover,
+            &:focus {
+                .lib-css(color, inherit);
+            }
+
+            &:after {
+                font-size: @icon-font__size;
+                line-height: @icon-font__line-height;
+            }
+        }
+    }
+}
+// Hide welcome message for narrow screens
+@media (min-width: @screen__m) and (max-width: 900px) {
+    .header.panel > .header.links > li.welcome {
+        display: none;
+    }
+}

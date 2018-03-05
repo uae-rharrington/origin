@@ -1,0 +1,43 @@
+.prolabels-product-image-labels { display: none; }
+.prolabels-content-labels { display: none; }
+.prolabels-wrapper { position: relative; }
+.prolabels-wrapper .absolute { position: absolute; }
+.prolabels-wrapper .prolabel {
+    display: block;
+    float: left;
+    content: "";
+    background: transparent;
+    line-height: normal;
+    transition: width 0.2s;
+    margin-right: 10px;
+    position: relative;
+}
+.prolabels-wrapper .prolabel__inner { width: 100%; height: 100%; }
+.prolabels-wrapper .prolabel__wrapper { display: table; width: 100%; height: 100%; }
+.prolabels-wrapper .prolabel__content { display: table-cell; text-align: center; vertical-align: middle; }
+.prolabels-wrapper .top-left { top: 0; left: 0; }
+.prolabels-wrapper .top-right { top: 0; right: 0; }
+.prolabels-wrapper .top-center { top: 0; left: 50%; transform: translateX(-50%); }
+.prolabels-wrapper .middle-left { top: 50%; left: 0; transform: translateY(-50%); }
+.prolabels-wrapper .middle-right { right: 0; top: 50%;  transform: translateY(-50%); }
+.prolabels-wrapper .middle-center { top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%); }
+.prolabels-wrapper .bottom-left { bottom: 0; left: 0; }
+.prolabels-wrapper .bottom-right { bottom: 0; right: 0; }
+.prolabels-wrapper .bottom-center { bottom: 0; left: 50%; transform: translateX(-50%); }
+/* Fotorama fullscreen hide labels */
+.fotorama--fullscreen .prolabels-wrapper .prolabel { display: none; }
+.prolabels-wrapper .prolabel { z-index: 2; }
+/* Content Label */
+.prolabels-content-wrapper { position: relative; }
+.prolabels-content-wrapper .prolabel {
+    display: block;
+    float: left;
+    content: "";
+    background: transparent;
+    line-height: normal;
+    transition: width 0.2s;
+    margin-right: 10px;
+}
+.prolabels-content-wrapper .prolabel__inner { width: 100%; height: 100%; }
+.prolabels-content-wrapper .prolabel__wrapper { display: table; width: 100%; height: 100%; }
+.prolabels-content-wrapper .prolabel__content { display: table-cell; text-align: center; vertical-align: middle; }

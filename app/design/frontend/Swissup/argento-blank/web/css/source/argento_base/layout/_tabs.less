@@ -1,0 +1,34 @@
+.product.data.items {
+    border-bottom: none;
+    margin-left: 0;
+    margin-right: 0;
+
+    > .item.title {
+        a {
+            &:after {
+                font-size: 18px;
+            }
+        }
+
+        .data.switch .counter {
+            color: inherit;
+        }
+    }
+    > .item.content {
+        .products {
+            margin: 0;
+        }
+    }
+}
+
+@media (min-width: @screen__m) and (max-width: (@screen__l - 1)) {
+    .argento-tabs,
+    .product.data.items {
+        > .item.title {
+            > .switch {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+    }
+}

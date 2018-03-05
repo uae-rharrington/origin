@@ -1,0 +1,179 @@
+.addtocart-checkboxes {
+
+    .products-grid .item {
+        padding-bottom: 50px;
+    }
+
+    .product-image-wrapper {
+        position: relative;
+
+        .checkbox {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+    }
+}
+
+.soldtogether-block {
+
+    .amazonstyle{
+
+        &-images {
+            margin: 10px 0;
+            padding: 0;
+            zoom: 1;
+
+            &::after {
+                clear: both;
+                content: '.';
+                display: block;
+                font-size: 0;
+                height: 0;
+                visibility: hidden;
+            }
+
+            li {
+                padding-left: 25px;
+                display: inline;
+                background: url(../images/plus.png) no-repeat 0px 50%;
+                float: left;
+                opacity: 1;
+                transition: opacity .25s ease-in-out;
+                -webkit-transition: opacity .25s ease-in-out;
+
+                &.item-inactive {
+                    opacity: 0.3;
+                }
+
+            }
+
+        }
+
+        &-checkboxes {
+            clear: both;
+            padding: 0;
+
+            .price-box {
+                display: inline;
+                margin: 10px 0;
+
+                .minimal-price-link,
+                p {
+                    display: inline;
+                }
+
+            }
+
+            .minimal-price .price-label {
+                font-weight: normal;
+            }
+
+            li {
+                margin: 0;
+                padding: 2px 5px;
+                list-style: none;
+
+                .button-cart {
+                    display: inline-block;
+                    margin: 5px 0 0 0;
+                }
+
+            }
+        }
+
+    }
+
+    .price {
+        &-including-tax,
+        &-excluding-tax {
+            display: inline;
+        }
+    }
+
+    .product-item-name {
+        display: inline;
+        padding-right: 5px;
+    }
+
+    .totalprice {
+        display: inline;
+        font-weight: bold;
+
+        h5 {
+            display: inline;
+            margin: 5px;
+        }
+
+    }
+
+}
+
+.soldtogether-customer-slick {
+
+    .product {
+
+        &-item-name,
+        &.name a {
+            font-weight: 600;
+            min-height: 40px;
+            overflow: hidden;
+        }
+
+        &-item-details {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+    }
+
+    .price {
+
+        &-container .price {
+            font-size: 1.7rem;
+            font-weight: 400;
+        }
+
+        &-box {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+    }
+
+    .field.choice {
+        border: 1px solid rgba(0, 0, 0, 0.1); /* rgba(255, 255, 255, 0.2) */
+        border-radius: 3px;
+        display: inline-block;
+        padding: 7px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            border: 1px solid rgba(0, 0, 0, 0.12); /* rgba(255, 255, 255, 0.4) */
+            background: rgba(0, 0, 0, 0.05); /* rgba(255, 255, 255, 0.05) */
+            transition: all 0.3s ease;
+        }
+    }
+
+}
+
+/* WORKAROUND for rtl (porto_rtl) -- START */
+html:not([lang="he-IL"]) .soldtogether-block .amazonstyle-images .first {
+    background: none;
+    padding-left: 0;
+}
+
+html[lang="he-IL"] .soldtogether-block .amazonstyle-images li {
+    float: right;
+
+    &:last-child {
+        background: none;
+        padding-left: 0;
+    }
+}
+/* WORKAROUND for rtl (porto_rtl) -- END */
+
+@media screen and (max-width: 770px) {
+    .soldtogether-block .amazonstyle-images .product-image-container { width: 100px !important; }
+}

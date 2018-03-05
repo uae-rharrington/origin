@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <highlight>
+            <featured>
+                <title>Featured Products</title>
+                <url>highlight/featured.html</url>
+                <action_name>featured</action_name>
+            </featured>
+            <new>
+                <title>New Products</title>
+                <url>highlight/new.html</url>
+                <action_name>newAction</action_name>
+            </new>
+            <onsale>
+                <title>On Sale</title>
+                <url>highlight/onsale.html</url>
+                <action_name>onsale</action_name>
+            </onsale>
+            <popular>
+                <title>Popular</title>
+                <url>highlight/popular.html</url>
+                <action_name>popular</action_name>
+                <period>P1M</period>
+                <min_popularity>1</min_popularity>
+            </popular>
+            <bestsellers>
+                <title>Bestsellers</title>
+                <url>highlight/bestsellers.html</url>
+                <action_name>bestsellers</action_name>
+                <period>P1M</period>
+                <min_popularity>1</min_popularity>
+            </bestsellers>
+        </highlight>
+    </default>
+</config>

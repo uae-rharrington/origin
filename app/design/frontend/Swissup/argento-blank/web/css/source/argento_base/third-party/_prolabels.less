@@ -1,0 +1,27 @@
+& when (@media-common = true) {
+    .products-list {
+        .prolabels-wrapper {
+            display: table-cell;
+            vertical-align: top;
+
+            .product-item-photo {
+                display: block;
+                width: auto;
+            }
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .products-list {
+        .prolabels-wrapper {
+            width: 1%;
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .products-list {
+        .prolabels-wrapper {
+            width: 30%;
+        }
+    }
+}

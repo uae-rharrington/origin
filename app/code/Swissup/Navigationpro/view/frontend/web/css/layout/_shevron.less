@@ -1,0 +1,67 @@
+@media @navpro-breakpoint-md {
+    .navpro.orientation-horizontal {
+        & when (@navpro-dropdown__use-shevron = true) {
+            li.level-top.parent {
+                a.level-top {
+                    position: relative;
+                    &::before,
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -1px;
+                        left: calc(~"50% - 8px");
+                        z-index: @navpro-dropdown__z-index + 3;
+
+                        height: 0;
+                        width: 0;
+                        margin: 0;
+                        float: none;
+                        border: 8px solid transparent;
+                        border-bottom-color: @navpro-dropdown__background;
+                        opacity: 0;
+                        visibility: hidden;
+
+                        & when (@navpro-dropdown__use-animation = true) {
+                            transition: opacity .3s;
+                        }
+                    }
+                    &::after {
+                        & when (@navpro-dropdown__use-animation = true) {
+                            transition-delay: .1s;
+                        }
+
+                        bottom: 0;
+                        z-index: @navpro-dropdown__z-index + 2;
+                        border-bottom-color: @navpro-dropdown__border-color;
+                    }
+                    &:hover,
+                    &.ui-state-focus,
+                    &.ui-state-active {
+                        &::before,
+                        &::after {
+                            visibility: visible;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            &.dropdown-top {
+                li.level-top.parent {
+                    a.level-top {
+                        &::before,
+                        &::after {
+                            bottom: auto;
+                            top: -1px;
+                            border-top-color: @navpro-dropdown__background;
+                            border-bottom-color: transparent;
+                        }
+                        &::after {
+                            top: 0;
+                            border-top-color: @navpro-dropdown__border-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
