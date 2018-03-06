@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b2a7a1f00046717fc0c35237383e0a1",
+    "content-hash": "f5fa48d2af663312d6c12be8c869de43",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1148,6 +1148,217 @@
                 "phra"
             ],
             "time": "2015-10-13T18:44:15+00:00"
+        },
+        {
+            "name": "shipperhq/library-shipper",
+            "version": "20.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shipperhq/library-shipper.git",
+                "reference": "d1952685958f0ff0abd2c0c8b98381bcb406b5e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/d1952685958f0ff0abd2c0c8b98381bcb406b5e0",
+                "reference": "d1952685958f0ff0abd2c0c8b98381bcb406b5e0",
+                "shasum": ""
+            },
+            "type": "magento2-library",
+            "autoload": {
+                "files": [
+                    "src/registration.php"
+                ],
+                "psr-4": {
+                    "ShipperHQ\\Lib\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "ShipperHQ",
+                    "email": "sales@shipperhq.com",
+                    "homepage": "http://www.Shipperhq.com"
+                },
+                {
+                    "name": "Zowta LLC"
+                }
+            ],
+            "description": "ShipperHQ Library",
+            "time": "2018-01-31T09:24:45+00:00"
+        },
+        {
+            "name": "shipperhq/library-ws",
+            "version": "20.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shipperhq/library-ws.git",
+                "reference": "cd6f9a939f31f4b4d05b0cdff3a5647fff0207b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shipperhq/library-ws/zipball/cd6f9a939f31f4b4d05b0cdff3a5647fff0207b9",
+                "reference": "cd6f9a939f31f4b4d05b0cdff3a5647fff0207b9",
+                "shasum": ""
+            },
+            "type": "magento2-library",
+            "autoload": {
+                "files": [
+                    "src/registration.php"
+                ],
+                "psr-4": {
+                    "ShipperHQ\\WS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "ShipperHQ",
+                    "email": "sales@shipperhq.com",
+                    "homepage": "http://www.Shipperhq.com"
+                },
+                {
+                    "name": "Zowta LLC"
+                }
+            ],
+            "description": "ShipperHQ WS Library",
+            "time": "2017-12-20T17:39:06+00:00"
+        },
+        {
+            "name": "shipperhq/module-common",
+            "version": "20.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shipperhq/module-common.git",
+                "reference": "218ba4b2c51630ff0e838dde236577c9805d08c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shipperhq/module-common/zipball/218ba4b2c51630ff0e838dde236577c9805d08c6",
+                "reference": "218ba4b2c51630ff0e838dde236577c9805d08c6",
+                "shasum": ""
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "src/registration.php"
+                ],
+                "psr-4": {
+                    "ShipperHQ\\Common\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "ShipperHQ",
+                    "email": "sales@shipperhq.com",
+                    "homepage": "http://www.Shipperhq.com"
+                },
+                {
+                    "name": "Zowta LLC"
+                }
+            ],
+            "description": "ShipperHQ Common",
+            "time": "2017-12-21T00:04:53+00:00"
+        },
+        {
+            "name": "shipperhq/module-logger",
+            "version": "20.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shipperhq/module-logger.git",
+                "reference": "22d211faa37d5cbdaa567c36d34714ebe5ec03de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shipperhq/module-logger/zipball/22d211faa37d5cbdaa567c36d34714ebe5ec03de",
+                "reference": "22d211faa37d5cbdaa567c36d34714ebe5ec03de",
+                "shasum": ""
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "src/registration.php"
+                ],
+                "psr-4": {
+                    "ShipperHQ\\Logger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "ShipperHQ",
+                    "email": "sales@shipperhq.com",
+                    "homepage": "http://www.Shipperhq.com"
+                },
+                {
+                    "name": "Zowta LLC"
+                }
+            ],
+            "description": "ShipperHQ Logger",
+            "time": "2017-12-21T00:05:25+00:00"
+        },
+        {
+            "name": "shipperhq/module-shipper",
+            "version": "20.13.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shipperhq/module-shipper.git",
+                "reference": "cfec5a7dfcf7fb37e6a88d78e11781cd2eaeaeeb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shipperhq/module-shipper/zipball/cfec5a7dfcf7fb37e6a88d78e11781cd2eaeaeeb",
+                "reference": "cfec5a7dfcf7fb37e6a88d78e11781cd2eaeaeeb",
+                "shasum": ""
+            },
+            "require": {
+                "shipperhq/library-shipper": "*",
+                "shipperhq/library-ws": "*",
+                "shipperhq/module-common": "*",
+                "shipperhq/module-logger": "*"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "src/registration.php"
+                ],
+                "psr-4": {
+                    "ShipperHQ\\Shipper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "ShipperHQ",
+                    "email": "sales@shipperhq.com",
+                    "homepage": "http://www.Shipperhq.com"
+                },
+                {
+                    "name": "Zowta LLC"
+                }
+            ],
+            "description": "Magento Shipping integration with ShipperHQ",
+            "time": "2018-02-22T11:46:33+00:00"
         },
         {
             "name": "sjparkinson/static-review",

@@ -64,7 +64,9 @@
         "ext-mbstring": "*",
         "ext-openssl": "*",
         "ext-zip": "*",
-        "sjparkinson/static-review": "~4.1"
+        "sjparkinson/static-review": "~4.1",
+        "shipperhq/module-shipper": "^20.13",
+        "shipperhq/module-logger": "^20.2"
     },
     "require-dev": {
         "phpunit/phpunit": "4.1.0",
