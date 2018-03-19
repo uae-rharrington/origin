@@ -9,4 +9,3 @@ mysql:
 redis:
     type: redis:3.0
 
-

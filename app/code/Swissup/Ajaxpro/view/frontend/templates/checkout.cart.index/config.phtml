@@ -1,8 +1,0 @@
-<script>
-    /*console.log('Ajaxpro init window.checkoutConfig<?php echo uniqid();?>'); */
-    if (!window.checkoutConfig) {
-        window.checkoutConfig =  <?php echo\Zend_Json::encode($block->getCheckoutConfig())?>;
-        window.isCustomerLoggedIn = window.checkoutConfig.isCustomerLoggedIn;
-        window.customerData = window.checkoutConfig.customerData;
-    }
-</script>
