@@ -22,9 +22,11 @@ The Performance Toolkit enables you to test the performance of your Magento inst
 Before running the JMeter tests for the first time, you will need to first use the `php bin/magento setup:performance:generate-fixtures {profile path}` command to generate the test data.
 You can find the configuration files of available B2C profiles in the folders `setup/performance-toolkit/profiles/ce` and `setup/performance-toolkit/profiles/ee`.
 
-It can take a significant amount of time to generate a profile. For example, generating the large profile can take up to 4 hours. So we recommend using the `-s` option to skip indexation. Then you can start indexation manually.
+Also you can find B2B profiles located in the folder `setup/performance-toolkit/profiles/b2b`. The B2B profiles are designed for testing performance of the B2B modules and contain B2B-related entities, including companies, negotiable quotes, shared catalogs, and more.
 
-Splitting generation and indexation processes doesn't reduce total processing time, but it requires fewer resources. For example, to generate a small profile, use commands:
+It can take a significant amount of time to generate a profile. For example, generating a B2B medium profile takes up to 6 hours, while generating a large profile can take up to 22 hours. So we recommend  using the `-s` option to skip indexation. Then you can start indexation manually.
+
+Splitting generation and indexation processes doesn't reduce total processing time, but requires fewer resources. For example, to generate the small B2C profile use commands:
 
     php bin/magento setup:performance:generate-fixtures -s setup/performance-toolkit/profiles/ce/small.xml
     php bin/magento indexer:reindex
@@ -44,7 +46,18 @@ For run Admin Pool in multithreading mode, please be sure, that:
 
 **Note:** Before generating medium or large profiles, it may be necessary to increase the value of `tmp_table_size` and `max_heap_table_size` parameters for MySQL to 512Mb or more. The value of `memory_limit` for PHP should be 1Gb or more.
 
-There are two JMeter scenarios located in `setup/performance-toolkit` folder: `benchmark.jmx` and `benchmark_2015.jmx` (legacy version).
+After generating the B2B medium profile, you should run the following MySQL queries to move existing quotes and orders to the default store:
+
+    UPDATE sales_order o, quote q, quote_address qa SET o.customer_id = IF(o.entity_id % 2100 = 0, NULL, o.entity_id % 2100), o.customer_is_guest = IF(o.entity_id % 2100 = 0, 1, 0), o.store_id = 1, q.store_id = 1, q.customer_id = IF(o.entity_id % 2100 = 0, NULL, o.entity_id % 2100), qa.customer_id = IF(o.entity_id % 2100 = 0, NULL, o.entity_id % 2100), qa.save_in_address_book = 0 WHERE o.quote_id = q.entity_id AND q.entity_id = qa.quote_id;
+    UPDATE quote q, quote_address qa SET q.store_id = 1, q.customer_id = IF(q.entity_id % 2100 = 0, NULL, q.entity_id % 2100), qa.customer_id = IF(q.entity_id % 2100 = 0, NULL, q.entity_id % 2100), qa.save_in_address_book = 0 WHERE q.entity_id = qa.quote_id;
+
+There are three JMeter scenarios located in `setup/performance-toolkit` folder:
+
+- `benchmark.jmx` (B2C scenario)
+- `benchmark_2015.jmx` (legacy version of B2C scenario)
+- `b2b_benchmark.jmx` (B2B scenario)
+
+The B2B scenario should be run on the data generated from one of the B2B profiles.
 
 **Note:** To be sure that all quotes are empty, run the following MySQL query before each run of a scenario:
 
@@ -54,50 +67,59 @@ There are two JMeter scenarios located in `setup/performance-toolkit` folder: `b
 
 The following parameters can be passed to the `benchmark.jmx` scenario:
 
-| Parameter Name                                | Default Value       | Description                                                                              |
+| Parameter Name                    | Default Value  | Description                                                                              |
 | --------------------------------------------- | ------------------- | ---------------------------------------------------------------------------------------- |
 | host                                          |  localhost          | URL component 'host' of application being tested (URL or IP).                            |
 | base_path                                     |       /             | Base path for tested site.                                                               |
 | admin_path                                    | admin               | Admin backend path.                                                                      |
-| admin_user                                    | admin               | Admin backend user.                                                                      |
-| admin_password                                | 123123q             | Admin backend password.                                                                  |
-| customer_password                             | 123123q             | Storefront customer password.                                                            |
-| customers_page_size                           | 20                  | Page size for customers grid in Magento Admin.                                           |
-| files_folder                                  | ./files/            | Path to various files that are used in scenario (`setup/performance-toolkit/files`).     |
-| loops                                         | 1                   | Number of loops to run.                                                                  |
+| admin_user                        | admin          | Admin backend user.                                                                      |
+| admin_password                    | 123123q        | Admin backend password.                                                                  |
+| customer_password                 | 123123q        | Storefront customer password.                                                            |
+| customers_page_size               | 20             | Page size for customers grid in Magento Admin.                                           |
+| files_folder                      | ./files/       | Path to various files that are used in scenario (`setup/performance-toolkit/files`).     |
+| loops                             | 1              | Number of loops to run.                                                                  |
 | frontendPoolUsers                             | 1                   | Total number of Frontend threads.                                                        |
 | adminPoolUsers                                | 1                   | Total number of Admin threads.                                                           |
-| browseCatalogByGuestPercentage                | 30                  | Percentage of threads in Frontend Pool that emulate catalog browsing activities.         |
-| browseCatalogByCustomerPercentage             | 0                   | Percentage of threads in Frontend Pool that emulate catalog browsing activities.         |
-| siteSearchPercentage                          | 30                  | Percentage of threads in Frontend Pool that emulate catalog search activities.           |
+| browseCatalogByCustomerPercentage                | 33                  | Percentage of threads in Frontend Pool that emulate catalog browsing activities.         |
+| siteSearchPercentage              | 32             | Percentage of threads in Frontend Pool that emulate catalog search activities.           |
 | searchQuickPercentage                         | 60                  | Percentage of threads in Frontend Pool that emulate catalog search activities.           |
 | searchQuickFilterPercentage                   | 30                  | Percentage of threads in Frontend Pool that emulate catalog search activities.           |
 | searchAdvancedPercentage                      | 10                  | Percentage of threads in Frontend Pool that emulate catalog search activities.           |
-| checkoutByGuestPercentage                     | 4                   | Percentage of threads in Frontend Pool that emulate checkout by guest.                   |
-| checkoutByCustomerPercentage                  | 4                   | Percentage of threads in Frontend Pool that emulate checkout by customer.                |
-| addToCartByGuestPercentage                    | 28                  | Percentage of threads in Frontend Pool that emulate abandoned cart activities.           |
-| addToWishlistPercentage                       | 2                   | Percentage of threads in Frontend Pool that emulate adding products to Wishlist.         |
-| compareProductsPercentage                     | 2                   | Percentage of threads in Frontend Pool that emulate products comparison.                 |
-| productCompareDelay                           | 0                   | Delay (s) between iterations of product comparison.                                      |
-| promotionRulesPercentage                      | 10                  | Percentage of threads in Admin Pool that emulate creation of promotion rules.            |
-| adminPromotionsManagementDelay                | 0                   | Delay (s) between creation of promotion rules.                                           |
-| adminCategoryManagementPercentage             | 10                   | Percentage of threads in Merchandising Pool that emulate category management activities. |
-| adminProductEditingPercentage                 | 35                  | Percentage of threads in Merchandising Pool that emulate product editing.                |
-| adminProductCreationPercentage                | 25                  | Percentage of threads in Merchandising Pool that emulate creation of products.           |
-| adminPromotionRulesPercentage                 | 15                  | Percentage of threads in Admin Pool that emulate admin rules creating activities.        |
-| adminCategoryManagementDelay                  | 0                   | Delay (s) between iterations of category management activities.                          |
+| checkoutByGuestPercentage         | 0              | Percentage of threads in Frontend Pool that emulate checkout by guest.                   |
+| checkoutByCustomerPercentage      | 0              | Percentage of threads in Frontend Pool that emulate checkout by customer.                |
+| addToCartByGuestPercentage                    | 0                  | Percentage of threads in Frontend Pool that emulate abandoned cart activities.           |
+| addToWishlistPercentage           | 0              | Percentage of threads in Frontend Pool that emulate adding products to Wishlist.         |
+| compareProductsPercentage         | 0              | Percentage of threads in Frontend Pool that emulate products comparison.                 |
+| productCompareDelay               | 0              | Delay (s) between iterations of product comparison.                                      |
+| promotionRulesPercentage          | 10             | Percentage of threads in Admin Pool that emulate creation of promotion rules.            |
+| adminPromotionsManagementDelay    | 0              | Delay (s) between creation of promotion rules.                                           |
+| adminCategoryManagementPercentage             | 5                   | Percentage of threads in Merchandising Pool that emulate category management activities. |
+| adminProductEditingPercentage                 | 27                  | Percentage of threads in Merchandising Pool that emulate product editing.                |
+| adminProductCreationPercentage                | 18                  | Percentage of threads in Merchandising Pool that emulate creation of products.           |
+| adminPromotionRulesPercentage                 | 10                  | Percentage of threads in Admin Pool that emulate admin rules creating activities.        |
+| adminCategoryManagementDelay      | 0              | Delay (s) between iterations of category management activities.                          |
+| apiProcessOrdersPercentage        | 30             | Percentage of threads in Admin Pool that emulate orders processing activities.           |
 | apiProcessOrders                              | 5                   | Number of orders for process in Admin API - Process Orders.                              |
-| adminEditOrderPercentage                      | 15                  | Percentage of threads in Admin Pool that emulate order edit.                             |
+| adminEditOrderPercentage                      | 10                  | Percentage of threads in Admin Pool that emulate order edit.                             |
 | csrPoolUsers                                  | 0                   | Users of Customer Support Request (CSR) Pool.                                            |
 | othersPoolUsers                               | 0                   | Users of Others Pool.                                                                    |
 | browseCustomerGridPercentage                  | 10                  | Percentage of threads in CSR Pool that emulate customers browsing activities.            |
 | adminCreateOrderPercentage                    | 70                  | Percentage of threads in CSR Pool that emulate creation of orders.                       |
 | adminReturnsManagementPercentage              | 20                  | Percentage of threads in CSR Pool that emulate creation/processing of returns.           |
 | adminCreateProcessReturnsDelay                | 0                   | Delay (s) between creation of returns.                                                   |
-| wishlistDelay                                 | 0                   | Delay (s) between adding products to Wishlist.                                           |
+| wishlistDelay                     | 0              | Delay (s) between adding products to Wishlist.                                           |
 | categories_count                              | 100                 | Total number of categories that are be used in scenario.                                 |
-| simple_products_count                         | 30                  | Total number of simple products that are be used in scenario.                            |
-
+| simple_products_count             | 30             | Total number of simple products that are be used in scenario.         
+| quickOrderPercentage                 | 11             | Percentage of threads in Frontend Pool that emulate rapid order.                                       |
+| reorderPercentage                    | 7              | Percentage of threads in Frontend Pool that emulate reorder from prior order.                          |
+| requisitionListPercentage            | 7              | Percentage of threads in Frontend Pool that emulate creation of requisition list and checkout from it. |
+| requisitionListFromOrderPercentage   | 7              | Percentage of threads in Frontend Pool that emulate checkout from existing requisition list.           |
+| negotiableQuotePercentage            | 3              | Percentage of threads in Frontend Pool that emulate negotiable quote flow.                             |
+| promotionRulesPercentage             | 10             | Percentage of threads in Admin Pool that emulate creation of promotion rules.                          |
+| adminPromotionsManagementDelay       | 0              | Delay (s) between creation of promotion rules.                                                         |
+| adminSharedCatalogCreationPercentage | 10              | Percentage of threads in Admin Pool that emulate creation of shared catalog.                           |
+| adminProcessQuotesPercentage | 15              | Percentage of threads in Admin Pool that emulate Process Negotiable Quotes activities.                          |
+| companies_page_size                  | 20             | Total number of companies that are be used in scenario.                                                |
 Parameters must be passed to the command line with the `J` prefix:
 
 `-J{parameter_name}={parameter_value}`
@@ -118,7 +140,7 @@ For example, you can run the B2C scenario via console with 90 threads for the Fr
     cd {JMeter path}/bin/
     jmeter -n -t {path to peformance toolkit}/benchmark.jmx -j ./jmeter.log -l ./jmeter-results.jtl -Jhost=magento2.dev -Jbase_path=/ -Jadmin_path=admin -JfrontendPoolUsers=90 -JadminPoolUsers=10
 
-As a result, you will get `jmeter.log` and `jmeter-results.jtl`. The`jmeter.log` contains information about the test run and can be helpful in determining the cause of an error.  The JTL file is a text file containing the results of a test run. It can be opened in the GUI mode to perform analysis of the results (see the *Output* section below).
+As a result, you will get `jmeter.log` and `jmeter-results.jtl`. The `jmeter.log` contains information about the test run and can be helpful in determining the cause of an error. The JTL file is a text file containing the results of a test run. It can be opened in the GUI mode to perform analysis of the results (see the *Output* section below).
 
 
 The following parameters can be passed to the `benchmark_2015.jmx` scenario:
@@ -154,7 +176,7 @@ To run a script, click the *Start* button (green arrow in the top menu).
 
 ## Output
 
-The results of running a JMeter scenario are available in the *View Results Tree* and *Aggregate Report* nodes in the left panel of the JMeter GUI.
+The results of running a JMeter scenario are available in the  *View Results Tree* and *Aggregate Report* nodes in the left panel of the JMeter GUI.
 
 When the script is run via GUI, the results are available in the left panel. Choose the corresponding report. When the script is run via console, a JTL report is generated. You can run JMeter GUI later and open it in the corresponding report node.
 
@@ -162,7 +184,7 @@ The legacy scenario (Benchmark_2015) contains *View Results Tree*, *Detailed URL
 
 ### View Results Tree
 
-This report shows the tree of all requests and responses made during the scenario run.  It provides information about the response time, headers and response codes. This report is useful for scenario debugging, but should be disabled during load testing because it consumes a lot of resources.
+This report shows the tree of all requests and responses made during the scenario run. It provides information about the response time, headers and response codes. This report is useful for scenario debugging, but should be disabled during load testing because it consumes a lot of resources.
 
 You can open a JTL file in this report to debug a scenario and view the requests that cause errors. By default, a JTL file doesn't contain bodies of requests/responses, so it is better to debug scenarios in the GUI mode.
 
@@ -176,7 +198,7 @@ For more details, read [Aggregate Report](http://jmeter.apache.org/usermanual/co
 
 ### Detailed URLs Report (Legacy)
 
-This report contains information about URLs. Note that the URL is displayed only in a generated report file (URL is not displayed in the GUI). The report file name is `{report_save_path}/detailed-urls-report.log`.  It can be opened as a CSV file.
+This report contains information about URLs. Note that the URL is displayed only in a generated report file (URL is not displayed in the GUI). The report file name is `{report_save_path}/detailed-urls-report.log`. It can be opened as a CSV file.
 
 For more details, read [View Results in Table](http://jmeter.apache.org/usermanual/component_reference.html#View_Results_in_Table).
 
@@ -196,13 +218,18 @@ For more details, read [Summary Report](http://jmeter.apache.org/usermanual/comp
 
 | Scenario Name             | % of Pool |
 | ------------------------- | --------- |
-| Catalog Browsing By Guest |     30    |
-| Site Search               |     30    |
-| Add To Cart By Guest      |     28    |
-| Add to Wishlist           |     2     |
-| Compare Products          |     2     |
-| Checkout By Guest         |     4     |
-| Checkout By Customer      |     4     |
+| Catalog Browsing By Customer |     33    |
+| Site Search               |     32    |
+| Add To Cart By Guest      |     0    |
+| Add to Wishlist           |     0     |
+| Compare Products          |     0     |
+| Checkout By Guest         |     0     |
+| Checkout By Customer      |     0     |
+| Quick Order               |     11    |
+| Requisition List          |      7    |
+| Requisition List From Order|     7    |
+| Reorder                   |      7    |
+| Negotiable Quote          |      3    |
 
 Site Search thread group contains 3 variations:
 - Quick Search (60%)
@@ -213,11 +240,14 @@ Site Search thread group contains 3 variations:
 
 | Scenario Name               |% of Pool  |
 | ----------------------------| --------- |
-| Admin Promotion Rules       | 15        |
-| Admin Edit Order            | 15        |
-| Admin Category Management   | 10        |
-| Admin Edit Product          | 35        |
-| Admin Create Product        | 25        |
+| Admin Promotion Rules       | 10        |
+| Admin Edit Order            | 10        |
+| Admin Category Management   | 5         |
+| Admin Edit Product          | 30        |
+| Admin Create Product        | 20        |
+| Shared Catalog              | 10         |
+| Process Negotiable Quotes   | 15        |
+
 
 **CSR Pool** (csrPoolUsers)
 
@@ -239,7 +269,6 @@ By default, the percentage ratio between the thread groups is as follows:
 **Legacy Scenario**
 
 It is convenient to use *Summary Report* for the results analysis. To evaluate the number of each request per hour, use the value in the *Throughput* column.
-
 To get the summary value of throughput for some action:
 1. Find all rows that relate to the desired action
 2. Convert values from *Throughput* column to a common denominator
