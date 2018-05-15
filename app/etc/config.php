@@ -201,40 +201,40 @@ return array (
     'Shopial_Facebook' => 1,
     'Temando_Shipping' => 1,
   ),
-    'system' =>
-        array (
-            'default' =>
-                array (
-                    'dev' =>
-                        array (
-                            'static' =>
-                                array (
-                                    'sign' => '1',
-                                ),
-                            'front_end_development_workflow' =>
-                                array (
-                                    'type' => 'server_side_compilation',
-                                ),
-                            'js' =>
-                                array (
-                                    'merge_files' => '1',
-                                    'minify_files' => '1',
-                                    'minify_exclude' => 'tiny_mce',
-                                ),
-                            'css' =>
-                                array (
-                                    'minify_files' => '1',
-                                    'minify_exclude' => 'tiny_mce',
-                                ),
-                            'template' =>
-                                array (
-                                    'minify_html' => '1',
-                                ),
-                        ),
-                ),
-        ),
-    'directories' =>
-        array (
-            'document_root_is_pub' => true,
-        ),
+//    'system' =>
+//        array (
+//            'default' =>
+//                array (
+//                    'dev' =>
+//                        array (
+//                            'static' =>
+//                                array (
+//                                    'sign' => '1',
+//                                ),
+//                            'front_end_development_workflow' =>
+//                                array (
+//                                    'type' => 'server_side_compilation',
+//                                ),
+//                            'js' =>
+//                                array (
+//                                    'merge_files' => '1',
+//                                    'minify_files' => '1',
+//                                    'minify_exclude' => 'tiny_mce',
+//                                ),
+//                            'css' =>
+//                                array (
+//                                    'minify_files' => '1',
+//                                    'minify_exclude' => 'tiny_mce',
+//                                ),
+//                            'template' =>
+//                                array (
+//                                    'minify_html' => '1',
+//                                ),
+//                        ),
+//                ),
+//        ),
+//    'directories' =>
+//        array (
+//            'document_root_is_pub' => true,
+//        ),
 );
