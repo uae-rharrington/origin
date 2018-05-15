@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "70718acaf6f19ae659f1863130cd9d77",
+    "content-hash": "c119e4c2b4efdc78fc5f33853c7793b9",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -678,6 +678,37 @@
                 "search"
             ],
             "time": "2017-12-05T14:05:24+00:00"
+        },
+        {
+            "name": "fastly/magento2",
+            "version": "1.2.53",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fastly/fastly-magento2.git",
+                "reference": "b59901d4e770383e032a4803ee85507ceff16c13"
+            },
+            "require": {
+                "magento/framework": ">=100.0.0",
+                "magento/module-cache-invalidate": ">=100.0.0",
+                "magento/module-config": ">=100.0.0",
+                "magento/module-page-cache": ">=100.0.0",
+                "magento/module-store": ">=100.0.0",
+                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Fastly\\Cdn\\": ""
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Fastly CDN Module for Magento 2.x",
+            "time": "2018-05-07T03:41:07+00:00"
         },
         {
             "name": "guzzlehttp/ringphp",
