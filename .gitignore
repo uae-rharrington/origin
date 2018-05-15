@@ -49,7 +49,6 @@ atlassian*
 !/pub/static/.htaccess
 !/pub/errors/local.xml
 
-/app/etc/vendor_path.php
 /var/*
 !/var/.htaccess
 /vendor
