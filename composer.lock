@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d676d9cc28f122c95cef45e29673ed6",
+    "content-hash": "3349172158713681363f245d7b6cc243",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -12350,6 +12350,46 @@
                 "email": "info@xtento.com"
             },
             "time": "2018-05-21T14:59:31+00:00"
+        },
+        {
+            "name": "xtento/trackingimport",
+            "version": "2.4.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_trackingimport/h/9f11fc79f6f314a6e3298e7b4c37be30/v/2.4.0",
+                "reference": "5f41b7b0836f5108a49d48c365fb917001739494",
+                "shasum": null
+            },
+            "require": {
+                "php": "~5.5.22|~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
+                "xtento/xtcore": "~2.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Xtento\\TrackingImport\\": ""
+                }
+            },
+            "notification-url": "https://repo.xtento.com/composer/download/notify",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "XTENTO GmbH & Co. KG",
+                    "email": "info@xtento.com",
+                    "homepage": "http://www.xtento.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "XTENTO Tracking Number Import Module",
+            "support": {
+                "email": "info@xtento.com"
+            },
+            "time": "2018-04-03T12:04:22+00:00"
         },
         {
             "name": "xtento/xtcore",
