@@ -220,5 +220,6 @@ return array (
     'Magento_Worldpay' => 1,
     'Shopial_Facebook' => 1,
     'Temando_Shipping' => 1,
+      
   ),
 );
