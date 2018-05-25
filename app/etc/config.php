@@ -220,6 +220,7 @@ return array (
     'Magento_Worldpay' => 1,
     'Shopial_Facebook' => 1,
     'Temando_Shipping' => 1,
-      
+      'Xtento_XtCore'=> 1,
+      'Xtento_OrderExport' => 1,
   ),
 );
