@@ -15,12 +15,18 @@
         "fastly-magento2": {
             "type": "git",
             "url": "https://github.com/fastly/fastly-magento2.git"
+        },
+        "xtento": {
+            "type": "composer",
+            "url": "https://repo.xtento.com"
         }
     },
     "require": {
         "magento/magento-cloud-metapackage": ">=2.2.2 <2.2.3",
         "fastly/magento2": "^1.2",
-        "magento/extension-b2b": "^1.0"
+        "magento/extension-b2b": "^1.0",
+        "xtento/orderexport": "^2.5",
+        "xtento/trackingimport": "^2.4"
     },
     "config": {
         "use-include-path": true
