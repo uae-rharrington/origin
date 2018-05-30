@@ -27,7 +27,8 @@
         "magento/extension-b2b": "^1.0",
         "xtento/orderexport": "^2.5",
         "xtento/trackingimport": "^2.4",
-        "magento/product-enterprise-edition": "2.2.3"
+        "magento/product-enterprise-edition": "2.2.3",
+        "shipperhq/module-shipper": "20.17.1"
     },
     "config": {
         "use-include-path": true
