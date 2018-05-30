@@ -7,6 +7,7 @@
 namespace Magento\Setup\Fixtures;
 
 use \Magento\SharedCatalog\Setup\InstallSchema as SharedCatalogInstallSchema;
+use \Magento\Rule\Model\Condition\Sql\Expression;
 
 /**
  * Generates Shared Catalogs fixtures.
@@ -35,11 +36,14 @@ class SharedCatalogsFixture extends Fixture
     protected $priority = 150;
 
     /**
-     * Percentage value of all categories included to shared catalog.
-     *
      * @var int
      */
-    private $categoriesPercentInSharedCatalog = 75;
+    private $percentOfProductsInSharedCatalog = 75;
+
+    /**
+     * @var int
+     */
+    private $percentOfSharedCatalogsWithProducts = 100;
 
     /**
      * @var \Magento\SharedCatalog\Api\SharedCatalogRepositoryInterface
@@ -65,11 +69,6 @@ class SharedCatalogsFixture extends Fixture
      * @var \Magento\Framework\DB\Sql\ColumnValueExpressionFactory
      */
     private $expressionFactory;
-
-    /**
-     * @var array|null
-     */
-    private $categoriesIds;
 
     /**
      * @var array
@@ -136,10 +135,10 @@ class SharedCatalogsFixture extends Fixture
         );
 
         for ($sharedCatalogIndex = 1; $sharedCatalogIndex <= $sharedCatalogsCount; $sharedCatalogIndex++) {
-            $sharedCatalog = $this->createSharedCatalog($sharedCatalogIndex, $adminUserId);
-            $this->assignProductsToSharedCatalog($sharedCatalog->getCustomerGroupId());
-            $customerGroupId[] = $sharedCatalog->getCustomerGroupId();
+            $customerGroupId[] = $this->createSharedCatalog($sharedCatalogIndex, $adminUserId);
         }
+
+        $this->assignProductsToSharedCatalogs($customerGroupId, $this->percentOfProductsInSharedCatalog);
         $this->setSharedCatalogPrices($customerGroupId);
         $this->assignPermissionsToCategories();
         $this->assignCategoriesPermissionsToIndex();
@@ -179,9 +178,8 @@ class SharedCatalogsFixture extends Fixture
             $customerGroupIds[] = '0';
         }
 
-        foreach ($customerGroupIds as $customerGroupId) {
-            $this->assignProductsToSharedCatalog($customerGroupId);
-        }
+        $this->assignProductsToSharedCatalogs($customerGroupIds, 100);
+
         $this->getDbConnection()->update(
             $scPermissionsTable,
             ['permission' => \Magento\CatalogPermissions\Model\Permission::PERMISSION_ALLOW],
@@ -206,12 +204,10 @@ class SharedCatalogsFixture extends Fixture
     private function getSharedCatalogsAmount()
     {
         $sharedCatalogCollection = $this->sharedCatalogCollectionFactory->create();
+        $value = (int) $this->fixtureModel->getValue('shared_catalogs', 0) - ($sharedCatalogCollection->getSize() - 1);
 
         // minus default shared catalog
-        return max(
-            0,
-            (int)$this->fixtureModel->getValue('shared_catalogs', 0) - ($sharedCatalogCollection->getSize() - 1)
-        );
+        return max(0, $value);
     }
 
     /**
@@ -232,7 +228,9 @@ class SharedCatalogsFixture extends Fixture
                 'tax_class_id' => self::DEFAULT_TAX_CLASS_ID,
             ]
         );
-        $customerGroupId = $this->getDbConnection()->lastInsertId($this->getTable('customer_group'));
+
+        $customerGroupId = $this->getDbConnection()
+            ->lastInsertId($this->getTable('customer_group'));
 
         $this->getDbConnection()->insert(
             $this->getTable(SharedCatalogInstallSchema::SHARED_CATALOG_TABLE_NAME),
@@ -246,12 +244,7 @@ class SharedCatalogsFixture extends Fixture
             ]
         );
 
-        $sharedCatalogId = $this->getDbConnection()
-            ->lastInsertId(
-                $this->getTable(SharedCatalogInstallSchema::SHARED_CATALOG_TABLE_NAME)
-            );
-
-        return $this->sharedCatalogRepository->get($sharedCatalogId);
+        return $customerGroupId;
     }
 
     /**
@@ -259,35 +252,41 @@ class SharedCatalogsFixture extends Fixture
      *
      * Creates INSERT ... FROM SELECT query
      * where insert is made to table that links shared catalogs and products
-     * and select retrieves current customer group id from shared catalog
-     * and all product sku assigned to list of categories.
+     * and select retrieves percent of products that will be assigned to shared catalog
      *
-     * @param int $customerGroupId
+     * @param array $customerGroupIds
+     * @param int $percentage
      * @return void
      */
-    private function assignProductsToSharedCatalog($customerGroupId)
+    private function assignProductsToSharedCatalogs(array $customerGroupIds, $percentage)
     {
-        $select = $this->getDbConnection()
-            ->select()
-            ->distinct(true)
-            ->from(['product' => $this->getTable('catalog_product_entity')], [])
-            ->columns(
-                ['sku', 'customer_group_id' => $this->expressionFactory->create(['expression' => $customerGroupId])]
-            )->joinLeft(
-                ['category' => $this->getTable('catalog_category_product')],
-                'category.product_id = product.entity_id',
-                []
-            )->joinLeft(
-                ['product_link' => $this->getTable('catalog_product_super_link')],
-                'product_link.product_id = product.entity_id',
-                []
-            )
-            ->where('category.category_id in (?)', $this->getCategoriesIds())
-            ->orWhere('product_link.parent_id IS NOT NULL AND product_link.parent_id != 0');
+        $simpleProductsSelect = $this->getTrueSimpleProductsSelect($percentage);
+        $nonSimpleProductsSelect = $this->getNonSimpleProductsSelect($percentage);
+
+        $selects = [];
+
+        $customerGroupIds = $this->limitSharedCatalogIds($customerGroupIds);
+
+        foreach ($customerGroupIds as $customerGroupId) {
+            $selects[] = new Expression((clone $simpleProductsSelect)
+                ->columns(
+                    ['customer_group_id' => $this->expressionFactory->create(['expression' => $customerGroupId])]
+                ));
+
+            $selects[] = new Expression((clone $nonSimpleProductsSelect)
+                ->columns(
+                    ['customer_group_id' => $this->expressionFactory->create(['expression' => $customerGroupId])]
+                ));
+        }
+
+        $generalSelect = $this->getDbConnection()->select()->union(
+            $selects,
+            \Magento\Framework\DB\Select::SQL_UNION_ALL
+        );
 
         $insert = $this->getDbConnection()
             ->insertFromSelect(
-                $select,
+                $generalSelect,
                 $this->getTable(SharedCatalogInstallSchema::SHARED_CATALOG_PRODUCT_ITEM_TABLE_NAME),
                 ['sku', 'customer_group_id']
             );
@@ -330,38 +329,14 @@ class SharedCatalogsFixture extends Fixture
     }
 
     /**
-     * Retrieves categories IDs.
-     *
-     * Retrieves ids for all categories except Root and Default
-     * and limit its number to $categoriesPercentInSharedCatalog.
-     *
-     * @return array
-     */
-    private function getCategoriesIds()
-    {
-        if ($this->categoriesIds === null) {
-            /** @var \Magento\Catalog\Model\ResourceModel\Category\Collection $categoryCollection */
-            $categoryCollection = $this->categoryCollectionFactory->create();
-            $categoryCollection->addFieldToFilter('level', ['gt' => 1])
-                ->getSelect()
-                ->columns([$categoryCollection->getIdFieldName()]);
-
-            $this->categoriesIds = $this->getDbConnection()->fetchCol($categoryCollection->getSelect());
-            $this->categoriesIds = $this->limitCategoriesIds($this->categoriesIds);
-        }
-
-        return $this->categoriesIds;
-    }
-
-    /**
      * Cut array of categories according to $categoriesPercentInSharedCatalog.
      *
      * @param array $fullCategoriesList
      * @return array
      */
-    private function limitCategoriesIds(array $fullCategoriesList)
+    private function limitSharedCatalogIds(array $fullCategoriesList)
     {
-        $necessaryCount = round(count($fullCategoriesList) * $this->categoriesPercentInSharedCatalog / 100);
+        $necessaryCount = round(count($fullCategoriesList) * $this->percentOfSharedCatalogsWithProducts / 100);
 
         return array_slice($fullCategoriesList, 0, $necessaryCount);
     }
@@ -401,9 +376,6 @@ class SharedCatalogsFixture extends Fixture
                     'expression' => 0
                 ]),
                 'customer_group_id' => 'product_item.customer_group_id',
-                'qty' => $this->expressionFactory->create([
-                    'expression' => 1
-                ]),
                 'percentage_value' => $this->expressionFactory->create([
                     'expression' => 'FLOOR(75 + RAND() * 25)'
                 ]),
@@ -471,7 +443,9 @@ class SharedCatalogsFixture extends Fixture
                 ->distinct()
                 ->columns($columns)
                 ->joinLeft(
-                    ['perm' => $this->getTable(SharedCatalogInstallSchema::SHARED_CATALOG_PERMISSIONS_TABLE_NAME)],
+                    ['perm' => $this->getTable(
+                        SharedCatalogInstallSchema::SHARED_CATALOG_PERMISSIONS_TABLE_NAME
+                    )],
                     'perm.category_id = category.entity_id AND perm.customer_group_id = '.$customerGroupId,
                     []
                 )
@@ -519,5 +493,92 @@ class SharedCatalogsFixture extends Fixture
                 array_keys($columns)
             )
         );
+    }
+
+    /**
+     * Creates Select object that can select specific percent of random simple products
+     * Is used to select random simple products that will be assigned to shared catalog
+     *
+     * @param int $percentage
+     * @return \Magento\Framework\DB\Select
+     */
+    private function getTrueSimpleProductsSelect($percentage)
+    {
+        $select = $this->getDbConnection()->select()
+            ->distinct()
+            ->from(
+                ['cpe' => $this->getTable('catalog_product_entity')],
+                ''
+            )
+            ->columns(['sku' => 'cpe.sku'])
+            ->joinLeft(
+                ['cpsl' => $this->getTable('catalog_product_super_link')],
+                'cpsl.product_id = cpe.row_id',
+                ''
+            )
+            ->where('cpe.type_id = ?', 'simple')
+            ->where('cpsl.link_id IS NULL');
+
+        $totalAmountSelect = (clone $select)
+            ->reset(\Zend_Db_Select::COLUMNS)
+            ->columns('count(distinct cpe.sku)');
+
+        $totalAmount = (int) $this->getDbConnection()->fetchOne($totalAmountSelect);
+
+        $select->order('rand()')
+            ->limit(round($totalAmount/100*$percentage));
+
+        return $select;
+    }
+
+    /**
+     * Creates Select object that can select specific percent of random non simple products (configurable, bundled)
+     * with all their simple products. Is used to select random products that will be assigned to shared catalog
+     *
+     * @param int $percentage
+     * @return \Magento\Framework\DB\Select
+     */
+    private function getNonSimpleProductsSelect($percentage)
+    {
+        $select1 = $this->getDbConnection()->select()
+            ->distinct()
+            ->from($this->getTable('catalog_product_relation'), '')
+            ->columns(['parent_id' => 'parent_id', 'child_id' => 'parent_id']);
+
+        $select2 = $this->getDbConnection()->select()
+            ->from($this->getTable('catalog_product_relation'), '')
+            ->columns(['parent_id' => 'parent_id', 'child_id' => 'child_id']);
+
+        $subSelect = $this->getDbConnection()->select()
+            ->union([$select1, $select2], \Magento\Framework\DB\Select::SQL_UNION);
+
+        $totalAmountSelect = $this->getDbConnection()->select()
+            ->from($this->getTable('catalog_product_relation'), '')
+            ->columns(['count(DISTINCT parent_id)']);
+
+        $totalAmount = (int) $this->getDbConnection()->fetchOne($totalAmountSelect);
+
+        $limitSelect = $this->getDbConnection()->select()
+            ->distinct()
+            ->from($this->getTable('catalog_product_relation'), '')
+            ->columns(['parent_id'])
+            ->order('rand()')
+            ->limit(round($totalAmount/100*$percentage));
+
+        $select = $this->getDbConnection()->select()
+            ->from(['sub' => $subSelect], '')
+            ->columns(['cpe.sku'])
+            ->joinInner(
+                ['cpr' => $limitSelect],
+                'cpr.parent_id = sub.parent_id',
+                ''
+            )
+            ->joinLeft(
+                ['cpe' => $this->getTable('catalog_product_entity')],
+                'sub.child_id = cpe.row_id',
+                ''
+            );
+
+        return $select;
     }
 }

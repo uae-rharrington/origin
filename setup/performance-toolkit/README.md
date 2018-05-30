@@ -75,7 +75,7 @@ The following parameters can be passed to the `benchmark.jmx` scenario:
 | admin_user                        | admin          | Admin backend user.                                                                      |
 | admin_password                    | 123123q        | Admin backend password.                                                                  |
 | customer_password                 | 123123q        | Storefront customer password.                                                            |
-| customers_page_size               | 20             | Page size for customers grid in Magento Admin.                                           |
+| customers_page_size               | 50             | Page size for customers grid in Magento Admin.                                           |
 | files_folder                      | ./files/       | Path to various files that are used in scenario (`setup/performance-toolkit/files`).     |
 | loops                             | 1              | Number of loops to run.                                                                  |
 | frontendPoolUsers                             | 1                   | Total number of Frontend threads.                                                        |
@@ -119,7 +119,7 @@ The following parameters can be passed to the `benchmark.jmx` scenario:
 | adminPromotionsManagementDelay       | 0              | Delay (s) between creation of promotion rules.                                                         |
 | adminSharedCatalogCreationPercentage | 10              | Percentage of threads in Admin Pool that emulate creation of shared catalog.                           |
 | adminProcessQuotesPercentage | 15              | Percentage of threads in Admin Pool that emulate Process Negotiable Quotes activities.                          |
-| companies_page_size                  | 20             | Total number of companies that are be used in scenario.                                                |
+| companies_page_size                  | 50             | Total number of companies that are be used in scenario.                                                |
 Parameters must be passed to the command line with the `J` prefix:
 
 `-J{parameter_name}={parameter_value}`

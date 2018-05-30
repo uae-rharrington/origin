@@ -6,15 +6,15 @@
 namespace Magento\Setup\Fixtures\FixturesAsserts;
 
 /**
- * Performs assertion that generated negotiable quotes are valid
+ * Performs assertion that generated shared catalogs are valid
  * after running setup:performance:generate-fixtures command
  */
-class NegotiableQuotesAssert
+class SharedCatalogAssert
 {
     /**
-     * @var \Magento\NegotiableQuote\Model\NegotiableQuoteRepository
+     * @var \Magento\SharedCatalog\Model\Repository
      */
-    private $negotiableQuoteRepository;
+    private $sharedCatalogRepository;
 
     /**
      * @var \Magento\Framework\Api\SearchCriteriaBuilder
@@ -22,20 +22,20 @@ class NegotiableQuotesAssert
     private $searchCriteriaBuilder;
 
     /**
-     * @param \Magento\NegotiableQuote\Model\NegotiableQuoteRepository $negotiableQuoteRepository
+     * @param \Magento\SharedCatalog\Model\Repository $sharedCatalogRepository
      * @param \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
-        \Magento\NegotiableQuote\Model\NegotiableQuoteRepository $negotiableQuoteRepository,
+        \Magento\SharedCatalog\Model\Repository $sharedCatalogRepository,
         \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
     ) {
-        $this->negotiableQuoteRepository = $negotiableQuoteRepository;
+        $this->sharedCatalogRepository = $sharedCatalogRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
     /**
-     * Asserts that generated negotiable quotes are valid
-     * Checks only for quotes count for now
+     * Asserts that generated shared catalogs are valid
+     * Checks only for shared catalog count for now
      *
      * @return bool
      * @throws \AssertionError
@@ -43,10 +43,10 @@ class NegotiableQuotesAssert
     public function assert()
     {
         $searchCriteria = $this->searchCriteriaBuilder->create();
-        $negotiableQuotes = $this->negotiableQuoteRepository->getList($searchCriteria)->getItems();
+        $sharedCatalogs = $this->sharedCatalogRepository->getList($searchCriteria)->getItems();
 
-        if (20 !== count($negotiableQuotes)) {
-            throw new \AssertionError('Negotiable quotes amount is wrong');
+        if (18 !== count($sharedCatalogs)) {
+            throw new \AssertionError('Shared catalogs amount is wrong');
         }
 
         return true;

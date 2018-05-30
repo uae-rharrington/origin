@@ -12,6 +12,7 @@ use Magento\Indexer\Model\Config;
 
 /**
  * Test b2b fixtures
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class B2BFixtureModelTest extends \Magento\TestFramework\Indexer\TestCase
 {
@@ -51,6 +52,7 @@ class B2BFixtureModelTest extends \Magento\TestFramework\Indexer\TestCase
         $this->indexerRegistry = $this->objectManager->get(IndexerRegistry::class);
 
         $this->entityAsserts[] = $this->objectManager->get(FixturesAsserts\NegotiableQuotesAssert::class);
+        $this->entityAsserts[] = $this->objectManager->get(FixturesAsserts\SharedCatalogAssert::class);
 
         foreach ($this->objectManager->get(Config::class)->getIndexers() as $indexerId) {
             $indexer = $this->indexerRegistry->get($indexerId['indexer_id']);
@@ -102,7 +104,7 @@ class B2BFixtureModelTest extends \Magento\TestFramework\Indexer\TestCase
 
         foreach ($this->entityAsserts as $entityAssert) {
             try {
-                $entityAssert->assert();
+                $this->assertTrue($entityAssert->assert());
             } catch (\AssertionError $assertionError) {
                 $this->assertTrue(false, $assertionError->getMessage());
             }
