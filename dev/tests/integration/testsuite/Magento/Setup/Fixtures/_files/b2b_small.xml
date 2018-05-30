@@ -20,5 +20,6 @@
         <teams_per_company>3</teams_per_company>
         <orders>25</orders> <!-- Orders count -->
         <negotiable_quotes>20</negotiable_quotes>
+        <shared_catalogs>17</shared_catalogs> <!-- Number of shared catalogs to generate -->
     </profile>
 </config>

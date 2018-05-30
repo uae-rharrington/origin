@@ -280,7 +280,7 @@ class AssertQuoteCorrectInAdmin extends AbstractConstraint
     protected function checkExpirationDate(\DateTime $expirationDate, NegotiableQuoteEdit $negotiableQuoteEdit)
     {
         \PHPUnit_Framework_Assert::assertEquals(
-            $expirationDate->format('m/j/y'),
+            $expirationDate->format('n/j/y'),
             $negotiableQuoteEdit->getQuoteDetails()->getExpirationDate(),
             'Quote expiration date is not correct.'
         );

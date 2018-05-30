@@ -37,7 +37,7 @@ class NegotiableQuotesAssert
      * Asserts that generated negotiable quotes are valid
      * Checks only for quotes count for now
      *
-     * @return void
+     * @return bool
      * @throws \AssertionError
      */
     public function assert()
@@ -48,5 +48,7 @@ class NegotiableQuotesAssert
         if (20 !== count($negotiableQuotes)) {
             throw new \AssertionError('Negotiable quotes amount is wrong');
         }
+
+        return true;
     }
 }

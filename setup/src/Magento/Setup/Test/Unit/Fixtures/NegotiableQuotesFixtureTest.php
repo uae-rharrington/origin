@@ -107,7 +107,8 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->setMethods(['create'])
             ->getMock();
-        $this->companyManagement = $this->getMockBuilder(\Magento\Company\Api\CompanyManagementInterface::class)
+        $this->companyManagement = $this
+            ->getMockBuilder(\Magento\Company\Api\CompanyManagementInterface::class)
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
         $this->quoteConfigFactory = $this->getMockBuilder(
@@ -162,6 +163,7 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
      * Test execute method.
      *
      * @return void
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public function testExecute()
     {
@@ -170,16 +172,35 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->setMethods(['from', 'where', 'columns', 'insertFromSelect'])
             ->getMock();
+
         $this->resources->expects($this->atLeastOnce())
             ->method('getConnection')
-            ->with('checkout')
             ->willReturn($connection);
-        $this->fixtureModel->expects($this->at(0))->method('getValue')->with('negotiable_quotes', 0)->willReturn(100);
-        $this->fixtureModel->expects($this->at(1))->method('getValue')->with('customers', 0)->willReturn(42);
+
+        $statement = $this->getMockBuilder(\Magento\Framework\DB\Statement\Pdo\Mysql::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $connection->expects($this->atLeastOnce())
+            ->method('query')
+            ->willReturn($statement);
+
+        $statement->expects($this->atLeastOnce())->method('fetchColumn')->willReturn(1);
+
+        $this->fixtureModel->expects($this->at(0))
+            ->method('getValue')
+            ->with('negotiable_quotes', 0)
+            ->willReturn(100);
+
+        $this->fixtureModel->expects($this->at(1))
+            ->method('getValue')
+            ->with('customers', 0)
+            ->willReturn(42);
+
         $connection->expects($this->atLeastOnce())->method('select')->willReturn($select);
         $select->expects($this->atLeastOnce())->method('from')
             ->withConsecutive(
-                ['negotiable_quote',  'COUNT(*)'],
+                ['negotiable_quote', 'COUNT(*)'],
                 [['qa' => 'quote_address']],
                 ['quote_item'],
                 ['quote_item'],
@@ -194,7 +215,7 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
         $this->prepareQuoteConfiguration();
         $negotiableQuote = $this->prepareNegotiableQuoteMockCommonData();
         $quoteCollection = $this->prepareQuoteCollection(100);
-        $quoteCollection->expects($this->once())->method('getConnection')->willReturn($connection);
+        $quoteCollection->expects($this->atLeastOnce())->method('getConnection')->willReturn($connection);
         $quoteCollection->expects($this->once())->method('getAllIds')->willReturn([self::QUOTE_ID]);
         $select->expects($this->atLeastOnce())
             ->method('where')
@@ -227,12 +248,28 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
         $this->serializer->expects($this->atLeastOnce())
             ->method('serialize')
             ->willReturnOnConsecutiveCalls('{Serialized Data 1}', '{Serialized Data 2}', '{Serialized Data 3}');
-        $negotiableQuote->expects($this->once())->method('setQuoteId')->with(self::QUOTE_ID)->willReturnSelf();
-        $negotiableQuote->expects($this->once())->method('setQuoteName')->with('Quote2')->willReturnSelf();
-        $negotiableQuote->expects($this->once())->method('setCreatorId')->with(self::CUSTOMER_ID)->willReturnSelf();
-        $negotiableQuote->expects($this->atLeastOnce())->method('getQuoteId')->willReturn(self::QUOTE_ID);
-        $negotiableQuote->expects($this->atLeastOnce())->method('getStatus')->willReturn('submitted_by_customer');
-        $negotiableQuote->expects($this->atLeastOnce())->method('getCreatorId')->willReturn(self::CUSTOMER_ID);
+        $negotiableQuote->expects($this->once())
+            ->method('setQuoteId')
+            ->with(self::QUOTE_ID)
+            ->willReturnSelf();
+
+        $negotiableQuote->expects($this->once())
+            ->method('setQuoteName')
+            ->with('Quote2')
+            ->willReturnSelf();
+        $negotiableQuote->expects($this->once())
+            ->method('setCreatorId')
+            ->with(self::CUSTOMER_ID)
+            ->willReturnSelf();
+        $negotiableQuote->expects($this->atLeastOnce())
+            ->method('getQuoteId')
+            ->willReturn(self::QUOTE_ID);
+        $negotiableQuote->expects($this->atLeastOnce())
+            ->method('getStatus')
+            ->willReturn('submitted_by_customer');
+        $negotiableQuote->expects($this->atLeastOnce())
+            ->method('getCreatorId')
+            ->willReturn(self::CUSTOMER_ID);
         $this->negotiableQuoteResource->expects($this->once())
             ->method('saveNegotiatedQuoteData')
             ->with($negotiableQuote)
@@ -320,7 +357,9 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
                 ]
             )
             ->willReturn(1);
-        $connection->expects($this->atLeastOnce())->method('getTransactionLevel')->willReturnOnConsecutiveCalls(1, 0);
+        $connection->expects($this->atLeastOnce())
+            ->method('getTransactionLevel')
+            ->willReturnOnConsecutiveCalls(1, 0);
         $connection->expects($this->once())->method('commit')->willReturnSelf();
         $connection->expects($this->once())->method('beginTransaction')->willReturnSelf();
 
@@ -388,7 +427,8 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
      */
     private function initCompanyCollection($count, $companyId)
     {
-        $companyCollection = $this->getMockBuilder(\Magento\Company\Model\ResourceModel\Company\Collection::class)
+        $companyCollection = $this
+            ->getMockBuilder(\Magento\Company\Model\ResourceModel\Company\Collection::class)
             ->disableOriginalConstructor()
             ->getMock();
         $companyCollection->expects($this->once())->method('getSize')->willReturn($count);
@@ -401,7 +441,9 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
                 ->method('getIterator')
                 ->willReturn(new \ArrayIterator([$company]));
         }
-        $this->companyCollectionFactory->expects($this->once())->method('create')->willReturn($companyCollection);
+        $this->companyCollectionFactory->expects($this->once())
+            ->method('create')
+            ->willReturn($companyCollection);
     }
 
     /**
@@ -461,7 +503,8 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
      */
     private function prepareQuoteConfiguration()
     {
-        $quoteConfig = $this->getMockBuilder(\Magento\Setup\Fixtures\Quote\NegotiableQuoteConfiguration::class)
+        $quoteConfig = $this
+            ->getMockBuilder(\Magento\Setup\Fixtures\Quote\NegotiableQuoteConfiguration::class)
             ->disableOriginalConstructor()
             ->setMethods(['load', 'setExistsQuoteQuantity', 'setRequiredQuoteQuantity'])
             ->getMock();
@@ -507,7 +550,8 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
             ->with('checkout')
             ->willReturn($connection);
         $connection->expects($this->atLeastOnce())->method('select')->willReturn($select);
-        $this->fixtureModel->expects($this->once())->method('getValue')->with('negotiable_quotes', 0)->willReturn(100);
+        $this->fixtureModel->expects($this->once())
+            ->method('getValue')->with('negotiable_quotes', 0)->willReturn(100);
         $this->initCompanyCollection(0, 0);
 
         $this->fixture->execute();
@@ -533,17 +577,26 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
             ->method('getConnection')
             ->with('checkout')
             ->willReturn($connection);
-        $this->fixtureModel->expects($this->once())->method('getValue')->with('negotiable_quotes', 0)->willReturn(100);
+        $this->fixtureModel->expects($this->once())
+            ->method('getValue')->with('negotiable_quotes', 0)->willReturn(100);
         $connection->expects($this->atLeastOnce())->method('select')->willReturn($select);
         $this->resources->expects($this->atLeastOnce())->method('getTableName')
             ->with('negotiable_quote')->willReturn('negotiable_quote');
-        $select->expects($this->once())->method('from')->with('negotiable_quote', 'COUNT(*)')->willReturnSelf();
+        $select->expects($this->once())
+            ->method('from')
+            ->with('negotiable_quote', 'COUNT(*)')
+            ->willReturnSelf();
+
         $connection->expects($this->atLeastOnce())->method('fetchOne')->with($select)->willReturn(99);
-        $companyCollection = $this->getMockBuilder(\Magento\Company\Model\ResourceModel\Company\Collection::class)
+        $companyCollection = $this
+            ->getMockBuilder(\Magento\Company\Model\ResourceModel\Company\Collection::class)
             ->disableOriginalConstructor()
             ->getMock();
         $companyCollection->expects($this->once())->method('getSize')->willReturn(1);
-        $this->companyCollectionFactory->expects($this->once())->method('create')->willReturn($companyCollection);
+
+        $this->companyCollectionFactory->expects($this->once())
+            ->method('create')
+            ->willReturn($companyCollection);
 
         $this->prepareNegotiableQuoteMockCommonData();
         $this->prepareQuoteConfiguration();
@@ -562,17 +615,44 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
         $this->negotiableQuoteFactory->expects($this->once())->method('create')->willReturn($negotiableQuote);
-        $negotiableQuote->expects($this->once())->method('setIsRegularQuote')->with(1)->willReturnSelf();
+
+        $negotiableQuote->expects($this->once())
+            ->method('setIsRegularQuote')
+            ->with(1)
+            ->willReturnSelf();
+
         $negotiableQuote->expects($this->atLeastOnce())->method('setStatus')->willReturnSelf();
-        $negotiableQuote->expects($this->once())->method('setHasUnconfirmedChanges')->with(0)->willReturnSelf();
-        $negotiableQuote->expects($this->once())->method('setIsCustomerPriceChanged')->with(0)->willReturnSelf();
-        $negotiableQuote->expects($this->once())->method('setIsShippingTaxChanged')->with(0)->willReturnSelf();
-        $negotiableQuote->expects($this->once())->method('setEmailNotificationStatus')->with(0)->willReturnSelf();
+
+        $negotiableQuote->expects($this->once())
+            ->method('setHasUnconfirmedChanges')
+            ->with(0)
+            ->willReturnSelf();
+
+        $negotiableQuote->expects($this->once())
+            ->method('setIsCustomerPriceChanged')
+            ->with(0)
+            ->willReturnSelf();
+
+        $negotiableQuote->expects($this->once())
+            ->method('setIsShippingTaxChanged')
+            ->with(0)
+            ->willReturnSelf();
+
+        $negotiableQuote->expects($this->once())
+            ->method('setEmailNotificationStatus')
+            ->with(0)
+            ->willReturnSelf();
+
         $negotiableQuote->expects($this->once())
             ->method('setCreatorType')
             ->with(\Magento\Authorization\Model\UserContextInterface::USER_TYPE_CUSTOMER)
             ->willReturnSelf();
-        $negotiableQuote->expects($this->once())->method('setIsAddressDraft')->with(0)->willReturnSelf();
+
+        $negotiableQuote->expects($this->once())
+            ->method('setIsAddressDraft')
+            ->with(0)
+            ->willReturnSelf();
+
         return $negotiableQuote;
     }
 
