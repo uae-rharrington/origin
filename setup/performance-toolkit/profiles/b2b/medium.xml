@@ -7,7 +7,7 @@
 -->
 <config xmlns:xi="http://www.w3.org/2001/XInclude">
     <profile>
-        <admin_users>32</admin_users><!-- Number of admin users to generate -->
+        <admin_users>50</admin_users><!-- Number of admin users to generate -->
         <websites>3</websites> <!-- Number of websites to generate -->
         <store_groups>3</store_groups> <!--Number of stores-->
         <store_views>3</store_views> <!-- Number of store views -->
@@ -95,7 +95,92 @@
                 <scopeId>0</scopeId>
                 <value>1</value>
             </config>
+            <config>
+                <path>btob/website_configuration/company_active</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value>1</value>
+            </config>
+            <config>
+                <path>btob/website_configuration/sharedcatalog_active</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value>1</value>
+            </config>
+            <config>
+                <path>btob/website_configuration/negotiablequote_active</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value>1</value>
+            </config>
+            <config>
+                <path>btob/website_configuration/quickorder_active</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value>1</value>
+            </config>
+            <config>
+                <path>btob/website_configuration/requisition_list_active</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value>1</value>
+            </config>
+            <config>
+                <path>catalog/magento_catalogpermissions/enabled</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value>1</value>
+            </config>
+            <config>
+                <path>catalog/magento_catalogpermissions/grant_catalog_category_view</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value>1</value>
+            </config>
+            <config>
+                <path>catalog/magento_catalogpermissions/grant_catalog_product_price</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value>1</value>
+            </config>
+            <config>
+                <path>catalog/magento_catalogpermissions/grant_checkout_items</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value>1</value>
+            </config>
+            <config>
+                <path>catalog/magento_catalogpermissions/restricted_landing_page</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value>no-route</value>
+            </config>
+            <config>
+                <path>catalog/magento_catalogpermissions/grant_catalog_category_view_groups</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value></value>
+            </config>
+            <config>
+                <path>catalog/magento_catalogpermissions/grant_catalog_product_price_groups</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value></value>
+            </config>
+            <config>
+                <path>catalog/magento_catalogpermissions/grant_checkout_items_groups</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value></value>
+            </config>
+            <config>
+                <path>catalog/magento_catalogpermissions/deny_catalog_search</path>
+                <scope>default</scope>
+                <scopeId>0</scopeId>
+                <value></value>
+            </config>
         </configs>
+
         <indexers> <!-- Indexer mode value (true - Update by Schedule, false - Update on Save) -->
             <indexer>
                 <id>catalog_category_product</id>
@@ -135,6 +220,18 @@
             </indexer>
             <indexer>
                 <id>targetrule_rule_product</id>
+                <set_scheduled>true</set_scheduled>
+            </indexer>
+            <indexer>
+                <id>catalogpermissions_category</id>
+                <set_scheduled>true</set_scheduled>
+            </indexer>
+            <indexer>
+                <id>catalogpermissions_product</id>
+                <set_scheduled>true</set_scheduled>
+            </indexer>
+            <indexer>
+                <id>salesrule_rule</id>
                 <set_scheduled>true</set_scheduled>
             </indexer>
         </indexers>

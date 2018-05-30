@@ -22,11 +22,12 @@
         }
     },
     "require": {
-        "magento/magento-cloud-metapackage": ">=2.2.2 <2.2.3",
+        "magento/magento-cloud-metapackage": ">=2.2.3 <2.2.4",
         "fastly/magento2": "^1.2",
         "magento/extension-b2b": "^1.0",
         "xtento/orderexport": "^2.5",
-        "xtento/trackingimport": "^2.4"
+        "xtento/trackingimport": "^2.4",
+        "magento/product-enterprise-edition": "2.2.3"
     },
     "config": {
         "use-include-path": true
