@@ -596,11 +596,21 @@ class NegotiableQuotesFixture extends Fixture
             return;
         }
 
+        $minCustomerId = (int)$this->resources->getConnection()
+            ->query("SELECT MIN(`entity_id`) FROM `".
+                $this->resources->getTableName('customer_entity') . "`;")
+            ->fetchColumn(0);
+
+        $customerIncrement = $minCustomerId > 1 ? --$minCustomerId : 0;
+
         $query1 = 'UPDATE `%s` o, `%s` q, `%s` qa SET o.customer_id = IF(o.entity_id %% :customers_count = 0, ' .
-            ':customers_count, o.entity_id %% :customers_count), o.customer_is_guest = 0, ' .
-            'q.customer_id = IF(o.entity_id %% :customers_count = 0, :customers_count, ' .
-            'o.entity_id %% :customers_count), qa.customer_id = IF(o.entity_id %% :customers_count = 0, ' .
-            ':customers_count, o.entity_id %% :customers_count), qa.save_in_address_book = 0 WHERE ' .
+            ':customers_count_with_increment, o.entity_id %% :customers_count + ' . $customerIncrement . '), ' .
+            'o.customer_is_guest = 0, ' .
+            'q.customer_id = IF(o.entity_id %% :customers_count = 0, :customers_count_with_increment, ' .
+            'o.entity_id %% :customers_count + ' . $customerIncrement . '),' .
+            'qa.customer_id = IF(o.entity_id %% :customers_count = 0, ' .
+            ':customers_count_with_increment, o.entity_id %% :customers_count + ' . $customerIncrement . '), ' .
+            'qa.save_in_address_book = 0 WHERE ' .
             'o.quote_id = q.entity_id AND q.entity_id = qa.quote_id;';
         $query1 = sprintf(
             $query1,
@@ -610,8 +620,10 @@ class NegotiableQuotesFixture extends Fixture
         );
 
         $query2 = 'UPDATE `%s` q, `%s` qa SET q.customer_id = IF(q.entity_id %% :customers_count = 0, ' .
-            ':customers_count, q.entity_id %% :customers_count), qa.customer_id = IF(q.entity_id %%' .
-            ':customers_count = 0, :customers_count, q.entity_id %% :customers_count), qa.save_in_address_book = 0 ' .
+            ':customers_count_with_increment, q.entity_id %% :customers_count + ' . $customerIncrement . ')' .
+            ', qa.customer_id = IF(q.entity_id %% :customers_count = 0, :customers_count_with_increment, ' .
+            'q.entity_id %% :customers_count + ' . $customerIncrement . '), '.
+            'qa.save_in_address_book = 0 ' .
             'WHERE q.entity_id = qa.quote_id;';
         $query2 = sprintf(
             $query2,
@@ -619,7 +631,20 @@ class NegotiableQuotesFixture extends Fixture
             $this->resources->getTableName('quote_address')
         );
 
-        $this->connectionInstance->query($query1, ['customers_count' => $requiredCustomers]);
-        $this->connectionInstance->query($query2, ['customers_count' => $requiredCustomers]);
+        $this->connectionInstance->query(
+            $query1,
+            [
+                'customers_count' => $requiredCustomers,
+                'customers_count_with_increment' => $requiredCustomers + $customerIncrement
+            ]
+        );
+
+        $this->connectionInstance->query(
+            $query2,
+            [
+                'customers_count' => $requiredCustomers,
+                'customers_count_with_increment' => $requiredCustomers + $customerIncrement
+            ]
+        );
     }
 }
