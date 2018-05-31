@@ -28,7 +28,8 @@
         "xtento/orderexport": "^2.5",
         "xtento/trackingimport": "^2.4",
         "magento/product-enterprise-edition": "2.2.3",
-        "shipperhq/module-shipper": "20.18.10"
+        "shipperhq/module-shipper": "20.18.10",
+        "xtento/module-stockimport": "^2.3"
     },
     "config": {
         "use-include-path": true
