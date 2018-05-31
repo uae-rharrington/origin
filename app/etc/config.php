@@ -224,6 +224,7 @@ return array (
     'Shopial_Facebook' => 1,
     'Temando_Shipping' => 1,
     'Xtento_XtCore' => 1,
+    'Xtento_StockImport' => 1,
     'Xtento_TrackingImport' => 1,
     'Xtento_OrderExport' => 1,
   ),
