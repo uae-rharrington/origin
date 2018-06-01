@@ -1,0 +1,15 @@
+/**
+ * @category    ClassyLlama
+ * @copyright   Copyright (c) 2017 Classy Llama
+ */
+
+& when (@media-common = true) {
+    // Use default button styles for custom gift-options button; reduce icon whitespace
+    .gift-item-block .title {
+        border-radius: @button__border-radius;
+        padding: @button__padding;
+        &:after {
+            margin-right: -11px;
+        }
+    }
+}
