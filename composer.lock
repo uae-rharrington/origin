@@ -685,11 +685,12 @@
         },
         {
             "name": "fastly/magento2",
-            "version": "1.2.55",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fastly/fastly-magento2.git",
-                "reference": "d1de441a6ce6514e82e1b726adcd697489772e8b"
+            "version": "1.2.51",
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.magento.com/archives/fastly/magento2/fastly-magento2-1.2.51.0.zip",
+                "reference": null,
+                "shasum": "b99b4aa908c07676b999388fee296c17bb9db2de"
             },
             "require": {
                 "magento/framework": ">=100.0.0",
@@ -711,8 +712,7 @@
             "license": [
                 "BSD-3-Clause"
             ],
-            "description": "Fastly CDN Module for Magento 2.x",
-            "time": "2018-05-31T02:30:19+00:00"
+            "description": "Fastly CDN Module for Magento 2.x"
         },
         {
             "name": "graylog2/gelf-php",
@@ -12863,11 +12863,11 @@
         },
         {
             "name": "xtento/module-stockimport",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/b7c4a51e67a20eb956197b1b8043dd4d/v/2.3.1",
-                "reference": "d7815a2bae24f88668e0375688a37cf8eb79f89a",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/d33753c8a24dc30a273eaf5bbb71f4fb/v/2.3.2",
+                "reference": "006fec390b2694a864682385caf8e52d77c3bfdb",
                 "shasum": null
             },
             "require": {
@@ -12899,7 +12899,7 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-04-03T12:17:00+00:00"
+            "time": "2018-06-01T09:59:16+00:00"
         },
         {
             "name": "xtento/orderexport",
