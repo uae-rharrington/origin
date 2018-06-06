@@ -221,6 +221,7 @@ return array (
     'ShipperHQ_Common' => 1,
     'ShipperHQ_Logger' => 1,
     'ShipperHQ_Shipper' => 1,
+    'ShipperHQ_Option' => 1,
     'Shopial_Facebook' => 1,
     'Temando_Shipping' => 1,
     'Xtento_XtCore' => 1,
