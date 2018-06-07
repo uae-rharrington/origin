@@ -1,0 +1,25 @@
+diff --git a/vendor/magento/module-elasticsearch/SearchAdapter/Query/Builder/Aggregation.php b/vendor/magento/module-elasticsearch/SearchAdapter/Query/Builder/Aggregation.php
+index cad32eb727..e91730413e 100644
+--- a/vendor/magento/module-elasticsearch/SearchAdapter/Query/Builder/Aggregation.php
++++ b/vendor/magento/module-elasticsearch/SearchAdapter/Query/Builder/Aggregation.php
+@@ -15,6 +15,12 @@ use Magento\Elasticsearch\Model\Adapter\FieldMapperInterface;
+  */
+ class Aggregation
+ {
++    /**
++     * Max number of results returned per single term bucket, i.e. limit of options for layered navigation filter.
++     * Default Elasticsearch limit is 10
++     */
++    const DEFAULT_TERM_BUCKET_SIZE = 300;
++
+     /**
+      * @var FieldMapperInterface
+      * @since 100.1.0
+@@ -67,6 +73,7 @@ class Aggregation
+                 $searchQuery['body']['aggregations'][$bucket->getName()]= [
+                     'terms' => [
+                         'field' => $field,
++                        'size'  => self::DEFAULT_TERM_BUCKET_SIZE
+                     ],
+                 ];
+                 break;
