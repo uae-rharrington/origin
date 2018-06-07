@@ -53,4 +53,5 @@ atlassian*
 !/var/.htaccess
 /vendor
 !/vendor/.htaccess
+!/vendor/xtento/orderexport/Model/Export/Data/Order
 
