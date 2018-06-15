@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceBlock name="items">
+        <action method="setOverriddenTemplates">
+            <argument name="templates" xsi:type="array">
+                <item name="default" xsi:type="string">UAE_AdvancedCheckout::email/items/order/default.phtml</item>
+                <item name="simple" xsi:type="string">UAE_AdvancedCheckout::email/items/order/default.phtml</item>
+                <item name="grouped" xsi:type="string">UAE_AdvancedCheckout::email/items/order/default.phtml</item>
+            </argument>
+        </action>
+    </referenceBlock>
+</page>

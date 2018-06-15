@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <uae_checkout>
+            <product_messages>
+                <free_shipping>Does not qualify for free shipping.</free_shipping>
+                <ships_from_manufacturer>This product ships directly from the manufacturer.</ships_from_manufacturer>
+                <delivery_time>Please allow %s for delivery.</delivery_time>
+                <qualifying_items><![CDATA[Spend <strong>%s</strong> more on regularly-priced items and save <strong>%s</strong> on all qualifying items!]]></qualifying_items>
+            </product_messages>
+        </uae_checkout>
+        <sales>
+            <totals_sort>
+                <qualifying_items_message>15</qualifying_items_message>
+            </totals_sort>
+        </sales>
+    </default>
+</config>
