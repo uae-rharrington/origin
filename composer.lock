@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e48263fa2818d3d8ad4bf4f00ab5b58a",
+    "content-hash": "ab9e4de8e561f0aa636b56a9dd1c749d",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1054,7 +1054,7 @@
         },
         {
             "name": "illuminate/config",
-            "version": "v5.6.23",
+            "version": "v5.6.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/config.git",
@@ -1098,16 +1098,16 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.6.23",
+            "version": "v5.6.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "1a29b314dd5c7a5a5bce3dd7b9da924cc1ec22ec"
+                "reference": "1f0757cae8749400aeda730f6438a081fc3c082d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/1a29b314dd5c7a5a5bce3dd7b9da924cc1ec22ec",
-                "reference": "1a29b314dd5c7a5a5bce3dd7b9da924cc1ec22ec",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/1f0757cae8749400aeda730f6438a081fc3c082d",
+                "reference": "1f0757cae8749400aeda730f6438a081fc3c082d",
                 "shasum": ""
             },
             "require": {
@@ -1138,11 +1138,11 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "https://laravel.com",
-            "time": "2018-05-14T12:49:42+00:00"
+            "time": "2018-05-24T13:16:56+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.6.23",
+            "version": "v5.6.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1186,16 +1186,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.6.23",
+            "version": "v5.6.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "7ba15bb00ac57c621e8291ce737ae7ea497ba02b"
+                "reference": "b13296a75443797d6a71d0ccd437ca801b12d300"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/7ba15bb00ac57c621e8291ce737ae7ea497ba02b",
-                "reference": "7ba15bb00ac57c621e8291ce737ae7ea497ba02b",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/b13296a75443797d6a71d0ccd437ca801b12d300",
+                "reference": "b13296a75443797d6a71d0ccd437ca801b12d300",
                 "shasum": ""
             },
             "require": {
@@ -1210,6 +1210,7 @@
             },
             "suggest": {
                 "illuminate/filesystem": "Required to use the composer class (5.6.*).",
+                "ramsey/uuid": "Required to use Str::uuid() (^3.7).",
                 "symfony/process": "Required to use the composer class (~4.0).",
                 "symfony/var-dumper": "Required to use the dd function (~4.0)."
             },
@@ -1239,7 +1240,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2018-05-18T13:51:23+00:00"
+            "time": "2018-06-02T14:30:18+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -11046,23 +11047,24 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.12",
+            "version": "v2.99.99",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "258c89a6b97de7dfaf5b8c7607d0478e236b04fb"
+                "reference": "35469243ebbb9be5086cff57538cac6da2c36852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/258c89a6b97de7dfaf5b8c7607d0478e236b04fb",
-                "reference": "258c89a6b97de7dfaf5b8c7607d0478e236b04fb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/35469243ebbb9be5086cff57538cac6da2c36852",
+                "reference": "35469243ebbb9be5086cff57538cac6da2c36852",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.0"
+                "php": "^7"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
@@ -11087,10 +11089,11 @@
             "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
             "keywords": [
                 "csprng",
+                "polyfill",
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-04-04T21:24:14+00:00"
+            "time": "2018-06-06T05:12:00+00:00"
         },
         {
             "name": "pelago/emogrifier",
@@ -11947,6 +11950,69 @@
             ],
             "description": "ShipperHQ Logger",
             "time": "2018-04-13T08:55:39+00:00"
+        },
+        {
+            "name": "shipperhq/module-option",
+            "version": "20.2.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:webshopapps/module-option.git",
+                "reference": "f37cbd1d4f251587878efd2daf16932fde65e12b"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "https://packages.shipperhq.com/dist/shipperhq/module-option/shipperhq-module-option-f37cbd1d4f251587878efd2daf16932fde65e12b-zip-018273.tar",
+                "reference": "f37cbd1d4f251587878efd2daf16932fde65e12b",
+                "shasum": "2062e0dea30a9903723ab7b4178f96b743425884"
+            },
+            "require": {
+                "shipperhq/module-common": "*",
+                "shipperhq/module-shipper": "*"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.2",
+                "magento-ecg/coding-standard": "^2.0",
+                "pdepend/pdepend": "^2.2",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "^4.1",
+                "sebastian/phpcpd": "^2.0",
+                "squizlabs/php_codesniffer": "^1.5"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "src/registration.php"
+                ],
+                "psr-4": {
+                    "ShipperHQ\\Option\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "ShipperHQ\\Option\\Test\\": "tests/"
+                }
+            },
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "ShipperHQ",
+                    "email": "sales@shipperhq.com",
+                    "homepage": "http://www.Shipperhq.com"
+                },
+                {
+                    "name": "Zowta LLC"
+                }
+            ],
+            "description": "ShipperHQ Option functionality",
+            "support": {
+                "documentation": "http://docs.shipperhq.com",
+                "source": "https://github.com/webshopapps/module-option/tree/develop",
+                "issues": "https://github.com/webshopapps/module-option/issues"
+            },
+            "time": "2018-02-07T14:01:56+00:00"
         },
         {
             "name": "shipperhq/module-shipper",
@@ -12863,11 +12929,11 @@
         },
         {
             "name": "xtento/module-stockimport",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/b7c4a51e67a20eb956197b1b8043dd4d/v/2.3.1",
-                "reference": "d7815a2bae24f88668e0375688a37cf8eb79f89a",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/d33753c8a24dc30a273eaf5bbb71f4fb/v/2.3.2",
+                "reference": "006fec390b2694a864682385caf8e52d77c3bfdb",
                 "shasum": null
             },
             "require": {
@@ -12899,7 +12965,7 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-04-03T12:17:00+00:00"
+            "time": "2018-06-01T09:59:16+00:00"
         },
         {
             "name": "xtento/module-stockimport",
