@@ -1,0 +1,130 @@
+/**
+ * @category    ClassyLlama
+ * @copyright   Copyright (c) 2017 Classy Llama
+ */
+
+& when (@media-common = true) {
+    // Use flex-direction:row in IE 11, to prevent height from being inflated by original image height
+    .ie11 {
+        .column.main .products-grid .product-item-info {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .product-item-photo {
+            flex-basis: 100%;
+        }
+    }
+
+    .fotorama {
+        .fotorama__nav--dots {
+            .fotorama__nav__frame {
+                width: 20px;
+                cursor: pointer;
+            }
+        }
+        .fotorama__dot {
+            width: 8px;
+            height: 8px;
+            left: 5px;
+            top: 10px;
+        }
+
+        .fotorama__active {
+            .fotorama__dot {
+                border-color: @active__color;
+                background-color: @active__color;
+            }
+        }
+    }
+
+    .products-grid {
+        .product-item-name {
+            flex-grow: 1;
+        }
+
+        .product-item-inner {
+            .column.main & {
+                flex-grow: 0;
+            }
+        }
+    }
+
+    // Compare-products page
+    .table-comparison {
+        tr {
+            &:not(:first-child) {
+                border-top: @table__border-width @table__border-style @table__border-color;
+            }
+        }
+
+        .cell {
+            &.remove {
+                border-left: none !important; // Overrides other important flag
+                padding-top: 8px;
+                padding-bottom: 8px;
+                text-align: center;
+
+                .action.delete {
+                    width: 29px;
+                    border-radius: 50%;
+                    background: @button__background;
+
+                    &:hover {
+                        background: @button__hover__background;
+                    }
+
+                    &:active {
+                        background: @button__active__background;
+                    }
+
+                    &:before {
+                        margin-left: -4px;
+                        color: @button__color;
+                        font-size: 37px;
+                        line-height: 29px;
+                    }
+                }
+            }
+
+            &.label {
+                width: 85px;
+            }
+
+            &.product.info,
+            &.product.attribute {
+                border-left: @table__border-width @table__border-style @table__border-color;
+            }
+        }
+
+        .product-item-photo {
+            margin-bottom: 0;
+        }
+
+        .product-item-name {
+            margin: 10px 0 7px;
+        }
+
+        .price-box {
+            margin: 0;
+        }
+
+        .product-item-actions {
+            margin: 10px 0 2px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .product-item-actions {
+        // Set display:block for primary & secondary actions (instead of table-cell) to prevent horizontal overflow
+        .actions-primary {
+            display: block;
+
+            + .actions-secondary {
+                display: block;
+                width: auto;
+                padding: 3px 0 0;
+            }
+        }
+    }
+}

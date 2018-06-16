@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    ClassyLlama
+ * @copyright   Copyright (c) 2018 Classy Llama
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" src="images/favicons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" src="images/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" src="images/favicons/favicon-16x16.png" />
+        <link rel="manifest" src="images/favicons/site.webmanifest" />
+        <link rel="mask-icon" src="images/favicons/safari-pinned-tab.svg" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="msapplication-config" content="images/favicons/browserconfig.xml" />
+        <meta name="theme-color" content="#ffffff" />
+    </head>
+</page>
