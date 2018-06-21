@@ -8,5 +8,6 @@
     <body>
         <referenceContainer name="product.info.stock.sku" remove="true" />
         <referenceContainer name="product.info.details" remove="true" />
+        <move element="product.info" destination="content" before="product.info.details" />
     </body>
 </page>
