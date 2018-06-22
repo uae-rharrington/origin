@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.cart.form">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">UAE_AdvancedCheckout::cart/form.phtml</argument>
+            </action>
+            <action method="setOverriddenTemplates">
+                <argument name="templates" xsi:type="array">
+                    <item name="default" xsi:type="string">UAE_AdvancedCheckout::cart/item/default.phtml</item>
+                    <item name="simple" xsi:type="string">UAE_AdvancedCheckout::cart/item/default.phtml</item>
+                    <item name="grouped" xsi:type="string">UAE_AdvancedCheckout::cart/item/default.phtml</item>
+                </argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="checkout.cart.shipping">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">UAE_AdvancedCheckout::cart/shipping.phtml</argument>
+            </action>
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="block-summary" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="componentDisabled" xsi:type="boolean">true</item>
+                            </item>
+
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="checkout.cart.totals">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="block-totals" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="tax" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="componentDisabled" xsi:type="boolean">true</item>
+                                    </item>
+                                </item>
+                                <item name="subtotal" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="title" xsi:type="string" translate="true">Item Total</item>
+                                    </item>
+                                </item>
+                                <item name="qualifying-items-message" xsi:type="array">
+                                    <item name="component"  xsi:type="string">UAE_AdvancedCheckout/js/view/summary/qualifying-items</item>
+                                </item>
+                                <item name="grand-total" xsi:type="array">
+                                    <item name="config" xsi:type="array">
+                                        <item name="title" xsi:type="string" translate="true">Subtotal</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>
