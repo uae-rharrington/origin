@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Xtento_OrderExport:etc/xtento/orderexport_data.xsd">
+    <data>
+        <export id="shipper_hq" class="UAE\OrderExport\Model\Export\Data\Custom\Order\ShipperHq"/>
+    </data>
+</config>
