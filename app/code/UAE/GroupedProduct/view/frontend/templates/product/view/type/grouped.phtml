@@ -1,7 +1,6 @@
 <?php
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
  */
 
 // @codingStandardsIgnoreFile
@@ -25,17 +24,20 @@
         <tbody>
             <tr>
                 <td class="col image">
-                    <?php $productImage = $block->getImage($_item, 'cart_page_product_thumbnail'); ?>
-                    <?php if ($productImage): ?>
+                    <?php $color = explode('#', $_item->getResource()->getAttribute('color')->getFrontend()->getValue($_item)); ?>
+                    <?php if (isset($color[0]) && isset($color[1])): ?>
+                        <div class="swatch-color" title="<?php echo ($color[0] != '') ? $color[0] : '#' . $color[1]; ?>" style="background: <?php echo '#' . $color[1]; ?>;"></div>
+                    <?php elseif ($productImage = $block->getImage($_item, 'simple_product_image_on_grouped_pdp')): ?>
+                        <?php $productImage = $block->getImage($_item, 'simple_product_image_on_grouped_pdp'); ?>
                         <?= $productImage->toHtml(); ?>
                     <?php endif; ?>
                 </td>
                 <td class="col sku">
-                    <strong class="product-item-sku"><?= $block->escapeHtml($_product->getSku()) ?></strong>
+                    <strong class="product-item-sku"><?= $block->escapeHtml($_item->getSku()) ?></strong>
                 </td>
                 <td class="col name">
                     <strong class="product-item-name"><?= $block->escapeHtml($_item->getName()) ?></strong>
-                    <div><?= $block->escapeHtml($_product->getShortDescription()) ?></div>
+                    <div><?= $block->escapeHtml($_item->getShortDescription()) ?></div>
                 </td>
                 <td class="col details">
                     <a class="product-item-details" href="#"><?= $block->escapeHtml('details...') ?></a>
