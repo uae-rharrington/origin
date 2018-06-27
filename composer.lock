@@ -12968,6 +12968,46 @@
             "time": "2018-06-01T09:59:16+00:00"
         },
         {
+            "name": "xtento/module-stockimport",
+            "version": "2.3.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/b7c4a51e67a20eb956197b1b8043dd4d/v/2.3.1",
+                "reference": "d7815a2bae24f88668e0375688a37cf8eb79f89a",
+                "shasum": null
+            },
+            "require": {
+                "php": "~5.5.22|~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
+                "xtento/xtcore": "~2.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Xtento\\StockImport\\": ""
+                }
+            },
+            "notification-url": "https://repo.xtento.com/composer/download/notify",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "XTENTO GmbH & Co. KG",
+                    "email": "info@xtento.com",
+                    "homepage": "http://www.xtento.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "XTENTO Stock Import Module",
+            "support": {
+                "email": "info@xtento.com"
+            },
+            "time": "2018-04-03T12:17:00+00:00"
+        },
+        {
             "name": "xtento/orderexport",
             "version": "2.5.4",
             "dist": {
