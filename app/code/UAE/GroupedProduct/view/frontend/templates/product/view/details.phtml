@@ -1,0 +1,60 @@
+<?php
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php $associatedProducts = $block->getAssociatedProducts(); ?>
+<?php foreach ($associatedProducts as $product): ?>
+    <?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')):?>
+        <div class="product info detailed-<?= /* @escapeNotVerified */ $product->getId() ?>">
+            <?php $layout = $block->getLayout(); ?>
+            <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+                <?php foreach ($detailedInfoGroup as $name):?>
+                    <?php
+                    $childBlock = $layout->getBlock($name);
+                    $childBlock->setProduct($product);
+                    $html = $layout->renderElement($name, false);
+                    if (!trim($html)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                    ?>
+                    <div class="data item title"
+                         aria-labeledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                         data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias . '-'  . $product->getId() ?>">
+                        <a class="data switch"
+                           tabindex="-1"
+                           data-toggle="switch"
+                           href="#<?= /* @escapeNotVerified */ $alias . '-' . $product->getId() ?>"
+                           id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title-<?= /* @escapeNotVerified */ $product->getId() ?>">
+                            <?= /* @escapeNotVerified */ $label ?>
+                        </a>
+                    </div>
+                    <div class="data item content" id="<?= /* @escapeNotVerified */ $alias . '-' . $product->getId() ?>" data-role="content">
+                        <?= /* @escapeNotVerified */ $html ?>
+                    </div>
+                <?php endforeach;?>
+            </div>
+        </div>
+    <?php endif; ?>
+    <script>
+        require([
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ], function($, modal) {
+            'use strict';
+
+            var releaseNotes = $('.detailed-<?= /* @escapeNotVerified */ $product->getId() ?>').modal({
+                modalClass: 'simple-product-details'
+            });
+            $('.product-item-details-<?= /* @escapeNotVerified */ $product->getId() ?>').on('click', function() {
+                releaseNotes.modal('openModal');
+            });
+        });
+    </script>
+<?php endforeach; ?>
+

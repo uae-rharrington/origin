@@ -40,7 +40,7 @@
                     <div><?= $block->escapeHtml($_item->getShortDescription()) ?></div>
                 </td>
                 <td class="col details">
-                    <a class="product-item-details" href="#"><?= $block->escapeHtml('details...') ?></a>
+                    <a class="product-item-details-<?= $block->escapeHtml($_item->getId()) ?>" href="#"><?= $block->escapeHtml('details...') ?></a>
                 </td>
                 <td class="col price">
                     <?php if ($block->getCanShowProductPrice($_product)): ?>
@@ -97,4 +97,5 @@
         <?php endif; ?>
     </table>
 </div>
+<?= $block->getChildHtml('product.info.details.simple'); ?>
 <div id="validation-message-box"></div>
