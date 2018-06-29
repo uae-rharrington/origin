@@ -87,15 +87,26 @@ class UpgradeData implements UpgradeDataInterface
 </section>
 FOOTER_LINKS_CONTENT;
 
-            $blockData = [
+            $blocks = [
+                [
+                    'title' => 'Header Promo',
+                    'identifier' => 'header_promo',
+                    'content' => '<p>Free Shipping on orders over $99 <small>(some exclusions apply)</small></p>',
+                    'stores' => [0],
+                    'is_active' => 1
+                ],
+                [
                 'title' => 'Footer Links',
                 'identifier' => 'custom_footer_links',
                 'content' => $footerLinksContent,
                 'stores' => [0],
                 'is_active' => 1
+                ]
             ];
 
-            $this->blockFactory->create()->setData($blockData)->save();
+            foreach ($blocks as $data) {
+                $this->blockFactory->create()->setData($data)->save();
+            }
         }
 
         $setup->endSetup();

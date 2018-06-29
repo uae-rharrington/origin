@@ -15,6 +15,16 @@
             </arguments>
         </referenceBlock>
 
+        <referenceContainer name="page.wrapper">
+            <container name="header.promo.outer" htmlTag="div" htmlClass="header-promo" after="page.top">
+                <block class="Magento\Cms\Block\Block" name="header.promo">
+                    <action method="setBlockId">
+                        <argument name="block_id" xsi:type="string">header_promo</argument>
+                    </action>
+                </block>
+            </container>
+        </referenceContainer>
+
         <referenceBlock name="footer_links" remove="true" />
         <referenceContainer name="footer">
             <container name="footer.links.outer" htmlTag="div" htmlClass="footer links">

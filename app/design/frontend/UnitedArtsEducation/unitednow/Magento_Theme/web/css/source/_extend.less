@@ -14,4 +14,44 @@
             display: none;
         }
     }
+
+    //
+    // Header promo
+    //  _____________________________________________
+
+    .header-promo {
+        margin-bottom: 25px;
+        padding: 7px;
+        background: @header-panel__background-color;
+        color: @color-white;
+        font-size: 16px;
+        text-align: center;
+
+        p {
+            margin: 0;
+        }
+        small {
+            margin: 0 6px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    //
+    // Header promo
+    //  _____________________________________________
+
+    .header-promo {
+        display: none;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    //
+    // Navigation
+    //  _____________________________________________
+
+    .nav-sections {
+        margin-bottom: 0;
+    }
 }
