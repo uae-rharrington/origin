@@ -32,5 +32,8 @@
         <referenceContainer name="product.info.details" remove="true" />
         <referenceContainer name="product.info.review" remove="true" />
         <move element="product.info" destination="content" before="product.info.details" />
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="grouped.product.bottom.bar" template="UAE_GroupedProduct::product/bottom-add-to-cart.phtml" />
+        </referenceContainer>
     </body>
 </page>

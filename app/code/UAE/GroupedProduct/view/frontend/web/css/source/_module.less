@@ -18,6 +18,54 @@
       }
     }
   }
+
+  .bottom-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: gainsboro;
+    min-height: 50px;
+    z-index: 9999;
+
+    & > .back_to_top {
+      float: left;
+      padding: 30px 0 0 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      & > img {
+        width: 15px;
+        height: 15px;
+      }
+
+      & > span {
+        color: #1676C0;
+      }
+    }
+
+    & > .add-to-cart {
+      float: right;
+      padding: 20px 50px 20px 0;
+
+      & > button {
+        display: flex;
+        align-items: center;
+
+        &:before {
+          content: '\e900';
+          display: inline-block;
+          font-family: 'icons-uae-theme';
+          font-size: 20px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  #product-addtocart-button {
+    display: none;
+  }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {

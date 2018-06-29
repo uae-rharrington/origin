@@ -1,0 +1,41 @@
+<?php
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+
+/** @var \Magento\Framework\View\Element\Template $block  */
+?>
+
+<div class="bottom-bar">
+    <div class="back_to_top">
+        <img
+                class="arrow-top"
+                src="<?php /* @escapeNotVerified */ echo $block
+                    ->getViewFileUrl('UAE_GroupedProduct::images/arrow.svg');
+                ?>"
+                alt="To Top"/>
+        <span><?= $block->escapeHtml(__('Scroll to top')) ?></span>
+        <img
+                class="arrow-top"
+                src="<?php /* @escapeNotVerified */ echo $block
+                    ->getViewFileUrl('UAE_GroupedProduct::images/arrow.svg');
+                ?>"
+                alt="To Top"/>
+    </div>
+    <div class="add-to-cart">
+        <button type="submit"
+                title="<?= $block->escapeHtml(__('Add to Cart')) ?>"
+                class="action primary tocart"
+                id="product-addtocart-button-bottom">
+            <span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+        </button>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "UAE_GroupedProduct/js/bottom-bar": {}
+        }
+    }
+</script>
+
