@@ -10,7 +10,6 @@ use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Store\Model\Store;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 
 /**
  * Class InstallData
@@ -71,10 +70,8 @@ class InstallData implements InstallDataInterface
          */
         foreach ($themes as $theme) {
             if ($theme->getCode() == self::THEME_NAME) {
-                $this->config->assignToStore(
-                    $theme,
-                    [Store::DEFAULT_STORE_ID],
-                    ScopeConfigInterface::SCOPE_TYPE_DEFAULT
+                $this->config->assignToStore($theme,
+                    [Store::DISTRO_STORE_ID]
                 );
             }
         }

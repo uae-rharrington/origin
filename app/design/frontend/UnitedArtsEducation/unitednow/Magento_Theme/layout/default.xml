@@ -14,5 +14,16 @@
                 <argument name="logo_img_height" xsi:type="number">43</argument>
             </arguments>
         </referenceBlock>
+
+        <referenceBlock name="footer_links" remove="true" />
+        <referenceContainer name="footer">
+            <container name="footer.links.outer" htmlTag="div" htmlClass="footer links">
+                <block class="Magento\Cms\Block\Block" name="footer.links">
+                    <action method="setBlockId">
+                        <argument name="block_id" xsi:type="string">custom_footer_links</argument>
+                    </action>
+                </block>
+            </container>
+        </referenceContainer>
     </body>
 </page>
