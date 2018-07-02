@@ -83,3 +83,14 @@
         }
     }
 }
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .authentication-wrapper {
+        position: fixed;
+        top: 0;
+        right: @layout-indent__width;
+        margin-top: (@header-desktop__height - 22px) / 2 - 1px;
+        line-height: 22px;
+        z-index: 11;
+    }
+}

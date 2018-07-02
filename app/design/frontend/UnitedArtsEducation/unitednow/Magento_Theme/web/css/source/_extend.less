@@ -14,6 +14,7 @@
             display: none;
         }
     }
+
     //
     // Navigation
     //  _____________________________________________
@@ -83,11 +84,25 @@
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     //
-    // Header promo
+    // Header
     //  _____________________________________________
 
-    .header-promo {
-        display: none;
+    .nav-toggle {
+        top: 9px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        width: 300px;
+        max-width: 53%;
+        height: 37px;
+        margin: 1px 0 10px 41px;
+    }
+
+    .minicart-wrapper,
+    .block-search {
+        margin-top: 4px;
     }
 
     //
@@ -144,6 +159,14 @@
     }
 
     //
+    // Header promo
+    //  _____________________________________________
+
+    .header-promo {
+        display: none;
+    }
+
+    //
     // Footer
     //  _____________________________________________
 
@@ -151,11 +174,15 @@
         padding: 10px 2px;
     }
 }
-.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    //
+    // Footer
+    //  _____________________________________________
+
     .footer.content {
         .links {
             section {
-                //
+                max-width: 33.33%;
             }
         }
     }
@@ -163,11 +190,49 @@
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     //
+    // Header
+    //  _____________________________________________
+
+    .page-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: @color-white;
+        z-index: 10;
+
+        .checkout-index-index & {
+            border-bottom: 1px solid @border-color__base;
+
+            + * {
+                margin-top: @header-desktop__height + 26px;
+            }
+        }
+    }
+    .logo {
+        height: 43px;
+        margin: -6px 0 12px;
+    }
+
+    .header.content {
+        padding: ((@header-desktop__height - @input-text__height) / 2) @layout-indent__width 0;
+    }
+
+    //
     // Navigation
     //  _____________________________________________
 
     .nav-sections {
+        position: fixed;
+        top: @header-desktop__height;
+        left: 0;
+        right: 0;
         margin-bottom: 0;
+        z-index: 10;
+
+        + * {
+            margin-top: @header-desktop__height + @main-nav__height;
+        }
 
         .customer-welcome {
             float: right;
@@ -231,6 +296,16 @@
         }
         ul {
             padding: 0;
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .navigation {
+        > ul {
+            padding: 0 20px;
+        }
+        .level0 {
+            margin-right: 20px;
         }
     }
 }
