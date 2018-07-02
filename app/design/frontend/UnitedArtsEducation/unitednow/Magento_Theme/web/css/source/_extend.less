@@ -14,6 +14,17 @@
             display: none;
         }
     }
+    //
+    // Navigation
+    //  _____________________________________________
+
+    .nav-sections {
+        .customer-welcome {
+            .header.links {
+                display: block !important; // Overrides inline style from main nav
+            }
+        }
+    }
 
     //
     // Header promo
@@ -80,6 +91,59 @@
     }
 
     //
+    // Navigation
+    //  _____________________________________________
+
+    .nav-sections {
+        .quick-order-link {
+            border-bottom: @navigation-level0-item__border;
+
+            + li {
+                margin-top: 25px;
+            }
+        }
+
+        .authorization-link {
+            > .level-top {
+                text-transform: none;
+            }
+        }
+        .customer-welcome {
+            border-top: none;
+
+            .authorization-link {
+                border-top: none;
+            }
+        }
+
+        .header.links {
+            border-bottom: none;
+
+            a {
+                &,
+                &:hover {
+                    padding: @navigation-level0-item__padding;
+                }
+            }
+        }
+    }
+    .nav-sections-item-title {
+        &:first-child {
+            &:nth-last-child(2) {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    .nav-sections-item-content {
+        &:last-child {
+            &:nth-child(2) {
+                margin-top: 44px;
+            }
+        }
+    }
+
+    //
     // Footer
     //  _____________________________________________
 
@@ -104,6 +168,44 @@
 
     .nav-sections {
         margin-bottom: 0;
+
+        .customer-welcome {
+            float: right;
+
+            .action.switch {
+                color: inherit;
+                line-height: @button__line-height;
+            }
+
+            + .authorization-link {
+                display: none;
+            }
+
+            .authorization-link {
+                display: block;
+
+                > .level-top {
+                    padding: 8px;
+                    color: inherit;
+                    line-height: inherit;
+                }
+            }
+        }
+    }
+    .navigation {
+        > ul {
+            padding: 0 10px;
+
+            > .authorization-link {
+                float: right;
+            }
+        }
+        .level0 {
+            > .level-top {
+                display: inline-block;
+                border-bottom: 3px solid transparent;
+            }
+        }
     }
 
     //
