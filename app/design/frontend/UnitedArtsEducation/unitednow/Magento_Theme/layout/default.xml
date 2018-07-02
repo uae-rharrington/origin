@@ -10,8 +10,8 @@
         <referenceBlock name="logo">
             <arguments>
                 <argument name="logo_file" xsi:type="string">images/logo.png</argument>
-                <argument name="logo_img_width" xsi:type="number">480</argument>
-                <argument name="logo_img_height" xsi:type="number">59</argument>
+                <argument name="logo_img_width" xsi:type="number">350</argument>
+                <argument name="logo_img_height" xsi:type="number">43</argument>
             </arguments>
         </referenceBlock>
     </body>

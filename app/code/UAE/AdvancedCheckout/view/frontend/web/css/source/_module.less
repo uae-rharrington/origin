@@ -1,0 +1,17 @@
+& when (@media-common = true) {
+  tr.qualifying-items {
+    & > td {
+      padding: 2px 0 2px 0;
+
+      & > span {
+        color: red;
+      }
+    }
+  }
+
+  .cart {
+    & button.action.update {
+      display: none;
+    }
+  }
+}
