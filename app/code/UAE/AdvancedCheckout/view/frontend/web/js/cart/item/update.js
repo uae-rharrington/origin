@@ -84,19 +84,10 @@ define([
          * @param {HTMLElement} elem
          */
         _updateItemQtyAfter: function (elem) {
+            var itemId = this.item_id,
+                currentQty = $('#cart-' + itemId + '-qty').val();
+            $('#cart-' + itemId + '-qty').data('item-qty', currentQty);
             this._hideItemButton(elem);
-        },
-
-        /**
-         * @param {Object} elem
-         * @private
-         */
-        _validateQty: function (elem) {
-            var itemQty = elem.data('item-qty');
-
-            if (!this._isValidQty(itemQty, elem.val())) {
-                elem.val(itemQty);
-            }
         },
 
         /**
@@ -105,8 +96,8 @@ define([
          */
         _updateSubtotal: function (itemQty) {
             var price = $('.item-' + this.item_id + ' .price span.price').text().replace('$', ''),
-            subtotal = price * itemQty;
-            $('.item-' + this.item_id + ' .subtotal span.price').text('$' + subtotal);
+                subtotal = price * itemQty;
+            $('.item-' + this.item_id + ' .subtotal span.price').text('$' + subtotal.toFixed(2));
         },
 
         /**
