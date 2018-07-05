@@ -26,7 +26,7 @@ $messageHelper = $this->helper(\UAE\AdvancedCheckout\Helper\Data::class);
             <?php else:?>
                 <span class="product-item-photo">
             <?php endif;?>
-            <?= $block->getImage($block->getProductForThumbnail(), 'cart_page_product_thumbnail')->toHtml() ?>
+            <?= $block->getImage($block->getProductForThumbnail(), 'mini_cart_product_thumbnail')->toHtml() ?>
             <?php if ($block->hasProductUrl()):?>
                 </a>
             <?php else: ?>
@@ -58,11 +58,6 @@ $messageHelper = $this->helper(\UAE\AdvancedCheckout\Helper\Data::class);
                         <?php endforeach; ?>
                     </dl>
                 <?php endif;?>
-                <?php if ($messages = $block->getMessages()): ?>
-                    <?php foreach ($messages as $message): ?>
-                        <div class="cart item message <?= /* @escapeNotVerified */ $message['type'] ?>"><div><?= $block->escapeHtml($message['text']) ?></div></div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
                 <?php if (!$product->getQualifiesForFreeShipping()): ?>
                     <div class="cart item message notice"><div><?= $block->escapeHtml($messageHelper->getFreeShippingMessage()) ?></div></div>
                 <?php endif; ?>
@@ -71,6 +66,11 @@ $messageHelper = $this->helper(\UAE\AdvancedCheckout\Helper\Data::class);
                 <?php endif; ?>
                 <?php if ($product->getDeliveryTime()): ?>
                     <div class="cart item message notice"><div><?= sprintf($block->escapeHtml($messageHelper->getDeliveryTimeMessage()), $product->getDeliveryTime()) ?></div></div>
+                <?php endif; ?>
+                <?php if ($messages = $block->getMessages()): ?>
+                    <?php foreach ($messages as $message): ?>
+                        <div class="cart item message <?= /* @escapeNotVerified */ $message['type'] ?>"><div><?= $block->escapeHtml($message['text']) ?></div></div>
+                    <?php endforeach; ?>
                 <?php endif; ?>
                 <?php $addInfoBlock = $block->getProductAdditionalInformationBlock(); ?>
                 <?php if ($addInfoBlock): ?>
