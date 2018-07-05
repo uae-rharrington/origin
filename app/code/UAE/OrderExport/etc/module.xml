@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="ClassyLlama_OrderExport" setup_version="0.1.0">
+        <sequence>
+            <module name="Xtento_OrderExport" />
+            <module name="ShipperHQ_Shipper" />
+        </sequence>
+    </module>
+</config>
