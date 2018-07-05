@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    ClassyLlama
+ * @copyright   Copyright (c) 2018 Classy Llama
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Create Account link -->
+        <referenceBlock name="register-link" remove="true" />
+        <!-- Welcome message  -->
+        <referenceBlock name="header" remove="true" />
+    </body>
+</page>

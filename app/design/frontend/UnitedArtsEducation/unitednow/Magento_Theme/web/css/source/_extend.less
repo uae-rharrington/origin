@@ -14,4 +14,298 @@
             display: none;
         }
     }
+
+    //
+    // Navigation
+    //  _____________________________________________
+
+    .nav-sections {
+        .customer-welcome {
+            .header.links {
+                display: block !important; // Overrides inline style from main nav
+            }
+        }
+    }
+
+    //
+    // Header promo
+    //  _____________________________________________
+
+    .header-promo {
+        margin-bottom: 25px;
+        padding: 7px;
+        background: @header-panel__background-color;
+        color: @color-white;
+        font-size: 16px;
+        text-align: center;
+
+        p {
+            margin: 0;
+        }
+        small {
+            margin: 0 6px;
+        }
+    }
+
+    //
+    // Footer
+    //  _____________________________________________
+
+    .footer.content {
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+
+            section {
+                flex-basis: 158px;
+                flex-grow: 1;
+                padding: 10px 16px;
+                box-sizing: border-box;
+            }
+            h4 {
+                margin: 6px 0 12px;
+            }
+
+            a {
+                padding: 4px 0;
+            }
+        }
+        ul {
+            padding: 0;
+        }
+    }
+
+    .copyright {
+        span {
+            display: block;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    //
+    // Header
+    //  _____________________________________________
+
+    .nav-toggle {
+        top: 9px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        width: 300px;
+        max-width: 53%;
+        height: 37px;
+        margin: 1px 0 10px 41px;
+    }
+
+    .minicart-wrapper,
+    .block-search {
+        margin-top: 4px;
+    }
+
+    //
+    // Navigation
+    //  _____________________________________________
+
+    .nav-sections {
+        .quick-order-link {
+            border-bottom: @navigation-level0-item__border;
+
+            + li {
+                margin-top: 25px;
+            }
+        }
+
+        .authorization-link {
+            > .level-top {
+                text-transform: none;
+            }
+        }
+        .customer-welcome {
+            border-top: none;
+
+            .authorization-link {
+                border-top: none;
+            }
+        }
+
+        .header.links {
+            border-bottom: none;
+
+            a {
+                &,
+                &:hover {
+                    padding: @navigation-level0-item__padding;
+                }
+            }
+        }
+    }
+    .nav-sections-item-title {
+        &:first-child {
+            &:nth-last-child(2) {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    .nav-sections-item-content {
+        &:last-child {
+            &:nth-child(2) {
+                margin-top: 44px;
+            }
+        }
+    }
+
+    //
+    // Header promo
+    //  _____________________________________________
+
+    .header-promo {
+        display: none;
+    }
+
+    //
+    // Footer
+    //  _____________________________________________
+
+    .footer.content {
+        padding: 10px 2px;
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    //
+    // Footer
+    //  _____________________________________________
+
+    .footer.content {
+        .links {
+            section {
+                max-width: 33.33%;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    //
+    // Header
+    //  _____________________________________________
+
+    .page-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: @color-white;
+        z-index: 10;
+
+        .checkout-index-index & {
+            border-bottom: 1px solid @border-color__base;
+
+            + * {
+                margin-top: @header-desktop__height + 26px;
+            }
+        }
+    }
+    .logo {
+        height: 43px;
+        margin: -6px 0 12px;
+    }
+
+    .header.content {
+        padding: ((@header-desktop__height - @input-text__height) / 2) @layout-indent__width 0;
+    }
+
+    //
+    // Navigation
+    //  _____________________________________________
+
+    .nav-sections {
+        position: fixed;
+        top: @header-desktop__height;
+        left: 0;
+        right: 0;
+        margin-bottom: 0;
+        z-index: 10;
+
+        + * {
+            margin-top: @header-desktop__height + @main-nav__height;
+        }
+
+        .customer-welcome {
+            float: right;
+
+            .action.switch {
+                color: inherit;
+                line-height: @button__line-height;
+            }
+
+            + .authorization-link {
+                display: none;
+            }
+
+            .authorization-link {
+                display: block;
+
+                > .level-top {
+                    padding: 8px;
+                    color: inherit;
+                    line-height: inherit;
+                }
+            }
+        }
+    }
+    .navigation {
+        > ul {
+            padding: 0 10px;
+
+            > .authorization-link {
+                float: right;
+            }
+        }
+        .level0 {
+            > .level-top {
+                display: inline-block;
+                border-bottom: 3px solid transparent;
+            }
+        }
+    }
+
+    //
+    // Footer
+    //  _____________________________________________
+
+    .page-footer {
+        padding-bottom: 5px;
+    }
+    .footer.content {
+        padding: 10px 14px;
+
+        .links {
+            display: flex;
+            padding: 0;
+
+            li {
+                margin: 0;
+            }
+            a {
+                display: block;
+            }
+        }
+        ul {
+            padding: 0;
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .navigation {
+        > ul {
+            padding: 0 20px;
+        }
+        .level0 {
+            margin-right: 20px;
+        }
+    }
 }

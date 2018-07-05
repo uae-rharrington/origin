@@ -226,6 +226,7 @@ return array (
     'Shopial_Facebook' => 1,
     'Temando_Shipping' => 1,
     'UAE_AdvancedCheckout' => 1,
+    'UAE_Theme' => 1,
     'Xtento_OrderExport' => 1,
     'Xtento_StockImport' => 1,
     'Xtento_TrackingImport' => 1,

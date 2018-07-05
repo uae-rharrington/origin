@@ -1,0 +1,13 @@
+<?php
+/**
+ * @category    ClassyLlama
+ * @copyright   Copyright (c) 2018 Classy Llama
+ */
+/** @var \Magento\QuickOrder\Block\Link $block */
+?>
+<?php // Template created to add main-nav classes ?>
+<li class="quick-order-link level0">
+    <a <?= /* @noEscape */ $block->getLinkAttributes() ?> class="level-top">
+        <?= $block->escapeHtml($block->getLabel()) ?>
+    </a>
+</li>
