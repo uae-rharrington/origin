@@ -49,12 +49,14 @@
             'use strict';
 
             var releaseNotes = $('.detailed-<?= /* @escapeNotVerified */ $product->getId() ?>').modal({
-                modalClass: 'simple-product-details'
+                modalClass: 'simple-product-details',
+                responsive: true,
+                buttons: []
             });
-            $('.product-item-details-<?= /* @escapeNotVerified */ $product->getId() ?>').on('click', function() {
+            $('.product-item-details-<?= /* @escapeNotVerified */ $product->getId() ?>').on('click', function(e) {
+                e.preventDefault();
                 releaseNotes.modal('openModal');
             });
         });
     </script>
 <?php endforeach; ?>
-

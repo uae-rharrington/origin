@@ -28,12 +28,16 @@
                 <block class="UAE\GroupedProduct\Block\Product\Review" name="reviews.tab.simple" as="reviews_simple" template="UAE_GroupedProduct::review.phtml" group="detailed_info"/>
             </block>
         </referenceBlock>
+        <referenceBlock name="product.info.addtocart">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">UAE_GroupedProduct::product/view/addtocart.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="product.info.overview" remove="true" />
+        <move element="product.info.description" destination="product.info.main" />
         <referenceContainer name="product.info.stock.sku" remove="true" />
         <referenceContainer name="product.info.details" remove="true" />
         <referenceContainer name="product.info.review" remove="true" />
-        <move element="product.info" destination="content" before="product.info.details" />
-        <referenceContainer name="before.body.end">
-            <block class="Magento\Framework\View\Element\Template" name="grouped.product.bottom.bar" template="UAE_GroupedProduct::product/bottom-add-to-cart.phtml" />
-        </referenceContainer>
+        <move element="product.info" destination="content" after="product.info.media" />
     </body>
 </page>

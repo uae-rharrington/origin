@@ -1,0 +1,67 @@
+/**
+ * @category    ClassyLlama
+ * @copyright   Copyright (c) 2018 Classy Llama
+ */
+
+& when (@media-common = true) {
+    .form-edit-account {
+        .fieldset {
+            &.company,
+            &.job_title {
+                float: none !important; // Overrides other important flag
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = (@screen__m + 1)) {
+    .modals-wrapper {
+        .modal-popup {
+            .modal-header {
+                padding-top: 3rem;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .login-container {
+        .block {
+            &.block-new-company {
+                clear: right;
+            }
+        }
+    }
+
+    .modal-popup {
+        .actions-toolbar {
+            .secondary {
+                .action {
+                    margin: 0;
+                    padding: @button__padding;
+                    color: @button__color;
+                    background: @button__background;
+                    font-weight: @button__font-weight;
+
+                    &:hover {
+                        background: @button__hover__background;
+                    }
+                    &:active {
+                        background: @button__active__background;
+                    }
+                }
+            }
+        }
+    }
+}
+// Fix modal width
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = (@screen__m + 1)) {
+    .modals-wrapper {
+        .modal-popup {
+            .modal-inner-wrap {
+                width: 95%;
+            }
+        }
+    }
+}

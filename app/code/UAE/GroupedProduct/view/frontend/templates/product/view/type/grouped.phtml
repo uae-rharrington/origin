@@ -27,9 +27,18 @@
                     <?php $color = explode('#', $_item->getResource()->getAttribute('color')->getFrontend()->getValue($_item)); ?>
                     <?php if (isset($color[0]) && isset($color[1])): ?>
                         <div class="swatch-color" title="<?php echo ($color[0] != '') ? $color[0] : '#' . $color[1]; ?>" style="background: <?php echo '#' . $color[1]; ?>;"></div>
-                    <?php elseif ($productImage = $block->getImage($_item, 'simple_product_image_on_grouped_pdp')): ?>
-                        <?php $productImage = $block->getImage($_item, 'simple_product_image_on_grouped_pdp'); ?>
-                        <?= $productImage->toHtml(); ?>
+                    <?php elseif ($productThumbnail = $block->getImage($_item, 'simple_product_image_on_grouped_pdp')): ?>
+                        <div class="product-thumbnail" id="thumbnail-<?= $_item->getId() ?>">
+                            <?php $productThumbnail = $block->getImage($_item, 'simple_product_image_on_grouped_pdp'); ?>
+                            <?= $productThumbnail->toHtml(); ?>
+                        </div>
+                        <div class="product-image" data-mage-init='{"Magento_Ui/js/modal/modal":{
+                            "trigger":"#thumbnail-<?= $_item->getId() ?>",
+                            "buttons":[]
+                        }}'>
+                            <?php $productImage = $block->getImage($_item, 'product_page_image_medium'); ?>
+                            <?= $productImage->toHtml(); ?>
+                        </div>
                     <?php endif; ?>
                 </td>
                 <td class="col sku">
@@ -40,7 +49,7 @@
                     <div><?= $block->escapeHtml($_item->getShortDescription()) ?></div>
                 </td>
                 <td class="col details">
-                    <a class="product-item-details-<?= $block->escapeHtml($_item->getId()) ?>" href="#"><?= $block->escapeHtml('details...') ?></a>
+                    <a class="product-item-details-<?= $block->escapeHtml($_item->getId()) ?>" href="#"><?= $block->escapeHtml(__('details...')) ?></a>
                 </td>
                 <td class="col price">
                     <?php if ($block->getCanShowProductPrice($_product)): ?>
@@ -71,6 +80,7 @@
                                data-selector="super_group[<?= /* @escapeNotVerified */ $_item->getId() ?>]"
                                value="<?= /* @escapeNotVerified */ ($_item->getQty() * 1 > 0) ? $_item->getQty() * 1 : '' ?>"
                                title="<?= /* @escapeNotVerified */ __('Qty') ?>"
+                               placeholder="<?= /* @escapeNotVerified */ __('qty') ?>"
                                class="input-text qty"
                                data-validate="{'validate-grouped-qty':'#super-product-table'}"
                                data-errors-message-box="#validation-message-box"/>

@@ -22,7 +22,7 @@ class ExtendProductAttributesList
         $collection
     ) {
 
-        $collection->addAttributeToSelect(['color', 'thumbnail', 'short_description', 'description']);
+        $collection->addAttributeToSelect(['color', 'thumbnail', 'image', 'short_description', 'description']);
 
         return $collection;
     }
