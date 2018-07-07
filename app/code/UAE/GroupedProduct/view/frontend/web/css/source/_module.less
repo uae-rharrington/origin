@@ -7,6 +7,10 @@
     .page-product-grouped {
         .page-wrapper {
             margin-bottom: 50px;
+
+            .ie11 & {
+                height: auto;
+            }
         }
         .product-info-main {
             margin-bottom: 25px;
@@ -98,11 +102,13 @@
                 .back_to_top {
                     .lib-icon-font(
                         @_icon-font-content: @icon-arrow-top,
-                        @_icon-font-margin: 0 5px 0 0
+                        @_icon-font-margin: 0 5px 0 0,
+                        @_icon-font-vertical-align: top
                     );
                     .lib-icon-font(
                         @_icon-font-content: @icon-arrow-top,
                         @_icon-font-margin: 0 0 0 5px,
+                        @_icon-font-vertical-align: top,
                         @_icon-font-position: after
                     );
                     line-height: 38px;
