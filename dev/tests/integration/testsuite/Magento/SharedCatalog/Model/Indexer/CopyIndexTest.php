@@ -11,8 +11,21 @@ use Magento\Customer\Model\ResourceModel\Group\Collection as GroupCollection;
 use Magento\Catalog\Model\ResourceModel\Product\Collection as ProductCollection;
 use Magento\Store\Model\StoreManagerInterface;
 
-class CopyIndexTest extends \PHPUnit\Framework\TestCase
+class CopyIndexTest extends \Magento\TestFramework\Indexer\TestCase
 {
+    public static function setUpBeforeClass()
+    {
+        $db = Bootstrap::getInstance()->getBootstrap()
+            ->getApplication()
+            ->getDbInstance();
+        if (!$db->isDbDumpExists()) {
+            throw new \LogicException('DB dump does not exist.');
+        }
+        $db->restoreFromDbDump();
+
+        parent::setUpBeforeClass();
+    }
+
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
@@ -26,6 +39,7 @@ class CopyIndexTest extends \PHPUnit\Framework\TestCase
     /**
      * @magentoDataFixture Magento/Catalog/_files/products.php
      * @magentoDataFixture Magento/SharedCatalog/_files/shared_catalog.php
+     * @magentoDbIsolation disabled
      */
     public function testSavePricesFromDefaultGroupCopied()
     {
@@ -52,6 +66,7 @@ class CopyIndexTest extends \PHPUnit\Framework\TestCase
      * @magentoDataFixture Magento/CatalogPermissions/_files/permission.php
      * @magentoDataFixture Magento/CatalogPermissions/_files/reindex_permissions.php
      * @magentoDataFixture Magento/SharedCatalog/_files/shared_catalog.php
+     * @magentoDbIsolation disabled
      */
     public function testSaveCatalogPermissionsFromDefaultGroupCopied()
     {
@@ -88,5 +103,13 @@ class CopyIndexTest extends \PHPUnit\Framework\TestCase
 
         $productPermissionsIndex = $index->getIndexForProduct($product->getId(), $customerGroupId, 1);
         $this->assertArrayHasKey($product->getId(), $productPermissionsIndex);
+    }
+
+    /**
+     * teardown
+     */
+    public function tearDown()
+    {
+        parent::tearDown();
     }
 }

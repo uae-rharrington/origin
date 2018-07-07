@@ -12,6 +12,7 @@
         <field name="company_name" is_required="1" group="general"/>
         <field name="legal_name" is_required="0" group="information"/>
         <field name="company_email" is_required="0" group="general"/>
+        <field name="website_id" is_required="1" group="company_admin"/>
         <field name="email" is_required="1" group="company_admin"/>
         <field name="vat_tax_id" is_required="0" group="information"/>
         <field name="reseller_id" is_required="0" group="information"/>

@@ -84,10 +84,6 @@ class EditSharedCatalogTest extends AbstractSharedCatalogConfigurationTest
         CatalogProductSimple $catalogProduct,
         array $data = []
     ) {
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdatePrice');
-
         $this->setupConfig();
         $sharedCatalog->persist();
         $catalogProduct->persist();
@@ -117,6 +113,9 @@ class EditSharedCatalogTest extends AbstractSharedCatalogConfigurationTest
         $this->sharedCatalogConfigure->getPricingGrid()->waitForLoader();
         $this->sharedCatalogConfigure->getNavigation()->nextStep();
         $this->sharedCatalogConfigure->getPageActionBlock()->save();
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdatePrice');
         $this->openConfiguration($sharedCatalog->getName());
 
         return [

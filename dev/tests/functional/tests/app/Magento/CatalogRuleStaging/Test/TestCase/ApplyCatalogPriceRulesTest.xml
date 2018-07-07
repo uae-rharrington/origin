@@ -122,5 +122,17 @@
             <constraint name="Magento\CatalogRule\Test\Constraint\AssertCatalogPriceRuleAppliedProductPage" />
             <constraint name="Magento\CatalogRule\Test\Constraint\AssertCatalogPriceRuleAppliedShoppingCart" />
         </variation>
+        <variation name="ApplyCatalogRulesStaging_BundleProductWithCustomOption_MAGETWO-71393" replace="ApplySeveralCatalogRules_Sequentially">
+            <data name="catalogRules/0/dataset" xsi:type="string">apply_as_10_percentage</data>
+            <data name="products/0" xsi:type="string">bundleProduct::fixed_with_one_simple_product_and_custom_option</data>
+            <data name="productPrice/0/regular" xsi:type="string">132</data>
+            <data name="productPrice/0/price_from" xsi:type="string">118.8</data>
+            <data name="productPrice/0/price_to" xsi:type="string">217.8</data>
+            <data name="productPrice/0/old_price_from" xsi:type="string">132</data>
+            <data name="productPrice/0/old_price_to" xsi:type="string">242</data>
+            <data name="isCronEnabled" xsi:type="boolean">true</data>
+            <constraint name="Magento\CatalogRule\Test\Constraint\AssertCatalogPriceRuleAppliedCatalogPage" />
+            <constraint name="Magento\CatalogRule\Test\Constraint\AssertCatalogPriceRuleAppliedProductPage" />
+        </variation>
     </testCase>
 </config>

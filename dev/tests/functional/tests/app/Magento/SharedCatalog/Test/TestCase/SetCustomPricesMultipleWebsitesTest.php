@@ -14,7 +14,7 @@ use Magento\SharedCatalog\Test\Fixture\SharedCatalog;
 use Magento\Mtf\TestStep\TestStepFactory;
 use Magento\Company\Test\Fixture\Company;
 use Magento\Store\Test\Fixture\Website;
-use Magento\PageCache\Test\Page\Adminhtml\AdminCache;
+use Magento\Mtf\Util\Command\Cli\Cache;
 use Magento\Mtf\Util\Command\Cli\Indexer;
 
 /**
@@ -71,13 +71,6 @@ class SetCustomPricesMultipleWebsitesTest extends AbstractSharedCatalogConfigura
     private $indexer;
 
     /**
-     * Page AdminCache.
-     *
-     * @var AdminCache
-     */
-    private $adminCache;
-
-    /**
      * Label of All Websites filter option.
      *
      * @var string
@@ -85,11 +78,9 @@ class SetCustomPricesMultipleWebsitesTest extends AbstractSharedCatalogConfigura
     private $allWebsitesFilterOption = 'All Websites';
 
     /**
-     * Label of Main Website filter option.
-     *
-     * @var string
+     * @var Cache
      */
-    private $mainWebsiteFilterOption = 'Main Website';
+    private $cache;
 
     /**
      * Inject pages.
@@ -99,7 +90,7 @@ class SetCustomPricesMultipleWebsitesTest extends AbstractSharedCatalogConfigura
      * @param SharedCatalogConfigure $sharedCatalogConfigure
      * @param TestStepFactory $stepFactory
      * @param Indexer $indexer
-     * @param AdminCache $adminCache
+     * @param Cache $cache
      * @return void
      */
     public function __inject(
@@ -108,14 +99,14 @@ class SetCustomPricesMultipleWebsitesTest extends AbstractSharedCatalogConfigura
         SharedCatalogConfigure $sharedCatalogConfigure,
         TestStepFactory $stepFactory,
         Indexer $indexer,
-        AdminCache $adminCache
+        Cache $cache
     ) {
         $this->fixtureFactory = $fixtureFactory;
         $this->sharedCatalogIndex = $sharedCatalogIndex;
         $this->sharedCatalogConfigure = $sharedCatalogConfigure;
         $this->stepFactory = $stepFactory;
         $this->indexer = $indexer;
-        $this->adminCache = $adminCache;
+        $this->cache = $cache;
     }
 
     /**
@@ -125,10 +116,9 @@ class SetCustomPricesMultipleWebsitesTest extends AbstractSharedCatalogConfigura
      * @param SharedCatalog $sharedCatalog
      * @param array $productsList
      * @param array $customPrices
-     * @param bool $saveSharedCatalog
      * @param Customer|null $customer [optional]
-     * @param bool $createSecondWebsite [optional]
      * @param string|null $configData [optional]
+     * @param bool $applyPriceToAllWebsites [optional]
      * @return array
      */
     public function test(
@@ -136,14 +126,13 @@ class SetCustomPricesMultipleWebsitesTest extends AbstractSharedCatalogConfigura
         SharedCatalog $sharedCatalog,
         array $productsList,
         array $customPrices,
-        $saveSharedCatalog,
         Customer $customer = null,
-        $createSecondWebsite = false,
-        $configData = null
+        $configData = null,
+        $applyPriceToAllWebsites = true
     ) {
-        $websiteName = $this->mainWebsiteFilterOption;
-        if ($createSecondWebsite) {
-            $this->website = $this->createWebsite();
+        $this->website = $this->createWebsite();
+        $websiteName = $this->allWebsitesFilterOption;
+        if (!$applyPriceToAllWebsites) {
             $websiteName = $this->website->getName();
         }
         $this->configData = $configData;
@@ -151,28 +140,19 @@ class SetCustomPricesMultipleWebsitesTest extends AbstractSharedCatalogConfigura
             \Magento\Config\Test\TestStep\SetupConfigurationStep::class,
             ['configData' => $this->configData]
         )->run();
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdatePrice');
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdateCategoryPermissions');
         $sharedCatalog->persist();
-
-        if ($customer) {
-            $customer->persist();
-            $company = $this->fixtureFactory->createByCode(
-                'company',
-                [
-                    'dataset' => 'company_with_required_fields_and_sales_rep',
-                    'data' => [
-                        'email' => $customer->getEmail()
-                    ]
+        $customer->persist();
+        $company = $this->fixtureFactory->createByCode(
+            'company',
+            [
+                'dataset' => 'company_with_required_fields_and_sales_rep',
+                'data' => [
+                    'email' => $customer->getEmail()
                 ]
-            );
-            $company->persist();
-            $this->assignCompany($sharedCatalog, $company);
-        }
+            ]
+        );
+        $company->persist();
+        $this->assignCompany($sharedCatalog, $company);
 
         $category->persist();
         $products = $this->prepareProducts($category, $productsList);
@@ -182,15 +162,12 @@ class SetCustomPricesMultipleWebsitesTest extends AbstractSharedCatalogConfigura
         )->run();
         $this->openSharedCatalogConfiguration($sharedCatalog);
         $this->sharedCatalogConfigure->getNavigation()->nextStep();
-        $this->sharedCatalogConfigure->getPricingGrid()->filterProductsByWebsite($this->allWebsitesFilterOption);
-
+        $this->sharedCatalogConfigure->getPricingGrid()->filterProductsByWebsite($websiteName);
         $customPricesData = [];
         foreach ($customPrices['simple'] as $key => $customPrice) {
             $this->setCustomPrice($products[$key], $customPrice);
             $customPricesData[$key] = $customPrice;
         }
-
-        $this->sharedCatalogConfigure->getPricingGrid()->filterProductsByWebsite($websiteName);
 
         if (!empty($customPrices['mass_action'])) {
             foreach ($customPrices['mass_action'] as $key => $customPrice) {
@@ -201,19 +178,25 @@ class SetCustomPricesMultipleWebsitesTest extends AbstractSharedCatalogConfigura
 
         $this->sharedCatalogConfigure->getPricingGrid()->filterProductsByWebsite($this->allWebsitesFilterOption);
 
-        if ($saveSharedCatalog) {
-            $this->sharedCatalogConfigure->getNavigation()->nextStep();
-            $this->sharedCatalogConfigure->getPageActionBlock()->save();
-            $this->cleanCache();
-            $this->indexer->reindex();
-        }
+        $this->sharedCatalogConfigure->getNavigation()->nextStep();
+        $this->sharedCatalogConfigure->getPageActionBlock()->save();
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdatePrice');
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdateCategoryPermissions');
+        $this->cache->flush();
+        $this->indexer->reindex();
 
         return [
             'customer' => $customer,
             'products' => $products,
             'customPrices' => $customPricesData,
             'website' => $this->website,
-            'websiteName' => $websiteName
+            'websiteName' => $websiteName,
+            'allWebsitesName' => $this->allWebsitesFilterOption,
+            'sharedCatalogName' => $sharedCatalog->getName()
         ];
     }
 
@@ -345,18 +328,6 @@ class SetCustomPricesMultipleWebsitesTest extends AbstractSharedCatalogConfigura
         $store->persist();
 
         return $storeGroup->getDataFieldConfig('website_id')['source']->getWebsite();
-    }
-
-    /**
-     * Clean cache in admin panel.
-     *
-     * @return void
-     */
-    private function cleanCache()
-    {
-        $this->adminCache->open();
-        $this->adminCache->getActionsBlock()->flushMagentoCache();
-        $this->adminCache->getMessagesBlock()->waitSuccessMessage();
     }
 
     /**

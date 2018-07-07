@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace Magento\Company\Model;
+namespace Magento\QuickOrder\Model;
 
 use Magento\TestFramework\Helper\Bootstrap;
 

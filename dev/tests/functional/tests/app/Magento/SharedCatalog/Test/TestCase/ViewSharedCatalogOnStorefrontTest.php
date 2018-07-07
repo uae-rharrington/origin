@@ -162,12 +162,6 @@ class ViewSharedCatalogOnStorefrontTest extends Injectable
         array $data,
         $configData = null
     ) {
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdatePrice');
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdateCategoryPermissions');
         //Preconditions
         $this->configData = $configData;
         $this->objectManager->create(

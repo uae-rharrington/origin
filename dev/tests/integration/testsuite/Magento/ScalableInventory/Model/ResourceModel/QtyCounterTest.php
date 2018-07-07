@@ -29,7 +29,7 @@ use Magento\TestFramework\Helper\Bootstrap;
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class QtyCounterTest extends \PHPUnit\Framework\TestCase
+class QtyCounterTest extends \Magento\TestFramework\Indexer\TestCase
 {
     /**
      * Help place order to invoke \Magento\ScalableInventory\Model\ResourceModel\QtyCounter::correctItemsQty().
@@ -37,6 +37,19 @@ class QtyCounterTest extends \PHPUnit\Framework\TestCase
      * @var CartManagementInterface
      */
     private $cartManagement;
+
+    public static function setUpBeforeClass()
+    {
+        $db = Bootstrap::getInstance()->getBootstrap()
+            ->getApplication()
+            ->getDbInstance();
+        if (!$db->isDbDumpExists()) {
+            throw new \LogicException('DB dump does not exist.');
+        }
+        $db->restoreFromDbDump();
+
+        parent::setUpBeforeClass();
+    }
 
     /**
      * @inheritdoc
@@ -255,5 +268,13 @@ class QtyCounterTest extends \PHPUnit\Framework\TestCase
         $customerRepository = Bootstrap::getObjectManager()->get(CustomerRepository::class);
 
         return $customerRepository->get('customer@example.com');
+    }
+
+    /**
+     * teardown
+     */
+    public function tearDown()
+    {
+        parent::tearDown();
     }
 }

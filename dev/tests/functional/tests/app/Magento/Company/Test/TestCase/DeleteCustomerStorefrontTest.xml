@@ -13,6 +13,7 @@
             <data name="customer/dataset" xsi:type="string">company_customer_register</data>
             <data name="configData" xsi:type="string">company_enable</data>
             <data name="tag" xsi:type="string">test_type:acceptance_test</data>
+            <constraint name="Magento\Company\Test\Constraint\AssertCustomerDeletedMessage"/>
             <constraint name="Magento\Company\Test\Constraint\AssertNoChildNodeInTree" />
             <constraint name="Magento\Company\Test\Constraint\AssertCustomerDisabled" />
         </variation>

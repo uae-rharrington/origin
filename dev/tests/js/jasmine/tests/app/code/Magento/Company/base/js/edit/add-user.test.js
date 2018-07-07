@@ -89,6 +89,12 @@ define([
                     target: {
                         value: '1'
                     }
+                },
+                    customerDataLoaded = false;
+
+                /** Stub */
+                addUserObj.getCustomerData = function () {
+                    customerDataLoaded = true;
                 };
 
                 /** Stub */
@@ -99,6 +105,7 @@ define([
                 addUserObj.userChanges(null, event);
                 expect(addUserObj.value()).toEqual('1');
                 expect(mocks['Magento_Ui/js/lib/spinner'].get).not.toHaveBeenCalled();
+                expect(customerDataLoaded).toEqual(false);
 
                 /** Stub */
                 addUserObj.isValid = function () {
@@ -107,6 +114,7 @@ define([
 
                 addUserObj.userChanges(null, event);
                 expect(mocks['Magento_Ui/js/lib/spinner'].get).toHaveBeenCalled();
+                expect(customerDataLoaded).toEqual(true);
             });
         });
 
@@ -161,9 +169,12 @@ define([
 
             it('Check update of source', function () {
                 addUserObj.source = {
-                    set: jasmine.createSpy()
+                    set: jasmine.createSpy(),
+                    get: jasmine.createSpy()
                 };
+                addUserObj.prevCustomerId = 1;
                 addUserObj.updateSource();
+                expect(addUserObj.source.get).toHaveBeenCalledWith('data.company_admin.website_id');
                 expect(addUserObj.source.set).toHaveBeenCalled();
             });
         });

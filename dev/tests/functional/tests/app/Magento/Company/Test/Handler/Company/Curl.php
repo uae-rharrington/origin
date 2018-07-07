@@ -42,6 +42,9 @@ class Curl extends AbstractCurl implements CompanyInterface
         'customer_group_id' => [
             'General' => 1,
         ],
+        'website_id' => [
+            'Main Website' => 1,
+        ],
     ];
 
     /**

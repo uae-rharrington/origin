@@ -19,7 +19,7 @@ class Login extends Form
      *
      * @var string
      */
-    protected $loginButton = '[type=submit]';
+    protected $loginButton = '[type=button]';
 
     /**
      * Selector for 'change' link on Cybersource login form.

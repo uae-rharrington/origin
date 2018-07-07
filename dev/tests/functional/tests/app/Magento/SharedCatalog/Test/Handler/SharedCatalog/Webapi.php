@@ -75,7 +75,13 @@ class Webapi extends AbstractWebapi implements SharedCatalogInterface
         foreach ($companies as $company) {
             $rowData = $company->getData();
             $rowData['street'] = (array)$rowData['street'];
-            unset($rowData['firstname'], $rowData['lastname'], $rowData['customer'], $rowData['email']);
+            unset(
+                $rowData['firstname'],
+                $rowData['lastname'],
+                $rowData['customer'],
+                $rowData['email'],
+                $rowData['website_id']
+            );
             $companyAdmin = $company->getDataFieldConfig('customer')['source']->getCustomer();
             $rowData['customer_group_id'] = $companyAdmin->getDataFieldConfig('group_id')['source']
                 ->getCustomerGroup()->getCustomerGroupId();
