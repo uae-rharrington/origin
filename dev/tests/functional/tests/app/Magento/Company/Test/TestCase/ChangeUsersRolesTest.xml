@@ -15,6 +15,7 @@
             <data name="linkPresenceInMenu" xsi:type="boolean">false</data>
             <data name="rolesAndPermissionsLinkText" xsi:type="string">Roles and Permissions</data>
             <data name="configData" xsi:type="string">company_enable</data>
+            <constraint name="Magento\Company\Test\Constraint\AssertCustomerUpdatedMessage"/>
             <constraint name="Magento\Company\Test\Constraint\AssertCompanyUserRole"/>
             <constraint name="Magento\Company\Test\Constraint\AssertCompanyAdminRoleIsDisabled"/>
             <constraint name="Magento\Company\Test\Constraint\AssertAccountMenuLinkPresence"/>

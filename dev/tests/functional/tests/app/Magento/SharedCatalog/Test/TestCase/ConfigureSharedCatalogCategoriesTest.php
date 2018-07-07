@@ -129,12 +129,6 @@ class ConfigureSharedCatalogCategoriesTest extends AbstractSharedCatalogConfigur
         $configData = null
     ) {
         //Preconditions
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdateCategoryPermissions');
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdatePrice');
         $this->configData = $configData;
         $this->stepFactory->create(
             \Magento\Config\Test\TestStep\SetupConfigurationStep::class,
@@ -185,6 +179,12 @@ class ConfigureSharedCatalogCategoriesTest extends AbstractSharedCatalogConfigur
             $this->sharedCatalogConfigure->getNavigation()->nextStep();
             $this->sharedCatalogConfigure->getPageActionBlock()->save();
         }
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdateCategoryPermissions');
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdatePrice');
         $this->cleanCache();
         $this->indexer->reindex();
         $this->stepFactory->create(

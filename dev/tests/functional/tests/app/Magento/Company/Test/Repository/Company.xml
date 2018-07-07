@@ -15,6 +15,7 @@
             <field name="postcode" xsi:type="string">90230</field>
             <field name="city" xsi:type="string">Culver City</field>
             <field name="street" xsi:type="string">6161 West Centinela Avenue</field>
+            <field name="website_id" xsi:type="string">Main Website</field>
             <field name="email" xsi:type="string">John.Doe%isolation%@example.com</field>
             <field name="firstname" xsi:type="string">John</field>
             <field name="lastname" xsi:type="string">Doe</field>
@@ -28,6 +29,7 @@
             <field name="postcode" xsi:type="string">220000</field>
             <field name="city" xsi:type="string">Unknown City</field>
             <field name="street" xsi:type="string">Redridge street, 17</field>
+            <field name="website_id" xsi:type="string">Main Website</field>
             <field name="email" xsi:type="string">Jane.Doe%isolation%@example.com</field>
             <field name="legal_name" xsi:type="string">Legal Company %isolation%</field>
             <field name="company_email" xsi:type="string">company%isolation%@example.com</field>
@@ -57,6 +59,7 @@
             <field name="reseller_id" xsi:type="string">f124</field>
             <field name="comment" xsi:type="string">some comment</field>
             <field name="region" xsi:type="string">some region</field>
+            <field name="website_id" xsi:type="string">Main Website</field>
             <field name="job_title" xsi:type="string">grand master</field>
             <field name="prefix" xsi:type="string">ms</field>
             <field name="firstname" xsi:type="string">Jane</field>
@@ -74,6 +77,7 @@
             <field name="postcode" xsi:type="string">90230</field>
             <field name="city" xsi:type="string">Culver City</field>
             <field name="street" xsi:type="string">6161 West Centinela Avenue</field>
+            <field name="website_id" xsi:type="string">Main Website</field>
             <field name="email" xsi:type="string">John.Doe%isolation%@example.com</field>
             <field name="firstname" xsi:type="string">John</field>
             <field name="lastname" xsi:type="string">Doe</field>
@@ -90,6 +94,7 @@
             <field name="postcode" xsi:type="string">90230</field>
             <field name="city" xsi:type="string">Culver City</field>
             <field name="street" xsi:type="string">6161 West Centinela Avenue</field>
+            <field name="website_id" xsi:type="string">Main Website</field>
             <field name="email" xsi:type="string">John.Doe%isolation%@example.com</field>
             <field name="firstname" xsi:type="string">John</field>
             <field name="lastname" xsi:type="string">Doe</field>
@@ -104,6 +109,7 @@
             <field name="postcode" xsi:type="string">220000</field>
             <field name="city" xsi:type="string">Unknown City</field>
             <field name="street" xsi:type="string">Redridge street, 17</field>
+            <field name="website_id" xsi:type="string">Main Website</field>
             <field name="email" xsi:type="string">Jane.Doe%isolation%@example.com</field>
             <field name="legal_name" xsi:type="string">Legal Company %isolation%</field>
             <field name="company_email" xsi:type="string">company%isolation%@example.com</field>
@@ -156,6 +162,7 @@
             <field name="postcode" xsi:type="string">90230</field>
             <field name="city" xsi:type="string">Culver City</field>
             <field name="street" xsi:type="string">6161 West Centinela Avenue</field>
+            <field name="website_id" xsi:type="string">Main Website</field>
             <field name="email" xsi:type="string">John.Doe%isolation%@example.com</field>
             <field name="firstname" xsi:type="string">John</field>
             <field name="lastname" xsi:type="string">Doe</field>
@@ -172,6 +179,7 @@
             <field name="postcode" xsi:type="string">90230</field>
             <field name="city" xsi:type="string">Culver City</field>
             <field name="street" xsi:type="string">6161 West Centinela Avenue</field>
+            <field name="website_id" xsi:type="string">Main Website</field>
             <field name="email" xsi:type="string">John.Doe%isolation%@example.com</field>
             <field name="firstname" xsi:type="string">John</field>
             <field name="lastname" xsi:type="string">Doe</field>
@@ -189,6 +197,7 @@
             <field name="postcode" xsi:type="string">90230</field>
             <field name="city" xsi:type="string">Culver City</field>
             <field name="street" xsi:type="string">6161 West Centinela Avenue</field>
+            <field name="website_id" xsi:type="string">Main Website</field>
             <field name="email" xsi:type="string">John.Doe%isolation%@example.com</field>
             <field name="firstname" xsi:type="string">John</field>
             <field name="lastname" xsi:type="string">Doe</field>
@@ -205,6 +214,7 @@
             <field name="postcode" xsi:type="string">90230</field>
             <field name="city" xsi:type="string">Culver City</field>
             <field name="street" xsi:type="string">6161 West Centinela Avenue</field>
+            <field name="website_id" xsi:type="string">Main Website</field>
             <field name="email" xsi:type="string">John.Doe%isolation%@example.com</field>
             <field name="firstname" xsi:type="string">John</field>
             <field name="lastname" xsi:type="string">Doe</field>

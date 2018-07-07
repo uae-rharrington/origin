@@ -93,9 +93,6 @@ class ViewTierPriceChangesInSharedCatalogTest extends AbstractSharedCatalogConfi
         $qty,
         $price
     ) {
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdatePrice');
         $sharedCatalog->persist();
         $products = $this->persistProduct($productsList);
         $product = $products[0];
@@ -127,6 +124,9 @@ class ViewTierPriceChangesInSharedCatalogTest extends AbstractSharedCatalogConfi
         $this->sharedCatalogConfigure->getTierPriceModal()->save();
         $this->sharedCatalogConfigure->getNavigation()->nextStep();
         $this->sharedCatalogConfigure->getPageActionBlock()->save();
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdatePrice');
 
         return ['sku' => $product->getSku()];
     }

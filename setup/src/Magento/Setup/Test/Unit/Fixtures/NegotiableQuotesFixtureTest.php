@@ -161,7 +161,7 @@ class NegotiableQuotesFixtureTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test execute method.
-     *
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      * @return void
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */

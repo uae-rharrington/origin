@@ -6,6 +6,7 @@
 
 use Magento\TestFramework\Helper\Bootstrap;
 
+/** @var \Magento\Customer\Api\CustomerRepositoryInterface $customerRepository */
 $customerRepository = Bootstrap::getObjectManager()->create(
     \Magento\Customer\Api\CustomerRepositoryInterface::class
 );
@@ -28,7 +29,7 @@ $negotiableQuote = Bootstrap::getObjectManager()->create(
 );
 $negotiableQuote->setQuoteId($quoteId);
 $negotiableQuote->setQuoteName('quote_customer_send');
-$negotiableQuote->setCreatorId(1);
+$negotiableQuote->setCreatorId($customer->getId());
 $negotiableQuote->setCreatorType(Magento\Authorization\Model\UserContextInterface::USER_TYPE_CUSTOMER);
 $negotiableQuote->setIsRegularQuote(true);
 $negotiableQuote->setNegotiatedPriceType(

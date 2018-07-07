@@ -54,3 +54,6 @@ atlassian*
 /vendor
 !/vendor/.htaccess
 
+/dev/tests/acceptance/
+/.github/*
+!/.github/.htaccess

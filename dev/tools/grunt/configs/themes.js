@@ -41,16 +41,6 @@ module.exports = {
         ],
         dsl: 'less'
     },
-    uae: {
-        area: 'frontend',
-        name: 'UnitedArtsEducation/unitednow',
-        locale: 'en_US',
-        files: [
-            'css/styles-m',
-            'css/styles-l'
-        ],
-        dsl: 'less'
-    },
     backend: {
         area: 'adminhtml',
         name: 'Magento/backend',

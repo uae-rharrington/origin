@@ -76,6 +76,10 @@
         <selector>[data-index="company_admin"]</selector>
         <strategy>css selector</strategy>
         <fields>
+            <website_id>
+                <selector>[name="company_admin[website_id]"]</selector>
+                <input>select</input>
+            </website_id>
             <job_title>
                 <selector>[name="company_admin[job_title]"]</selector>
             </job_title>

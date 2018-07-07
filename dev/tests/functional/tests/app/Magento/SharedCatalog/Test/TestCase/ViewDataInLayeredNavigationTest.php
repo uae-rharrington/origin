@@ -146,12 +146,6 @@ class ViewDataInLayeredNavigationTest extends AbstractSharedCatalogConfiguration
         $configData = null
     ) {
         //Preconditions
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdateCategoryPermissions');
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdatePrice');
         $this->configData = $configData;
         $this->objectManager->create(
             'Magento\Config\Test\TestStep\SetupConfigurationStep',
@@ -200,6 +194,12 @@ class ViewDataInLayeredNavigationTest extends AbstractSharedCatalogConfiguration
             $this->sharedCatalogCompany->getModalBlock()->acceptAlert();
         }
         $this->sharedCatalogCompany->getPageActions()->save();
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdateCategoryPermissions');
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdatePrice');
         $this->reindex();
         $this->logoutCustomer($customer);
         $this->cleanCache();

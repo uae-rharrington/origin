@@ -90,16 +90,6 @@ class CreateCategoryFromProductPageTest extends Injectable
         $configData = null
     ) {
         $this->configData = $configData;
-
-        // Preconditions
-        $this->objectManager->create(
-            \Magento\Config\Test\TestStep\SetupConfigurationStep::class,
-            ['configData' => $this->configData, 'flushCache' => true]
-        )->run();
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdateCategoryPermissions');
-
         // Steps
         $sharedCatalog->persist();
         $productGrid->open();
@@ -119,6 +109,14 @@ class CreateCategoryFromProductPageTest extends Injectable
                 ]
             ]
         );
+        $this->objectManager->create(
+            \Magento\Config\Test\TestStep\SetupConfigurationStep::class,
+            ['configData' => $this->configData, 'flushCache' => true]
+        )->run();
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdateCategoryPermissions');
+
         if ($customerLogIn) {
             $customer = $sharedCatalog->getDataFieldConfig('companies')['source']->getCompanies()[0]
                 ->getDataFieldConfig('customer')['source']->getCustomer();
