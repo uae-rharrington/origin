@@ -35,7 +35,7 @@
         </referenceBlock>
         <referenceContainer name="product.info.overview" remove="true" />
         <move element="product.info.description" destination="product.info.main" />
-        <referenceContainer name="product.info.stock.sku" remove="true" />
+        <referenceContainer name="product.info.price" remove="true" />
         <referenceContainer name="product.info.details" remove="true" />
         <referenceContainer name="product.info.review" remove="true" />
         <move element="product.info" destination="content" after="product.info.media" />

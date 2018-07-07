@@ -32,7 +32,7 @@
                             <?php $productThumbnail = $block->getImage($_item, 'simple_product_image_on_grouped_pdp'); ?>
                             <?= $productThumbnail->toHtml(); ?>
                         </div>
-                        <div class="product-image" data-mage-init='{"Magento_Ui/js/modal/modal":{
+                        <div class="product-image" style="display: none" data-mage-init='{"Magento_Ui/js/modal/modal":{
                             "trigger":"#thumbnail-<?= $_item->getId() ?>",
                             "buttons":[]
                         }}'>
@@ -49,7 +49,7 @@
                     <div><?= $block->escapeHtml($_item->getShortDescription()) ?></div>
                 </td>
                 <td class="col details">
-                    <a class="product-item-details-<?= $block->escapeHtml($_item->getId()) ?>" href="#"><?= $block->escapeHtml(__('details...')) ?></a>
+                    <a class="product-item-details-<?= $block->escapeHtml($_item->getId()) ?>" href="#"><?= $block->escapeHtml(__('Details')) ?></a>
                 </td>
                 <td class="col price">
                     <?php if ($block->getCanShowProductPrice($_product)): ?>

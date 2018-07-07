@@ -8,14 +8,80 @@
         .page-wrapper {
             margin-bottom: 50px;
         }
+        .product-info-main {
+            margin-bottom: 25px;
+
+            .page-title-wrapper {
+                h1 {
+                    margin-bottom: 25px;
+                }
+            }
+        }
+
         table.grouped {
             td {
+                padding: 8px;
                 vertical-align: middle;
+            }
+
+            .product-image-container {
+                display: block;
+            }
+
+            .col.sku {
+                white-space: nowrap;
+            }
+
+            .product-item-name {
+                margin: 0;
+            }
+
+            .special-price {
+                margin-right: 5px;
+                color: @color-orange-red1;
+            }
+
+            .old-price {
+                text-decoration: line-through;
+
+                .price-label {
+                    display: none;
+                }
+            }
+
+            .prices-tier {
+                margin: 0;
+
+                .item {
+                    margin: 0;
+                    color: @color-orange-red1;
+                    font-weight: @font-weight__bold;
+                    font-size: 13px;
+
+                    .price {
+                        font-size: inherit;
+                    }
+                }
+            }
+
+            .col.qty {
+                width: auto;
+
+                .control.qty {
+                    .qty {
+                        width: 36px;
+                        padding: 0 3px;
+                    }
+                }
             }
         }
         .swatch-color {
             width: 55px;
             height: 40px;
+        }
+
+        .product-thumbnail {
+            cursor: pointer;
         }
 
         .product-add-form {
@@ -67,6 +133,41 @@
             .product-image {
                 margin-bottom: 25px;
                 text-align: center;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-product-grouped {
+        .product.media {
+            margin-bottom: 25px;
+        }
+
+        .table-wrapper.grouped {
+            margin: 0;
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .page-product-grouped {
+        table.grouped {
+            .col.image {
+                float: left;
+            }
+            .col.sku {
+                float: left;
+                align-items: center;
+                height: 55px;
+            }
+            .col.name {
+                clear: left;
+            }
+        }
+        .table-wrapper.grouped .table {
+            .col.sku {
+                display: flex;
+                padding-top: 15px;
             }
         }
     }
