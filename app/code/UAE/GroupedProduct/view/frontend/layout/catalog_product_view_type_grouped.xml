@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.grouped">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">UAE_GroupedProduct::product/view/type/grouped.phtml</argument>
+            </action>
+            <block class="UAE\GroupedProduct\Block\Product\View\Description" name="product.info.details.simple" template="UAE_GroupedProduct::product/view/details.phtml" after="product.info.media">
+                <block class="UAE\GroupedProduct\Block\Product\View\Description" name="product.info.description.simple" template="Magento_Catalog::product/view/attribute.phtml" group="detailed_info">
+                    <arguments>
+                        <argument name="at_call" xsi:type="string">getDescription</argument>
+                        <argument name="at_code" xsi:type="string">description</argument>
+                        <argument name="css_class" xsi:type="string">description</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">Details</argument>
+                    </arguments>
+                </block>
+                <block class="UAE\GroupedProduct\Block\Product\View\Attributes" name="product.attributes.simple" as="additional.simple" template="Magento_Catalog::product/view/attributes.phtml" group="detailed_info">
+                    <arguments>
+                        <argument translate="true" name="title" xsi:type="string">More Information</argument>
+                    </arguments>
+                </block>
+                <block class="UAE\GroupedProduct\Block\Product\Review" name="reviews.tab.simple" as="reviews_simple" template="UAE_GroupedProduct::review.phtml" group="detailed_info"/>
+            </block>
+        </referenceBlock>
+        <referenceBlock name="product.info.addtocart">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">UAE_GroupedProduct::product/view/addtocart.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="product.info.overview" remove="true" />
+        <move element="product.info.description" destination="product.info.main" />
+        <referenceContainer name="product.info.price" remove="true" />
+        <referenceContainer name="product.info.details" remove="true" />
+        <referenceContainer name="product.info.review" remove="true" />
+        <move element="product.info" destination="content" after="product.info.media" />
+    </body>
+</page>

@@ -231,6 +231,7 @@ return [
         'Shopial_Facebook' => 1,
         'Temando_Shipping' => 1,
         'UAE_AdvancedCheckout' => 1,
+        'UAE_GroupedProduct' => 1,
         'UAE_Theme' => 1,
         'Vertex_Tax' => 1,
         'Xtento_OrderExport' => 1,
