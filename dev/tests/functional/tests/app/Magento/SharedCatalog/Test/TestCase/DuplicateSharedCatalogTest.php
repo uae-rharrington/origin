@@ -101,12 +101,6 @@ class DuplicateSharedCatalogTest extends Injectable
             \Magento\Config\Test\TestStep\SetupConfigurationStep::class,
             ['configData' => $this->configData]
         )->run();
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdatePrice');
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdateCategoryPermissions');
         $sharedCatalog->persist();
         $category->persist();
         $productsToAssign = $this->prepareProducts($category, $products);
@@ -122,6 +116,12 @@ class DuplicateSharedCatalogTest extends Injectable
         $this->sharedCatalogIndex->getGrid()->openEdit($this->sharedCatalogIndex->getGrid()->getFirstItemId());
         $this->sharedCatalogCreate->getFormPageActions()->duplicate();
         $this->sharedCatalogCreate->getFormPageActions()->save();
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdatePrice');
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdateCategoryPermissions');
 
         return [
             'sharedCatalog' => $sharedCatalog,

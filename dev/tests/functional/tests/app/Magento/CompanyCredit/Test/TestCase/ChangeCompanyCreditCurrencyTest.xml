@@ -98,6 +98,7 @@
             <constraint name="Magento\CompanyCredit\Test\Constraint\AssertCreditHistoryIsCorrectOnStorefront" />
         </variation>
         <variation name="ChangeCompanyCreditCurrencyTestVariation2" ticketId="MAGETWO-68383" summary="Place order, change credit currency and check company credit history record.">
+            <data name="issue" xsi:type="string">MAGETWO-87569: [FAT] Fix unstable tests</data>
             <data name="company/dataset" xsi:type="string">company_with_required_fields_and_status</data>
             <data name="customer/dataset" xsi:type="string">customer_US</data>
             <data name="productsData/0" xsi:type="string">catalogProductSimple::product_10_dollar</data>

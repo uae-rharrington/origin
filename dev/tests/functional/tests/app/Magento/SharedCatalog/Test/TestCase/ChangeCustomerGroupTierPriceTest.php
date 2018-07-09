@@ -122,9 +122,6 @@ class ChangeCustomerGroupTierPriceTest extends AbstractSharedCatalogConfiguratio
         array $tierPricesData,
         array $steps = []
     ) {
-        $this->objectManager->getInstance()
-            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
-            ->run('sharedCatalogUpdatePrice');
         $this->tierPricesData = $tierPricesData;
         $sharedCatalog->persist();
         $this->sharedCatalog = $sharedCatalog;
@@ -165,6 +162,9 @@ class ChangeCustomerGroupTierPriceTest extends AbstractSharedCatalogConfiguratio
             $classMethod = $this->getMethodName($step);
             $this->$classMethod();
         }
+        $this->objectManager->getInstance()
+            ->create(\Magento\Mtf\Util\Command\Cli\Queue::class)
+            ->run('sharedCatalogUpdatePrice');
 
         return [
             'sku' => $this->product->getSku(),

@@ -19,15 +19,15 @@ class AssertCustomPriceInputsDisabled extends AbstractConstraint
      *
      * @param SharedCatalogConfigure $sharedCatalogConfigure
      * @param array $products
-     * @param string $websiteName
+     * @param string $allWebsitesName
      * @return void
      */
     public function processAssert(
         SharedCatalogConfigure $sharedCatalogConfigure,
         array $products,
-        $websiteName
+        $allWebsitesName
     ) {
-        $sharedCatalogConfigure->getPricingGrid()->filterProductsByWebsite($websiteName);
+        $sharedCatalogConfigure->getPricingGrid()->filterProductsByWebsite($allWebsitesName);
         foreach ($products as $product) {
             $sharedCatalogConfigure->getPricingGrid()->search(['sku' => $product->getSku()]);
             \PHPUnit_Framework_Assert::assertTrue(

@@ -18,11 +18,16 @@ $customerRepository = Bootstrap::getObjectManager()->get(CustomerRepositoryInter
 $customerCompany = $customerRepository->get('customercompany22@example.com');
 $customerRepository->delete($customerCompany);
 $companyAdmin = $customerRepository->get('email@companyquote.com');
-$companyId = $companyAdmin->getExtensionAttributes()->getCompanyAttributes()->getCompanyId();
-/** @var CompanyRepositoryInterface $companyRepository */
-$companyRepository = Bootstrap::getObjectManager()->get(CompanyRepositoryInterface::class);
-if ($companyId) {
-    $companyRepository->deleteById($companyId);
+if ($companyAdmin->getExtensionAttributes()->getCompanyAttributes()) {
+    $companyId = $companyAdmin->getExtensionAttributes()
+        ->getCompanyAttributes()
+        ->getCompanyId();
+    if ($companyId) {
+        /** @var CompanyRepositoryInterface $companyRepository */
+        $companyRepository = Bootstrap::getObjectManager()
+            ->get(CompanyRepositoryInterface::class);
+        $companyRepository->deleteById($companyId);
+    }
 }
 $customerRepository->delete($companyAdmin);
 $registry->unregister('isSecureArea');

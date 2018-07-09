@@ -96,10 +96,6 @@ class ConfigureSharedCatalogStep implements TestStepInterface
      */
     public function run()
     {
-        // Run queues to set tier prices and catalog permissions after shared catalog assignment operations
-        $this->queue->run('sharedCatalogUpdateCategoryPermissions');
-        $this->queue->run('sharedCatalogUpdatePrice');
-
         $this->sharedCatalogIndex->open();
         $this->sharedCatalogIndex->getGrid()->search(['name' => $this->sharedCatalog->getName()]);
         $this->sharedCatalogIndex->getGrid()->openConfigure($this->sharedCatalogIndex->getGrid()->getFirstItemId());
@@ -130,5 +126,9 @@ class ConfigureSharedCatalogStep implements TestStepInterface
         }
         $this->sharedCatalogConfigure->getNavigation()->nextStep();
         $this->sharedCatalogConfigure->getPageActionBlock()->save();
+
+        // Run queues to set tier prices and catalog permissions after shared catalog assignment operations
+        $this->queue->run('sharedCatalogUpdateCategoryPermissions');
+        $this->queue->run('sharedCatalogUpdatePrice');
     }
 }

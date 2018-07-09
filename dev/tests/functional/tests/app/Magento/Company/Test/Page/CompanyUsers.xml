@@ -11,5 +11,6 @@
         <block name="customerPopup" class="Magento\Company\Test\Block\CustomerPopup" locator=".modal-popup._show" strategy="css selector"/>
         <block name="customerDeletePopup" class="Magento\Company\Test\Block\CustomerDeletePopup" locator=".modal-popup._show" strategy="css selector"/>
         <block name="accountMenu" class="Magento\Company\Test\Block\AccountMenu" locator="#block-collapsible-nav" strategy="css selector"/>
+        <block name="messages" class="Magento\Backend\Test\Block\Messages" locator=".messages" strategy="css selector"/>
     </page>
 </config>

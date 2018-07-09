@@ -14,11 +14,3 @@
         border-color: @active__color;
     }
 }
-
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
-    // Use semantic gutter value for header side padding, instead of generic value
-    .header.content {
-        padding-left: @layout-indent__width; // instead of @indent__base
-        padding-right: @layout-indent__width; // instead of @indent__base
-    }
-}

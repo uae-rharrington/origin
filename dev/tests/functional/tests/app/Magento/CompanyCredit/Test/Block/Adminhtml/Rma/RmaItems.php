@@ -19,7 +19,7 @@ class RmaItems extends Block
      *
      * @var string
      */
-    private $resolutionField = "#rma_properties_resolution_0";
+    private $resolutionField = '[data-ui-id="magento-rma-new-tab-items-fieldset-element-select-resolution"]';
 
     /**
      * Get options of the resolution select.

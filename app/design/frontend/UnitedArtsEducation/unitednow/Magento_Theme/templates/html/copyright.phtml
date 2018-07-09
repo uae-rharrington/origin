@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+/**
+ * @var $block Magento\Theme\Block\Html\Footer
+ */
+?>
+<?php
+/** @var $helper UAE\Theme\Helper\Data */
+$helper = $this->helper('UAE\Theme\Helper\Data');
+?>
+<small class="copyright">
+    <span><?= /* @escapeNotVerified */ $block->getCopyright() ?></span>
+    <span><?= $helper->getStorePhone() ?></span>
+</small>

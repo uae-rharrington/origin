@@ -22,6 +22,7 @@
             <data name="userWithoutCompany/dataset" xsi:type="string">default</data>
             <data name="hasCompany" xsi:type="number">0</data>
             <data name="configData" xsi:type="string">company_enable</data>
+            <constraint name="Magento\Company\Test\Constraint\AssertCustomerCreatedMessage" />
             <constraint name="Magento\Customer\Test\Constraint\AssertCustomerInGrid" />
             <constraint name="Magento\Company\Test\Constraint\AssertUsersCompanyIsCorrect" />
         </variation>

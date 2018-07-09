@@ -7,6 +7,17 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <move element="quick_order_link" destination="catalog.topnav" />
+        <move element="customer" destination="catalog.topnav" />
+        <move element="authorization-link-login" destination="catalog.topnav" />
+        <referenceBlock name="quick_order_link">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Magento_Customer::account/link/quick-order.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="header.panel.wrapper" remove="true" />
+        <referenceContainer name="store.links" remove="true" />
+
         <referenceBlock name="logo">
             <arguments>
                 <argument name="logo_file" xsi:type="string">images/logo.png</argument>
@@ -14,5 +25,26 @@
                 <argument name="logo_img_height" xsi:type="number">43</argument>
             </arguments>
         </referenceBlock>
+
+        <referenceContainer name="page.top">
+            <container name="header.promo.outer" htmlTag="div" htmlClass="header-promo" before="breadcrumbs">
+                <block class="Magento\Cms\Block\Block" name="header.promo">
+                    <action method="setBlockId">
+                        <argument name="block_id" xsi:type="string">header_promo</argument>
+                    </action>
+                </block>
+            </container>
+        </referenceContainer>
+
+        <referenceBlock name="footer_links" remove="true" />
+        <referenceContainer name="footer">
+            <container name="footer.links.outer" htmlTag="div" htmlClass="footer links">
+                <block class="Magento\Cms\Block\Block" name="footer.links">
+                    <action method="setBlockId">
+                        <argument name="block_id" xsi:type="string">custom_footer_links</argument>
+                    </action>
+                </block>
+            </container>
+        </referenceContainer>
     </body>
 </page>

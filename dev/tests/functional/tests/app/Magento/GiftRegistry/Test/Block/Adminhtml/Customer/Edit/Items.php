@@ -34,7 +34,7 @@ class Items extends Grid
      *
      * @var string
      */
-    protected $actionSelector = '[name$="[action]"]';
+    protected $actionSelector = '#action';
 
     /**
      * Selector for update items and qty's button
@@ -56,7 +56,9 @@ class Items extends Grid
                 sprintf($this->rowSelector, $productProperties['name']),
                 Locator::SELECTOR_XPATH
             );
+            $this->waitLoader();
             $row->find($this->qtySelector)->setValue($productProperties['qty']);
+            $this->waitLoader();
             $row->find($this->actionSelector, Locator::SELECTOR_CSS, 'select')->setValue($productProperties['action']);
         }
         $this->_rootElement->find($this->submit)->click();

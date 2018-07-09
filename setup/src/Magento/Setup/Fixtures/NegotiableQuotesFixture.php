@@ -601,6 +601,7 @@ class NegotiableQuotesFixture extends Fixture
                 $this->resources->getTableName('customer_entity') . "`;")
             ->fetchColumn(0);
 
+        //mysql.increment.offset - 1
         $customerIncrement = $minCustomerId > 1 ? --$minCustomerId : 0;
 
         $query1 = 'UPDATE `%s` o, `%s` q, `%s` qa SET o.customer_id = IF(o.entity_id %% :customers_count = 0, ' .
