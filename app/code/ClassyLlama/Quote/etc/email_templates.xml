@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="quoterequest_email_customer_template" label="New Quote Request" file="quoterequest_new.html" type="html" module="ClassyLlama_Quote" area="frontend"/>
+    <template id="quoterequest_email_guest_template" label="New Quote Request for Guest" file="quoterequest_new_guest.html" type="html" module="ClassyLlama_Quote" area="frontend"/>
+</config>
