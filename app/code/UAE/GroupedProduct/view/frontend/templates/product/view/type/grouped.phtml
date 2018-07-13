@@ -24,7 +24,7 @@
         <tbody>
             <tr>
                 <td class="col image">
-                    <?php $color = explode('#', $_item->getResource()->getAttribute('color')->getFrontend()->getValue($_item)); ?>
+                    <?php $color = explode('#', $_item->getColorHex()); ?>
                     <?php if (isset($color[0]) && isset($color[1])): ?>
                         <div class="swatch-color" title="<?php echo ($color[0] != '') ? $color[0] : '#' . $color[1]; ?>" style="background: <?php echo '#' . $color[1]; ?>;"></div>
                     <?php elseif ($productThumbnail = $block->getImage($_item, 'simple_product_image_on_grouped_pdp')): ?>
