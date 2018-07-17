@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Global di config
+ *
+ * @category ClassyLlama
+ * @package ClassyLlama_OrderComments
+ * @copyright Copyright (c) 2018 ClassyLlama
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="ClassyLlama\OrderComments\Api\Data\OrderCommentSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <preference for="ClassyLlama\OrderComments\Api\OrderCommentRepositoryInterface"
+                type="ClassyLlama\OrderComments\Model\OrderCommentRepository" />
+    <preference for="ClassyLlama\OrderComments\Api\Data\OrderCommentInterface"
+                type="ClassyLlama\OrderComments\Model\OrderComment" />
+
+    <type name="ClassyLlama\OrderComments\Model\OrderCommentRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor</argument>
+        </arguments>
+    </type>
+</config>
