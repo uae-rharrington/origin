@@ -33,53 +33,28 @@ class InstallSchema implements InstallSchemaInterface
         $installer = $setup;
         $installer->startSetup();
 
-        $orderCommentTable = $installer->getTable('uae_order_comment');
+        $connection = $installer->getConnection();
 
-        /**
-         * Create uae_order_comment table
-         */
-        if (!$installer->tableExists($orderCommentTable)) {
-            $table = $installer->getConnection()->newTable(
-                $installer->getTable($orderCommentTable)
-            )->addColumn(
-                'entity_id',
-                Table::TYPE_INTEGER,
-                null,
-                ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
-                'Entity Id'
-            )->addColumn(
-                'order_id',
-                Table::TYPE_INTEGER,
-                null,
-                ['unsigned' => true, 'nullable' => false],
-                'Order Id'
-            )->addColumn(
-                'order_type',
-                Table::TYPE_TEXT,
-                10,
-                ['nullable' => false],
-                'Order Type'
-            )->addColumn(
-                'order_comment',
-                Table::TYPE_TEXT,
-                255,
-                ['nullable' => false, 'default' => ''],
-                'Order Comment'
-            )->addColumn(
-                'created_at',
-                Table::TYPE_TIMESTAMP,
-                null,
-                ['nullable' => false, 'default' => Table::TIMESTAMP_INIT],
-                'Comment Create Date'
-            )->addColumn(
-                'updated_at',
-                Table::TYPE_TIMESTAMP,
-                null,
-                ['nullable' => false, 'default' => Table::TIMESTAMP_INIT_UPDATE],
-                'Comment Create Date'
-            )->setComment('UAE Order Comment Table');
+        $columns = [
+            'order_comment' => [
+                'type' => Table::TYPE_TEXT,
+                'length' => '255',
+                'nullable' => false,
+                'default' => '',
+                'comment' => 'Order Comment'
+            ],
+        ];
 
-            $installer->getConnection()->createTable($table);
+        /** Add 'order_comment' field to 'quote' table */
+        $quoteTable = $installer->getTable('quote');
+        foreach ($columns as $name => $definition) {
+            $connection->addColumn($quoteTable, $name, $definition);
+        }
+
+        /** Add 'order_comment' field to 'sales_order' table */
+        $saleOrderTable = $installer->getTable('sales_order');
+        foreach ($columns as $name => $definition) {
+            $connection->addColumn($saleOrderTable, $name, $definition);
         }
 
         $installer->endSetup();

@@ -12,8 +12,9 @@ define([
                 shippingAddress['extension_attributes'] = {};
             }
 
-            shippingAddress['extension_attributes']['order_comment'] = shippingAddress.customAttributes['order_comment'];
-            // pass execution to original action ('Magento_Checkout/js/action/set-shipping-information')
+            if (shippingAddress.customAttributes !== undefined) {
+                shippingAddress['extension_attributes']['order_comment'] = shippingAddress.customAttributes['order_comment'];
+            }
             return originalAction();
         });
     };
