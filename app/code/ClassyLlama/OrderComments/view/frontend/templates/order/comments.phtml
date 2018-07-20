@@ -1,0 +1,30 @@
+<?php
+/**
+ * @category ClassyLlama
+ * @package ClassyLlama_OrderComments
+ * @copyright Copyright (c) 2018 ClassyLlama
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * @var $block \Magento\Sales\Block\Order\Comments
+ * @see \Magento\Sales\Block\Order\Comments
+ */
+?>
+<?php $order = $block->getEntity()->getOrder(); ?>
+<?php if ($block->hasComments() || $order->getOrderComment()): ?>
+    <div class="order additional details comments">
+        <h3 class="subtitle"><?= /* @escapeNotVerified */ $block->getTitle() ?></h3>
+        <dl class="order comments">
+            <dt class="comment date"><?= /* @escapeNotVerified */ $block->formatDate($order->getCreatedAt(), \IntlDateFormatter::MEDIUM, true) ?></dt>
+            <dd class="comment text"><?= $block->escapeHtml($order->getOrderComment()) ?></dd>
+            <?php foreach ($block->getComments() as $_commentItem): ?>
+                <dt class="comment date"><?= /* @escapeNotVerified */ $block->formatDate($_commentItem->getCreatedAt(), \IntlDateFormatter::MEDIUM, true) ?></dt>
+                <dd class="comment text"><?= $block->escapeHtml($_commentItem->getComment()) ?></dd>
+            <?php endforeach; ?>
+        </dl>
+    </div>
+<?php endif;?>

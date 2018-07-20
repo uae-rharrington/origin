@@ -14,6 +14,14 @@ define([
 
             if (shippingAddress.customAttributes !== undefined) {
                 shippingAddress['extension_attributes']['order_comment'] = shippingAddress.customAttributes['order_comment'];
+            } else {
+                var orderComment = $('#onepage-checkout-shipping-method-additional-load')
+                    .find("div[name='shippingAddress.custom_attributes.order_comment']")
+                    .find('textarea')
+                    .val();
+                if (orderComment !== undefined) {
+                    shippingAddress['extension_attributes']['order_comment'] = orderComment;
+                }
             }
             return originalAction();
         });
