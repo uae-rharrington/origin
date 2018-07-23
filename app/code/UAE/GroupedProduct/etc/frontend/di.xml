@@ -8,7 +8,4 @@
     <type name="Magento\GroupedProduct\Model\Product\Type\Grouped">
         <plugin name="extend_attributes_list" type="UAE\GroupedProduct\Plugin\Model\Product\Type\Grouped\ExtendProductAttributesList" sortOrder="10" disabled="false" />
     </type>
-    <type name="Magento\Catalog\Block\Product\View\Attributes">
-        <plugin name="hide_specific_attributes" type="UAE\AdvancedCheckout\Plugin\Catalog\Block\Product\View\HideAttributes" />
-    </type>
 </config>
