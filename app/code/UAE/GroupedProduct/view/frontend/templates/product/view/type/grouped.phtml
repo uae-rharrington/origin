@@ -20,81 +20,83 @@
 <div class="table-wrapper grouped">
     <table class="table data grouped" id="super-product-table">
         <?php if ($_hasAssociatedProducts): ?>
-        <?php foreach ($_associatedProducts as $_item): ?>
-        <tbody>
-            <tr>
-                <td class="col image">
-                    <?php $color = explode('#', $_item->getColorHex()); ?>
-                    <?php if (isset($color[0]) && isset($color[1])): ?>
-                        <div class="swatch-color" title="<?php echo ($color[0] != '') ? $color[0] : '#' . $color[1]; ?>" style="background: <?php echo '#' . $color[1]; ?>;"></div>
-                    <?php elseif ($productThumbnail = $block->getImage($_item, 'simple_product_image_on_grouped_pdp')): ?>
-                        <div class="product-thumbnail" id="thumbnail-<?= $_item->getId() ?>">
-                            <?php $productThumbnail = $block->getImage($_item, 'simple_product_image_on_grouped_pdp'); ?>
-                            <?= $productThumbnail->toHtml(); ?>
-                        </div>
-                        <div class="product-image" style="display: none" data-mage-init='{"Magento_Ui/js/modal/modal":{
-                            "trigger":"#thumbnail-<?= $_item->getId() ?>",
-                            "buttons":[]
-                        }}'>
-                            <?php $productImage = $block->getImage($_item, 'product_page_image_medium'); ?>
-                            <?= $productImage->toHtml(); ?>
-                        </div>
-                    <?php endif; ?>
-                </td>
-                <td class="col sku">
-                    <strong class="product-item-sku"><?= $block->escapeHtml($_item->getSku()) ?></strong>
-                </td>
-                <td class="col name">
-                    <strong class="product-item-name"><?= $block->escapeHtml($_item->getName()) ?></strong>
-                    <div><?= $block->escapeHtml($_item->getShortDescription()) ?></div>
-                </td>
-                <td class="col details">
-                    <a class="product-item-details-<?= $block->escapeHtml($_item->getId()) ?>" href="#"><?= $block->escapeHtml(__('Details')) ?></a>
-                </td>
-                <td class="col price">
-                    <?php if ($block->getCanShowProductPrice($_product)): ?>
-                        <?php if ($block->getCanShowProductPrice($_item)): ?>
-                            <?= /* @escapeNotVerified */ $block->getProductPrice($_item) ?>
+            <tbody>
+                <?php foreach ($_associatedProducts as $_item): ?>
+                <tr>
+                    <td class="col image">
+                        <?php $color = explode('#', $_item->getColorHex()); ?>
+                        <?php if (isset($color[0]) && isset($color[1])): ?>
+                            <div class="swatch-color" title="<?php echo ($color[0] != '') ? $color[0] : '#' . $color[1]; ?>" style="background: <?php echo '#' . $color[1]; ?>;"></div>
+                        <?php elseif ($productThumbnail = $block->getImage($_item, 'simple_product_image_on_grouped_pdp')): ?>
+                            <div class="product-thumbnail" id="thumbnail-<?= $_item->getId() ?>">
+                                <?php $productThumbnail = $block->getImage($_item, 'simple_product_image_on_grouped_pdp'); ?>
+                                <?php if (strpos($productThumbnail->getImageUrl(), 'placeholder') === false): ?>
+                                    <?= $productThumbnail->toHtml(); ?>
+                                <?php endif; ?>
+                            </div>
+                            <div class="product-image" style="display: none" data-mage-init='{"Magento_Ui/js/modal/modal":{
+                                "trigger":"#thumbnail-<?= $_item->getId() ?>",
+                                "buttons":[]
+                            }}'>
+                                <?php $productImage = $block->getImage($_item, 'product_page_image_medium'); ?>
+                                <?= $productImage->toHtml(); ?>
+                            </div>
                         <?php endif; ?>
-                    <?php endif; ?>
-                    <?php if ($block->getCanShowProductPrice($_product)
-                    && $block->getCanShowProductPrice($_item)
-                    && trim($block->getProductPriceHtml(
-                        $_item,
-                        \Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE
-                    ))): ?>
-                        <div class="additional-pricing">
-                            <?= $block->getProductPriceHtml(
-                                $_item,
-                                \Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE
-                            ) ?>
+                    </td>
+                    <td class="col sku">
+                        <strong class="product-item-sku"><?= $block->escapeHtml($_item->getSku()) ?></strong>
+                    </td>
+                    <td class="col short-description">
+                        <div><?= $block->escapeHtml($_item->getShortDescription()) ?></div>
+                    </td>
+                    <td class="col details">
+                        <a class="product-item-details-<?= $block->escapeHtml($_item->getId()) ?>" href="#"><?= $block->escapeHtml(__('Details')) ?></a>
+                    </td>
+                    <td class="col price">
+                        <?php if ($block->getCanShowProductPrice($_product)): ?>
+                            <?php if ($block->getCanShowProductPrice($_item)): ?>
+                                <?= /* @escapeNotVerified */ $block->getProductPrice($_item) ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php if ($block->getCanShowProductPrice($_product)
+                        && $block->getCanShowProductPrice($_item)
+                        && trim($block->getProductPriceHtml(
+                            $_item,
+                            \Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE
+                        ))): ?>
+                            <div class="additional-pricing">
+                                <?= $block->getProductPriceHtml(
+                                    $_item,
+                                    \Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE
+                                ) ?>
+                            </div>
+                <?php endif; ?>
+                    </td>
+                    <?php if ($_product->isSaleable()): ?>
+                    <td class="col qty">
+                    <?php if ($_item->isSaleable()) : ?>
+                        <div class="control qty">
+                            <input type="number"
+                                   name="super_group[<?= /* @escapeNotVerified */ $_item->getId() ?>]"
+                                   data-selector="super_group[<?= /* @escapeNotVerified */ $_item->getId() ?>]"
+                                   value="<?= /* @escapeNotVerified */ ($_item->getQty() * 1 > 0) ? $_item->getQty() * 1 : '' ?>"
+                                   title="<?= /* @escapeNotVerified */ __('Qty') ?>"
+                                   placeholder="<?= /* @escapeNotVerified */ __('qty') ?>"
+                                   class="input-text qty"
+                                   data-validate="{'validate-grouped-qty':'#super-product-table'}"
+                                   data-errors-message-box="#validation-message-box"/>
                         </div>
-            <?php endif; ?>
-                </td>
-                <?php if ($_product->isSaleable()): ?>
-                <td class="col qty">
-                <?php if ($_item->isSaleable()) : ?>
-                    <div class="control qty">
-                        <input type="number"
-                               name="super_group[<?= /* @escapeNotVerified */ $_item->getId() ?>]"
-                               data-selector="super_group[<?= /* @escapeNotVerified */ $_item->getId() ?>]"
-                               value="<?= /* @escapeNotVerified */ ($_item->getQty() * 1 > 0) ? $_item->getQty() * 1 : '' ?>"
-                               title="<?= /* @escapeNotVerified */ __('Qty') ?>"
-                               placeholder="<?= /* @escapeNotVerified */ __('qty') ?>"
-                               class="input-text qty"
-                               data-validate="{'validate-grouped-qty':'#super-product-table'}"
-                               data-errors-message-box="#validation-message-box"/>
-                    </div>
-                <?php else: ?>
-                    <div class="stock unavailable" title="<?= /* @escapeNotVerified */ __('Availability') ?>">
-                        <span><?= /* @escapeNotVerified */ __('Out of stock') ?></span>
-                    </div>
-                <?php endif; ?>
-                </td>
-                <?php endif; ?>
-            </tr>
+                    <?php else: ?>
+                        <div class="stock unavailable" title="<?= /* @escapeNotVerified */ __('Availability') ?>">
+                            <span><?= /* @escapeNotVerified */ __('Out of stock') ?></span>
+                        </div>
+                    <?php endif; ?>
+                    </td>
+                    <?php endif; ?>
+                </tr>
+
+            <?php endforeach; ?>
         </tbody>
-        <?php endforeach; ?>
         <?php else: ?>
         <tbody>
             <tr>

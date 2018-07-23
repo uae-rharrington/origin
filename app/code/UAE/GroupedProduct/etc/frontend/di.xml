@@ -6,6 +6,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\GroupedProduct\Model\Product\Type\Grouped">
-        <plugin name="addColorToCollection" type="UAE\GroupedProduct\Plugin\Model\Product\Type\Grouped\ExtendProductAttributesList" sortOrder="10" disabled="false" />
+        <plugin name="extend_attributes_list" type="UAE\GroupedProduct\Plugin\Model\Product\Type\Grouped\ExtendProductAttributesList" sortOrder="10" disabled="false" />
     </type>
 </config>
