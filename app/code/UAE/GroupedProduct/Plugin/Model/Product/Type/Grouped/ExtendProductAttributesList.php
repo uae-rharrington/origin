@@ -15,14 +15,16 @@ class ExtendProductAttributesList
      *
      * @param \Magento\GroupedProduct\Model\Product\Type\Grouped $subject
      * @param \Magento\Catalog\Model\ResourceModel\Product\Link\Product\Collection $collection
+     * @param \Magento\Catalog\Model\Product $product
      * @return \Magento\Catalog\Model\ResourceModel\Product\Link\Product\Collection
      */
     public function afterGetAssociatedProductCollection(
         \Magento\GroupedProduct\Model\Product\Type\Grouped $subject,
-        $collection
+        \Magento\Catalog\Model\ResourceModel\Product\Link\Product\Collection $collection,
+        \Magento\Catalog\Model\Product $product
     ) {
-
-        $collection->addAttributeToSelect(['color_hex', 'thumbnail', 'image', 'short_description', 'description']);
+        $attributes = $product->getAttributes();
+        $collection->addAttributeToSelect(array_keys($attributes));
 
         return $collection;
     }
