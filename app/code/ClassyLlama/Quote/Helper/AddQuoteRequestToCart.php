@@ -12,7 +12,7 @@ class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Number of days that a Quote Request's pricing data is valid for
      */
-    const QUOTE_REQUEST_STALE_DAYS = 30;
+    const QUOTE_REQUEST_STALE_DAYS = 60;
 
     /**
      * Results array key for non-exceptional errors encountered during addQuoteRequestToCart
