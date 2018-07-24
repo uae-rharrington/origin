@@ -90,7 +90,9 @@ class Attributes extends \Magento\Framework\View\Element\Template
         foreach ($attributes as $attribute) {
             if ($attribute->getIsVisibleOnFront() && !in_array($attribute->getAttributeCode(), $excludeAttr)) {
                 $value = $attribute->getFrontend()->getValue($product);
-
+                if (!$this->isAttributeVisible($attribute->getAttributeCode(), $value)) {
+                    continue;
+                }
                 if (!$product->hasData($attribute->getAttributeCode())) {
                     $value = __('N/A');
                 } elseif ((string)$value == '') {
@@ -109,5 +111,27 @@ class Attributes extends \Magento\Framework\View\Element\Template
             }
         }
         return $data;
+    }
+
+    /**
+     * Check if attribute needs to be displayed in "More Details" tab in popup.
+     *
+     * @param string $attrCode
+     * @param string $attrValue
+     * @return bool
+     */
+    private function isAttributeVisible($attrCode, $attrValue)
+    {
+        if ($attrValue instanceof \Magento\Framework\Phrase) {
+            $attrValue = strval($attrValue);
+        }
+
+        if (!$attrValue || ($attrCode == 'qualifies_for_free_shipping' && in_array($attrValue, ['Yes', 'N/A']))
+            || ($attrCode == 'ships_from_manufacturer' && in_array($attrValue, ['No', 'N/A']))
+            || ($attrCode == 'delivery_time' && $attrValue == 'N/A')) {
+            return false;
+        }
+
+        return true;
     }
 }
