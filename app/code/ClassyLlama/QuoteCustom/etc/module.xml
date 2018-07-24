@@ -12,7 +12,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="ClassyLlama_QuoteCustom" setup_version="1.0.0">
         <sequence>
-            <module name="ClassyLlama_Quot" />
+            <module name="ClassyLlama_Quote" />
             <module name="ShipperHQ_Shipper" />
         </sequence>
     </module>

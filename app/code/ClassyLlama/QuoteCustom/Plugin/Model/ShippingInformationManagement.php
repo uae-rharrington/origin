@@ -98,11 +98,11 @@ class ShippingInformationManagement
     }
 
     /**
-     * Around Plugin
+     * After Plugin
      * Save Address Information
      *
      * @param ShippingInformation $subject
-     * @param \Closure $proceed
+     * @param PaymentDetailsInterface $result
      * @param $cartId
      * @param ShippingInformationInterface $addressInformation
      *
@@ -110,14 +110,13 @@ class ShippingInformationManagement
      */
     public function aroundSaveAddressInformation(
         ShippingInformation $subject,
-        \Closure $proceed,
+        PaymentDetailsInterface $result,
         $cartId,
         ShippingInformationInterface $addressInformation
     ) {
         $address = $addressInformation->getShippingAddress();
-        $result = $proceed($cartId, $addressInformation);
-
         $isQuoteRequest = $address->getExtensionAttributes()->getIsQuoteRequest();
+
         if ($isQuoteRequest) {
             try {
                 /** @var Quote $quote */
