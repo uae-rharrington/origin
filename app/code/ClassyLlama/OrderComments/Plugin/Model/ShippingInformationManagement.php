@@ -50,26 +50,24 @@ class ShippingInformationManagement
     }
 
     /**
-     * Around Plugin
+     * After Plugin
      * Save Address Information
      *
      * @param ShippingInformation $subject
-     * @param \Closure $proceed
+     * @param PaymentDetailsInterface $result
      * @param $cartId
      * @param ShippingInformationInterface $addressInformation
      *
      * @return PaymentDetailsInterface $result
      * @throws InputException
      */
-    public function aroundSaveAddressInformation(
+    public function afterSaveAddressInformation(
         ShippingInformation $subject,
-        \Closure $proceed,
+        PaymentDetailsInterface $result,
         $cartId,
         ShippingInformationInterface $addressInformation
     ) {
         $address = $addressInformation->getShippingAddress();
-        $result = $proceed($cartId, $addressInformation);
-
         $orderComment = $address->getExtensionAttributes()->getOrderComment();
         if ($orderComment) {
             /** @var Quote $quote */
