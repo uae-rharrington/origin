@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ee636deb0f751d6efec0cc203bde46b",
+    "content-hash": "6fcd11dc336611b3090b6dfaaf0c24e5",
     "packages": [
         {
             "name": "aheadworks/module-giftcard",
@@ -1200,7 +1200,7 @@
         },
         {
             "name": "illuminate/config",
-            "version": "v5.6.26",
+            "version": "v5.6.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/config.git",
@@ -1244,7 +1244,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.6.26",
+            "version": "v5.6.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1288,7 +1288,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.6.26",
+            "version": "v5.6.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1332,16 +1332,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.6.26",
+            "version": "v5.6.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "b6de0557cb34ebbbdfbd59a0c97009cf4f7f21aa"
+                "reference": "97ca44c95392ce0a41749fa47b953734d88b94b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/b6de0557cb34ebbbdfbd59a0c97009cf4f7f21aa",
-                "reference": "b6de0557cb34ebbbdfbd59a0c97009cf4f7f21aa",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/97ca44c95392ce0a41749fa47b953734d88b94b1",
+                "reference": "97ca44c95392ce0a41749fa47b953734d88b94b1",
                 "shasum": ""
             },
             "require": {
@@ -1386,7 +1386,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2018-06-18T16:10:24+00:00"
+            "time": "2018-07-04T01:23:57+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -12107,16 +12107,16 @@
         },
         {
             "name": "shipperhq/library-shipper",
-            "version": "20.6.2",
+            "version": "20.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/library-shipper.git",
-                "reference": "e7b4f793006a185a38eccb497e1632b44b5c69bb"
+                "reference": "ffbf3950fc74776d03134f89a0476961c4ace5ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/e7b4f793006a185a38eccb497e1632b44b5c69bb",
-                "reference": "e7b4f793006a185a38eccb497e1632b44b5c69bb",
+                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/ffbf3950fc74776d03134f89a0476961c4ace5ea",
+                "reference": "ffbf3950fc74776d03134f89a0476961c4ace5ea",
                 "shasum": ""
             },
             "type": "magento2-library",
@@ -12144,20 +12144,20 @@
                 }
             ],
             "description": "ShipperHQ Library",
-            "time": "2018-04-13T08:54:24+00:00"
+            "time": "2018-06-25T09:19:36+00:00"
         },
         {
             "name": "shipperhq/library-ws",
-            "version": "20.3.1",
+            "version": "20.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/library-ws.git",
-                "reference": "0ca93f53460d92722397c571c2caed934fdea1a9"
+                "reference": "424a24fb339af4a10f785b121ab27927b32fbf90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/library-ws/zipball/0ca93f53460d92722397c571c2caed934fdea1a9",
-                "reference": "0ca93f53460d92722397c571c2caed934fdea1a9",
+                "url": "https://api.github.com/repos/shipperhq/library-ws/zipball/424a24fb339af4a10f785b121ab27927b32fbf90",
+                "reference": "424a24fb339af4a10f785b121ab27927b32fbf90",
                 "shasum": ""
             },
             "type": "magento2-library",
@@ -12185,27 +12185,27 @@
                 }
             ],
             "description": "ShipperHQ WS Library",
-            "time": "2018-04-13T08:53:44+00:00"
+            "time": "2018-06-21T15:25:10+00:00"
         },
         {
             "name": "shipperhq/module-common",
-            "version": "20.6.4",
+            "version": "20.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/module-common.git",
-                "reference": "1852986d1434e919f1771f2eb752c62519d795d6"
+                "reference": "c23948b2c10495ee5f2ae2921ff6bd67506ababf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/module-common/zipball/1852986d1434e919f1771f2eb752c62519d795d6",
-                "reference": "1852986d1434e919f1771f2eb752c62519d795d6",
+                "url": "https://api.github.com/repos/shipperhq/module-common/zipball/c23948b2c10495ee5f2ae2921ff6bd67506ababf",
+                "reference": "c23948b2c10495ee5f2ae2921ff6bd67506ababf",
                 "shasum": ""
             },
             "require": {
                 "magento/framework": ">=100.0",
                 "magento/module-store": ">=100.0",
-                "shipperhq/library-shipper": "*",
-                "shipperhq/library-ws": "*"
+                "shipperhq/library-shipper": "^20.0",
+                "shipperhq/library-ws": "^20.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "~2.1.1",
@@ -12247,7 +12247,7 @@
                 }
             ],
             "description": "ShipperHQ Common",
-            "time": "2018-05-16T13:59:42+00:00"
+            "time": "2018-06-25T09:39:35+00:00"
         },
         {
             "name": "shipperhq/module-logger",
@@ -12358,25 +12358,25 @@
         },
         {
             "name": "shipperhq/module-shipper",
-            "version": "20.18.10",
+            "version": "20.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/module-shipper.git",
-                "reference": "67a228e2f8a0919b7f7851779dd179cc14de9410"
+                "reference": "511862ad523684720a4bf59056e83b496fa532a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/module-shipper/zipball/67a228e2f8a0919b7f7851779dd179cc14de9410",
-                "reference": "67a228e2f8a0919b7f7851779dd179cc14de9410",
+                "url": "https://api.github.com/repos/shipperhq/module-shipper/zipball/511862ad523684720a4bf59056e83b496fa532a1",
+                "reference": "511862ad523684720a4bf59056e83b496fa532a1",
                 "shasum": ""
             },
             "require": {
                 "magento/framework": ">=100.0",
                 "magento/module-store": ">=100.0",
-                "shipperhq/library-shipper": "20.6.*",
-                "shipperhq/library-ws": "20.3.*",
-                "shipperhq/module-common": "20.6.*",
-                "shipperhq/module-logger": "*"
+                "shipperhq/library-shipper": "^20.6.0",
+                "shipperhq/library-ws": "^20.3.0",
+                "shipperhq/module-common": "^20.6.0",
+                "shipperhq/module-logger": "^20.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "~2.1.1",
@@ -12419,7 +12419,7 @@
                 }
             ],
             "description": "Magento Shipping integration with ShipperHQ",
-            "time": "2018-05-21T16:38:53+00:00"
+            "time": "2018-07-18T15:52:49+00:00"
         },
         {
             "name": "shopialfb/facebook-module",
@@ -12505,16 +12505,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.42",
+            "version": "v2.8.43",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "e8e59b74ad1274714dad2748349b55e3e6e630c7"
+                "reference": "42a0adc7dd656ca2e360285eb6d822df9ce0b160"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/e8e59b74ad1274714dad2748349b55e3e6e630c7",
-                "reference": "e8e59b74ad1274714dad2748349b55e3e6e630c7",
+                "url": "https://api.github.com/repos/symfony/console/zipball/42a0adc7dd656ca2e360285eb6d822df9ce0b160",
+                "reference": "42a0adc7dd656ca2e360285eb6d822df9ce0b160",
                 "shasum": ""
             },
             "require": {
@@ -12562,7 +12562,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-05-15T21:17:45+00:00"
+            "time": "2018-07-09T12:58:09+00:00"
         },
         {
             "name": "symfony/debug",
@@ -12623,7 +12623,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.42",
+            "version": "v2.8.43",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -12683,16 +12683,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.12",
+            "version": "v3.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "8a721a5f2553c6c3482b1c5b22ed60fe94dd63ed"
+                "reference": "8dab220fec8fc904821485326b29a6c670286124"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/8a721a5f2553c6c3482b1c5b22ed60fe94dd63ed",
-                "reference": "8a721a5f2553c6c3482b1c5b22ed60fe94dd63ed",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/8dab220fec8fc904821485326b29a6c670286124",
+                "reference": "8dab220fec8fc904821485326b29a6c670286124",
                 "shasum": ""
             },
             "require": {
@@ -12729,11 +12729,11 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2018-06-21T11:10:19+00:00"
+            "time": "2018-07-09T13:25:43+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.12",
+            "version": "v3.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -12896,7 +12896,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.42",
+            "version": "v2.8.43",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -13281,11 +13281,11 @@
         },
         {
             "name": "xtento/module-stockimport",
-            "version": "2.3.4",
+            "version": "2.3.6",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/73f5e76cba5580f4ce91a548ce3aaf48/v/2.3.4",
-                "reference": "19d2bd6428f04a6e3cbb781934bc1d2ec8ea0313",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/4a01900619905e1aa72b043c331aa70f/v/2.3.6",
+                "reference": "97a1180cb5938284ba8f36a71b02aa948df7701a",
                 "shasum": null
             },
             "require": {
@@ -13317,15 +13317,15 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-06-25T15:10:23+00:00"
+            "time": "2018-07-12T14:14:36+00:00"
         },
         {
             "name": "xtento/orderexport",
-            "version": "2.5.5",
+            "version": "2.5.8",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_orderexport/h/8df50b81e321130e61412eca443b5dab/v/2.5.5",
-                "reference": "33fb7fdcdf18f574d2f57108782d09176ac6dd2c",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_orderexport/h/2858aca90c8b7d0bf3e2d6640a3e7d5e/v/2.5.8",
+                "reference": "42785d2f9de2486ebc2f55961918b37b3c2f64b2",
                 "shasum": null
             },
             "require": {
@@ -13357,15 +13357,15 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-06-25T15:05:54+00:00"
+            "time": "2018-07-12T14:10:02+00:00"
         },
         {
             "name": "xtento/trackingimport",
-            "version": "2.4.1",
+            "version": "2.4.3",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_trackingimport/h/aacb82a8b976d3872ab420b3c6af4506/v/2.4.1",
-                "reference": "94dc25d74f7108d2b43b904bdc76c36dbb7f7039",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_trackingimport/h/0c23b6647423c0b118f628f3eeab5fd3/v/2.4.3",
+                "reference": "a19da623d3c7111b8ff066ad59ceb6f125117f4c",
                 "shasum": null
             },
             "require": {
@@ -13397,7 +13397,7 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-06-25T15:12:20+00:00"
+            "time": "2018-07-12T14:16:31+00:00"
         },
         {
             "name": "xtento/xtcore",
@@ -13815,16 +13815,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "1.8.0",
+            "version": "1.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "11c9c1835e60eef6f9234377a480fcec096ebd9e"
+                "reference": "72c13834fb3db2a962e913758b384ff2e6425d6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/11c9c1835e60eef6f9234377a480fcec096ebd9e",
-                "reference": "11c9c1835e60eef6f9234377a480fcec096ebd9e",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/72c13834fb3db2a962e913758b384ff2e6425d6e",
+                "reference": "72c13834fb3db2a962e913758b384ff2e6425d6e",
                 "shasum": ""
             },
             "require": {
@@ -13837,7 +13837,7 @@
             "require-dev": {
                 "ext-dom": "*",
                 "ext-libxml": "*",
-                "phpunit/phpunit": "^5.7.16 || ^6.0.8",
+                "phpunit/phpunit": "^5.7.16 || ^6.0.8 || ^7.2.7",
                 "zendframework/zend-coding-standard": "~1.0"
             },
             "type": "library",
@@ -13874,7 +13874,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2018-06-27T18:52:43+00:00"
+            "time": "2018-07-24T21:54:38+00:00"
         },
         {
             "name": "zendframework/zend-escaper",
