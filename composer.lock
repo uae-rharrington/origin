@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "27470c6618f3517ed55f33dee032164d",
+    "content-hash": "596e59e6129269136f9ef31c055b482f",
     "packages": [
         {
             "name": "amzn/amazon-pay-and-login-magento-2-module",
@@ -12065,16 +12065,16 @@
         },
         {
             "name": "shipperhq/library-shipper",
-            "version": "20.6.2",
+            "version": "20.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/library-shipper.git",
-                "reference": "e7b4f793006a185a38eccb497e1632b44b5c69bb"
+                "reference": "ffbf3950fc74776d03134f89a0476961c4ace5ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/e7b4f793006a185a38eccb497e1632b44b5c69bb",
-                "reference": "e7b4f793006a185a38eccb497e1632b44b5c69bb",
+                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/ffbf3950fc74776d03134f89a0476961c4ace5ea",
+                "reference": "ffbf3950fc74776d03134f89a0476961c4ace5ea",
                 "shasum": ""
             },
             "type": "magento2-library",
@@ -12102,20 +12102,20 @@
                 }
             ],
             "description": "ShipperHQ Library",
-            "time": "2018-04-13T08:54:24+00:00"
+            "time": "2018-06-25T09:19:36+00:00"
         },
         {
             "name": "shipperhq/library-ws",
-            "version": "20.3.1",
+            "version": "20.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/library-ws.git",
-                "reference": "0ca93f53460d92722397c571c2caed934fdea1a9"
+                "reference": "424a24fb339af4a10f785b121ab27927b32fbf90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/library-ws/zipball/0ca93f53460d92722397c571c2caed934fdea1a9",
-                "reference": "0ca93f53460d92722397c571c2caed934fdea1a9",
+                "url": "https://api.github.com/repos/shipperhq/library-ws/zipball/424a24fb339af4a10f785b121ab27927b32fbf90",
+                "reference": "424a24fb339af4a10f785b121ab27927b32fbf90",
                 "shasum": ""
             },
             "type": "magento2-library",
@@ -12143,27 +12143,27 @@
                 }
             ],
             "description": "ShipperHQ WS Library",
-            "time": "2018-04-13T08:53:44+00:00"
+            "time": "2018-06-21T15:25:10+00:00"
         },
         {
             "name": "shipperhq/module-common",
-            "version": "20.6.4",
+            "version": "20.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/module-common.git",
-                "reference": "1852986d1434e919f1771f2eb752c62519d795d6"
+                "reference": "c23948b2c10495ee5f2ae2921ff6bd67506ababf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/module-common/zipball/1852986d1434e919f1771f2eb752c62519d795d6",
-                "reference": "1852986d1434e919f1771f2eb752c62519d795d6",
+                "url": "https://api.github.com/repos/shipperhq/module-common/zipball/c23948b2c10495ee5f2ae2921ff6bd67506ababf",
+                "reference": "c23948b2c10495ee5f2ae2921ff6bd67506ababf",
                 "shasum": ""
             },
             "require": {
                 "magento/framework": ">=100.0",
                 "magento/module-store": ">=100.0",
-                "shipperhq/library-shipper": "*",
-                "shipperhq/library-ws": "*"
+                "shipperhq/library-shipper": "^20.0",
+                "shipperhq/library-ws": "^20.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "~2.1.1",
@@ -12205,7 +12205,7 @@
                 }
             ],
             "description": "ShipperHQ Common",
-            "time": "2018-05-16T13:59:42+00:00"
+            "time": "2018-06-25T09:39:35+00:00"
         },
         {
             "name": "shipperhq/module-logger",
@@ -12316,25 +12316,25 @@
         },
         {
             "name": "shipperhq/module-shipper",
-            "version": "20.18.10",
+            "version": "20.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/module-shipper.git",
-                "reference": "67a228e2f8a0919b7f7851779dd179cc14de9410"
+                "reference": "511862ad523684720a4bf59056e83b496fa532a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/module-shipper/zipball/67a228e2f8a0919b7f7851779dd179cc14de9410",
-                "reference": "67a228e2f8a0919b7f7851779dd179cc14de9410",
+                "url": "https://api.github.com/repos/shipperhq/module-shipper/zipball/511862ad523684720a4bf59056e83b496fa532a1",
+                "reference": "511862ad523684720a4bf59056e83b496fa532a1",
                 "shasum": ""
             },
             "require": {
                 "magento/framework": ">=100.0",
                 "magento/module-store": ">=100.0",
-                "shipperhq/library-shipper": "20.6.*",
-                "shipperhq/library-ws": "20.3.*",
-                "shipperhq/module-common": "20.6.*",
-                "shipperhq/module-logger": "*"
+                "shipperhq/library-shipper": "^20.6.0",
+                "shipperhq/library-ws": "^20.3.0",
+                "shipperhq/module-common": "^20.6.0",
+                "shipperhq/module-logger": "^20.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "~2.1.1",
@@ -12377,7 +12377,7 @@
                 }
             ],
             "description": "Magento Shipping integration with ShipperHQ",
-            "time": "2018-05-21T16:38:53+00:00"
+            "time": "2018-07-18T15:52:49+00:00"
         },
         {
             "name": "shopialfb/facebook-module",
@@ -12463,16 +12463,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.42",
+            "version": "v2.8.43",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "e8e59b74ad1274714dad2748349b55e3e6e630c7"
+                "reference": "42a0adc7dd656ca2e360285eb6d822df9ce0b160"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/e8e59b74ad1274714dad2748349b55e3e6e630c7",
-                "reference": "e8e59b74ad1274714dad2748349b55e3e6e630c7",
+                "url": "https://api.github.com/repos/symfony/console/zipball/42a0adc7dd656ca2e360285eb6d822df9ce0b160",
+                "reference": "42a0adc7dd656ca2e360285eb6d822df9ce0b160",
                 "shasum": ""
             },
             "require": {
@@ -12520,7 +12520,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-05-15T21:17:45+00:00"
+            "time": "2018-07-09T12:58:09+00:00"
         },
         {
             "name": "symfony/debug",
@@ -12641,16 +12641,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.12",
+            "version": "v3.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "8a721a5f2553c6c3482b1c5b22ed60fe94dd63ed"
+                "reference": "8dab220fec8fc904821485326b29a6c670286124"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/8a721a5f2553c6c3482b1c5b22ed60fe94dd63ed",
-                "reference": "8a721a5f2553c6c3482b1c5b22ed60fe94dd63ed",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/8dab220fec8fc904821485326b29a6c670286124",
+                "reference": "8dab220fec8fc904821485326b29a6c670286124",
                 "shasum": ""
             },
             "require": {
@@ -12687,11 +12687,11 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2018-06-21T11:10:19+00:00"
+            "time": "2018-07-09T13:25:43+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.12",
+            "version": "v3.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -12854,7 +12854,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.42",
+            "version": "v2.8.43",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -13773,16 +13773,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "1.8.0",
+            "version": "1.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "11c9c1835e60eef6f9234377a480fcec096ebd9e"
+                "reference": "72c13834fb3db2a962e913758b384ff2e6425d6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/11c9c1835e60eef6f9234377a480fcec096ebd9e",
-                "reference": "11c9c1835e60eef6f9234377a480fcec096ebd9e",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/72c13834fb3db2a962e913758b384ff2e6425d6e",
+                "reference": "72c13834fb3db2a962e913758b384ff2e6425d6e",
                 "shasum": ""
             },
             "require": {
@@ -13795,7 +13795,7 @@
             "require-dev": {
                 "ext-dom": "*",
                 "ext-libxml": "*",
-                "phpunit/phpunit": "^5.7.16 || ^6.0.8",
+                "phpunit/phpunit": "^5.7.16 || ^6.0.8 || ^7.2.7",
                 "zendframework/zend-coding-standard": "~1.0"
             },
             "type": "library",
@@ -13832,7 +13832,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2018-06-27T18:52:43+00:00"
+            "time": "2018-07-24T21:54:38+00:00"
         },
         {
             "name": "zendframework/zend-escaper",

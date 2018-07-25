@@ -31,7 +31,7 @@
         "magento/extension-b2b": "^1.0",
         "xtento/orderexport": "^2.5",
         "xtento/trackingimport": "^2.4",
-        "shipperhq/module-shipper": "20.18.10",
+        "shipperhq/module-shipper": "20.19.0",
         "xtento/module-stockimport": "^2.3",
         "shipperhq/module-option": "^20.2"
     },
