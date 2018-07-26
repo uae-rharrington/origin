@@ -108,7 +108,7 @@ class ShippingInformationManagement
      *
      * @return PaymentDetailsInterface $result
      */
-    public function aroundSaveAddressInformation(
+    public function afterSaveAddressInformation(
         ShippingInformation $subject,
         PaymentDetailsInterface $result,
         $cartId,
