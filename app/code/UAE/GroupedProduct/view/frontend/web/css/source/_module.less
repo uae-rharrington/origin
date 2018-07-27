@@ -107,7 +107,6 @@
                 right: 0;
                 margin: 0;
                 background: @color-gray94;
-                padding: 6px @layout__width-xs-indent;
                 z-index: 10;
 
                 .back_to_top {
@@ -140,6 +139,9 @@
                     font-size: @button__font-size;
                     line-height: 22px;
                 }
+            }
+            .box-tocart-inner {
+                padding: 6px @layout__width-xs-indent;
             }
         }
 
@@ -194,7 +196,9 @@
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .page-product-grouped {
         .product-add-form {
-            .box-tocart {
+            .box-tocart-inner {
+                max-width: @layout__max-width - @layout-indent__width * 2;
+                margin: auto;
                 padding: 6px @layout-indent__width;
             }
         }

@@ -9,7 +9,7 @@
 <?php $associatedProducts = $block->getAssociatedProducts(); ?>
 <?php foreach ($associatedProducts as $product): ?>
     <?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')):?>
-        <div class="product info detailed-<?= /* @escapeNotVerified */ $product->getId() ?>">
+        <div class="product info detailed" id="detailed-<?= /* @escapeNotVerified */ $product->getId() ?>">
             <?php $layout = $block->getLayout(); ?>
             <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
                 <?php foreach ($detailedInfoGroup as $name):?>
@@ -48,9 +48,8 @@
         ], function($, modal) {
             'use strict';
 
-            var releaseNotes = $('.detailed-<?= /* @escapeNotVerified */ $product->getId() ?>').modal({
+            var releaseNotes = $('#detailed-<?= /* @escapeNotVerified */ $product->getId() ?>').modal({
                 modalClass: 'simple-product-details',
-                responsive: true,
                 buttons: []
             });
             $('.product-item-details-<?= /* @escapeNotVerified */ $product->getId() ?>').on('click', function(e) {
