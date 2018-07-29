@@ -20,8 +20,8 @@
 <div class="table-wrapper grouped">
     <table class="table data grouped" id="super-product-table">
         <?php if ($_hasAssociatedProducts): ?>
+            <?php foreach ($_associatedProducts as $_item): ?>
             <tbody>
-                <?php foreach ($_associatedProducts as $_item): ?>
                 <tr>
                     <td class="col image">
                         <?php $color = explode('#', $_item->getColorHex()); ?>
@@ -94,9 +94,8 @@
                     </td>
                     <?php endif; ?>
                 </tr>
-
+            </tbody>
             <?php endforeach; ?>
-        </tbody>
         <?php else: ?>
         <tbody>
             <tr>

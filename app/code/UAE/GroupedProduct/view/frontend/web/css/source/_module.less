@@ -26,12 +26,8 @@
 
         table.grouped {
             td {
-                padding: 8px;
+                padding: 10px 8px;
                 vertical-align: middle;
-            }
-
-            td {
-                height: 75px;
             }
 
             .product-image-container {
@@ -91,8 +87,9 @@
         }
         .swatch-color {
             width: 55px;
-            height: 40px;
-            border: 1px solid;
+            height: 38px;
+            border: 1px solid #888;
+            box-sizing: border-box;
         }
 
         .product-thumbnail {
@@ -165,29 +162,45 @@
         }
 
         .table-wrapper.grouped {
-            margin: 0;
+            margin: 0 -10px;
         }
     }
 }
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
     .page-product-grouped {
         table.grouped {
-            .col.image {
-                float: left;
+            tr {
+                overflow: hidden;
             }
-            .col.sku {
-                float: left;
-                align-items: center;
-                height: 55px;
-            }
-            .col.name {
-                clear: left;
+            .col {
+                &:not(.details) {
+                    float: left;
+                }
+
+                &.details {
+                    clear: left;
+                }
+
+                &.price {
+                    float: right;
+                    clear: left;
+                }
             }
         }
+
         .table-wrapper.grouped .table {
-            .col.sku {
-                display: flex;
-                padding-top: 15px;
+            .col {
+                &.image:first-child {
+                    padding-top: 12px;
+                }
+
+                &.sku,
+                &.short-description {
+                    height: 38px;
+                    display: flex;
+                    align-items: center;
+                    padding-top: 12px;
+                }
             }
         }
     }
@@ -196,6 +209,8 @@
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .page-product-grouped {
         .product-add-form {
+            clear: both;
+
             .box-tocart-inner {
                 max-width: @layout__max-width - @layout-indent__width * 2;
                 margin: auto;
