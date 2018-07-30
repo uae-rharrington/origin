@@ -19,6 +19,9 @@ var config = {
             },
             'Magento_Checkout/js/action/set-shipping-information': {
                 'ClassyLlama_QuoteCustom/js/action/set-shipping-information-mixin': true
+            },
+            'Magento_Checkout/js/checkout-data': {
+                'ClassyLlama_QuoteCustom/js/checkout-data-mixin': true
             }
         }
     }
