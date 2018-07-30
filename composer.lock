@@ -1200,7 +1200,7 @@
         },
         {
             "name": "illuminate/config",
-            "version": "v5.6.28",
+            "version": "v5.6.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/config.git",
@@ -1244,7 +1244,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.6.28",
+            "version": "v5.6.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1288,7 +1288,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.6.28",
+            "version": "v5.6.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1332,16 +1332,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.6.28",
+            "version": "v5.6.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "97ca44c95392ce0a41749fa47b953734d88b94b1"
+                "reference": "c684cb5e77e213020f7a4ed213d94b2b384c2951"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/97ca44c95392ce0a41749fa47b953734d88b94b1",
-                "reference": "97ca44c95392ce0a41749fa47b953734d88b94b1",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/c684cb5e77e213020f7a4ed213d94b2b384c2951",
+                "reference": "c684cb5e77e213020f7a4ed213d94b2b384c2951",
                 "shasum": ""
             },
             "require": {
@@ -1386,7 +1386,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2018-07-04T01:23:57+00:00"
+            "time": "2018-07-26T15:32:11+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -13281,11 +13281,11 @@
         },
         {
             "name": "xtento/module-stockimport",
-            "version": "2.3.6",
+            "version": "2.3.7",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/4a01900619905e1aa72b043c331aa70f/v/2.3.6",
-                "reference": "97a1180cb5938284ba8f36a71b02aa948df7701a",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/2628516f737a7416c916c5ef9e4f2a8c/v/2.3.7",
+                "reference": "0b7fbce0336542cafd651c4e9868d2edba11ea4c",
                 "shasum": null
             },
             "require": {
@@ -13317,15 +13317,15 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-07-12T14:14:36+00:00"
+            "time": "2018-07-26T15:41:40+00:00"
         },
         {
             "name": "xtento/orderexport",
-            "version": "2.5.8",
+            "version": "2.5.9",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_orderexport/h/2858aca90c8b7d0bf3e2d6640a3e7d5e/v/2.5.8",
-                "reference": "42785d2f9de2486ebc2f55961918b37b3c2f64b2",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_orderexport/h/369eddc33f0ff94941d7d8bed916b9b1/v/2.5.9",
+                "reference": "7a5ff50a4a2ce751380e36c360c7e04c72a7c9cd",
                 "shasum": null
             },
             "require": {
@@ -13357,15 +13357,15 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-07-12T14:10:02+00:00"
+            "time": "2018-07-26T15:38:28+00:00"
         },
         {
             "name": "xtento/trackingimport",
-            "version": "2.4.3",
+            "version": "2.4.4",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_trackingimport/h/0c23b6647423c0b118f628f3eeab5fd3/v/2.4.3",
-                "reference": "a19da623d3c7111b8ff066ad59ceb6f125117f4c",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_trackingimport/h/43573dc403e366e6e812262f2e91ade4/v/2.4.4",
+                "reference": "6038f292319f47ba3ff36f9cca8ab04aa92c8359",
                 "shasum": null
             },
             "require": {
@@ -13397,15 +13397,15 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-07-12T14:16:31+00:00"
+            "time": "2018-07-26T19:29:24+00:00"
         },
         {
             "name": "xtento/xtcore",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_xtcore/h/b75140255813323de1b5a0e65ffd7db1/v/2.2.0",
-                "reference": "f38406425b55249b4da05d75776747e6f29835e5",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_xtcore/h/58579da468f08833e1ee40366daa4761/v/2.3.0",
+                "reference": "414bc552e0a7503fb3740ce2f2b29329c8d19290",
                 "shasum": null
             },
             "require": {
@@ -13436,7 +13436,7 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-04-03T09:58:03+00:00"
+            "time": "2018-07-26T15:40:20+00:00"
         },
         {
             "name": "zendframework/zend-captcha",
