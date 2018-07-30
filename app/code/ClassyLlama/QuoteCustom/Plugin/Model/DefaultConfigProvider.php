@@ -14,6 +14,8 @@ use Magento\Customer\Model\Context as CustomerContext;
 use Magento\Framework\App\Http\Context as HttpContext;
 use Magento\Checkout\Model\Session as CheckoutSession;
 use Magento\Quote\Api\CartRepositoryInterface;
+use Magento\Sales\Api\Data\OrderInterface;
+use Magento\Quote\Api\Data\CartInterface;
 
 /**
  * ClassyLlama\QuoteCustom\Plugin\Model\DefaultConfigProvider
@@ -39,20 +41,28 @@ class DefaultConfigProvider
     private $quoteRepository;
 
     /**
+     * @var OrderInterface
+     */
+    private $order;
+
+    /**
      * DefaultConfigProvider constructor.
      *
      * @param HttpContext $httpContext
      * @param CheckoutSession $checkoutSession
      * @param CartRepositoryInterface $quoteRepository
+     * @param OrderInterface $order
      */
     public function __construct(
         HttpContext $httpContext,
         CheckoutSession $checkoutSession,
-        CartRepositoryInterface $quoteRepository
+        CartRepositoryInterface $quoteRepository,
+        OrderInterface $order
     ) {
         $this->httpContext = $httpContext;
         $this->checkoutSession = $checkoutSession;
         $this->quoteRepository = $quoteRepository;
+        $this->order = $order;
     }
 
     /**
@@ -68,39 +78,72 @@ class DefaultConfigProvider
         array $result
     ) {
         $result['guestShippingAddress'] = $this->getGuestShippingAddress();
+        $result['customerShippingAddress'] = $this->getCustomerShippingAddress();
         return $result;
     }
 
     /**
      * Retrieve guest shipping address
      *
-     * @return array
+     * @return array | null
      */
     private function getGuestShippingAddress()
     {
-        $guestShippingAddress = [];
+        $guestShippingAddress = null;
         $quoteId = $this->checkoutSession->getQuote()->getId();
 
         if (!$this->isCustomerLoggedIn() && $quoteId) {
             $quote = $this->quoteRepository->get($quoteId);
-            $shippingAddress = $quote->getShippingAddress();
-
-            if ($shippingAddress) {
-                $guestShippingAddress['email'] = $shippingAddress->getEmail();
-                $guestShippingAddress['company'] = $shippingAddress->getCompany();
-                $guestShippingAddress['telephone'] = $shippingAddress->getTelephone();
-                $guestShippingAddress['firstname'] = $shippingAddress->getFirstname();
-                $guestShippingAddress['lastname'] = $shippingAddress->getLastname();
-                $guestShippingAddress['street'] = $shippingAddress->getStreet();
-                $guestShippingAddress['city'] = $shippingAddress->getCity();
-                $guestShippingAddress['postcode'] = $shippingAddress->getPostcode();
-                $guestShippingAddress['country_id'] = $shippingAddress->getCountryId();
-                $guestShippingAddress['region'] = $shippingAddress->getRegion();
-                $guestShippingAddress['region_id'] = $shippingAddress->getRegionId();
-            }
+            $guestShippingAddress = $this->fillAddressFields($quote);
         }
 
         return $guestShippingAddress;
+    }
+
+    /**
+     * Retrieve customer shipping address
+     *
+     * @return array | null
+     */
+    private function getCustomerShippingAddress()
+    {
+        $customerShippingAddress = null;
+        $quoteId = $this->checkoutSession->getQuote()->getId();
+
+        if ($this->isCustomerLoggedIn() && $quoteId) {
+            $quote = $this->quoteRepository->get($quoteId);
+
+            if ($originatingQuoteId = (int) $quote->getOriginatingQuoteId()) {
+                $order = $this->order->loadByIncrementId($originatingQuoteId);
+                $customerShippingAddress = $this->fillAddressFields($quote);
+                $customerShippingAddress['address_id'] = (int) $order->getShippingAddress()->getCustomerAddressId();
+            }
+        }
+
+        return $customerShippingAddress;
+    }
+
+    /**
+     * Fill address fields
+     *
+     * @param CartInterface $quote
+     * @return array
+     */
+    private function fillAddressFields(CartInterface $quote)
+    {
+        $shippingAddress = $quote->getShippingAddress();
+        $shippingAddressData['email'] = $shippingAddress->getEmail();
+        $shippingAddressData['company'] = $shippingAddress->getCompany();
+        $shippingAddressData['telephone'] = $shippingAddress->getTelephone();
+        $shippingAddressData['firstname'] = $shippingAddress->getFirstname();
+        $shippingAddressData['lastname'] = $shippingAddress->getLastname();
+        $shippingAddressData['street'] = $shippingAddress->getStreet();
+        $shippingAddressData['city'] = $shippingAddress->getCity();
+        $shippingAddressData['postcode'] = $shippingAddress->getPostcode();
+        $shippingAddressData['country_id'] = $shippingAddress->getCountryId();
+        $shippingAddressData['region'] = $shippingAddress->getRegion();
+        $shippingAddressData['region_id'] = $shippingAddress->getRegionId();
+        return $shippingAddressData;
     }
 
     /**

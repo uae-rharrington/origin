@@ -9,29 +9,41 @@ define([
     'use strict';
 
     return function (target) {
-        var guestShippingAddress = window.checkoutConfig.guestShippingAddress;
-        if (target.getShippingAddressFromData() === null) {
+        var shippingAddress;
+
+        if (parseInt(window.checkoutConfig.quoteData.customer_is_guest)) {
+            shippingAddress = window.checkoutConfig.guestShippingAddress;
+        } else {
+            shippingAddress = window.checkoutConfig.customerShippingAddress;
+        }
+
+        if (target.getShippingAddressFromData() === null && shippingAddress !== null) {
             target.getShippingAddressFromData = function () {
                 return {
-                    "company": guestShippingAddress.company ? guestShippingAddress.company : '',
-                    "telephone": guestShippingAddress.telephone ? guestShippingAddress.telephone : '',
-                    "firstname": guestShippingAddress.firstname ? guestShippingAddress.firstname : '',
-                    "lastname": guestShippingAddress.lastname ? guestShippingAddress.lastname : '',
-                    "street": guestShippingAddress.street ? $.extend({}, guestShippingAddress.street) : '',
-                    "city": guestShippingAddress.city ? guestShippingAddress.city : '',
-                    "postcode": guestShippingAddress.postcode ? guestShippingAddress.postcode : '',
-                    "country_id": guestShippingAddress.country_id ? guestShippingAddress.country_id : '',
-                    "region_id": guestShippingAddress.region_id ? guestShippingAddress.region_id : '',
-                    "region": guestShippingAddress.region ? guestShippingAddress.region : ''
+                    "company": shippingAddress.company ? shippingAddress.company : '',
+                    "telephone": shippingAddress.telephone ? shippingAddress.telephone : '',
+                    "firstname": shippingAddress.firstname ? shippingAddress.firstname : '',
+                    "lastname": shippingAddress.lastname ? shippingAddress.lastname : '',
+                    "street": shippingAddress.street ? $.extend({}, shippingAddress.street) : '',
+                    "city": shippingAddress.city ? shippingAddress.city : '',
+                    "postcode": shippingAddress.postcode ? shippingAddress.postcode : '',
+                    "country_id": shippingAddress.country_id ? shippingAddress.country_id : '',
+                    "region_id": shippingAddress.region_id ? shippingAddress.region_id : '',
+                    "region": shippingAddress.region ? shippingAddress.region : ''
                 };
             };
         }
 
-        if (target.getInputFieldEmailValue() === '') {
+        if (target.getInputFieldEmailValue() === '' && shippingAddress !== null) {
             target.getInputFieldEmailValue = function () {
-                return guestShippingAddress.email ? guestShippingAddress.email : '';
+                return shippingAddress.email ? shippingAddress.email : '';
             };
         }
+
+        if (shippingAddress !== null && shippingAddress.address_id !== null) {
+            target.setSelectedShippingAddress('customer-address' + shippingAddress.address_id);
+        }
+
         return target;
     };
 });
