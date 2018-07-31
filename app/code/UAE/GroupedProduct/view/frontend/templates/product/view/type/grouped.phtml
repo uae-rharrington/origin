@@ -83,8 +83,8 @@
                                    title="<?= /* @escapeNotVerified */ __('Qty') ?>"
                                    placeholder="<?= /* @escapeNotVerified */ __('qty') ?>"
                                    class="input-text qty"
-                                   data-validate="{'validate-grouped-qty':'#super-product-table'}"
-                                   data-errors-message-box="#validation-message-box"/>
+                                   data-validate="{'validate-grouped-qty-custom':'#super-product-table'}"
+                                   data-errors-message-box="#validation-message-box" />
                         </div>
                     <?php else: ?>
                         <div class="stock unavailable" title="<?= /* @escapeNotVerified */ __('Availability') ?>">
@@ -109,4 +109,6 @@
     </table>
 </div>
 <?= $block->getChildHtml('product.info.details.simple'); ?>
-<div id="validation-message-box"></div>
+<div class="validation-message-outer">
+    <div id="validation-message-box"></div>
+</div>
