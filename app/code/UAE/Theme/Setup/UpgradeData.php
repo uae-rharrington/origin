@@ -72,7 +72,7 @@ class UpgradeData implements UpgradeDataInterface
     <h4>About Us</h4>
     <ul>
         <li><a href="{{config path='web/unsecure/base_url'}}company-information">Company Information</a></li>
-        <li><a href="https://www.google.com/shopping/ratings/account/metrics?q=unitednow.com&c=GLOBAL&v=1">Our Customers Say</a></li>
+        <li><a href="https://www.google.com/shopping/ratings/account/metrics?q=unitednow.com&c=GLOBAL&v=1" target="_blank">Our Customers Say</a></li>
         <li><a href="{{config path='web/unsecure/base_url'}}faq">FAQ</a></li>
         <li><a href="{{config path='web/unsecure/base_url'}}contact">Contact Us</a></li>
         <li><a href="{{config path='web/unsecure/base_url'}}">YOUnited Blog</a></li>
