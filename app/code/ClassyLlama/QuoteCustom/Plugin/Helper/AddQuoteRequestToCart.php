@@ -17,6 +17,8 @@ use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Framework\Serialize\Serializer\Json;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * ClassyLlama\QuoteCustom\Plugin\Helper\AddQuoteRequestToCart
@@ -26,6 +28,11 @@ use Magento\Framework\Serialize\Serializer\Json;
  */
 class AddQuoteRequestToCart
 {
+    /**
+     * Number of days that a Quote Request's pricing data is valid for
+     */
+    const QUOTE_REQUEST_STALE_DAYS = 'checkout/cart/quote_sale_pricing';
+
     /**
      * @var Session
      */
@@ -37,17 +44,25 @@ class AddQuoteRequestToCart
     private $serializer;
 
     /**
+     * @var ScopeConfigInterface
+     */
+    protected $scopeConfig;
+
+    /**
      * AddQuoteRequestToCart constructor.
      *
      * @param Session $customerSession
      * @param Json $serializer
+     * @param ScopeConfigInterface $scopeConfig
      */
     public function __construct(
         Session $customerSession,
-        Json $serializer
+        Json $serializer,
+        ScopeConfigInterface $scopeConfig
     ) {
         $this->customerSession = $customerSession;
         $this->serializer = $serializer;
+        $this->scopeConfig = $scopeConfig;
     }
 
     /**
@@ -78,7 +93,7 @@ class AddQuoteRequestToCart
             $createdAt = new \DateTime($order->getCreatedAt(), new \DateTimeZone('UTC'));
             $now = new \DateTime('now', new \DateTimeZone('UTC'));
             $dateTimeDelta = $createdAt->diff($now);
-            $isStale = $dateTimeDelta->days > AddQuoteRequestToCartHelper::QUOTE_REQUEST_STALE_DAYS;
+            $isStale = $dateTimeDelta->days > $this->getQuoteSaleLifetime();
             $this->customerSession->setIsQuoteExpired($isStale);
             if ($cart->getItemsQty() > 0) {
                 $results[AddQuoteRequestToCartHelper::RESULTS_CART_CONTAINED_ITEMS_KEY] = true;
@@ -137,6 +152,19 @@ class AddQuoteRequestToCart
         }
 
         return $this->unsetEmptyResults($results);
+    }
+
+    /**
+     * Get quote sale pricing lifetime
+     *
+     * @return string
+     **/
+    protected function getQuoteSaleLifetime()
+    {
+        return $this->scopeConfig->getValue(
+            self::QUOTE_REQUEST_STALE_DAYS,
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**

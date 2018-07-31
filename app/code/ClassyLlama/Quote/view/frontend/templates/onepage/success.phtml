@@ -3,6 +3,7 @@
  * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
  */
 ?>
+<?php $helper = $this->helper('ClassyLlama\Quote\Helper\Data'); ?>
 <?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
 <div class="checkout-success">
     <div class="container-fluid">
@@ -11,7 +12,7 @@
                 <h3><?= __('Quote Info'); ?></h3>
                 <?php if ($block->getOrderId()):?>
                     <p><?= __('Thank you for shopping at <span>%1</span>.  Your quote # is: <span>%2</span>.', $block->getStoreName(), $block->escapeHtml($block->getOrderId())); ?></p>
-                    <p><?= __('We just sent you an email containing your quote.  The quote will be valid for 90 days.'); ?></p>
+                    <p><?= __('We just sent you an email containing your quote. The quote will be valid for %1 days.', $helper->getQuoteLifetime()); ?></p>
                 <?php endif;?>
             </div>
             <div class="col-xxs-12 col-s-6">

@@ -6,13 +6,15 @@
 namespace ClassyLlama\Quote\Helper;
 
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**
      * Number of days that a Quote Request's pricing data is valid for
      */
-    const QUOTE_REQUEST_STALE_DAYS = 60;
+    const QUOTE_REQUEST_STALE_DAYS = 'checkout/cart/quote_sale_pricing';
 
     /**
      * Results array key for non-exceptional errors encountered during addQuoteRequestToCart
@@ -40,14 +42,22 @@ class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
     private $serializer;
 
     /**
+     * @var ScopeConfigInterface
+     */
+    protected $scopeConfig;
+
+    /**
      * @param \Magento\Framework\App\Helper\Context $context
      * @param \Magento\Framework\Serialize\Serializer\Json $serializer
+     * @param ScopeConfigInterface $scopeConfig
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
-        \Magento\Framework\Serialize\Serializer\Json $serializer
+        \Magento\Framework\Serialize\Serializer\Json $serializer,
+        ScopeConfigInterface $scopeConfig
     ){
         $this->serializer = $serializer;
+        $this->scopeConfig = $scopeConfig;
         parent::__construct($context);
     }
 
@@ -73,7 +83,7 @@ class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
             $createdAt = new \DateTime($order->getCreatedAt(), new \DateTimeZone('UTC'));
             $now = new \DateTime('now', new \DateTimeZone('UTC'));
             $dateTimeDelta = $createdAt->diff($now);
-            $isStale = $dateTimeDelta->days > self::QUOTE_REQUEST_STALE_DAYS;
+            $isStale = $dateTimeDelta->days > $this->getQuoteSaleLifetime();
             if ($cart->getItemsQty() > 0) {
                 $results[self::RESULTS_CART_CONTAINED_ITEMS_KEY] = true;
             }
@@ -120,6 +130,19 @@ class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
         }
 
         return $this->unsetEmptyResults($results);
+    }
+
+    /**
+     * Get quote sale pricing lifetime
+     *
+     * @return string
+     **/
+    protected function getQuoteSaleLifetime()
+    {
+        return $this->scopeConfig->getValue(
+            self::QUOTE_REQUEST_STALE_DAYS,
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**

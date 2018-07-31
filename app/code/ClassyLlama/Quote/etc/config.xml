@@ -21,5 +21,10 @@
                 <group>quoterequestmethods</group>
             </quoterequest>
         </payment>
+        <checkout>
+            <cart>
+                <quote_sale_pricing>60</quote_sale_pricing>
+            </cart>
+        </checkout>
     </default>
 </config>
