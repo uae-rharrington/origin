@@ -51,9 +51,22 @@
 
     // Compare-products page
     .table-comparison {
+        thead {
+            th,
+            td {
+                .lib-css(border-bottom, @table__border-width @table__border-style @table__border-color);
+            }
+        }
+
         tr {
             &:not(:first-child) {
                 border-top: @table__border-width @table__border-style @table__border-color;
+            }
+        }
+
+        td {
+            &:last-child {
+                border-right: none;
             }
         }
 
@@ -78,9 +91,9 @@
                     }
 
                     &:before {
-                        margin-left: -4px;
+                        margin-left: 0.5px;
                         color: @button__color;
-                        font-size: 37px;
+                        font-size: 15px;
                         line-height: 29px;
                     }
                 }
@@ -88,6 +101,7 @@
 
             &.label {
                 width: 85px;
+                border-right: none;
             }
 
             &.product.info,
