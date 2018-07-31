@@ -15,9 +15,9 @@ $helper = $this->helper('Magento\Msrp\Helper\Data');
 $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinimalPriceLessMsrp($product);
 $messageHelper = $this->helper(\UAE\AdvancedCheckout\Helper\Data::class);
 ?>
-<tbody class="cart item-<?= $_item->getId() ?>">
+<tbody class="cart item" id="item-<?= $_item->getId() ?>">
     <tr class="item-info">
-        <td data-th="<?= $block->escapeHtml(__('Item')) ?>" class="col item">
+        <td data-th="<?= $block->escapeHtml(__('Item')) ?>" class="col item" rowspan="2">
             <?php if ($block->hasProductUrl()):?>
                 <a href="<?= /* @escapeNotVerified */ $block->getProductUrl() ?>"
                    title="<?= $block->escapeHtml($block->getProductName()) ?>"
@@ -80,7 +80,7 @@ $messageHelper = $this->helper(\UAE\AdvancedCheckout\Helper\Data::class);
         </td>
 
         <?php if ($canApplyMsrp): ?>
-            <td class="col msrp" data-th="<?= $block->escapeHtml(__('Price')) ?>">
+            <td class="col msrp" rowspan="2" data-th="<?= $block->escapeHtml(__('Price')) ?>">
                 <span class="pricing msrp">
                     <span class="msrp notice"><?= /* @escapeNotVerified */ __('See price before order confirmation.') ?></span>
                     <?php $helpLinkId = 'cart-msrp-help-' . $_item->getId(); ?>
@@ -90,7 +90,7 @@ $messageHelper = $this->helper(\UAE\AdvancedCheckout\Helper\Data::class);
                 </span>
             </td>
         <?php else: ?>
-            <td class="col price" data-th="<?= $block->escapeHtml(__('Price')) ?>">
+            <td class="col price" rowspan="2" data-th="<?= $block->escapeHtml(__('Price')) ?>">
                 <?= $block->getUnitPriceHtml($_item) ?>
             </td>
         <?php endif; ?>
@@ -124,16 +124,16 @@ $messageHelper = $this->helper(\UAE\AdvancedCheckout\Helper\Data::class);
         </td>
     </tr>
     <tr class="item-actions">
-        <td colspan="100">
+        <td class="col actions" colspan="2">
             <div class="actions-toolbar">
                 <?= /* @escapeNotVerified */ $block->getActions($_item) ?>
                 <button id="update-cart-item-<?= $_item->getId() ?>"
                         type="submit"
                         name="update_cart_action"
                         data-cart-item-update=""
-                        title="<?= $block->escapeHtml(__('Update Shopping Cart')) ?>"
+                        title="<?= $block->escapeHtml(__('Update')) ?>"
                         class="action update">
-                    <span><?= /* @escapeNotVerified */ __('Update Shopping Cart') ?></span>
+                    <span><?= /* @escapeNotVerified */ __('Update') ?></span>
                 </button>
             </div>
         </td>
@@ -141,7 +141,7 @@ $messageHelper = $this->helper(\UAE\AdvancedCheckout\Helper\Data::class);
 </tbody>
 <script type="text/x-magento-init">
         {
-            ".item-<?= $_item->getId() ?>": {
+            "#item-<?= $_item->getId() ?>": {
                 "UAE_AdvancedCheckout/js/cart/item/update": {
                     "item_id": <?= $_item->getId() ?>
                 }

@@ -1,11 +1,12 @@
 /**
- * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ * @category    ClassyLlama
+ * @copyright   Copyright (c) 2018 Classy Llama
  */
+
 define([
     'jquery',
-    'uiComponent',
-    'Magento_Checkout/js/action/get-totals'
-], function ($, Component, getTotalsAction) {
+    'uiComponent'
+], function ($, Component) {
     'use strict';
 
     return Component.extend({
@@ -19,10 +20,6 @@ define([
 
             $('#cart-' + this.item_id + '-qty').keyup(function(event) {
                 self._showItemButton($(event.target));
-            });
-
-            $('#update-cart-item-' + this.item_id).click(function(event) {
-                self._updateItemQty($(event.currentTarget));
             });
         },
 
@@ -63,91 +60,6 @@ define([
             var itemId = this.item_id;
 
             $('#update-cart-item-' + itemId).hide('fade', 300);
-        },
-
-        /**
-         * @param {HTMLElement} elem
-         * @private
-         */
-        _updateItemQty: function (elem) {
-            var itemId = this.item_id;
-
-            this._ajax('/checkout/sidebar/updateItemQty', {
-                'item_id': itemId,
-                'item_qty': $('#cart-' + itemId + '-qty').val()
-            }, elem, this._updateItemQtyAfter);
-        },
-
-        /**
-         * Update content after update qty
-         *
-         * @param {HTMLElement} elem
-         */
-        _updateItemQtyAfter: function (elem) {
-            var itemId = this.item_id,
-                currentQty = $('#cart-' + itemId + '-qty').val();
-            $('#cart-' + itemId + '-qty').data('item-qty', currentQty);
-            this._hideItemButton(elem);
-        },
-
-        /**
-         * @param {Integer} itemQty
-         * @private
-         */
-        _updateSubtotal: function (itemQty) {
-            var price = $('.item-' + this.item_id + ' .price span.price').text().replace('$', ''),
-                subtotal = price * itemQty;
-            $('.item-' + this.item_id + ' .subtotal span.price').text('$' + subtotal.toFixed(2));
-        },
-
-        /**
-         * @param {String} url - ajax url
-         * @param {Object} data - post data for ajax call
-         * @param {Object} elem - element that initiated the event
-         * @param {Function} callback - callback method to execute after AJAX success
-         */
-        _ajax: function (url, data, elem, callback) {
-            $.extend(data, {
-                'form_key': $.mage.cookies.get('form_key')
-            });
-
-            $.ajax({
-                url: url,
-                data: data,
-                type: 'post',
-                dataType: 'json',
-                context: this,
-
-                /** @inheritdoc */
-                beforeSend: function () {
-                    elem.attr('disabled', 'disabled');
-                },
-
-                /** @inheritdoc */
-                complete: function () {
-                    elem.attr('disabled', null);
-                }
-            })
-                .done(function (response) {
-                    var msg;
-                    if (response.success) {
-                        callback.call(this, elem, response);
-                        var deferred = $.Deferred();
-                        getTotalsAction([], deferred);
-                        this._updateSubtotal(data.item_qty);
-                    } else {
-                        msg = response['error_message'];
-
-                        if (msg) {
-                            alert({
-                                content: msg
-                            });
-                        }
-                    }
-                })
-                .fail(function (error) {
-                    console.log(JSON.stringify(error));
-                });
         }
     });
 });
