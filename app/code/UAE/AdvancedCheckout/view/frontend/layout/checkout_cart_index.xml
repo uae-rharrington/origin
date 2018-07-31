@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <!--
 /**
- * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ * @category    ClassyLlama
+ * @copyright   Copyright (c) 2018 Classy Llama
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
@@ -65,5 +66,8 @@
                 </argument>
             </arguments>
         </referenceBlock>
+        <referenceContainer name="checkout.cart.methods">
+            <block class="Magento\Framework\View\Element\Template" name="checkout.cart.methods.return" template="UAE_AdvancedCheckout::cart/back-link.phtml"/>
+        </referenceContainer>
     </body>
 </page>

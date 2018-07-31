@@ -5,8 +5,16 @@
 
 & when (@media-common = true) {
     // Align quantity-box in minicart vertically with icons
-    .minicart-wrapper .product .actions {
-        margin-top: -(14px + @input-text__height / 2);
+    .minicart-wrapper {
+        .action.showcart {
+            .counter-number {
+                text-shadow: none;
+            }
+        }
+
+        .product .actions {
+            margin-top: -(14px + @input-text__height / 2);
+        }
     }
 
     // Use default button styles for custom buttons in cart; reduce icon whitespace
@@ -21,6 +29,66 @@
         padding: @button__padding;
         &:before {
             margin-left: -11px;
+        }
+    }
+
+    .cart.table-wrapper {
+        .item {
+            .col {
+                &.item {
+                    min-height: 0;
+                    padding-top: 12px;
+                }
+
+                &.qty,
+                &.price,
+                &.subtotal,
+                &.msrp {
+                    padding: 15px 10px 10px;
+                }
+
+                &.qty {
+                    text-align: center;
+
+                    .input-text {
+                        width: 44px;
+                    }
+                }
+
+                &.actions {
+                    padding-top: 0;
+                }
+            }
+            .product-item-details {
+                overflow: hidden;
+            }
+            .message {
+                float: left;
+                clear: both;
+                margin: 8px 0 0;
+                padding: 8px 12px 8px 36px;
+
+                > div {
+                    &:before {
+                        width: 36px;
+                        font-size: 18px;
+                        line-height: 18px;
+                    }
+                }
+            }
+        }
+        .product-item-name {
+            margin: 0;
+        }
+
+        .actions-toolbar {
+            padding-bottom: 12px;
+
+            > .action-delete {
+                position: static;
+                float: right;
+                margin: 5px 0 0 -18px;
+            }
         }
     }
 
@@ -84,7 +152,61 @@
     }
 }
 
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .cart.table-wrapper {
+        .col {
+            &.qty,
+            &.price,
+            &.subtotal,
+            &.msrp {
+                width: 33.33%;
+            }
+        }
+        .actions-toolbar {
+            text-align: center;
+        }
+    }
+}
+
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .cart.table-wrapper {
+        .item {
+            .col {
+                &.item {
+                    display: table-cell;
+                    padding: 10px 8px 12px 0;
+                }
+
+                &.qty,
+                &.price,
+                &.subtotal,
+                &.msrp {
+                    height: 29px;
+                    padding: 17px 10px 10px;
+                }
+
+                &.qty {
+                    width: 44px;
+                }
+            }
+        }
+        .product-item-details {
+            padding: 0;
+        }
+
+        .actions-toolbar {
+            padding-left: 10px;
+
+            .action.update {
+                transform: translateX(calc(~"-50% + 22px"));
+
+                .ie11 & {
+                    transform: translateX(-19px);
+                }
+            }
+        }
+    }
+
     .authentication-wrapper {
         position: fixed;
         top: 0;
