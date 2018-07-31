@@ -57,8 +57,6 @@
             flex-wrap: wrap;
 
             section {
-                flex-basis: 158px;
-                flex-grow: 1;
                 padding: 10px 16px;
                 box-sizing: border-box;
             }
@@ -172,23 +170,37 @@
 
     .footer.content {
         padding: 10px 2px;
+
+        .links {
+            section {
+                flex-basis: 33.33%;
+                max-width: 33.33%;
+            }
+        }
     }
 }
-.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
     //
     // Footer
     //  _____________________________________________
 
     .footer.content {
-        .links {
+        .footer.links {
             section {
-                max-width: 33.33%;
+                flex-basis: 50%;
+                max-width: 50%;
             }
         }
     }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-wrapper {
+        .ie11 & {
+            height: auto;
+        }
+    }
+
     //
     // Header
     //  _____________________________________________
@@ -199,7 +211,7 @@
         left: 0;
         right: 0;
         background: @color-white;
-        z-index: 2;
+        z-index: 10;
 
         .checkout-index-index & {
             border-bottom: 1px solid @border-color__base;
@@ -228,7 +240,7 @@
         left: 0;
         right: 0;
         margin-bottom: 0;
-        z-index: 2;
+        z-index: 9;
 
         + * {
             margin-top: @header-desktop__height + @main-nav__height;
@@ -287,6 +299,10 @@
             display: flex;
             padding: 0;
 
+            section {
+                flex-basis: 25%;
+                max-width: 25%;
+            }
             li {
                 margin: 0;
             }
@@ -300,12 +316,29 @@
     }
 }
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    //
+    // Navigation
+    //  _____________________________________________
+
     .navigation {
         > ul {
             padding: 0 20px;
         }
         .level0 {
             margin-right: 20px;
+        }
+    }
+
+    //
+    // Footer
+    //  _____________________________________________
+
+    .footer.content {
+        .links {
+            section {
+                flex-basis: 20%;
+                max-width: 20%;
+            }
         }
     }
 }
