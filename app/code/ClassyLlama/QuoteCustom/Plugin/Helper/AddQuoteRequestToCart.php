@@ -1,88 +1,94 @@
 <?php
 /**
- * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ * Add Quote Request To Cart Plugin
+ *
+ * @category ClassyLlama
+ * @package ClassyLlama_QuoteCustom
+ * @copyright Copyright (c) 2018 ClassyLlama
  */
 
-namespace ClassyLlama\Quote\Helper;
+namespace ClassyLlama\QuoteCustom\Plugin\Helper;
 
+use Magento\Customer\Model\Session;
+use ClassyLlama\Quote\Helper\AddQuoteRequestToCart as AddQuoteRequestToCartHelper;
+use Magento\Sales\Api\Data\OrderInterface;
+use Magento\Checkout\Model\Cart;
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Quote\Model\Quote\Item;
+use Magento\Framework\Serialize\Serializer\Json;
 
-class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
+/**
+ * ClassyLlama\QuoteCustom\Plugin\Helper\AddQuoteRequestToCart
+ *
+ * @category ClassyLlama
+ * @package ClassyLlama_QuoteCustom
+ */
+class AddQuoteRequestToCart
 {
     /**
-     * Number of days that a Quote Request's pricing data is valid for
+     * @var Session
      */
-    const QUOTE_REQUEST_STALE_DAYS = 60;
+    private $customerSession;
 
     /**
-     * Results array key for non-exceptional errors encountered during addQuoteRequestToCart
-     */
-    const RESULTS_ERRORS_KEY = 'errors';
-
-    /**
-     * Results array key for exceptions encountered during addQuoteRequestToCart
-     */
-    const RESULTS_EXCEPTIONS_KEY = 'exceptions';
-
-    /**
-     * Results array key for items successfully added during addQuoteRequestToCart
-     */
-    const RESULTS_SUCCESSES_KEY = 'successes';
-
-    /**
-     * Results array key for boolean pertaining to a cart previously containing items during addQuoteRequestToCart
-     */
-    const RESULTS_CART_CONTAINED_ITEMS_KEY = 'hadExistingItems';
-
-    /**
-     * @var \Magento\Framework\Serialize\Serializer\Json
+     * @var Json
      */
     private $serializer;
 
     /**
-     * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Magento\Framework\Serialize\Serializer\Json $serializer
+     * AddQuoteRequestToCart constructor.
+     *
+     * @param Session $customerSession
+     * @param Json $serializer
      */
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
-        \Magento\Framework\Serialize\Serializer\Json $serializer
-    ){
+        Session $customerSession,
+        Json $serializer
+    ) {
+        $this->customerSession = $customerSession;
         $this->serializer = $serializer;
-        parent::__construct($context);
     }
 
     /**
-     * Adds Items from the given Quote Request Order to the given Cart
+     * Check for expired
+     * Add Tax and Shipping
      *
-     * @param \Magento\Sales\Api\Data\OrderInterface $order
-     * @param \Magento\Checkout\Model\Cart $cart
+     * @param AddQuoteRequestToCartHelper $subject
+     * @param \Closure $proceed
+     * @param OrderInterface $order
+     * @param Cart $cart
+     *
      * @return bool|array
      */
-    public function execute(
-        \Magento\Sales\Api\Data\OrderInterface $order,
-        \Magento\Checkout\Model\Cart $cart
+    public function aroundExecute(
+        AddQuoteRequestToCartHelper $subject,
+        \Closure $proceed,
+        OrderInterface $order,
+        Cart $cart
     ) {
         $results = [
-            self::RESULTS_ERRORS_KEY => [],
-            self::RESULTS_EXCEPTIONS_KEY => [],
-            self::RESULTS_SUCCESSES_KEY => [],
-            self::RESULTS_CART_CONTAINED_ITEMS_KEY => false
+            AddQuoteRequestToCartHelper::RESULTS_ERRORS_KEY => [],
+            AddQuoteRequestToCartHelper::RESULTS_EXCEPTIONS_KEY => [],
+            AddQuoteRequestToCartHelper::RESULTS_SUCCESSES_KEY => [],
+            AddQuoteRequestToCartHelper::RESULTS_CART_CONTAINED_ITEMS_KEY => false
         ];
 
         if ($order && $order->hasItems() && $cart) {
             $createdAt = new \DateTime($order->getCreatedAt(), new \DateTimeZone('UTC'));
             $now = new \DateTime('now', new \DateTimeZone('UTC'));
             $dateTimeDelta = $createdAt->diff($now);
-            $isStale = $dateTimeDelta->days > self::QUOTE_REQUEST_STALE_DAYS;
+            $isStale = $dateTimeDelta->days > AddQuoteRequestToCartHelper::QUOTE_REQUEST_STALE_DAYS;
+            $this->customerSession->setIsQuoteExpired($isStale);
             if ($cart->getItemsQty() > 0) {
-                $results[self::RESULTS_CART_CONTAINED_ITEMS_KEY] = true;
+                $results[AddQuoteRequestToCartHelper::RESULTS_CART_CONTAINED_ITEMS_KEY] = true;
             }
             $items = $order->getItemsCollection();
             $itemsByProductId = [];
             foreach ($items as $item) {
                 try {
                     if (empty($item->getProduct()) || $item->getProduct()->getStatus() != Status::STATUS_ENABLED) {
-                        throw new \Magento\Framework\Exception\LocalizedException(
+                        throw new LocalizedException(
                             __('This product is no longer available.')
                         );
                     }
@@ -92,15 +98,16 @@ class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
                         $item->setPrice($item->getOriginalPrice());
                     }
                     $cart->addOrderItem($item);
-                    $results[self::RESULTS_SUCCESSES_KEY][] = $item->getSku();
-                    // Only add parent products since child products may have conflicting SKUs and their prices are $0
+                    $results[AddQuoteRequestToCartHelper::RESULTS_SUCCESSES_KEY][] = $item->getSku();
+                    // Only add parent products since child products may have conflicting SKUs
+                    // and their prices are $0
                     if (!$item->getParentItem()) {
                         $itemsByProductId[$productSku] = $item;
                     }
-                } catch (\Magento\Framework\Exception\LocalizedException $e) {
-                    $results[self::RESULTS_ERRORS_KEY][$item->getSku()] = $e->getMessage();
+                } catch (LocalizedException $e) {
+                    $results[AddQuoteRequestToCartHelper::RESULTS_ERRORS_KEY][$item->getSku()] = $e->getMessage();
                 } catch (\Exception $e) {
-                    $results[self::RESULTS_EXCEPTIONS_KEY][$item->getSku()] = $e;
+                    $results[AddQuoteRequestToCartHelper::RESULTS_EXCEPTIONS_KEY][$item->getSku()] = $e;
                 }
             }
 
@@ -116,6 +123,16 @@ class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
             }
 
             $cart->getQuote()->setOriginatingQuoteId($order->getIncrementId());
+            if (!$isStale) {
+                $cart->getQuote()->getShippingAddress()->addData($order->getShippingAddress()->getData());
+                $cart->getQuote()->getShippingAddress()
+                    ->setCollectShippingRates(true)
+                    ->collectShippingRates()
+                    ->setShippingMethod($order->getShippingMethod())
+                    ->setBaseTaxAmount($order->getBaseTaxAmount())
+                    ->setTaxAmount($order->getTaxAmount());
+                $cart->getQuote()->collectTotals();
+            }
             $cart->save();
         }
 
@@ -125,11 +142,11 @@ class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Sets Custom Price on Quote Item
      *
-     * @param \Magento\Quote\Model\Quote\Item $item
+     * @param Item $item
      * @param float $newPrice
      * @return void
      */
-    protected function setQuoteItemCustomPrice(\Magento\Quote\Model\Quote\Item $item, $newPrice)
+    protected function setQuoteItemCustomPrice(Item $item, $newPrice)
     {
         if ($newPrice <= 0) {
             return;
@@ -157,9 +174,9 @@ class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
     protected function unsetEmptyResults(array $results)
     {
         if ($results) {
-            $this->unsetEmptyValues($results, self::RESULTS_SUCCESSES_KEY);
-            $this->unsetEmptyValues($results, self::RESULTS_ERRORS_KEY);
-            $this->unsetEmptyValues($results, self::RESULTS_EXCEPTIONS_KEY);
+            $this->unsetEmptyValues($results, AddQuoteRequestToCartHelper::RESULTS_SUCCESSES_KEY);
+            $this->unsetEmptyValues($results, AddQuoteRequestToCartHelper::RESULTS_ERRORS_KEY);
+            $this->unsetEmptyValues($results, AddQuoteRequestToCartHelper::RESULTS_EXCEPTIONS_KEY);
 
             if (!$this->hasResults($results)) {
                 $results = false;
@@ -189,8 +206,8 @@ class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected function hasResults(array $results)
     {
-        return isset($results[self::RESULTS_SUCCESSES_KEY])
-            || isset($results[self::RESULTS_ERRORS_KEY])
-            || isset($results[self::RESULTS_EXCEPTIONS_KEY]);
+        return isset($results[AddQuoteRequestToCartHelper::RESULTS_SUCCESSES_KEY])
+            || isset($results[AddQuoteRequestToCartHelper::RESULTS_ERRORS_KEY])
+            || isset($results[AddQuoteRequestToCartHelper::RESULTS_EXCEPTIONS_KEY]);
     }
 }
