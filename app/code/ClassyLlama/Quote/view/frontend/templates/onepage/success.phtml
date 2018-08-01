@@ -1,0 +1,25 @@
+<?php
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+?>
+<?php $helper = $this->helper('ClassyLlama\Quote\Helper\Data'); ?>
+<?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+<div class="checkout-success">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xxs-12 col-s-6">
+                <h3><?= __('Quote Info'); ?></h3>
+                <?php if ($block->getOrderId()):?>
+                    <p><?= __('Thank you for shopping at <span>%1</span>.  Your quote # is: <span>%2</span>.', $block->getStoreName(), $block->escapeHtml($block->getOrderId())); ?></p>
+                    <p><?= __('We just sent you an email containing your quote. The quote will be valid for %1 days.', $helper->getQuoteLifetime()); ?></p>
+                <?php endif;?>
+            </div>
+            <div class="col-xxs-12 col-s-6">
+                <h3><?= __('How to purchase this quote'); ?></h3>
+                <p><?= __('When you are ready to place your order, simply click on the "Add Quote to Shopping Cart" button in your email and then complete the checkout.'); ?></p>
+                <p class="hidden" data-mage-init='{"componentVisibility": {"showForCustomer": true}}'><?= __('Or, you can return to our site, login at top of of the screen, and click on "My Quotes" in the left navigation. You can quickly see your past quotes, and convert any quotes into orders simply by viewing the quote, clicking the "Add Quote to Shopping Cart" button, and then completing the checkout.'); ?></p>
+            </div>
+        </div>
+    </div>
+</div>

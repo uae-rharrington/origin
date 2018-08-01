@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Block\Onepage">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="classyllama_quote_processor" xsi:type="object">ClassyLlama\Quote\Block\Checkout\LayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\GoogleAnalytics\Observer\SetGoogleAnalyticsOnOrderSuccessPageViewObserver">
+        <plugin name="classyllama_quote_plugin_googleanalytics_order_success" type="ClassyLlama\Quote\Plugin\GoogleAnalytics\Observer\SetAnalyticsOnOrderSuccessPageView" />
+    </type>
+    <type name="Magento\GoogleAdwords\Observer\SetConversionValueObserver">
+        <plugin name="classyllama_quote_plugin_googleadwords_order_success" type="ClassyLlama\Quote\Plugin\GoogleAdwords\Observer\SetAdwordsOnOrderSuccessPageView" />
+    </type>
+</config>

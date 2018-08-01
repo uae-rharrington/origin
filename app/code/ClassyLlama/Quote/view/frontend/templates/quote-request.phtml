@@ -1,0 +1,38 @@
+<?php
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+?>
+
+<script>
+    var getIsQuoteRequest = function() {
+        if (window.location.search && window.location.search.toLowerCase().indexOf('quote=true') > -1) {
+            return true;
+        }
+
+        return false;
+    };
+
+    if (typeof window.checkoutConfig != 'undefined') {
+        window.checkoutConfig.isQuoteRequest = getIsQuoteRequest();
+        if (window.checkoutConfig.isQuoteRequest && window.checkoutConfig.checkoutUrl.indexOf('quote=') == -1) {
+            var joiningString = '?';
+            if (window.checkoutConfig.checkoutUrl.indexOf('?') > -1) {
+                joiningString = '&';
+            }
+
+            window.checkoutConfig.checkoutUrl += joiningString + 'quote=true';
+
+            document.getElementsByTagName('body')[0].className += " quote-request";
+        }
+    }
+</script>
+
+<script type="text/x-magento-init">
+    {
+        "#checkout": {
+            "ClassyLlama_Quote/js/add-customer-note": {},
+            "ClassyLlama_Quote/js/hide-payment-options": {}
+        }
+    }
+</script>

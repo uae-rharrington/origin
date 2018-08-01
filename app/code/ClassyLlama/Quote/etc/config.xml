@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <quoterequest>
+            <email>
+                <guest_template>quoterequest_email_guest_template</guest_template>
+                <customer_template>quoterequest_email_customer_template</customer_template>
+            </email>
+        </quoterequest>
+        <payment>
+            <quoterequest>
+                <active>1</active>
+                <model>ClassyLlama\Quote\Model\QuoteRequestPaymentMethod</model>
+                <order_status>quote</order_status>
+                <title>Quote Request</title>
+                <group>quoterequestmethods</group>
+            </quoterequest>
+        </payment>
+        <checkout>
+            <cart>
+                <quote_sale_pricing>60</quote_sale_pricing>
+            </cart>
+        </checkout>
+    </default>
+</config>

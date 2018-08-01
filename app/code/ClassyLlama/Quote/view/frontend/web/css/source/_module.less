@@ -1,0 +1,69 @@
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+
+& when (@media-common = true) {
+    a.button {
+        border-radius: 3px;
+        .lib-button();
+        .lib-css(font-weight, @font-weight__bold);
+
+        &:active {
+            .lib-css(box-shadow, @button__shadow);
+        }
+    }
+
+    a.button.primary {
+        .lib-button-primary();
+    }
+
+    #shipping .quote-request-customer-note-wrapper {
+        padding: 10px;
+        background-color: @color-white-smoke;
+        margin-bottom: 10px;
+    }
+
+    .quoterequest-order-view, .quoterequest-guest-view {
+        .quote-request-order {
+            a, button {
+                margin-bottom: 20px;
+            }
+        }
+
+        .table-order-items .item .title {
+            display: none;
+        }
+    }
+
+    .quoterequest-onepage-success {
+        #maincontent .page-title-wrapper {
+            display: none;
+        }
+        .new-account-container {
+            &:extend(.checkout-onepage-success .new-account-container);
+            .new-account-label {
+                &:extend(.checkout-onepage-success .new-account-container .new-account-label);
+            }
+            input.action.primary {
+                &:extend(.checkout-onepage-success .new-account-container input.action.primary);
+            }
+            div.control {
+                &:extend(.checkout-onepage-success .new-account-container div.control);
+            }
+        }
+    }
+
+    .actions.viewcart-checkout {
+        margin-top: 30px;
+    }
+
+    .checkout-index-index.quote-request .payment-method-title {
+        display: none;
+    }
+    .quote-request [name$="custom_shipping_account_number"] .mage-error {
+        display: none;
+    }
+    .quote-request [name$="custom_shipping_account_number"]._error .control input {
+        border-color: @form-element-input__border-color;
+    }
+}

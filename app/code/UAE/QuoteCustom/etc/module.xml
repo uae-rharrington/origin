@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * Module config
+ *
+ * @category UAE
+ * @package UAE_QuoteCustom
+ * @copyright Copyright (c) 2018 ClassyLlama
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="UAE_QuoteCustom" setup_version="1.0.0">
+        <sequence>
+            <module name="ClassyLlama_Quote" />
+            <module name="ShipperHQ_Shipper" />
+        </sequence>
+    </module>
+</config>
+

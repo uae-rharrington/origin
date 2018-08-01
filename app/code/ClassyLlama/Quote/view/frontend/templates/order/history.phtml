@@ -1,0 +1,54 @@
+<?php
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+?>
+<?php $_orders = $block->getOrders(); ?>
+<?php echo $block->getChildHtml('info');?>
+<?php if ($_orders && count($_orders)): ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('Quotes') ?></caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col id"><?php /* @escapeNotVerified */ echo __('Quote Request #') ?></th>
+                <th scope="col" class="col date"><?php /* @escapeNotVerified */ echo __('Date') ?></th>
+                <?php /* @noEscape */ echo $block->getChildHtml('extra.column.header');?>
+                <th scope="col" class="col shipping"><?php /* @escapeNotVerified */ echo __('Ship To') ?></th>
+                <th scope="col" class="col total"><?php /* @escapeNotVerified */ echo __('Quote Total') ?></th>
+                <th scope="col" class="col actions">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($_orders as $_order): ?>
+                <tr>
+                    <td data-th="<?php echo $block->escapeHtml(__('Quote Request #')) ?>" class="col id"><?php /* @escapeNotVerified */ echo $_order->getRealOrderId() ?></td>
+                    <td data-th="<?php echo $block->escapeHtml(__('Date')) ?>" class="col date"><?php /* @escapeNotVerified */ echo $block->formatDate($_order->getCreatedAt()) ?></td>
+                    <?php $extra = $block->getChildBlock('extra.container'); ?>
+                    <?php if ($extra): ?>
+                        <?php $extra->setOrder($_order); ?>
+                        <?php /* @noEscape */ echo $extra->getChildHtml() ?>
+                    <?php endif; ?>
+                    <td data-th="<?php echo $block->escapeHtml(__('Ship To')) ?>" class="col shipping"><?php echo $_order->getShippingAddress() && $_order->getShippingAddress()->getStreet() ? $block->escapeHtml($_order->getShippingAddress()->getStreet()[0]) : '&nbsp;' ?></td>
+                    <td data-th="<?php echo $block->escapeHtml(__('Quote Total')) ?>" class="col total"><?php /* @escapeNotVerified */ echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
+                    <td data-th="<?php echo $block->escapeHtml(__('Actions')) ?>" class="col actions">
+                        <a href="<?php /* @escapeNotVerified */ echo $block->getViewUrl($_order) ?>" class="action view">
+                            <span><?php /* @escapeNotVerified */ echo __('View Quote') ?></span>
+                        </a>
+                        <?php if ($this->helper(\Magento\Sales\Helper\Reorder::class)->canReorder($_order->getEntityId())) : ?>
+                            <a href="<?= $block->getReorderUrl($_order); ?>" class="action order">
+                                <span><?php /* @escapeNotVerified */ echo __('Order') ?></span>
+                            </a>
+                        <?php endif ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php /* @escapeNotVerified */ echo __('You have requested no quotes.'); ?></span></div>
+<?php endif ?>

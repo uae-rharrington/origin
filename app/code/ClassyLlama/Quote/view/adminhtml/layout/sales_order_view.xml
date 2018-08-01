@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="order_info">
+            <!-- This is one of the few remaining areas where argument based template overrides do not work -->
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">ClassyLlama_Quote::order/view/info.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

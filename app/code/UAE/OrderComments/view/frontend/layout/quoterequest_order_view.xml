@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * Order view layout
+ *
+ * @category UAE
+ * @package UAE_OrderComments
+ * @copyright Copyright (c) 2018 ClassyLlama
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="order.comments" destination="content" before="quoterequest.order.view"/>
+    </body>
+</page>
