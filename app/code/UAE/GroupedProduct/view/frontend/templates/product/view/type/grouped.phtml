@@ -20,8 +20,8 @@
 <div class="table-wrapper grouped">
     <table class="table data grouped" id="super-product-table">
         <?php if ($_hasAssociatedProducts): ?>
+            <?php foreach ($_associatedProducts as $_item): ?>
             <tbody>
-                <?php foreach ($_associatedProducts as $_item): ?>
                 <tr>
                     <td class="col image">
                         <?php $color = explode('#', $_item->getColorHex()); ?>
@@ -83,8 +83,8 @@
                                    title="<?= /* @escapeNotVerified */ __('Qty') ?>"
                                    placeholder="<?= /* @escapeNotVerified */ __('qty') ?>"
                                    class="input-text qty"
-                                   data-validate="{'validate-grouped-qty':'#super-product-table'}"
-                                   data-errors-message-box="#validation-message-box"/>
+                                   data-validate="{'validate-grouped-qty-custom':'#super-product-table'}"
+                                   data-errors-message-box="#validation-message-box" />
                         </div>
                     <?php else: ?>
                         <div class="stock unavailable" title="<?= /* @escapeNotVerified */ __('Availability') ?>">
@@ -94,9 +94,8 @@
                     </td>
                     <?php endif; ?>
                 </tr>
-
+            </tbody>
             <?php endforeach; ?>
-        </tbody>
         <?php else: ?>
         <tbody>
             <tr>
@@ -110,4 +109,6 @@
     </table>
 </div>
 <?= $block->getChildHtml('product.info.details.simple'); ?>
-<div id="validation-message-box"></div>
+<div class="validation-message-outer">
+    <div id="validation-message-box"></div>
+</div>

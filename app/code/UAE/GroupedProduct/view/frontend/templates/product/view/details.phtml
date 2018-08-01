@@ -9,7 +9,7 @@
 <?php $associatedProducts = $block->getAssociatedProducts(); ?>
 <?php foreach ($associatedProducts as $product): ?>
     <?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')):?>
-        <div class="product info detailed-<?= /* @escapeNotVerified */ $product->getId() ?>">
+        <div class="product info detailed" id="detailed-<?= /* @escapeNotVerified */ $product->getId() ?>">
             <?php $layout = $block->getLayout(); ?>
             <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
                 <?php foreach ($detailedInfoGroup as $name):?>
@@ -41,22 +41,27 @@
             </div>
         </div>
     <?php endif; ?>
-    <script>
-        require([
-            'jquery',
-            'Magento_Ui/js/modal/modal'
-        ], function($, modal) {
-            'use strict';
+<?php endforeach; ?>
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/modal'
+    ], function($, modal) {
+        'use strict';
 
-            var releaseNotes = $('.detailed-<?= /* @escapeNotVerified */ $product->getId() ?>').modal({
+        var detailTabs = $('.product.info.detailed');
+
+        $.each(detailTabs, function () {
+            var releaseNotes = $(this).modal({
                 modalClass: 'simple-product-details',
-                responsive: true,
                 buttons: []
             });
-            $('.product-item-details-<?= /* @escapeNotVerified */ $product->getId() ?>').on('click', function(e) {
+            var id = $(this).attr('id');
+            var key = id.substring(id.indexOf('-') + 1);
+            $('.product-item-details-' + key).on('click', function(e) {
                 e.preventDefault();
                 releaseNotes.modal('openModal');
             });
         });
-    </script>
-<?php endforeach; ?>
+    });
+</script>
