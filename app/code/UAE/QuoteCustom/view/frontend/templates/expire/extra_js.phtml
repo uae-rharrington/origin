@@ -1,0 +1,34 @@
+<?php
+/**
+ * @category UAE
+ * @package UAE_QuoteCustom
+ * @copyright Copyright (c) 2018 ClassyLlama
+ */
+?>
+<?php if ($block->isQuoteExpired()): ?>
+<div id="quote-expire-modal">
+    <p><?= $block->escapeHtml(__('The quote that you have loaded into this shopping cart has expired. Please be aware that pricing may have changed to reflect our current prices.')) ?></p>
+</div>
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/modal'
+    ], function($, modal) {
+        var options = {
+            type: 'popup',
+            autoOpen: true,
+            responsive: true,
+            innerScroll: true,
+            title: 'Expired Quote',
+            buttons: [{
+                text: $.mage.__('Continue'),
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+        modal(options, $('#quote-expire-modal'));
+    });
+</script>
+<?php endif; ?>
+
