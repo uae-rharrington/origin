@@ -46,6 +46,14 @@ define([
                     e.preventDefault();
                     focusable = form.find('input').filter(':visible');
                     next = focusable.eq(focusable.index(e.target) + 1);
+
+                    this.element.find(this.options.itemsSelector).children()
+                        .on('contentUpdated', function() {
+                            setTimeout(function () {
+                                $(next).focus();
+                            },10);
+                        });
+
                     if (next.length) {
                         $(next).focus();
                     }
