@@ -13,6 +13,9 @@
                 <delivery_time>Please allow %s for delivery.</delivery_time>
                 <qualifying_items><![CDATA[Spend <strong>%s</strong> more on regularly-priced items and save <strong>%s</strong> on all qualifying items!]]></qualifying_items>
             </product_messages>
+            <cart_rules>
+                <show_message_threshold>80</show_message_threshold>
+            </cart_rules>
         </uae_checkout>
         <sales>
             <totals_sort>

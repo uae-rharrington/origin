@@ -35,6 +35,10 @@
                     <label>"Qualifying Items" cart rule</label>
                     <source_model>UAE\AdvancedCheckout\Model\System\Config\Source\CartRules</source_model>
                 </field>
+                <field id="show_message_threshold" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Message Threshold</label>
+                    <comment>Percentage of price to start showing Qualifying Items Message (e.g. 80 equals 80%)</comment>
+                </field>
             </group>
         </section>
         <section id="sales">
