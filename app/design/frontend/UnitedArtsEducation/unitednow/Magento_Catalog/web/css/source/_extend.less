@@ -137,7 +137,25 @@
             + .actions-secondary {
                 display: block;
                 width: auto;
-                padding: 3px 0 0;
+                padding: 0 2% 0 4%;
+                line-height: 33px;
+                min-width: 18px;
+            }
+        }
+
+        .page-products & {
+            display: flex;
+
+            .actions-primary {
+                form {
+                    display: flex;
+                }
+                input[name="qty"] {
+                    width: 26%;
+                    height: 35px;
+                    text-align: center;
+                    margin-right: 5%;
+                }
             }
         }
     }
