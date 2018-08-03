@@ -42,7 +42,7 @@ define([
                 var focusable = null,
                     next = null,
                     form = $(this.formSelector);
-                if (e.keyCode == 13) {
+                if (e.keyCode == 13 || e.keyCode == 9) {
                     e.preventDefault();
                     focusable = form.find('input').filter(':visible');
                     next = focusable.eq(focusable.index(e.target) + 1);
