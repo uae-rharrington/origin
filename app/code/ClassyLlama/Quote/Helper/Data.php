@@ -11,7 +11,7 @@ use Magento\Store\Model\ScopeInterface;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    /** Regions Restrictions Config Path */
+    /** Quote Lifetime Config Path */
     const XML_PATH_QUOTE_LIFETIME = 'checkout/cart/delete_quote_after';
 
     /** @var ScopeConfigInterface */
