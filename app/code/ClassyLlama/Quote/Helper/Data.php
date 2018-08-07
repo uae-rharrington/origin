@@ -71,6 +71,17 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
 
     /**
+     * Returns a URL to the View Quote
+     *
+     * @param int $orderId
+     * @return string
+     */
+    public function getViewQuoteUrl($orderId)
+    {
+        return $this->_urlBuilder->getUrl('quoterequest/order/view', ['order_id' => $orderId]);
+    }
+
+    /**
      * @return bool
      */
     protected function getRequestIsQuote()

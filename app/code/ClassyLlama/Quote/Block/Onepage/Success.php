@@ -26,5 +26,6 @@ class Success extends \Magento\Checkout\Block\Onepage\Success
 
         $order = $this->_checkoutSession->getLastRealOrder();
         $this->setStoreName($order->getStore()->getName());
+        $this->setOrderRealId($order->getEntityId());
     }
 }
