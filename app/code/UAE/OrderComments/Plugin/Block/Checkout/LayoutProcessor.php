@@ -50,7 +50,7 @@ class LayoutProcessor
         if ($this->dataHelper->getIsQuoteRequest()) {
             $jsLayout['components']['checkout']['children']['steps']['children']
             ['shipping-step']['children']['shippingAddress']['children']['shippingAdditional']
-            ['children']['order_message']['config']['label'] = self::COMMENT_QUOTE_LABEL;
+            ['children']['order_comment']['config']['label'] = self::COMMENT_QUOTE_LABEL;
         }
 
         return $jsLayout;
