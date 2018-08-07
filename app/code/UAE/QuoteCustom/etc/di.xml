@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * Di config
+ *
+ * @category UAE
+ * @package UAE_QuoteCustom
+ * @copyright Copyright (c) 2018 ClassyLlama
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="UaeQuoteCustomShippingInformationManagement"
+                type="UAE\QuoteCustom\Plugin\Model\ShippingInformationManagement"/>
+    </type>
+</config>

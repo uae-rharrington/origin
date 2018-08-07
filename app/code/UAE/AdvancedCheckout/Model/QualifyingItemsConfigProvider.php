@@ -71,16 +71,8 @@ class QualifyingItemsConfigProvider implements ConfigProviderInterface
     {
         $config = [];
         if ($rule = $this->getQualifyingItemsRule()) {
-            $threshold = $this->getConditionAmount($rule);
-            $regularTotal = $this->getRegularItemsTotal();
-            if ($threshold && $threshold > $regularTotal) {
-                $diff = $this->priceFormatter->format(
-                    $threshold - $regularTotal,
-                    false,
-                    \Magento\Framework\Pricing\PriceCurrencyInterface::DEFAULT_PRECISION,
-                    null,
-                    $this->storeManager->getStore()->getBaseCurrency()
-                );
+            $diff = $this->getPriceDifference($rule);
+            if ($diff !== 0) {
                 $config['qualifyingItems']['message'] = sprintf(
                     $this->getQualifyingItemsMessage(),
                     $diff,
@@ -190,11 +182,53 @@ class QualifyingItemsConfigProvider implements ConfigProviderInterface
         $quote = $this->getQuote();
         $regularItemsTotal = 0;
         foreach ($quote->getAllVisibleItems() as $quoteItem) {
-            if ($quoteItem->getProduct()->getOnSale() != 0) {
+            if ($quoteItem->getProduct()->getOnSale() == 0) {
                 $regularItemsTotal += $quoteItem->getRowTotal();
             }
         }
 
         return $regularItemsTotal;
+    }
+
+    /**
+     * Get threshold for showing items message.
+     *
+     * @return string
+     */
+    private function getQualifyingItemsThreshold()
+    {
+        return $this->config->getQualifyingItemsThreshold(
+            ScopeInterface::SCOPE_STORE,
+            $this->storeManager->getStore()->getCode()
+        );
+    }
+
+    /**
+     * Get price difference between rule threshold and cart items total.
+     *
+     * @param \Magento\SalesRule\Api\Data\RuleInterface $rule
+     * @return float|int
+     */
+    private function getPriceDifference(\Magento\SalesRule\Api\Data\RuleInterface $rule)
+    {
+        $diff = 0;
+        $threshold = $this->getConditionAmount($rule);
+        $messageThreshold = $this->getQualifyingItemsThreshold();
+
+        if ($threshold) {
+            $regularTotal = $this->getRegularItemsTotal();
+            $currentThreshold = $regularTotal / $threshold * 100;
+            if ($currentThreshold >= $messageThreshold && $currentThreshold < 100) {
+                $diff = $this->priceFormatter->format(
+                    $threshold - $regularTotal,
+                    false,
+                    \Magento\Framework\Pricing\PriceCurrencyInterface::DEFAULT_PRECISION,
+                    null,
+                    $this->storeManager->getStore()->getBaseCurrency()
+                );
+            }
+        }
+
+        return $diff;
     }
 }

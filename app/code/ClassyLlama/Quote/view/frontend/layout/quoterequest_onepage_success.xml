@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Success Page</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="ClassyLlama\Quote\Block\Onepage\Success" name="checkout.success" template="ClassyLlama_Quote::onepage/success.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

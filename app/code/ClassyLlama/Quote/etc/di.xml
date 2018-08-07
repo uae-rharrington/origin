@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Create Order & Quote Request Filtered Collections, and set a preference for standard order collection as order filtered -->
+    <virtualType name="ClassyLlama\Quote\Model\ResourceModel\Order\FilteredCollection" type="ClassyLlama\Quote\Model\ResourceModel\Order\Collection">
+        <arguments>
+            <argument name="baseFilters" xsi:type="array">
+                <item name="is_quote_request" xsi:type="array">
+                    <item name="eq" xsi:type="string">0</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ClassyLlama\Quote\Model\ResourceModel\QuoteRequest\FilteredCollection" type="ClassyLlama\Quote\Model\ResourceModel\Order\Collection">
+        <arguments>
+            <argument name="baseFilters" xsi:type="array">
+                <item name="is_quote_request" xsi:type="array">
+                    <item name="eq" xsi:type="string">1</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <preference for="Magento\Sales\Model\ResourceModel\Order\Collection" type="ClassyLlama\Quote\Model\ResourceModel\Order\FilteredCollection" />
+    <!-- Create Order & Quote Request Filtered Grid Collections, and set a preference for standard order grid collection as order filtered -->
+    <virtualType name="ClassyLlama\Quote\Model\ResourceModel\Order\Grid\FilteredCollection" type="ClassyLlama\Quote\Model\ResourceModel\Order\Grid\Collection">
+        <arguments>
+            <argument name="baseFilters" xsi:type="array">
+                <item name="is_quote_request" xsi:type="array">
+                    <item name="eq" xsi:type="string">0</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ClassyLlama\Quote\Model\ResourceModel\QuoteRequest\Grid\FilteredCollection" type="ClassyLlama\Quote\Model\ResourceModel\Order\Grid\Collection">
+        <arguments>
+            <argument name="baseFilters" xsi:type="array">
+                <item name="is_quote_request" xsi:type="array">
+                    <item name="eq" xsi:type="string">1</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <preference for="Magento\Sales\Model\ResourceModel\Order\Grid\Collection" type="ClassyLlama\Quote\Model\ResourceModel\Order\Grid\FilteredCollection" />
+
+    <preference for="Magento\Reports\Model\ResourceModel\Customer\Totals\Collection" type="ClassyLlama\Quote\Model\ResourceModel\Customer\Totals\Collection" />
+    <preference for="Magento\Reports\Model\ResourceModel\Customer\Orders\Collection" type="ClassyLlama\Quote\Model\ResourceModel\Customer\Orders\Collection" />
+    <preference for="Magento\Reports\Model\ResourceModel\Order\Collection" type="ClassyLlama\Quote\Model\ResourceModel\Report\Order\Collection" />
+    <!-- Add potential columns to order grid, does not show unless added as a column in the layout xml -->
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="is_quote_request" xsi:type="string">sales_order.is_quote_request</item>
+                <item name="originating_quote_id" xsi:type="string">sales_order.originating_quote_id</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- Plugin to facilitate quote request payment method flag from method to quote object -->
+    <type name="Magento\Quote\Model\PaymentMethodManagement">
+        <plugin name="classyllama_quote_plugin_quote_paymentmethodmanagement" type="ClassyLlama\Quote\Plugin\Quote\PaymentMethodManagement" />
+    </type>
+    <!-- Override existing Order Sender\Identity to change the template if it is a quote request -->
+    <preference for="Magento\Sales\Model\Order\Email\Sender\OrderSender" type="ClassyLlama\Quote\Model\Email\Sender" />
+    <preference for="Magento\Sales\Model\Order\Email\Container\OrderIdentity" type="ClassyLlama\Quote\Model\Email\Identity" />
+    <!-- Define grid pool and data provider for quote request grid -->
+    <type name="Magento\Sales\Model\ResourceModel\GridPool">
+        <arguments>
+            <argument name="grids" xsi:type="array">
+                <item name="quoterequest_grid" xsi:type="object">Magento\Sales\Model\ResourceModel\Order\Grid</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="sales_quoterequest_grid_data_source" xsi:type="string">ClassyLlama\Quote\Model\ResourceModel\QuoteRequest\Grid\FilteredCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Controller\Onepage\Success">
+        <plugin name="classyllama_quote_plugin_checkout_controller_onepage_success" type="ClassyLlama\Quote\Plugin\Checkout\Controller\Onepage\Success" />
+    </type>
+    <!-- Plugin to prevent reducing inventory when quote request is issued -->
+    <type name="Magento\CatalogInventory\Observer\SubtractQuoteInventoryObserver">
+        <plugin name="classyllama_quote_plugin_subtract_inventory" type="ClassyLlama\Quote\Plugin\CatalogInventory\Observer\SubtractQuoteInventoryObserver" />
+    </type>
+    <!-- Plugin to prevent reverting inventory when quote request has failed, as inventory has not been reduced -->
+    <type name="Magento\CatalogInventory\Observer\RevertQuoteInventoryObserver">
+        <plugin name="classyllama_quote_plugin_revert_inventory" type="ClassyLlama\Quote\Plugin\CatalogInventory\Observer\RevertQuoteInventoryObserver" />
+    </type>
+    <!-- Plugin to prevent reindexing inventory when quote request is issued -->
+    <type name="Magento\CatalogInventory\Observer\ReindexQuoteInventoryObserver">
+        <plugin name="classyllama_quote_plugin_reindex_inventory" type="ClassyLlama\Quote\Plugin\CatalogInventory\Observer\ReindexQuoteInventoryObserver" />
+    </type>
+</config>

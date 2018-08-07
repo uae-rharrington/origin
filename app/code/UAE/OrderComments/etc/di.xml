@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Global di config
+ *
+ * @category UAE
+ * @package UAE_OrderComments
+ * @copyright Copyright (c) 2018 ClassyLlama
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="UaeOrderCommentsShippingInformationManagement"
+                type="UAE\OrderComments\Plugin\Model\ShippingInformationManagement"/>
+    </type>
+    <type name="Magento\Sales\Model\Order">
+        <plugin name="UaeOrderCommentsVisibleStatusHistory"
+                type="UAE\OrderComments\Plugin\Model\OrderHistory"/>
+    </type>
+</config>

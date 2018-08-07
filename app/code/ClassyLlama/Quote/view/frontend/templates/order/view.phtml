@@ -1,0 +1,25 @@
+<?php
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+?>
+<?php /** @var  $block \ClassyLlama\Quote\Block\Order\View*/?>
+<?php $_order = $block->getOrder() ?>
+<div class="quote-request-order no-print">
+    <a class="quote-request-order-button action primary" href="<?= $this->helper(\ClassyLlama\Quote\Helper\Data::class)->getAddQuoteRequestToCartUrl($_order->getId()); ?>"><?= __('Add Quote to Shopping Cart'); ?></a>
+    <button class="quote-request-print-button action" data-bind="click: window.print"><?= __('Print Quote Request'); ?></button>
+</div>
+<div class="order-details-items ordered">
+    <div class="order-title">
+        <strong><?php /* @escapeNotVerified */ echo __('Items Quoted') ?></strong>
+        <?php if ($_order->getTracksCollection()->count()) : ?>
+            <?php echo $block->getChildHtml('tracking-info-link') ?>
+        <?php endif; ?>
+    </div>
+
+    <?php echo $block->getChildHtml('order_items') ?>
+</div>
+
+<ul>
+    <li><?= /* @escapeNotVerified */ __('Quote Valid for 90 days') ?></li>
+</ul>

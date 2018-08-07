@@ -44,6 +44,11 @@ class Config
     private $xmlPathQualifyingItemsRule = 'uae_checkout/cart_rules/qualifying_items';
 
     /**
+     * @var string
+     */
+    private $xmlPathQualifyingItemsThreshold = 'uae_checkout/cart_rules/show_message_threshold';
+
+    /**
      * @param ScopeConfigInterface $scopeConfig
      */
     public function __construct(
@@ -110,5 +115,17 @@ class Config
     public function getQualifyingItemsRule($scopeType = ScopeInterface::SCOPE_STORE, $scopeCode = null)
     {
         return $this->scopeConfig->getValue($this->xmlPathQualifyingItemsRule, $scopeType, $scopeCode);
+    }
+
+    /**
+     * Retrieve qualifying items price threshold to start showing qualifying items message.
+     *
+     * @param string $scopeType
+     * @param string $scopeCode
+     * @return string
+     */
+    public function getQualifyingItemsThreshold($scopeType = ScopeInterface::SCOPE_STORE, $scopeCode = null)
+    {
+        return $this->scopeConfig->getValue($this->xmlPathQualifyingItemsThreshold, $scopeType, $scopeCode);
     }
 }

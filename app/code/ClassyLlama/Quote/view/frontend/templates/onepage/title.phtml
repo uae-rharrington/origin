@@ -1,0 +1,11 @@
+<?php
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+
+$helper = $this->helper(\ClassyLlama\Quote\Helper\Data::class);
+$isQuoteRequest = $helper->getIsQuoteRequest();
+
+if ($isQuoteRequest): ?>
+    <h1><?= __('Instant Quote') ?></h1>
+<?php endif; ?>
