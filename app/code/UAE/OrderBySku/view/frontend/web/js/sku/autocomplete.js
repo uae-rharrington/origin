@@ -22,6 +22,8 @@ define([
                 $(this.element).keyup(function(e) {
                     self._capitalize(e.target);
                 });
+
+                self._super();
             },
 
             /**
