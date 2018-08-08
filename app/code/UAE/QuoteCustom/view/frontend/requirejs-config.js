@@ -9,7 +9,9 @@ var config = {
             'ShipperHQ_Shipper/template/checkout/shipping.html':
                 'UAE_QuoteCustom/template/checkout/shipperhq_shipping.html',
             'Magento_Checkout/template/shipping.html':
-                'UAE_QuoteCustom/template/checkout/shipping.html'
+                'UAE_QuoteCustom/template/checkout/shipping.html',
+            'ClassyLlama_Quote/js/add-customer-note':
+                'UAE_QuoteCustom/js/add-customer-note'
         }
     },
     config: {
