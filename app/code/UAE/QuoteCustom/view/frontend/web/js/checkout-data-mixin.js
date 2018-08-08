@@ -11,7 +11,7 @@ define([
     return function (target) {
         var shippingAddress;
 
-        if (parseInt(window.checkoutConfig.quoteData.customer_is_guest)) {
+        if (window.checkoutConfig.customerData.id) {
             shippingAddress = window.checkoutConfig.customerShippingAddress;
         } else {
             shippingAddress = window.checkoutConfig.guestShippingAddress;
