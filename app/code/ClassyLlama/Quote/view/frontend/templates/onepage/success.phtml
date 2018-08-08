@@ -19,6 +19,16 @@
                     <p><?= __('We just sent you an email containing your quote. The quote will be valid for %1 days.', $helper->getQuoteLifetime()); ?></p>
                 <?php endif;?>
             </div>
+            <?php if ($block->getCanViewOrder() && $block->getCanPrintOrder()) :?>
+                <div class="col-xxs-12 col-s-6 actions">
+                    <a class="action print"
+                       href="<?= /* @escapeNotVerified */ $block->getPrintQuoteUrl() ?>"
+                       onclick="this.target='_blank';">
+                        <span><?= /* @escapeNotVerified */ __('Print Quote') ?></span>
+                    </a>
+                    <?= $block->getChildHtml() ?>
+                </div>
+            <?php endif;?>
             <div class="col-xxs-12 col-s-6">
                 <h3><?= __('How to purchase this quote'); ?></h3>
                 <p><?= __('When you are ready to place your order, simply click on the "Add Quote to Shopping Cart" button in your email and then complete the checkout.'); ?></p>

@@ -1,0 +1,12 @@
+<?php
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<div class="order-date">
+    <?= /* @escapeNotVerified */ __('<span class="label">Quote Date:</span> %1', '<date>' . $block->formatDate($block->getOrder()->getCreatedAt(), \IntlDateFormatter::LONG) . '</date>') ?>
+</div>

@@ -30,7 +30,16 @@ class Success extends \Magento\Checkout\Block\Onepage\Success
         parent::prepareBlockData();
 
         $order = $this->_checkoutSession->getLastRealOrder();
-        $this->setStoreName($order->getStore()->getConfig(self::XML_PATH_STORE_INFO_NAME));
-        $this->setOrderRealId($order->getEntityId());
+
+        $this->addData(
+            [
+                'store_name' => $order->getStore()->getConfig(self::XML_PATH_STORE_INFO_NAME),
+                'order_real_id' => $order->getEntityId(),
+                'print_quote_url' => $this->getUrl(
+                    'quoterequest/quote/print',
+                    ['order_id' => $order->getEntityId()]
+                )
+            ]
+        );
     }
 }
