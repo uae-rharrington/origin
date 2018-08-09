@@ -11,6 +11,11 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <referenceBlock name="order.comments">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">UAE_OrderComments::quote/comments.phtml</argument>
+            </action>
+        </referenceBlock>
         <move element="order.comments" destination="content" before="quoterequest.order.view"/>
     </body>
 </page>

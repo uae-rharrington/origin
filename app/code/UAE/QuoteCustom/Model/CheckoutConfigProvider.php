@@ -17,6 +17,7 @@ use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Quote\Api\Data\CartInterface;
 use Psr\Log\LoggerInterface;
+use ClassyLlama\Quote\Helper\Data;
 
 /**
  * UAE\QuoteCustom\Model\CheckoutConfigProvider
@@ -52,6 +53,11 @@ class CheckoutConfigProvider implements ConfigProviderInterface
     private $logger;
 
     /**
+     * @var Data
+     */
+    private $helperData;
+
+    /**
      * CheckoutConfigProvider constructor.
      *
      * @param HttpContext $httpContext
@@ -59,19 +65,22 @@ class CheckoutConfigProvider implements ConfigProviderInterface
      * @param CartRepositoryInterface $quoteRepository
      * @param OrderInterface $order
      * @param LoggerInterface $logger
+     * @param Data $helperData
      */
     public function __construct(
         HttpContext $httpContext,
         CheckoutSession $checkoutSession,
         CartRepositoryInterface $quoteRepository,
         OrderInterface $order,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        Data $helperData
     ) {
         $this->httpContext = $httpContext;
         $this->checkoutSession = $checkoutSession;
         $this->quoteRepository = $quoteRepository;
         $this->order = $order;
         $this->logger = $logger;
+        $this->helperData = $helperData;
     }
 
     /**
@@ -83,6 +92,7 @@ class CheckoutConfigProvider implements ConfigProviderInterface
     {
         $output['guestShippingAddress'] = $this->getGuestShippingAddress();
         $output['customerShippingAddress'] = $this->getCustomerShippingAddress();
+        $output['quoteLifetime'] = $this->helperData->getQuoteLifetime();
         return $output;
     }
 

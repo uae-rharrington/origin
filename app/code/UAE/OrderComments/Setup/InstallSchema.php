@@ -48,13 +48,17 @@ class InstallSchema implements InstallSchemaInterface
         /** Add 'order_comment' field to 'quote' table */
         $quoteTable = $installer->getTable('quote');
         foreach ($columns as $name => $definition) {
-            $connection->addColumn($quoteTable, $name, $definition);
+            if ($connection->tableColumnExists($quoteTable, $name) === false) {
+                $connection->addColumn($quoteTable, $name, $definition);
+            }
         }
 
         /** Add 'order_comment' field to 'sales_order' table */
         $saleOrderTable = $installer->getTable('sales_order');
         foreach ($columns as $name => $definition) {
-            $connection->addColumn($saleOrderTable, $name, $definition);
+            if ($connection->tableColumnExists($saleOrderTable, $name) === false) {
+                $connection->addColumn($saleOrderTable, $name, $definition);
+            }
         }
 
         $installer->endSetup();

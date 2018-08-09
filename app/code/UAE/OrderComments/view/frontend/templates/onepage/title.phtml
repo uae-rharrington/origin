@@ -1,0 +1,13 @@
+<?php
+/**
+ * @category UAE
+ * @package UAE_OrderComments
+ * @copyright Copyright (c) 2018 ClassyLlama
+ */
+
+$helper = $this->helper(\ClassyLlama\Quote\Helper\Data::class);
+$isQuoteRequest = $helper->getIsQuoteRequest();
+
+if ($isQuoteRequest): ?>
+    <h1><?= __('Quote Information') ?></h1>
+<?php endif; ?>

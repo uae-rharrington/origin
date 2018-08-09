@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Adminhtml menu config
+ *
+ * @category UAE
+ * @package UAE_QuoteCustom
+ * @copyright Copyright (c) 2018 ClassyLlama
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <update id="Magento_NegotiableQuote::quote_index" title="B2B Quotes" module="Magento_NegotiableQuote" sortOrder="15"
+             parent="Magento_Sales::sales_operation" action="quotes/quote" resource="Magento_NegotiableQuote::quote" />
+    </menu>
+</config>

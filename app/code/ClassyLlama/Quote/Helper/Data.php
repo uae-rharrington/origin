@@ -11,7 +11,7 @@ use Magento\Store\Model\ScopeInterface;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
-    /** Regions Restrictions Config Path */
+    /** Quote Lifetime Config Path */
     const XML_PATH_QUOTE_LIFETIME = 'checkout/cart/delete_quote_after';
 
     /** @var ScopeConfigInterface */
@@ -68,6 +68,17 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     public function getAddQuoteRequestToCartUrl($orderId)
     {
         return $this->_urlBuilder->getUrl('quoterequest/cart/add', ['id' => $orderId]);
+    }
+
+    /**
+     * Returns a URL to the View Quote
+     *
+     * @param int $orderId
+     * @return string
+     */
+    public function getViewQuoteUrl($orderId)
+    {
+        return $this->_urlBuilder->getUrl('quoterequest/order/view', ['order_id' => $orderId]);
     }
 
     /**
