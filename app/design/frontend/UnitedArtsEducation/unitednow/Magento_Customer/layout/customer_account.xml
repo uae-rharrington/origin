@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Reorder aw_giftcard block
+ * Dingding
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Move aw_giftcard Under store payment methods -->
+        <move element="customer-account-navigation-aw-giftcard-link" destination="customer_account_navigation" before="customer-account-navigation-billing-agreements-link" />
+	<!-- Remove magento_giftcard link -->
+	<referenceBlock name="customer-account-navigation-gift-card-link" remove="true"/>
+    </body>
+</page>
