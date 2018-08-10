@@ -11,7 +11,17 @@
         <referenceBlock name="register-link" remove="true" />
         <!-- Welcome message  -->
         <referenceBlock name="header" remove="true" />
-	<!-- Remove magento_giftcard link -->
+	<!-- Magento giftcard link -->
 	<referenceBlock name="customer-account-navigation-gift-card-link" remove="true"/>
+	<!-- Downloadable products link -->
+	<referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true"/>
+	<!-- Billing agreement link -->
+	<referenceBlock name="customer-account-navigation-billing-agreements-link" remove="true"/>
+	<!-- Store credit link -->
+	<referenceBlock name="customer-account-navigation-customer-balance-link" remove="true"/>
+	<!-- Stored payment methods link -->
+	<referenceBlock name="customer-account-navigation-my-credit-cards-link" remove="true"/>
+	<!-- My invitaions link -->
+	<referenceBlock name="customer-account-navigation-magento-invitation-link" remove="true"/>
     </body>
 </page>
