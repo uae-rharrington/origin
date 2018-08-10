@@ -11,14 +11,10 @@
 	<!-- Remove magento_giftcard link -->
 	<referenceBlock name="customer-account-navigation-gift-card-link" remove="true"/>
         <!-- Move aw_giftcard Under store payment methods -->
-	<referenceBlock name="customer_account_navigation">
-            <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-aw-giftcard-link" >
-                <arguments>
-                    <argument name="path" xsi:type="string">awgiftcard/card</argument>
-                    <argument name="label" xsi:type="string">Gift Card</argument>
-		    <argument name="sortOrder" xsi:type="number">150</argument>
-                </arguments>
-            </block>
+	<referenceBlock name="customer-account-navigation-aw-giftcard-link">
+            <arguments>
+                <argument name="sortOrder" xsi:type="number">150</argument>
+            </arguments>
         </referenceBlock>
     </body>
 </page>
