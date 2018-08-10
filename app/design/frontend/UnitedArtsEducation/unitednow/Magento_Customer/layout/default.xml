@@ -11,5 +11,7 @@
         <referenceBlock name="register-link" remove="true" />
         <!-- Welcome message  -->
         <referenceBlock name="header" remove="true" />
+	<!-- Remove magento_giftcard link -->
+	<referenceBlock name="customer-account-navigation-gift-card-link" remove="true"/>
     </body>
 </page>

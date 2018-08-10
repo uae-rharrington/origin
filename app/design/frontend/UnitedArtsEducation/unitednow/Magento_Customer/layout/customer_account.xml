@@ -8,8 +8,8 @@
 
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-	<!-- Remove magento_giftcard link -->
-	<referenceBlock name="customer-account-navigation-gift-card-link" remove="true"/>
+	<!--Testing-->
+	<move element="customer-account-navigation-wish-list-link" destination="customer_account_navigation" after="customer-account-navigation-orders-link" />
         <!-- Move aw_giftcard Under store payment methods -->
 	<referenceBlock name="customer-account-navigation-aw-giftcard-link">
             <arguments>
