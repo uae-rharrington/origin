@@ -52,8 +52,11 @@
     .block-viewed-products-grid {
         .products-grid {
             .product-item {
+                flex-basis: 25%;
+                max-width: 25%;
+                flex-grow: 1;
                 margin: 0;
-                padding: 6px;
+                padding: 1%;
             }
             .product-item-info {
                 &:hover,
@@ -78,6 +81,10 @@
             .product-item-details {
                 display: none;
             }
+        }
+        .product-items {
+            display: flex;
+            flex-wrap: wrap;
         }
     }
 
@@ -160,6 +167,17 @@
     }
 }
 
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .block-viewed-products-grid {
+        .products-grid {
+            li.product-item {
+                flex-basis: 33.33%;
+                max-width: 33.33%;
+            }
+        }
+    }
+}
+
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
     .product-item-actions {
         // Set display:block for primary & secondary actions (instead of table-cell) to prevent horizontal overflow
@@ -191,6 +209,16 @@
             }
         }
     }
+
+    .block-viewed-products-grid {
+        .products-grid {
+            li.product-item {
+                flex-basis: 16.66%;
+                max-width: 16.66%;
+                padding: 0.75%;
+            }
+        }
+    }
 }
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     @media (max-width: 960px) {
@@ -199,11 +227,16 @@
         }
     }
 
-    .sidebar {
-        .block-viewed-products-grid {
-            .products-grid {
-                .product-item-info {
-                    .product-item-photo {
+    .block-viewed-products-grid {
+        .products-grid {
+            li.product-item {
+                flex-basis: 100%;
+                max-width: 147px;
+                padding: 2%;
+            }
+            .product-item-info {
+                .product-item-photo {
+                    .sidebar & {
                         position: static;
                         float: none;
                         margin: 0;
@@ -216,10 +249,12 @@
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
     .block-viewed-products-grid {
         .products-grid {
-            .product-item {
+            li.product-item {
+                flex-basis: 50%;
+                max-width: 50%;
+
                 .sidebar .block& {
-                    width: 50%;
-                    padding: 4px;
+                    padding: 2%;
                 }
             }
         }
