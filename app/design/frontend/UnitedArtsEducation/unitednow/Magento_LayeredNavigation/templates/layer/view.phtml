@@ -27,23 +27,12 @@
                 </div>
             <?php endif; ?>
             <?php $wrapOptions = false; ?>
-            <?php // EDIT: Get list of all filters, to open by default
-            $activeTabs = '';
-            $i = 0;
-            $filters = $block->getFilters();
-            foreach ($filters as $key=>$filter) {
-                if ($filter->getItemsCount()) {
-                    $activeTabs .= $i === 0 ? $i : ' ' . $i;
-                    $i++;
-                }
-            }
-            ?>
-            <?php foreach ($filters as $filter): ?>
+            <?php foreach ($block->getFilters() as $filter): ?>
                 <?php if ($filter->getItemsCount()): ?>
                     <?php if (!$wrapOptions): ?>
                         <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle"><?= /* @escapeNotVerified */ __('Shopping Options') ?></strong>
                         <?php // EDIT: Modify accordion instantiation ?>
-                        <div class="filter-options" id="narrow-by-list" data-role="content" data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": "<?= $activeTabs ?>", "multipleCollapsible": true}}'>
+                        <div class="filter-options" id="narrow-by-list" data-role="content" data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": false, "multipleCollapsible": true}}'>
                     <?php  $wrapOptions = true; endif; ?>
                     <div data-role="collapsible" class="filter-options-item">
                         <div data-role="title" class="filter-options-title"><?= /* @escapeNotVerified */ __($filter->getName()) ?></div>
