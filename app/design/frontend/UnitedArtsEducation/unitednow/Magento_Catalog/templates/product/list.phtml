@@ -80,13 +80,18 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                                             <input type="hidden" name="product" value="<?= /* @escapeNotVerified */ $postParams['data']['product'] ?>">
                                             <input type="hidden" name="<?= /* @escapeNotVerified */ Action::PARAM_NAME_URL_ENCODED ?>" value="<?= /* @escapeNotVerified */ $postParams['data'][Action::PARAM_NAME_URL_ENCODED] ?>">
                                             <?= $block->getBlockHtml('formkey') ?>
-                                            <?php // EDIT: Add Quantity input ?>
-                                            <input type="number" name="qty" value="1" />
-                                            <button type="submit"
-                                                    title="<?= $block->escapeHtml(__('Add to Cart')) ?>"
-                                                    class="action tocart primary">
-                                                <span><?= /* @escapeNotVerified */ __('Add to Cart') ?></span>
-                                            </button>
+                                            <?php // EDIT: Add quantity input for non-grouped product ?>
+                                            <?php if ($_product->getTypeId() === 'grouped'): ?>
+                                                <a class="action tocart primary" href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>"><?= /* @escapeNotVerified */ __('View Options') ?></a>
+                                            <?php else: ?>
+                                                <label class="label qty" for="qty-<?= $_product->getId() ?>"><?= __('Quantity') ?></label>
+                                                <input type="number" name="qty" id="qty-<?= $_product->getId() ?>" value="1" />
+                                                <button type="submit"
+                                                        title="<?= $block->escapeHtml(__('Add to Cart')) ?>"
+                                                        class="action tocart primary">
+                                                    <span><?= /* @escapeNotVerified */ __('Add to Cart') ?></span>
+                                                </button>
+                                            <?php endif; ?>
                                         </form>
                                     <?php else: ?>
                                         <?php if ($_product->isAvailable()): ?>
