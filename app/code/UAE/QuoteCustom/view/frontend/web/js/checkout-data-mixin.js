@@ -11,10 +11,10 @@ define([
     return function (target) {
         var shippingAddress;
 
-        if (parseInt(window.checkoutConfig.quoteData.customer_is_guest)) {
-            shippingAddress = window.checkoutConfig.guestShippingAddress;
-        } else {
+        if (window.checkoutConfig.customerData.id) {
             shippingAddress = window.checkoutConfig.customerShippingAddress;
+        } else {
+            shippingAddress = window.checkoutConfig.guestShippingAddress;
         }
 
         if (target.getShippingAddressFromData() === null && shippingAddress !== null) {

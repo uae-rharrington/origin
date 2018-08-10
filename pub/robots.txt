@@ -1,0 +1,82 @@
+User-agent: *
+Sitemap: https://unitednow.com/sitemap.xml
+
+# Directories
+Disallow: /app/
+Disallow: /bin/
+Disallow: /dev/
+Disallow: /lib/
+Disallow: /phpserver/
+Disallow: /setup/
+Disallow: /update/
+Disallow: /var/
+Disallow: /vendor/
+
+# Paths (clean URLs)
+Disallow: /index.php/
+Disallow: /admin/
+Disallow: /control/
+Disallow: /contacts/
+Disallow: /customize/
+Disallow: /newsletter/
+Disallow: /sendfriend/
+Disallow: /wishlist/
+Disallow: /review/product/
+Disallow: /enable-cookies/
+
+# Stop crawling user account and checkout pages by search engine robot:
+Disallow: /checkout/
+Disallow: /onestepcheckout/
+Disallow: /customer/
+Disallow: /customer/account/
+Disallow: /customer/account/login/
+Disallow: /customer/account/login/referer/
+
+# Blocking native catalog and search pages:
+Disallow: /catalogsearch/
+Disallow: /catalog/product_compare/
+Disallow: /catalog/category/view/
+Disallow: /catalog/product/view/
+
+# Do not index pages that are sorted or filtered.
+Disallow: /*?*product_list_mode=
+Disallow: /*?*product_list_order=
+Disallow: /*?*product_list_limit=
+Disallow: /*?*product_list_dir=
+
+# Sometimes Webmasters block pages with filters..
+Disallow: /*?dir*
+Disallow: /*?dir=desc
+Disallow: /*?dir=asc
+Disallow: /*?limit=all
+Disallow: /*?mode*
+
+# Files
+Disallow: /composer.json
+Disallow: /composer.lock
+Disallow: /CONTRIBUTING.md
+Disallow: /CONTRIBUTOR_LICENSE_AGREEMENT.html
+Disallow: /COPYING.txt
+Disallow: /Gruntfile.js
+Disallow: /LICENSE.txt
+Disallow: /LICENSE_AFL.txt
+Disallow: /nginx.conf.sample
+Disallow: /package.json
+Disallow: /php.ini
+Disallow: /php.ini.sample
+Disallow: /RELEASE_NOTES.txt
+Disallow: /PULL_REQUEST_TEMPLATE.md
+Disallow: /README_EE.md
+Disallow: /README.md
+
+# Do not index session ID
+Disallow: /*.php$
+Disallow: /*?SID=
+
+# CVS, SVN directory and dump files
+Disallow: /*.CVS
+Disallow: /*.Zip$
+Disallow: /*.Svn$
+Disallow: /*.Idea$
+Disallow: /*.Sql$
+Disallow: /*.Tgz$
