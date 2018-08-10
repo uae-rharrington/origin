@@ -8,6 +8,8 @@
 
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <!-- Move Order Before Quotes -->
+	<move element="customer-account-navigation-myquotes" destination="customer_account_navigation" after="customer-account-navigation-orders-link" />
         <!-- Move aw_giftcard Under store payment methods -->
 	<referenceBlock name="customer_account_navigation">
             <block class="Magento\Customer\Block\Account\SortLinkInterface" name="customer-account-navigation-aw-giftcard-link" >
