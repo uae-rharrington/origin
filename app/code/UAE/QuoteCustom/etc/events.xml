@@ -15,4 +15,7 @@
     <event name="customer_register_success">
         <observer name="uae_quote_customer_register_success" instance="UAE\QuoteCustom\Observer\ApplyQuote" />
     </event>
+    <event name="sales_order_place_after">
+        <observer name="uae_quote_customer_order_place_after" instance="UAE\QuoteCustom\Observer\OrderPlaceAfter" />
+    </event>
 </config>
