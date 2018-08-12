@@ -35,12 +35,6 @@ define([
                 };
             }
 
-            if (target.getInputFieldEmailValue() === '' && shippingAddress !== null) {
-                target.getInputFieldEmailValue = function () {
-                    return shippingAddress.email ? shippingAddress.email : '';
-                };
-            }
-
             if (shippingAddress !== null && shippingAddress.address_id !== null) {
                 target.setSelectedShippingAddress('customer-address' + shippingAddress.address_id);
             }
