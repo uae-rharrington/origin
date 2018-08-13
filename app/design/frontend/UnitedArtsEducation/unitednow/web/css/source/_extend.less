@@ -14,3 +14,13 @@
         border-color: @active__color;
     }
 }
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .fotorama{
+        //max height for product pages images, if it is not fullscreen
+        &:not(.fotorama--fullscreen) .fotorama__stage{
+            max-height:400px;
+        }
+    }
+
+}
