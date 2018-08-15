@@ -71,13 +71,16 @@ class QualifyingItemsConfigProvider implements ConfigProviderInterface
     {
         $config = [];
         if ($rule = $this->getQualifyingItemsRule()) {
-            $diff = $this->getPriceDifference($rule);
-            if ($diff !== 0) {
-                $config['qualifyingItems']['message'] = sprintf(
-                    $this->getQualifyingItemsMessage(),
-                    $diff,
-                    $this->getDiscount($rule)
-                );
+            $quote = $this->getQuote();
+            if (!in_array($rule->getRuleId(), explode(',', $quote->getAppliedRuleIds()))) {
+                $diff = $this->getPriceDifference($rule);
+                if ($diff !== 0) {
+                    $config['qualifyingItems']['message'] = sprintf(
+                        $this->getQualifyingItemsMessage(),
+                        $diff,
+                        $this->getDiscount($rule)
+                    );
+                }
             }
         }
 
@@ -95,7 +98,8 @@ class QualifyingItemsConfigProvider implements ConfigProviderInterface
         $value = 0;
         if ($rule->getCondition()->getConditions()) {
             foreach ($rule->getCondition()->getConditions() as $condition) {
-                if ($condition->getAttributeName() == 'base_row_total') {
+                if ($condition->getAttributeName() == 'base_row_total'
+                    && strpos($condition->getOperator(), '<') === false) {
                     $value = $condition->getValue();
                 }
             }
@@ -214,7 +218,6 @@ class QualifyingItemsConfigProvider implements ConfigProviderInterface
         $diff = 0;
         $threshold = $this->getConditionAmount($rule);
         $messageThreshold = $this->getQualifyingItemsThreshold();
-
         if ($threshold) {
             $regularTotal = $this->getRegularItemsTotal();
             $currentThreshold = $regularTotal / $threshold * 100;
