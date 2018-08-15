@@ -5,6 +5,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'ClassyLlama_OrderExport',
+    'UAE_OrderExport',
     __DIR__
 );
