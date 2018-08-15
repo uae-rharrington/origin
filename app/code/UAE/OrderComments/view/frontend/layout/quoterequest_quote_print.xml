@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Quote print layout
+ *
+ * @category UAE
+ * @package UAE_OrderComments
+ * @copyright Copyright (c) 2018 ClassyLlama
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Sales\Block\Order\View" name="quote.comments" template="UAE_OrderComments::quote/comments.phtml" before="-"/>
+        </referenceContainer>
+    </body>
+</page>
