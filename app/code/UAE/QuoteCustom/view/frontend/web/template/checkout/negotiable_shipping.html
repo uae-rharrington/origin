@@ -95,7 +95,12 @@
                     <div class="primary"
                          visible="!(isQuoteAddressDeleted && isQuoteAddressLocked)">
                         <button data-role="opc-continue" type="submit" class="button action continue primary">
-                            <span translate="'Create Quote'" />
+                            <!-- ko if: isQuoteCheckout -->
+                                <span translate="'Create Quote'" />
+                            <!-- /ko -->
+                            <!-- ko ifnot: isQuoteCheckout -->
+                                <span translate="'Next'" />
+                            <!-- /ko -->
                         </button>
                     </div>
                 </div>
