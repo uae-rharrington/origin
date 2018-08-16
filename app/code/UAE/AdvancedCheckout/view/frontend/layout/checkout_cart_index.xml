@@ -56,6 +56,7 @@
                                     <item name="component"  xsi:type="string">UAE_AdvancedCheckout/js/view/summary/qualifying-items</item>
                                 </item>
                                 <item name="grand-total" xsi:type="array">
+                                    <item name="component"  xsi:type="string">UAE_AdvancedCheckout/js/view/checkout/cart/totals/grand-total</item>
                                     <item name="config" xsi:type="array">
                                         <item name="title" xsi:type="string" translate="true">Subtotal</item>
                                     </item>
