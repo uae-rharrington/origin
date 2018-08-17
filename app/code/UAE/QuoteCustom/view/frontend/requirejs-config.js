@@ -26,6 +26,9 @@ var config = {
             },
             'Magento_Checkout/js/checkout-data': {
                 'UAE_QuoteCustom/js/checkout-data-mixin': true
+            },
+            'Magento_Reward/js/view/payment/reward': {
+                'UAE_QuoteCustom/js/view/payment/reward': true
             }
         }
     }
