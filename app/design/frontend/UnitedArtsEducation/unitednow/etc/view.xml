@@ -114,8 +114,8 @@
                 <height>76</height>
             </image>
             <image id="product_small_image" type="small_image">
-                <width>135</width>
-                <height>135</height>
+                <width>140</width>
+                <height>140</height>
             </image>
             <image id="product_thumbnail_image" type="thumbnail">
                 <width>75</width>
@@ -142,8 +142,8 @@
                 <height>300</height>
             </image>
             <image id="recently_viewed_products_images_names_widget" type="small_image">
-                <width>75</width>
-                <height>90</height>
+                <width>140</width>
+                <height>140</height>
             </image>
             <image id="recently_viewed_products_images_only_widget" type="small_image">
                 <width>76</width>

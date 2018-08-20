@@ -10,6 +10,8 @@ var config = {
                 'UAE_QuoteCustom/template/checkout/shipperhq_shipping.html',
             'Magento_Checkout/template/shipping.html':
                 'UAE_QuoteCustom/template/checkout/shipping.html',
+            'Magento_NegotiableQuote/template/shipping.html':
+                'UAE_QuoteCustom/template/checkout/negotiable_shipping.html',
             'ClassyLlama_Quote/js/add-customer-note':
                 'UAE_QuoteCustom/js/add-customer-note'
         }

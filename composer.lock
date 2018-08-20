@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7f8a70fb8c8560e5963c7f1031001c6",
+    "content-hash": "c15b6a6069348bb1a451a4bacdf72900",
     "packages": [
         {
             "name": "aheadworks/module-giftcard",
@@ -1099,16 +1099,16 @@
         },
         {
             "name": "guzzlehttp/ringphp",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/RingPHP.git",
-                "reference": "dbbb91d7f6c191e5e405e900e3102ac7f261bc0b"
+                "reference": "5e2a174052995663dd68e6b5ad838afd47dd615b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/dbbb91d7f6c191e5e405e900e3102ac7f261bc0b",
-                "reference": "dbbb91d7f6c191e5e405e900e3102ac7f261bc0b",
+                "url": "https://api.github.com/repos/guzzle/RingPHP/zipball/5e2a174052995663dd68e6b5ad838afd47dd615b",
+                "reference": "5e2a174052995663dd68e6b5ad838afd47dd615b",
                 "shasum": ""
             },
             "require": {
@@ -1146,7 +1146,7 @@
                 }
             ],
             "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
-            "time": "2015-05-20T03:37:09+00:00"
+            "time": "2018-07-31T13:22:33+00:00"
         },
         {
             "name": "guzzlehttp/streams",
@@ -1200,7 +1200,7 @@
         },
         {
             "name": "illuminate/config",
-            "version": "v5.6.26",
+            "version": "v5.6.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/config.git",
@@ -1244,7 +1244,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.6.26",
+            "version": "v5.6.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1288,7 +1288,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.6.26",
+            "version": "v5.6.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1332,16 +1332,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.6.26",
+            "version": "v5.6.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "b6de0557cb34ebbbdfbd59a0c97009cf4f7f21aa"
+                "reference": "c684cb5e77e213020f7a4ed213d94b2b384c2951"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/b6de0557cb34ebbbdfbd59a0c97009cf4f7f21aa",
-                "reference": "b6de0557cb34ebbbdfbd59a0c97009cf4f7f21aa",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/c684cb5e77e213020f7a4ed213d94b2b384c2951",
+                "reference": "c684cb5e77e213020f7a4ed213d94b2b384c2951",
                 "shasum": ""
             },
             "require": {
@@ -1386,7 +1386,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2018-06-18T16:10:24+00:00"
+            "time": "2018-07-26T15:32:11+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -11437,16 +11437,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.32.0",
+            "version": "1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "64563e2b9f69e4db1b82a60e81efa327a30ff343"
+                "reference": "55667c1007a99e82030874b1bb14d24d07108413"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/64563e2b9f69e4db1b82a60e81efa327a30ff343",
-                "reference": "64563e2b9f69e4db1b82a60e81efa327a30ff343",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/55667c1007a99e82030874b1bb14d24d07108413",
+                "reference": "55667c1007a99e82030874b1bb14d24d07108413",
                 "shasum": ""
             },
             "require": {
@@ -11488,7 +11488,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-07-05T06:59:26+00:00"
+            "time": "2018-08-07T08:39:47+00:00"
         },
         {
             "name": "oyejorge/less.php",
@@ -12280,16 +12280,16 @@
         },
         {
             "name": "shipperhq/library-shipper",
-            "version": "20.8.0",
+            "version": "20.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/library-shipper.git",
-                "reference": "ffbf3950fc74776d03134f89a0476961c4ace5ea"
+                "reference": "b6cd139a45980a0968e6a86843d46e505dcb873b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/ffbf3950fc74776d03134f89a0476961c4ace5ea",
-                "reference": "ffbf3950fc74776d03134f89a0476961c4ace5ea",
+                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/b6cd139a45980a0968e6a86843d46e505dcb873b",
+                "reference": "b6cd139a45980a0968e6a86843d46e505dcb873b",
                 "shasum": ""
             },
             "type": "magento2-library",
@@ -12317,7 +12317,7 @@
                 }
             ],
             "description": "ShipperHQ Library",
-            "time": "2018-06-25T09:19:36+00:00"
+            "time": "2018-08-02T15:20:19+00:00"
         },
         {
             "name": "shipperhq/library-ws",
@@ -12678,16 +12678,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.43",
+            "version": "v2.8.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "42a0adc7dd656ca2e360285eb6d822df9ce0b160"
+                "reference": "0c1fcbb9afb5cff992c982ff99c0434f0146dcfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/42a0adc7dd656ca2e360285eb6d822df9ce0b160",
-                "reference": "42a0adc7dd656ca2e360285eb6d822df9ce0b160",
+                "url": "https://api.github.com/repos/symfony/console/zipball/0c1fcbb9afb5cff992c982ff99c0434f0146dcfc",
+                "reference": "0c1fcbb9afb5cff992c982ff99c0434f0146dcfc",
                 "shasum": ""
             },
             "require": {
@@ -12735,7 +12735,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-09T12:58:09+00:00"
+            "time": "2018-07-26T11:13:39+00:00"
         },
         {
             "name": "symfony/debug",
@@ -12796,16 +12796,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.42",
+            "version": "v2.8.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "9b69aad7d4c086dc94ebade2d5eb9145da5dac8c"
+                "reference": "84ae343f39947aa084426ed1138bb96bf94d1f12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/9b69aad7d4c086dc94ebade2d5eb9145da5dac8c",
-                "reference": "9b69aad7d4c086dc94ebade2d5eb9145da5dac8c",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/84ae343f39947aa084426ed1138bb96bf94d1f12",
+                "reference": "84ae343f39947aa084426ed1138bb96bf94d1f12",
                 "shasum": ""
             },
             "require": {
@@ -12852,20 +12852,20 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-06T07:35:03+00:00"
+            "time": "2018-07-26T09:03:18+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.13",
+            "version": "v3.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "8dab220fec8fc904821485326b29a6c670286124"
+                "reference": "a59f917e3c5d82332514cb4538387638f5bde2d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/8dab220fec8fc904821485326b29a6c670286124",
-                "reference": "8dab220fec8fc904821485326b29a6c670286124",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/a59f917e3c5d82332514cb4538387638f5bde2d6",
+                "reference": "a59f917e3c5d82332514cb4538387638f5bde2d6",
                 "shasum": ""
             },
             "require": {
@@ -12902,20 +12902,20 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-09T13:25:43+00:00"
+            "time": "2018-07-26T11:19:56+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.13",
+            "version": "v3.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "3a8c3de91d2b2c68cd2d665cf9d00f7ef9eaa394"
+                "reference": "8a84fcb207451df0013b2c74cbbf1b62d47b999a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/3a8c3de91d2b2c68cd2d665cf9d00f7ef9eaa394",
-                "reference": "3a8c3de91d2b2c68cd2d665cf9d00f7ef9eaa394",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/8a84fcb207451df0013b2c74cbbf1b62d47b999a",
+                "reference": "8a84fcb207451df0013b2c74cbbf1b62d47b999a",
                 "shasum": ""
             },
             "require": {
@@ -12951,29 +12951,32 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2018-06-19T20:52:10+00:00"
+            "time": "2018-07-26T11:19:56+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae"
+                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
-                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e3d826245268269cd66f8326bd8bc066687b4a19",
+                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -13006,20 +13009,20 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2018-04-30T19:57:29+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.8.0",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "3296adf6a6454a050679cde90f95350ad604b171"
+                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/3296adf6a6454a050679cde90f95350ad604b171",
-                "reference": "3296adf6a6454a050679cde90f95350ad604b171",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d0cd638f4634c16d8df4508e847f14e9e43168b8",
+                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
                 "shasum": ""
             },
             "require": {
@@ -13031,7 +13034,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -13065,20 +13068,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-04-26T10:06:28+00:00"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.43",
+            "version": "v2.8.44",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "542d88b350c42750fdc14e73860ee96dd423e95d"
+                "reference": "cc83afdb5ac99147806b3bb65a3ff1227664f596"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/542d88b350c42750fdc14e73860ee96dd423e95d",
-                "reference": "542d88b350c42750fdc14e73860ee96dd423e95d",
+                "url": "https://api.github.com/repos/symfony/process/zipball/cc83afdb5ac99147806b3bb65a3ff1227664f596",
+                "reference": "cc83afdb5ac99147806b3bb65a3ff1227664f596",
                 "shasum": ""
             },
             "require": {
@@ -13114,11 +13117,11 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2018-05-27T07:40:52+00:00"
+            "time": "2018-07-26T11:13:39+00:00"
         },
         {
             "name": "symfony/translation",
-            "version": "v3.3.17",
+            "version": "v3.3.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
@@ -13183,7 +13186,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.17",
+            "version": "v3.3.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
@@ -13454,14 +13457,17 @@
         },
         {
             "name": "xtento/module-stockimport",
-            "version": "2.3.4",
+            "version": "2.3.8",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/73f5e76cba5580f4ce91a548ce3aaf48/v/2.3.4",
-                "reference": "19d2bd6428f04a6e3cbb781934bc1d2ec8ea0313",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/6513b4fa04bfb373abee272ee80456d7/v/2.3.8",
+                "reference": "e6da4b4e388fee3cfb77f92504573bd05f6deec2",
                 "shasum": null
             },
             "require": {
+                "magento/framework": "^100.0||^101.0",
+                "magento/module-backend": "^100.0||^101.0",
+                "magento/module-sales": "^100.0||^101.0",
                 "php": "~5.5.22|~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
                 "xtento/xtcore": "~2.0"
             },
@@ -13490,18 +13496,21 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-06-25T15:10:23+00:00"
+            "time": "2018-08-06T11:26:58+00:00"
         },
         {
             "name": "xtento/orderexport",
-            "version": "2.5.5",
+            "version": "2.6.1",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_orderexport/h/8df50b81e321130e61412eca443b5dab/v/2.5.5",
-                "reference": "33fb7fdcdf18f574d2f57108782d09176ac6dd2c",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_orderexport/h/2521aee015910a5eb41bd0b4db749aea/v/2.6.1",
+                "reference": "80814da9c0ace65e14ecd05775cf02b4f18b5d73",
                 "shasum": null
             },
             "require": {
+                "magento/framework": "^100.0||^101.0",
+                "magento/module-backend": "^100.0||^101.0",
+                "magento/module-sales": "^100.0||^101.0",
                 "php": "~5.5.22|~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
                 "xtento/xtcore": "~2.0"
             },
@@ -13530,18 +13539,21 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-06-25T15:05:54+00:00"
+            "time": "2018-08-06T19:03:42+00:00"
         },
         {
             "name": "xtento/trackingimport",
-            "version": "2.4.1",
+            "version": "2.4.4",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_trackingimport/h/aacb82a8b976d3872ab420b3c6af4506/v/2.4.1",
-                "reference": "94dc25d74f7108d2b43b904bdc76c36dbb7f7039",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_trackingimport/h/43573dc403e366e6e812262f2e91ade4/v/2.4.4",
+                "reference": "6038f292319f47ba3ff36f9cca8ab04aa92c8359",
                 "shasum": null
             },
             "require": {
+                "magento/framework": "^100.0||^101.0",
+                "magento/module-backend": "^100.0||^101.0",
+                "magento/module-sales": "^100.0||^101.0",
                 "php": "~5.5.22|~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
                 "xtento/xtcore": "~2.0"
             },
@@ -13570,18 +13582,21 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-06-25T15:12:20+00:00"
+            "time": "2018-07-26T19:29:24+00:00"
         },
         {
             "name": "xtento/xtcore",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_xtcore/h/b75140255813323de1b5a0e65ffd7db1/v/2.2.0",
-                "reference": "f38406425b55249b4da05d75776747e6f29835e5",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_xtcore/h/58579da468f08833e1ee40366daa4761/v/2.3.0",
+                "reference": "414bc552e0a7503fb3740ce2f2b29329c8d19290",
                 "shasum": null
             },
             "require": {
+                "magento/framework": "^100.0||^101.0",
+                "magento/module-backend": "^100.0||^101.0",
+                "magento/module-sales": "^100.0||^101.0",
                 "php": "~5.5.22|~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0"
             },
             "type": "magento2-module",
@@ -13609,7 +13624,7 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-04-03T09:58:03+00:00"
+            "time": "2018-07-26T15:40:20+00:00"
         },
         {
             "name": "zendframework/zend-captcha",
@@ -13988,16 +14003,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "1.8.3",
+            "version": "1.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "72c13834fb3db2a962e913758b384ff2e6425d6e"
+                "reference": "736ffa7c2bfa4a60e8a10acb316fa2ac456c5fba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/72c13834fb3db2a962e913758b384ff2e6425d6e",
-                "reference": "72c13834fb3db2a962e913758b384ff2e6425d6e",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/736ffa7c2bfa4a60e8a10acb316fa2ac456c5fba",
+                "reference": "736ffa7c2bfa4a60e8a10acb316fa2ac456c5fba",
                 "shasum": ""
             },
             "require": {
@@ -14047,7 +14062,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2018-07-24T21:54:38+00:00"
+            "time": "2018-08-01T13:47:49+00:00"
         },
         {
             "name": "zendframework/zend-escaper",
@@ -14284,16 +14299,16 @@
         },
         {
             "name": "zendframework/zend-http",
-            "version": "2.8.0",
+            "version": "2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-http.git",
-                "reference": "f48b276ffa11b48dd1ae3c6bc306d6ed7958ef51"
+                "reference": "44197164a270259116162a442f639085ea24094a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-http/zipball/f48b276ffa11b48dd1ae3c6bc306d6ed7958ef51",
-                "reference": "f48b276ffa11b48dd1ae3c6bc306d6ed7958ef51",
+                "url": "https://api.github.com/repos/zendframework/zend-http/zipball/44197164a270259116162a442f639085ea24094a",
+                "reference": "44197164a270259116162a442f639085ea24094a",
                 "shasum": ""
             },
             "require": {
@@ -14335,7 +14350,7 @@
                 "zend",
                 "zf"
             ],
-            "time": "2018-04-26T21:04:50+00:00"
+            "time": "2018-08-01T13:50:48+00:00"
         },
         {
             "name": "zendframework/zend-hydrator",
