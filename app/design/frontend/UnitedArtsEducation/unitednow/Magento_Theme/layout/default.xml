@@ -46,6 +46,14 @@
                 </block>
             </container>
         </referenceContainer>
+        <referenceContainer name="before.body.end">
+        	<block class="Magento\Framework\View\Element\Text" name="klevu_user_customization">
+        		<arguments>
+            		<argument name="text" xsi:type="string"><![CDATA[<script type="text/javascript" src="/unitednow/klevu/module-productsearch/view/web/klevu-user-customization.js"></script>]]></argument>
+        		</arguments>
+        	</block>
+        </referenceContainer>
+        
 
         <!-- Remove product comparison -->
         <!-- Header - view link -->
