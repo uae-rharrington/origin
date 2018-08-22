@@ -20,6 +20,9 @@ use Magento\Catalog\Helper\Product\ConfigurationPool;
 use Magento\Quote\Model\Cart\TotalsConverter;
 use Magento\Quote\Api\CouponManagementInterface;
 use Magento\Quote\Api\Data\TotalsInterface;
+use Magento\Sales\Api\Data\OrderInterface;
+use Psr\Log\LoggerInterface;
+use ClassyLlama\Quote\Helper\AddQuoteRequestToCart;
 
 /**
  * UAE\QuoteCustom\Model\CartTotalsRetriever
@@ -69,6 +72,21 @@ class CartTotalsRetriever
     protected $couponService;
 
     /**
+     * @var OrderInterface
+     */
+    private $order;
+
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    /**
+     * @var AddQuoteRequestToCart
+     */
+    private $quoteRequestHelper;
+
+    /**
      * CartTotalsRetriever constructor.
      *
      * @param CartRepositoryInterface $quoteRepository
@@ -78,6 +96,9 @@ class CartTotalsRetriever
      * @param ItemConverter $itemConverter
      * @param TotalsConverter $totalsConverter
      * @param CouponManagementInterface $couponService
+     * @param OrderInterface $order
+     * @param LoggerInterface $logger
+     * @param AddQuoteRequestToCart $quoteRequestHelper
      */
     public function __construct(
         CartRepositoryInterface $quoteRepository,
@@ -86,7 +107,10 @@ class CartTotalsRetriever
         DataObjectHelper $dataObjectHelper,
         ItemConverter $itemConverter,
         TotalsConverter $totalsConverter,
-        CouponManagementInterface $couponService
+        CouponManagementInterface $couponService,
+        OrderInterface $order,
+        LoggerInterface $logger,
+        AddQuoteRequestToCart $quoteRequestHelper
     ){
         $this->quoteRepository = $quoteRepository;
         $this->converter = $converter;
@@ -94,6 +118,9 @@ class CartTotalsRetriever
         $this->dataObjectHelper = $dataObjectHelper;
         $this->itemConverter = $itemConverter;
         $this->totalsConverter = $totalsConverter;
+        $this->order = $order;
+        $this->logger = $logger;
+        $this->quoteRequestHelper = $quoteRequestHelper;
     }
 
     /**
@@ -139,5 +166,48 @@ class CartTotalsRetriever
         $quoteTotals->setQuoteCurrencyCode($quote->getQuoteCurrencyCode());
 
         return $quoteTotals;
+    }
+
+    /**
+     * Check quote
+     *
+     * @param $cartId
+     * @return bool | int
+     */
+    public function checkQuote($cartId)
+    {
+        $changed = false;
+        try {
+            /** @var Quote $quote */
+            $quote = $this->quoteRepository->getActive($cartId);
+
+            if ($originatingQuoteId = $quote->getOriginatingQuoteId()) {
+                $order = $this->order->loadByIncrementId((int)$originatingQuoteId);
+                $items = count($quote->getAllItems()) === count($order->getAllItems());
+
+                $createdAt = new \DateTime($order->getCreatedAt(), new \DateTimeZone('UTC'));
+                $now = new \DateTime('now', new \DateTimeZone('UTC'));
+                $dateTimeDelta = $createdAt->diff($now);
+                $isStale = $dateTimeDelta->days > $this->quoteRequestHelper->getQuoteSaleLifetime();
+
+                $quoteShipping = $quote->getShippingAddress();
+                $orderShipping = $order->getShippingAddress();
+                $shippingMethod = $quoteShipping->getShippingMethod() === $order->getShippingMethod();
+
+                $address = $quoteShipping->getCountryId() === $orderShipping->getCountryId() &&
+                    $quoteShipping->getRegionId() === $orderShipping->getRegionId() &&
+                    $quoteShipping->getCity() === $orderShipping->getCity() &&
+                    $quoteShipping->getPostcode() === $orderShipping->getPostcode() &&
+                    $quoteShipping->getStreet() === $quoteShipping->getStreet();
+
+                if ($items && !$isStale && $shippingMethod && $address) {
+                    $changed = $order->getQuoteId();
+                }
+            }
+        } catch (\Exception $e) {
+            $this->logger->critical($e->getMessage());
+        }
+
+        return $changed;
     }
 }

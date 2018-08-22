@@ -13,6 +13,7 @@ use Magento\Framework\Event\Observer;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Quote\Api\CartRepositoryInterface;
 use Psr\Log\LoggerInterface;
+use UAE\QuoteCustom\Model\CartTotalsRetriever;
 
 /**
  * UAE\QuoteCustom\Observer\CheckoutSubmitBefore
@@ -33,6 +34,11 @@ class CheckoutSubmitBefore implements ObserverInterface
     private $quoteRepository;
 
     /**
+     * @var CartTotalsRetriever
+     */
+    private $cartTotalsRetriever;
+
+    /**
      * @var LoggerInterface
      */
     private $logger;
@@ -42,15 +48,18 @@ class CheckoutSubmitBefore implements ObserverInterface
      *
      * @param OrderInterface $order
      * @param CartRepositoryInterface $quoteRepository
+     * @param CartTotalsRetriever $cartTotalsRetriever
      * @param LoggerInterface $logger
      */
     public function __construct(
         OrderInterface $order,
         CartRepositoryInterface $quoteRepository,
+        CartTotalsRetriever $cartTotalsRetriever,
         LoggerInterface $logger
     ) {
         $this->order = $order;
         $this->quoteRepository = $quoteRepository;
+        $this->cartTotalsRetriever = $cartTotalsRetriever;
         $this->logger = $logger;
     }
 
@@ -62,17 +71,13 @@ class CheckoutSubmitBefore implements ObserverInterface
     public function execute(Observer $observer)
     {
         $quote = $observer->getEvent()->getQuote();
-        if ($quote->getOriginatingQuoteId()) {
+        if ($this->cartTotalsRetriever->checkQuote($quote->getId())) {
             try {
                 $originatingQuoteId = (int) $quote->getOriginatingQuoteId();
                 $order = $this->order->loadByIncrementId($originatingQuoteId);
                 $originQuote = $this->quoteRepository->get($order->getQuoteId());
-
-                if (count($quote->getAllItems()) === count($order->getAllItems()) &&
-                    $originQuote->getShippingMethod() ===  $quote->getShippingMethod()) {
-                    $quote->setData($originQuote->getData());
-                    $quote->setShippingAddress($originQuote->getShippingAddress());
-                }
+                $quote->setData($originQuote->getData());
+                $quote->setShippingAddress($originQuote->getShippingAddress());
             } catch (\Exception $e) {
                 $this->logger->critical($e->getMessage());
             }

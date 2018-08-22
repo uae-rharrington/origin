@@ -176,13 +176,8 @@ class ShippingInformationManagement
 
         if (!$isQuoteRequest) {
             try {
-                /** @var Quote $quote */
-                $quote = $this->quoteRepository->getActive($cartId);
-                if ($originatingQuoteId = $quote->getOriginatingQuoteId()) {
-                    $order = $this->order->loadByIncrementId((int)$originatingQuoteId);
-                    if (count($quote->getAllItems()) === count($order->getAllItems())) {
-                        $result->setTotals($this->cartTotalsRetriever->getCartTotal($order->getQuoteId()));
-                    }
+                if ($quoteId = $this->cartTotalsRetriever->checkQuote($cartId)) {
+                    $result->setTotals($this->cartTotalsRetriever->getCartTotal($quoteId));
                 }
             } catch (\Exception $e) {
                 $this->logger->critical($e->getMessage());
