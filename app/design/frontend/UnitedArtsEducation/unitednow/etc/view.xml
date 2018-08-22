@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!--
 /**
-* @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
-*/
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
 -->
 <view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/view.xsd">
     <media>
