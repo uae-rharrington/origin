@@ -21,6 +21,8 @@ use Magento\Checkout\Api\PaymentInformationManagementInterface;
 use Magento\Quote\Model\QuoteIdMaskFactory;
 use Magento\Quote\Api\Data\PaymentInterface;
 use Magento\Framework\Api\ExtensionAttributesFactory;
+use Magento\Sales\Api\Data\OrderInterface;
+use UAE\QuoteCustom\Model\CartTotalsRetriever;
 
 /**
  * UAE\QuoteCustom\Plugin\Model\ShippingInformationManagement
@@ -69,6 +71,16 @@ class ShippingInformationManagement
     private $logger;
 
     /**
+     * @var OrderInterface
+     */
+    private $order;
+
+    /**
+     * @var CartTotalsRetriever
+     */
+    private $cartTotalsRetriever;
+
+    /**
      * ShippingInformationManagement constructor.
      *
      * @param CartRepositoryInterface $quoteRepository
@@ -78,6 +90,8 @@ class ShippingInformationManagement
      * @param QuoteIdMaskFactory $quoteIdMaskFactory
      * @param ExtensionAttributesFactory $extensionFactory
      * @param LoggerInterface $logger
+     * @param OrderInterface $order
+     * @param CartTotalsRetriever $cartTotalsRetriever
      */
     public function __construct(
         CartRepositoryInterface $quoteRepository,
@@ -86,7 +100,9 @@ class ShippingInformationManagement
         PaymentInformationManagementInterface $paymentInformationManagement,
         QuoteIdMaskFactory $quoteIdMaskFactory,
         ExtensionAttributesFactory $extensionFactory,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        OrderInterface $order,
+        CartTotalsRetriever $cartTotalsRetriever
     ) {
         $this->quoteRepository = $quoteRepository;
         $this->customerSession = $customerSession;
@@ -95,6 +111,8 @@ class ShippingInformationManagement
         $this->quoteIdMaskFactory = $quoteIdMaskFactory;
         $this->extensionFactory = $extensionFactory;
         $this->logger = $logger;
+        $this->order = $order;
+        $this->cartTotalsRetriever = $cartTotalsRetriever;
     }
 
     /**
@@ -127,7 +145,9 @@ class ShippingInformationManagement
                 $payment->setAdditionalData(null);
                 $extensionAttributes = $payment->getExtensionAttributes();
                 if ($extensionAttributes === null) {
-                    $extensionAttributes = $this->extensionFactory->create(PaymentInterface::class);
+                    $extensionAttributes = $this->extensionFactory->create(
+                        PaymentInterface::class
+                    );
                     $payment->setExtensionAttributes($extensionAttributes);
                 }
                 if ($extensionAttributes->getIsQuoteRequest() === null) {
@@ -142,7 +162,22 @@ class ShippingInformationManagement
                         ->load($quote->getEntityId(), 'quote_id');
                     $email = $address->getExtensionAttributes()->getCustomerEmail();
                     $this->guestPaymentInformationManagement
-                        ->savePaymentInformationAndPlaceOrder($quoteIdMask->getMaskedId(), $email, $payment, $address);
+                        ->savePaymentInformationAndPlaceOrder(
+                            $quoteIdMask->getMaskedId(),
+                            $email,
+                            $payment,
+                            $address
+                        );
+                }
+            } catch (\Exception $e) {
+                $this->logger->critical($e->getMessage());
+            }
+        }
+
+        if (!$isQuoteRequest) {
+            try {
+                if ($quoteId = $this->cartTotalsRetriever->checkQuote($cartId)) {
+                    $result->setTotals($this->cartTotalsRetriever->getCartTotal($quoteId));
                 }
             } catch (\Exception $e) {
                 $this->logger->critical($e->getMessage());

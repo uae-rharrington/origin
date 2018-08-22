@@ -137,7 +137,7 @@ class AddQuoteRequestToCart extends \Magento\Framework\App\Helper\AbstractHelper
      *
      * @return string
      **/
-    protected function getQuoteSaleLifetime()
+    public function getQuoteSaleLifetime()
     {
         return $this->scopeConfig->getValue(
             self::QUOTE_REQUEST_STALE_DAYS,
