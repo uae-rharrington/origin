@@ -1,10 +1,9 @@
-
 <?xml version="1.0"?>
-        <!--
-        /**
-         * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
-         */
-        -->
+<!--
+/**
+ * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ */
+-->
 <view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/view.xsd">
     <media>
         <images module="Magento_Catalog">
@@ -114,8 +113,8 @@
                 <height>76</height>
             </image>
             <image id="product_small_image" type="small_image">
-                <width>140</width>
-                <height>140</height>
+                <width>135</width>
+                <height>135</height>
             </image>
             <image id="product_thumbnail_image" type="thumbnail">
                 <width>75</width>
@@ -142,8 +141,8 @@
                 <height>300</height>
             </image>
             <image id="recently_viewed_products_images_names_widget" type="small_image">
-                <width>140</width>
-                <height>140</height>
+                <width>75</width>
+                <height>90</height>
             </image>
             <image id="recently_viewed_products_images_only_widget" type="small_image">
                 <width>76</width>
@@ -196,6 +195,7 @@
         </images>
     </media>
     <vars module="Magento_Catalog">
+
         <!-- Gallery and magnifier theme settings. Start -->
         <var name="gallery">
             <var name="nav">thumbs</var> <!-- Gallery navigation style (false/thumbs/dots) -->
@@ -225,6 +225,7 @@
                 </var>
             </var>
         </var>
+
         <var name="magnifier">
             <var name="fullscreenzoom">20</var>  <!-- Zoom for fullscreen (integer)-->
             <var name="top"></var> <!-- Top position of magnifier -->
@@ -234,6 +235,7 @@
             <var name="eventType">hover</var> <!-- Action that atcivates zoom (hover/click) -->
             <var name="enabled">false</var> <!-- Turn on/off magnifier (true/false) -->
         </var>
+
         <var name="breakpoints">
             <var name="mobile">
                 <var name="conditions">
@@ -247,19 +249,24 @@
             </var>
         </var>
         <!-- end. Gallery and magnifier theme settings -->
+
         <var name="product_small_image_sidebar_size">100</var>  <!-- Override for small product image -->
         <var name="product_base_image_size">275</var>           <!-- Override for base product image -->
         <var name="product_base_image_icon_size">48</var>       <!-- Base product image icon size -->
+
         <var name="product_list_image_size">166</var>           <!-- New Product image size used in product list -->
         <var name="product_zoom_image_size">370</var>           <!-- New Product image size used for zooming -->
+
         <var name="product_image_white_borders">0</var>
     </vars>
     <vars module="Magento_Bundle">
         <var name="product_summary_image_size">58</var>         <!-- New Product image size used for summary block-->
     </vars>
+
     <vars module="Magento_ConfigurableProduct">
         <var name="gallery_switch_strategy">prepend</var>
     </vars>
+
     <vars module="Js_Bundle">
         <var name="bundle_size">1MB</var>
     </vars>
