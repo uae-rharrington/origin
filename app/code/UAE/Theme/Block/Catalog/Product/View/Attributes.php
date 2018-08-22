@@ -36,7 +36,7 @@ class Attributes extends \Magento\Catalog\Block\Product\View\Attributes
                 } elseif ($attribute->getFrontendInput() == 'price' && is_string($value)) {
                     $value = $this->priceCurrency->convertAndFormat($value);
                 }
-
+//              EDIT: Only return data that has a value entered by admin.
                 if (is_string($value) && strlen($value) && !ctype_space($value) && ($value !== 'No' || $attribute -> getFrontendInput() === 'boolean')) {
                     $data[$attribute->getAttributeCode()] = [
                         'label' => __($attribute->getStoreLabel()),
