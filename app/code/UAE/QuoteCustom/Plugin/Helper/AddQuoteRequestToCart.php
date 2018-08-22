@@ -88,7 +88,6 @@ class AddQuoteRequestToCart
             AddQuoteRequestToCartHelper::RESULTS_SUCCESSES_KEY => [],
             AddQuoteRequestToCartHelper::RESULTS_CART_CONTAINED_ITEMS_KEY => false
         ];
-
         if ($order && $order->hasItems() && $cart) {
             $createdAt = new \DateTime($order->getCreatedAt(), new \DateTimeZone('UTC'));
             $now = new \DateTime('now', new \DateTimeZone('UTC'));
@@ -159,7 +158,7 @@ class AddQuoteRequestToCart
      *
      * @return string
      **/
-    protected function getQuoteSaleLifetime()
+    public function getQuoteSaleLifetime()
     {
         return $this->scopeConfig->getValue(
             self::QUOTE_REQUEST_STALE_DAYS,
