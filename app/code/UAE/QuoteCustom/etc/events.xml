@@ -18,4 +18,7 @@
     <event name="sales_order_place_after">
         <observer name="uae_quote_customer_order_place_after" instance="UAE\QuoteCustom\Observer\OrderPlaceAfter" />
     </event>
+    <event name="checkout_submit_before">
+        <observer name="uae_quote_checkout_submit_before" instance="UAE\QuoteCustom\Observer\CheckoutSubmitBefore" />
+    </event>
 </config>
