@@ -25,7 +25,6 @@
                         <argument translate="true" name="title" xsi:type="string">More Information</argument>
                     </arguments>
                 </block>
-                <block class="UAE\GroupedProduct\Block\Product\Review" name="reviews.tab.simple" as="reviews_simple" template="UAE_GroupedProduct::review.phtml" group="detailed_info"/>
             </block>
         </referenceBlock>
         <referenceBlock name="product.info.addtocart">
@@ -36,8 +35,8 @@
         <referenceContainer name="product.info.overview" remove="true" />
         <move element="product.info.description" destination="product.info.main" />
         <referenceContainer name="product.info.price" remove="true" />
+        <move element="reviews.tab" destination="content" after="-"/>
         <referenceContainer name="product.info.details" remove="true" />
-        <referenceContainer name="product.info.review" remove="true" />
         <move element="product.info" destination="content" after="product.info.media" />
     </body>
 </page>
