@@ -38,7 +38,7 @@ define([
     return function (config) {
         var reviewTab = $(config.reviewsTabSelector),
             requiredReviewTabRole = 'tab';
-
+        // EDIT: If it is a grouped PDP, load reviews immediately
         if(!($('#product-review-container').parents('.data.item.content').length)){
             processReviews(config.productReviewUrl);
         } else if (reviewTab.attr('role') === requiredReviewTabRole && reviewTab.hasClass('active')) {
@@ -55,14 +55,21 @@ define([
 
                 event.preventDefault();
                 anchor = $(this).attr('href').replace(/^.*?(#|$)/, '');
-                $('.product.data.items [data-role="content"]').each(function (index) { //eslint-disable-line
-                    if (this.id == 'reviews') { //eslint-disable-line eqeqeq
-                        $('.product.data.items').tabs('activate', index);
-                        $('html, body').animate({
-                            scrollTop: $('#' + anchor).offset().top - 50
-                        }, 300);
-                    }
-                });
+                // EDIT: Change top link functionality when it is grouped PDP
+                if(!($('#product-review-container').parents('.data.item.content').length)){
+                    $('html, body').animate({
+                        scrollTop: $('#' + anchor).offset().top - 50
+                    }, 300);
+                }else {
+                    $('.product.data.items [data-role="content"]').each(function (index) { //eslint-disable-line
+                        if (this.id == 'reviews') { //eslint-disable-line eqeqeq
+                            $('.product.data.items').tabs('activate', index);
+                            $('html, body').animate({
+                                scrollTop: $('#' + anchor).offset().top - 50
+                            }, 300);
+                        }
+                    });
+                }
             });
         });
     };
