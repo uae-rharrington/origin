@@ -1,0 +1,76 @@
+/**
+ * @category    ClassyLlama
+ * @copyright   Copyright (c) 2018 Classy Llama
+ */
+
+define([
+    'jquery'
+], function ($) {
+    'use strict';
+
+    /**
+     * @param {String} url
+     * @param {*} fromPages
+     */
+    function processReviews(url, fromPages) {
+        $.ajax({
+            url: url,
+            cache: true,
+            dataType: 'html',
+            showLoader: false
+        }).done(function (data) {
+            $('#product-review-container').html(data);
+            $('[data-role="product-review"] .pages a').each(function (index, element) {
+                $(element).click(function (event) { //eslint-disable-line max-nested-callbacks
+                    processReviews($(element).attr('href'), true);
+                    event.preventDefault();
+                });
+            });
+        }).complete(function () {
+            if (fromPages == true) { //eslint-disable-line eqeqeq
+                $('html, body').animate({
+                    scrollTop: $('#reviews').offset().top - 50
+                }, 300);
+            }
+        });
+    }
+
+    return function (config) {
+        var reviewTab = $(config.reviewsTabSelector),
+            requiredReviewTabRole = 'tab';
+        // EDIT: If it is a grouped PDP, load reviews immediately
+        if(!($('#product-review-container').parents('.data.item.content').length)){
+            processReviews(config.productReviewUrl);
+        } else if (reviewTab.attr('role') === requiredReviewTabRole && reviewTab.hasClass('active')) {
+            processReviews(config.productReviewUrl);
+        } else {
+            reviewTab.one('beforeOpen', function () {
+                processReviews(config.productReviewUrl);
+            });
+        }
+
+        $(function () {
+            $('.product-info-main .reviews-actions a').click(function (event) {
+                var anchor;
+
+                event.preventDefault();
+                anchor = $(this).attr('href').replace(/^.*?(#|$)/, '');
+                // EDIT: Change top link functionality when it is grouped PDP
+                if(!($('#product-review-container').parents('.data.item.content').length)){
+                    $('html, body').animate({
+                        scrollTop: $('#' + anchor).offset().top - 50
+                    }, 300);
+                }else {
+                    $('.product.data.items [data-role="content"]').each(function (index) { //eslint-disable-line
+                        if (this.id == 'reviews') { //eslint-disable-line eqeqeq
+                            $('.product.data.items').tabs('activate', index);
+                            $('html, body').animate({
+                                scrollTop: $('#' + anchor).offset().top - 50
+                            }, 300);
+                        }
+                    });
+                }
+            });
+        });
+    };
+});
