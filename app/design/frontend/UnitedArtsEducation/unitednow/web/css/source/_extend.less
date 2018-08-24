@@ -19,3 +19,19 @@
         margin-bottom: 5px;
     }
 }
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-layout-1column{
+        .column.main{
+            .product{
+                &.media{
+                    width:45%;
+                }
+            }
+
+            .product-info-main{
+                width:50%;
+            }
+        }
+    }
+}
