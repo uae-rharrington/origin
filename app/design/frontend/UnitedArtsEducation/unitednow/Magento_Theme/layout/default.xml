@@ -54,6 +54,7 @@
         <!-- PDP - add link -->
         <referenceBlock name="view.addto.compare" remove="true" />
         <referenceBlock name="view.addto.compare.bundle" remove="true" />
+        <referenceBlock name="related.product.addto.compare" remove="true"/> <!-- Related product -->
         <!-- PLP - sidebar link -->
         <referenceBlock name="catalog.compare.sidebar" remove="true" />
         <!-- PLP - add link -->
