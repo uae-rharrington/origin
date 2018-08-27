@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category UAE
+ * @package UAE_BreadcrumbsFix
+ * @copyright Copyright (c) 2018 ClassyLlama
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="breadcrumbs" template="UAE_BreadcrumbsFix::product/breadcrumbs.phtml">
+            <arguments>
+                <argument name="viewModel" xsi:type="object">Magento\Catalog\ViewModel\Product\Breadcrumbs</argument>
+                <argument name="customViewModel"
+                          xsi:type="object">UAE\BreadcrumbsFix\ViewModel\Product\Breadcrumbs</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>
