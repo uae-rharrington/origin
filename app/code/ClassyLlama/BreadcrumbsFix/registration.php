@@ -2,8 +2,8 @@
 /**
  * Registration config
  *
- * @category UAE
- * @package UAE_BreadcrumbsFix
+ * @category ClassyLlama
+ * @package ClassyLlama_BreadcrumbsFix
  * @copyright Copyright (c) 2018 ClassyLlama
  */
 
@@ -11,6 +11,6 @@ use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'UAE_BreadcrumbsFix',
+    'ClassyLlama_BreadcrumbsFix',
     __DIR__
 );

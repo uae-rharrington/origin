@@ -2,11 +2,11 @@
 /**
  * ViewModel Breadcrumbs
  *
- * @category UAE
- * @package UAE_BreadcrumbsFix
+ * @category ClassyLlama
+ * @package ClassyLlama_BreadcrumbsFix
  * @copyright Copyright (c) 2018 ClassyLlama
  */
-namespace UAE\BreadcrumbsFix\ViewModel\Product;
+namespace ClassyLlama\BreadcrumbsFix\ViewModel\Product;
 
 use Magento\Catalog\Helper\Data;
 use Magento\Framework\DataObject;

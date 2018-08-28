@@ -1,6 +1,6 @@
 /**
- * @category UAE
- * @package UAE_BreadcrumbsFix
+ * @category ClassyLlama
+ * @package ClassyLlama_BreadcrumbsFix
  * @copyright Copyright (c) 2018 ClassyLlama
  */
 
