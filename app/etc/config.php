@@ -247,5 +247,32 @@ return [
         'Xtento_StockImport' => 1,
         'Xtento_TrackingImport' => 1,
         'UAE_OrderExport' => 1
+    ],
+    'system' => [
+        'default' => [
+            'dev' => [
+                'static' => [
+                    'sign' => '1'
+                ],
+                'front_end_development_workflow' => [
+                    'type' => 'server_side_compilation'
+                ],
+                'js' => [
+                    'merge_files' => '1',
+                    'minify_files' => '1',
+                    'minify_exclude' => 'tiny_mce'
+                ],
+                'css' => [
+                    'minify_files' => '1',
+                    'minify_exclude' => 'tiny_mce'
+                ],
+                'template' => [
+                    'minify_html' => '1'
+                ]
+            ]
+        ]
+    ],
+    'directories' => [
+        'document_root_is_pub' => true
     ]
 ];
