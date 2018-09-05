@@ -343,29 +343,44 @@
 
 /* div to display icons to change the view of result (grid/view) */
 .kuView{
-    float: right;
-    width:15%;
+    float: left;
     text-align: right;
 }
 
 /* display GRID view icon */
-.kuView .kuGridviewBtn{
-    background: url(https://js.klevu.com/klevu-js-v1/img-1-1/ku-gridview.png) no-repeat 0 0;
-    cursor:pointer;
+.kuView .kuGridviewBtn::before{
+    content:'\e60d';
+
+}
+
+.kuView a::before{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    line-height: inherit;
+    color: #7d7d7d;
+    content: '\e60d';
+    font-family: 'icons-uae-theme';
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: 400;
+    overflow: hidden;
+    speak: none;
+    text-align: center;
 }
 
 /* display LIST view icon */
-.kuView .kuListviewBtn{
-    background: url(https://js.klevu.com/klevu-js-v1/img-1-1/ku-listview.png) no-repeat 0 0;
-    cursor:pointer;
+.kuView .kuListviewBtn::before{
+    content:'\e60b';
 }
 
 /* set width and height of view icons box*/
 .kuView a{
+    padding:7px 10px;
+    cursor:pointer;
     display: inline-block;
     width: 22px;
     height: 22px;
-    margin-left: 4px;
     text-align: center;
     vertical-align: middle;
     overflow: hidden;
@@ -676,17 +691,16 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     padding: 10px;
-    border:1px solid #eeeeee;
     border-radius:3px;
 }
 
 .kuGridView ul li:hover{
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    border-color: transparent;
-    transition: box-shadow 400ms ease-out;
-    -moz-transition: box-shadow 400ms ease-out;
-    -webkit-transition: box-shadow 400ms ease-out;
-    -o-transition: box-shadow 400ms ease-out;
+    background: #fff;
+    box-shadow: 3px 3px 4px 0 rgba(0,0,0,.3);
+    border: 1px solid #bbb;
+    padding: 9px;
+    position: relative;
+    z-index: 2;
 }
 
 /* In GRIDVIEW:  for wrapping the image in fixed size div */
@@ -729,13 +743,6 @@
     vertical-align: middle;
 }
 
-.kuGridView ul li:hover img{
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-}
 
 .kuGridView ul li .kuDiscountBadge{
     top: 10px;
@@ -794,7 +801,7 @@
 }
 
 .kuAddtocart a.kuAddtocartBtn{
-    background: #414042;
+    background: #306aac;
     color: #fff;
     padding: 7px 15px;
     margin-bottom: 0;
@@ -807,9 +814,8 @@
     -ms-user-select: none;
     -o-user-select: none;
     text-decoration:none;
-    font-size: 13px;
+    font-size: 1.3rem;
     line-height: 19px;
-    text-transform: uppercase;
 }
 
 /* add to cart in grid view */
@@ -1206,5 +1212,9 @@
 .kuContainer.kuFiltersTop .kuFilterHead.kuExpand::after {
     border-width: 0 1px 1px 0;
     position: initial;
+}
+
+.invisible{
+    display:none;
 }
 /*-----------------------ends css for enabling filters in mobile and filter tags--------------------------------------------*/
