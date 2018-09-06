@@ -29,8 +29,12 @@ class FieldUpdate
      * @const FTP settings
      */
     const FTP_HOST_PATH = 'aw_giftcard_field_update/general/host';
+    const FTP_HOST_PORT = 'aw_giftcard_field_update/general/port';
     const FTP_USERNAME_PATH = 'aw_giftcard_field_update/general/username';
     const FTP_PASSWORD_PATH = 'aw_giftcard_field_update/general/password';
+    const FTP_PASSWORD_FTP_DIR = 'aw_giftcard_field_update/general/ftp_dir';
+    const FTP_PASSWORD_SSL = 'aw_giftcard_field_update/general/useftp_overssl';
+    const FTP_PASSWORD_PASSIVE_MODE = 'aw_giftcard_field_update/general/usepassive_mode';
     /**#@-*/
 
     /**
@@ -95,29 +99,32 @@ class FieldUpdate
     public function execute()
     {
         try {
-            $this->ftpAdapter->open($this->getFtpSettings());
-            $this->ftpAdapter->cd('GIFTCARDS');
             $tmpDirectory = $this->filesystem->getDirectoryWrite(DirectoryList::VAR_DIR);
-            $result = $this->ftpAdapter->read('giftCards.xml', $tmpDirectory->getAbsolutePath('tmp'));
-            $data = $this->parser->load($tmpDirectory->getAbsolutePath('tmp') . '/test.xml')
-                ->xmlToArray();
+            $giftCardsFile = $tmpDirectory->getAbsolutePath('tmp') . '/giftCards.xml';
 
+            $this->ftpAdapter->open($this->getFtpSettings());
+            if ($this->ftpAdapter->read('giftCards.xml', $giftCardsFile)) {
+                $giftCardsContent = $this->parser->load($giftCardsFile)
+                    ->xmlToArray();
 
-            $connection = $this->resource->getConnection();
-            $id = '';
-            $code = '';
-            $state = '';
-            $balance = '';
+                $connection = $this->resource->getConnection();
+                foreach ($giftCardsContent['GIFTCARDS']['GIFTCARD'] as $giftCard) {
+                    if ($connection->update(
+                        $this->resource->getTableName('aw_giftcard'),
+                        [
+                            'state' => $giftCard['STATE'],
+                            'balance' => $giftCard['BALANCE']
+                        ],
+                        ['code = ?' => $giftCard['CODE']]
+                    )) {
+                        $this->logger->info("Gift Card with code {$giftCard['CODE']} - was successful updated");
+                    }
+                }
+            } else {
+                throw new \Exception("Copy of giftCard.xml from FTP server was not successful");
+            }
 
-            $connection->update(
-                $this->resource->getTableName('aw_giftcard'),
-                ['id' => $id],
-                [
-                    'code = ?' => $code,
-                    'state = ?' => $state,
-                    'balance = ?' => $balance
-                ]
-            );
+            $tmpDirectory->delete($giftCardsFile);
 
         } catch (\Exception $e) {
             $this->logger->error($e->getMessage());
@@ -136,6 +143,10 @@ class FieldUpdate
                 self::FTP_HOST_PATH,
                 ScopeInterface::SCOPE_STORE
             ),
+            'port' => $this->scopeConfig->getValue(
+                self::FTP_HOST_PORT,
+                ScopeInterface::SCOPE_STORE
+            ),
             'user' => $this->scopeConfig->getValue(
                 self::FTP_USERNAME_PATH,
                 ScopeInterface::SCOPE_STORE
@@ -144,6 +155,18 @@ class FieldUpdate
                 self::FTP_PASSWORD_PATH,
                 ScopeInterface::SCOPE_STORE
             ),
+            'path' => $this->scopeConfig->getValue(
+                self::FTP_PASSWORD_FTP_DIR,
+                ScopeInterface::SCOPE_STORE
+            ),
+            'ssl' => $this->scopeConfig->getValue(
+                self::FTP_PASSWORD_SSL,
+                ScopeInterface::SCOPE_STORE
+            ),
+            'passive' => $this->scopeConfig->getValue(
+                self::FTP_PASSWORD_PASSIVE_MODE,
+                ScopeInterface::SCOPE_STORE
+            )
         ];
     }
 }
