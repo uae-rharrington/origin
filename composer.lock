@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c15b6a6069348bb1a451a4bacdf72900",
+    "content-hash": "336560bd5eb0a3fa252ab395f8c383e7",
     "packages": [
         {
             "name": "aheadworks/module-giftcard",
@@ -350,16 +350,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "d2c0a83b7533d6912e8d516756ebd34f893e9169"
+                "reference": "46afded9720f40b9dc63542af4e3e43a1177acb0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/d2c0a83b7533d6912e8d516756ebd34f893e9169",
-                "reference": "d2c0a83b7533d6912e8d516756ebd34f893e9169",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/46afded9720f40b9dc63542af4e3e43a1177acb0",
+                "reference": "46afded9720f40b9dc63542af4e3e43a1177acb0",
                 "shasum": ""
             },
             "require": {
@@ -402,7 +402,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2018-03-29T19:57:20+00:00"
+            "time": "2018-08-08T08:57:40+00:00"
         },
         {
             "name": "composer/composer",
@@ -12678,7 +12678,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.44",
+            "version": "v2.8.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -12856,16 +12856,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.14",
+            "version": "v3.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "a59f917e3c5d82332514cb4538387638f5bde2d6"
+                "reference": "285ce5005cb01a0aeaa5b0cf590bd0cc40bb631c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/a59f917e3c5d82332514cb4538387638f5bde2d6",
-                "reference": "a59f917e3c5d82332514cb4538387638f5bde2d6",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/285ce5005cb01a0aeaa5b0cf590bd0cc40bb631c",
+                "reference": "285ce5005cb01a0aeaa5b0cf590bd0cc40bb631c",
                 "shasum": ""
             },
             "require": {
@@ -12902,11 +12902,11 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T11:19:56+00:00"
+            "time": "2018-08-10T07:29:05+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.14",
+            "version": "v3.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -13072,16 +13072,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.44",
+            "version": "v2.8.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "cc83afdb5ac99147806b3bb65a3ff1227664f596"
+                "reference": "4be278e19064c3492095de50c9e375caae569ae1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/cc83afdb5ac99147806b3bb65a3ff1227664f596",
-                "reference": "cc83afdb5ac99147806b3bb65a3ff1227664f596",
+                "url": "https://api.github.com/repos/symfony/process/zipball/4be278e19064c3492095de50c9e375caae569ae1",
+                "reference": "4be278e19064c3492095de50c9e375caae569ae1",
                 "shasum": ""
             },
             "require": {
@@ -13117,7 +13117,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T11:13:39+00:00"
+            "time": "2018-08-03T09:45:57+00:00"
         },
         {
             "name": "symfony/translation",
@@ -13457,17 +13457,17 @@
         },
         {
             "name": "xtento/module-stockimport",
-            "version": "2.3.8",
+            "version": "2.4.3",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/6513b4fa04bfb373abee272ee80456d7/v/2.3.8",
-                "reference": "e6da4b4e388fee3cfb77f92504573bd05f6deec2",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_module-stockimport/h/d835ca448d6e8fcfed24ecd3f9a7086f/v/2.4.3",
+                "reference": "f2f0a861661f34bab5cac5310e05e3aa09c69cec",
                 "shasum": null
             },
             "require": {
                 "magento/framework": "^100.0||^101.0",
-                "magento/module-backend": "^100.0||^101.0",
-                "magento/module-sales": "^100.0||^101.0",
+                "magento/module-backend": "^100.0",
+                "magento/module-catalog": "^100.0||^101.0||^102.0",
                 "php": "~5.5.22|~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
                 "xtento/xtcore": "~2.0"
             },
@@ -13496,20 +13496,20 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-08-06T11:26:58+00:00"
+            "time": "2018-08-29T08:37:15+00:00"
         },
         {
             "name": "xtento/orderexport",
             "version": "2.6.1",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_orderexport/h/2521aee015910a5eb41bd0b4db749aea/v/2.6.1",
-                "reference": "80814da9c0ace65e14ecd05775cf02b4f18b5d73",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_orderexport/h/16968f712dcdd923e2935840036bf7df/v/2.6.1",
+                "reference": "50879bcb4b7e7c13e050ef06240c18d8c0a472bb",
                 "shasum": null
             },
             "require": {
                 "magento/framework": "^100.0||^101.0",
-                "magento/module-backend": "^100.0||^101.0",
+                "magento/module-backend": "^100.0",
                 "magento/module-sales": "^100.0||^101.0",
                 "php": "~5.5.22|~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
                 "xtento/xtcore": "~2.0"
@@ -13539,20 +13539,20 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-08-06T19:03:42+00:00"
+            "time": "2018-08-07T14:34:12+00:00"
         },
         {
             "name": "xtento/trackingimport",
             "version": "2.4.4",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_trackingimport/h/43573dc403e366e6e812262f2e91ade4/v/2.4.4",
-                "reference": "6038f292319f47ba3ff36f9cca8ab04aa92c8359",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_trackingimport/h/2aee52748f401be94b5f100f28d33e2d/v/2.4.4",
+                "reference": "a6216e0f6b74557d68dbb362c6cb06d1260dd7cc",
                 "shasum": null
             },
             "require": {
                 "magento/framework": "^100.0||^101.0",
-                "magento/module-backend": "^100.0||^101.0",
+                "magento/module-backend": "^100.0",
                 "magento/module-sales": "^100.0||^101.0",
                 "php": "~5.5.22|~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
                 "xtento/xtcore": "~2.0"
@@ -13582,7 +13582,7 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-07-26T19:29:24+00:00"
+            "time": "2018-08-07T15:35:42+00:00"
         },
         {
             "name": "xtento/xtcore",
@@ -14003,16 +14003,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "1.8.4",
+            "version": "1.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "736ffa7c2bfa4a60e8a10acb316fa2ac456c5fba"
+                "reference": "20da13beba0dde8fb648be3cc19765732790f46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/736ffa7c2bfa4a60e8a10acb316fa2ac456c5fba",
-                "reference": "736ffa7c2bfa4a60e8a10acb316fa2ac456c5fba",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/20da13beba0dde8fb648be3cc19765732790f46e",
+                "reference": "20da13beba0dde8fb648be3cc19765732790f46e",
                 "shasum": ""
             },
             "require": {
@@ -14025,6 +14025,7 @@
             "require-dev": {
                 "ext-dom": "*",
                 "ext-libxml": "*",
+                "php-http/psr7-integration-tests": "dev-master",
                 "phpunit/phpunit": "^5.7.16 || ^6.0.8 || ^7.2.7",
                 "zendframework/zend-coding-standard": "~1.0"
             },
@@ -14062,7 +14063,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2018-08-01T13:47:49+00:00"
+            "time": "2018-09-05T19:29:37+00:00"
         },
         {
             "name": "zendframework/zend-escaper",
@@ -14299,16 +14300,16 @@
         },
         {
             "name": "zendframework/zend-http",
-            "version": "2.8.1",
+            "version": "2.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-http.git",
-                "reference": "44197164a270259116162a442f639085ea24094a"
+                "reference": "2c8aed3d25522618573194e7cc51351f8cd4a45b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-http/zipball/44197164a270259116162a442f639085ea24094a",
-                "reference": "44197164a270259116162a442f639085ea24094a",
+                "url": "https://api.github.com/repos/zendframework/zend-http/zipball/2c8aed3d25522618573194e7cc51351f8cd4a45b",
+                "reference": "2c8aed3d25522618573194e7cc51351f8cd4a45b",
                 "shasum": ""
             },
             "require": {
@@ -14350,7 +14351,7 @@
                 "zend",
                 "zf"
             ],
-            "time": "2018-08-01T13:50:48+00:00"
+            "time": "2018-08-13T18:47:03+00:00"
         },
         {
             "name": "zendframework/zend-hydrator",
