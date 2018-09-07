@@ -15,6 +15,7 @@
 	<referenceBlock name="customer_account_navigation">
             <block class="Magento\Customer\Block\Account\SortLinkInterface" name="customer-account-navigation-newsletter-subscriptions-link">
                 <arguments>
+                    <argument name="path" xsi:type="string">newsletter/manage</argument>
                     <argument name="label" xsi:type="string" translate="true">Email Subscriptions</argument>
                 </arguments>
             </block>
