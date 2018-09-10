@@ -6,7 +6,7 @@
  */
 namespace UAE\NewsLetter\Controller\Manage;
 
-class Index extends \Magento\Newsletter\Controller\Manage
+class Index extends \UAE\NewsLetter\Controller\Manage
 {
     /**
      * Managing newsletter subscription page
