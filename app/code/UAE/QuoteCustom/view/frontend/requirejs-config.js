@@ -9,7 +9,11 @@ var config = {
             'ShipperHQ_Shipper/template/checkout/shipping.html':
                 'UAE_QuoteCustom/template/checkout/shipperhq_shipping.html',
             'Magento_Checkout/template/shipping.html':
-                'UAE_QuoteCustom/template/checkout/shipping.html'
+                'UAE_QuoteCustom/template/checkout/shipping.html',
+            'Magento_NegotiableQuote/template/shipping.html':
+                'UAE_QuoteCustom/template/checkout/negotiable_shipping.html',
+            'ClassyLlama_Quote/js/add-customer-note':
+                'UAE_QuoteCustom/js/add-customer-note'
         }
     },
     config: {
@@ -22,6 +26,9 @@ var config = {
             },
             'Magento_Checkout/js/checkout-data': {
                 'UAE_QuoteCustom/js/checkout-data-mixin': true
+            },
+            'Magento_Reward/js/view/payment/reward': {
+                'UAE_QuoteCustom/js/view/payment/reward': true
             }
         }
     }

@@ -11,9 +11,21 @@
             <div class="col-xxs-12 col-s-6">
                 <h3><?= __('Quote Info'); ?></h3>
                 <?php if ($block->getOrderId()):?>
-                    <p><?= __('Thank you for shopping at <span>%1</span>.  Your quote # is: <span>%2</span>.', $block->getStoreName(), $block->escapeHtml($block->getOrderId())); ?></p>
+                    <?php if ($block->getCanViewOrder()) :?>
+                        <p><?= __('Thank you for shopping at <span>%1</span>.  Your quote # is: <span>%2</span>.', $block->getStoreName(), sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($helper->getViewQuoteUrl($block->getOrderRealId())), $block->escapeHtml($block->getOrderId()))) ?></p>
+                    <?php  else :?>
+                        <p><?= __('Thank you for shopping at <span>%1</span>.  Your quote # is: <span>%2</span>.', $block->getStoreName(), $block->escapeHtml($block->getOrderId())); ?></p>
+                    <?php endif;?>
                     <p><?= __('We just sent you an email containing your quote. The quote will be valid for %1 days.', $helper->getQuoteLifetime()); ?></p>
                 <?php endif;?>
+            </div>
+            <div class="col-xxs-12 col-s-6 actions">
+                <a class="action print"
+                   href="<?= /* @escapeNotVerified */ $block->getPrintQuoteUrl() ?>"
+                   onclick="this.target='_blank';">
+                    <span><?= /* @escapeNotVerified */ __('Print Quote') ?></span>
+                </a>
+                <?= $block->getChildHtml() ?>
             </div>
             <div class="col-xxs-12 col-s-6">
                 <h3><?= __('How to purchase this quote'); ?></h3>
@@ -23,3 +35,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    require([
+        'Magento_Customer/js/customer-data'
+    ], function (customerData) {
+        var sections = ['cart'];
+        customerData.invalidate(sections);
+    });
+</script>

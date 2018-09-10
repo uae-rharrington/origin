@@ -13,10 +13,9 @@ use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Customer\Model\Context as CustomerContext;
 use Magento\Framework\App\Http\Context as HttpContext;
 use Magento\Checkout\Model\Session as CheckoutSession;
-use Magento\Quote\Api\CartRepositoryInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Quote\Api\Data\CartInterface;
-use Psr\Log\LoggerInterface;
+use ClassyLlama\Quote\Helper\Data;
 
 /**
  * UAE\QuoteCustom\Model\CheckoutConfigProvider
@@ -37,41 +36,33 @@ class CheckoutConfigProvider implements ConfigProviderInterface
     private $checkoutSession;
 
     /**
-     * @var CartRepositoryInterface
-     */
-    private $quoteRepository;
-
-    /**
      * @var OrderInterface
      */
     private $order;
 
     /**
-     * @var LoggerInterface
+     * @var Data
      */
-    private $logger;
+    private $helperData;
 
     /**
      * CheckoutConfigProvider constructor.
      *
      * @param HttpContext $httpContext
      * @param CheckoutSession $checkoutSession
-     * @param CartRepositoryInterface $quoteRepository
      * @param OrderInterface $order
-     * @param LoggerInterface $logger
+     * @param Data $helperData
      */
     public function __construct(
         HttpContext $httpContext,
         CheckoutSession $checkoutSession,
-        CartRepositoryInterface $quoteRepository,
         OrderInterface $order,
-        LoggerInterface $logger
+        Data $helperData
     ) {
         $this->httpContext = $httpContext;
         $this->checkoutSession = $checkoutSession;
-        $this->quoteRepository = $quoteRepository;
         $this->order = $order;
-        $this->logger = $logger;
+        $this->helperData = $helperData;
     }
 
     /**
@@ -83,6 +74,7 @@ class CheckoutConfigProvider implements ConfigProviderInterface
     {
         $output['guestShippingAddress'] = $this->getGuestShippingAddress();
         $output['customerShippingAddress'] = $this->getCustomerShippingAddress();
+        $output['quoteLifetime'] = $this->helperData->getQuoteLifetime();
         return $output;
     }
 
@@ -94,15 +86,10 @@ class CheckoutConfigProvider implements ConfigProviderInterface
     private function getGuestShippingAddress()
     {
         $guestShippingAddress = null;
-        $quoteId = $this->checkoutSession->getQuote()->getId();
+        $quote = $this->checkoutSession->getQuote();
 
-        if (!$this->isCustomerLoggedIn() && $quoteId) {
-            try {
-                $quote = $this->quoteRepository->get($quoteId);
-                $guestShippingAddress = $this->fillAddressFields($quote);
-            } catch (\Exception $e) {
-                $this->logger->critical($e->getMessage());
-            }
+        if (!$this->isCustomerLoggedIn() && $quote->getId()) {
+            $guestShippingAddress = $this->fillAddressFields($quote);
         }
 
         return $guestShippingAddress;
@@ -116,18 +103,15 @@ class CheckoutConfigProvider implements ConfigProviderInterface
     private function getCustomerShippingAddress()
     {
         $customerShippingAddress = null;
-        $quoteId = $this->checkoutSession->getQuote()->getId();
+        $quote = $this->checkoutSession->getQuote();
 
-        if ($this->isCustomerLoggedIn() && $quoteId) {
-            try {
-                $quote = $this->quoteRepository->get($quoteId);
-                if ($originatingQuoteId = (int) $quote->getOriginatingQuoteId()) {
-                    $order = $this->order->loadByIncrementId($originatingQuoteId);
-                    $customerShippingAddress = $this->fillAddressFields($quote);
-                    $customerShippingAddress['address_id'] = (int) $order->getShippingAddress()->getCustomerAddressId();
-                }
-            } catch  (\Exception $e) {
-                $this->logger->critical($e->getMessage());
+        if ($this->isCustomerLoggedIn() && $quote->getId()) {
+            if ($originatingQuoteId = (int) $quote->getOriginatingQuoteId()) {
+                $order = $this->order->loadByIncrementId($originatingQuoteId);
+                $customerShippingAddress = $this->fillAddressFields($quote);
+                $customerShippingAddress['address_id'] = $order->getShippingAddress() ?
+                    (int) $order->getShippingAddress()->getCustomerAddressId() :
+                    '';
             }
         }
 
@@ -154,6 +138,7 @@ class CheckoutConfigProvider implements ConfigProviderInterface
         $shippingAddressData['country_id'] = $shippingAddress->getCountryId();
         $shippingAddressData['region'] = $shippingAddress->getRegion();
         $shippingAddressData['region_id'] = $shippingAddress->getRegionId();
+
         return $shippingAddressData;
     }
 

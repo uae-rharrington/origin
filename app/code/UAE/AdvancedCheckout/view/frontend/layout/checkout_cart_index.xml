@@ -56,6 +56,7 @@
                                     <item name="component"  xsi:type="string">UAE_AdvancedCheckout/js/view/summary/qualifying-items</item>
                                 </item>
                                 <item name="grand-total" xsi:type="array">
+                                    <item name="component"  xsi:type="string">UAE_AdvancedCheckout/js/view/checkout/cart/totals/grand-total</item>
                                     <item name="config" xsi:type="array">
                                         <item name="title" xsi:type="string" translate="true">Subtotal</item>
                                     </item>
@@ -66,8 +67,11 @@
                 </argument>
             </arguments>
         </referenceBlock>
-        <referenceContainer name="checkout.cart.methods">
-            <block class="Magento\Framework\View\Element\Template" name="checkout.cart.methods.return" template="UAE_AdvancedCheckout::cart/back-link.phtml"/>
-        </referenceContainer>
+
+        <referenceBlock name="checkout.cart.empty">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">UAE_AdvancedCheckout::cart/noItems.phtml</argument>
+            </action>
+        </referenceBlock>
     </body>
 </page>

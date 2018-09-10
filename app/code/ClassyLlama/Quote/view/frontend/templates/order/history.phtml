@@ -37,7 +37,7 @@
                         </a>
                         <?php if ($this->helper(\Magento\Sales\Helper\Reorder::class)->canReorder($_order->getEntityId())) : ?>
                             <a href="<?= $block->getReorderUrl($_order); ?>" class="action order">
-                                <span><?php /* @escapeNotVerified */ echo __('Order') ?></span>
+                                <span><?php /* @escapeNotVerified */ echo __('Edit/Order') ?></span>
                             </a>
                         <?php endif ?>
                     </td>

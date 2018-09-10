@@ -20,7 +20,7 @@
             "type": "composer",
             "url": "https://repo.xtento.com"
         },
-	"shipperhq": {
+    "shipperhq": {
             "type": "composer",
             "url": "https://packages.shipperhq.com"
         },
@@ -36,10 +36,10 @@
         "xtento/orderexport": "^2.5",
         "xtento/trackingimport": "^2.4",
         "shipperhq/module-shipper": "20.19.0",
-        "xtento/module-stockimport": "^2.3",
         "shipperhq/module-option": "^20.2",
+        "aheadworks/module-giftcard": "^1.2",
         "klevu/module-search": "^2.1",
-        "aheadworks/module-giftcard": "^1.2"
+        "xtento/module-stockimport": "2.4.3"
     },
     "config": {
         "use-include-path": true

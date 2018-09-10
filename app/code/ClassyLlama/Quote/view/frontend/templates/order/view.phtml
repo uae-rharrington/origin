@@ -5,6 +5,7 @@
 ?>
 <?php /** @var  $block \ClassyLlama\Quote\Block\Order\View*/?>
 <?php $_order = $block->getOrder() ?>
+<?php $helper = $this->helper('ClassyLlama\Quote\Helper\Data'); ?>
 <div class="quote-request-order no-print">
     <a class="quote-request-order-button action primary" href="<?= $this->helper(\ClassyLlama\Quote\Helper\Data::class)->getAddQuoteRequestToCartUrl($_order->getId()); ?>"><?= __('Add Quote to Shopping Cart'); ?></a>
     <button class="quote-request-print-button action" data-bind="click: window.print"><?= __('Print Quote Request'); ?></button>
@@ -21,5 +22,5 @@
 </div>
 
 <ul>
-    <li><?= /* @escapeNotVerified */ __('Quote Valid for 90 days') ?></li>
+    <li><?= /* @escapeNotVerified */ __("Quote Valid for {$helper->getQuoteLifetime()} days") ?></li>
 </ul>
