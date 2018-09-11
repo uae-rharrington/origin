@@ -183,7 +183,7 @@ class CartTotalsRetriever
 
             if ($originatingQuoteId = $quote->getOriginatingQuoteId()) {
                 $order = $this->order->loadByIncrementId((int)$originatingQuoteId);
-                $items = count($quote->getAllItems()) === count($order->getAllItems());
+                $items = $quote->getItemsSummaryQty() === (int) $order->getTotalQtyOrdered();
 
                 $createdAt = new \DateTime($order->getCreatedAt(), new \DateTimeZone('UTC'));
                 $now = new \DateTime('now', new \DateTimeZone('UTC'));

@@ -8,6 +8,14 @@
     <type name="Magento\Catalog\Block\Product\View\Attributes">
         <plugin name="hide_specific_attributes" type="UAE\AdvancedCheckout\Plugin\Catalog\Block\Product\View\HideAttributes" />
     </type>
+    <type name="Magento\Checkout\Controller\Cart\Index">
+        <plugin name="set_continue_shopping_url" type="UAE\AdvancedCheckout\Plugin\Checkout\Controller\Cart\Index" />
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\UpdatePost">
+        <plugin name="set_cart_reload_number" type="UAE\AdvancedCheckout\Plugin\Checkout\Controller\Cart\UpdatePost" />
+    </type>
+    <preference for="Magento\Checkout\Block\Cart" type="UAE\AdvancedCheckout\Block\Checkout\Cart\Grid" />
+    <preference for="Magento\Checkout\Block\Cart\Grid" type="UAE\AdvancedCheckout\Block\Checkout\Cart\Grid" />
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
         <arguments>
             <argument name="configProviders" xsi:type="array">

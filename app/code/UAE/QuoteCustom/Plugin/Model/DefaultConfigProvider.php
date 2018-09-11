@@ -107,8 +107,10 @@ class DefaultConfigProvider
                     $selectedShippingMethod = $shippingMethod->__toArray();
                 }
 
-                if (count($quote->getAllItems()) === count($order->getAllItems())) {
+                if ($quote->getItemsSummaryQty() === (int) $order->getTotalQtyOrdered()) {
+                    $items = $result['totalsData']['items'];
                     $result['totalsData'] = $this->getTotalsData($order->getQuoteId());
+                    $result['totalsData']['items'] = $items;
                 }
             } catch (\Exception $exception) {
                 $selectedShippingMethod = null;

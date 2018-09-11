@@ -1,0 +1,21 @@
+<?php
+/**
+ * @category    ClassyLlama
+ * @copyright   Copyright (c) 2018 Classy Llama
+ */
+/**  @var $block \Magento\Checkout\Block\Cart */
+?>
+<div class="cart-empty">
+    <?= $block->getChildHtml('checkout_cart_empty_widget') ?>
+    <p><?= /* @escapeNotVerified */ __('You have no items in your shopping cart.') ?></p>
+    <p>
+        <?php // EDIT: Use browser history to go back to page loaded before cart. If backButton JS fails, link will fall back to href ?>
+        <?php $previousPageUrl = $block->getContinueShoppingUrl() ?? '#'; ?>
+        <a href="<?= $previousPageUrl ?>"
+           data-mage-init='{"backButton":{"cartUpdates":"<?= $block->getCartUpdates() ?>"}}'
+           title="<?= $block->escapeHtml(__('Continue Shopping')) ?>">
+            <span><?= /* @escapeNotVerified */ __('Continue Shopping') ?></span>
+        </a>
+    </p>
+    <?= $block->getChildHtml('shopping.cart.table.after') ?>
+</div>

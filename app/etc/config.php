@@ -236,6 +236,7 @@ return [
         'Shopial_Facebook' => 1,
         'Temando_Shipping' => 1,
         'UAE_AdvancedCheckout' => 1,
+        'UAE_GiftcardFieldUpdate' => 1,
         'UAE_GroupedProduct' => 1,
         'UAE_OrderBySku' => 1,
         'UAE_OrderComments' => 1,
