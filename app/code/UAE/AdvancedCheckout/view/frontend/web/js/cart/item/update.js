@@ -4,11 +4,23 @@
 define([
     'jquery',
     'uiComponent',
-    'Magento_Checkout/js/action/get-totals'
-], function ($, Component, getTotalsAction) {
+    'Magento_Checkout/js/action/get-totals',
+    'Magento_Catalog/js/price-utils'
+], function ($, Component, getTotalsAction, priceUtils) {
     'use strict';
 
     return Component.extend({
+        defaults: {
+            priceFormat: {
+                decimalSymbol: ".",
+                groupLength: 3,
+                groupSymbol: ",",
+                integerRequired: 1,
+                pattern: "$%s",
+                precision: 2,
+                requiredPrecision: 2
+            }
+        },
 
         /**
          * @inheritdoc
@@ -72,7 +84,7 @@ define([
         _updateItemQty: function (elem) {
             var itemId = this.item_id;
 
-            this._ajax('/checkout/sidebar/updateItemQty', {
+            this._ajax('/advancedcheckout/sidebar/updateItemQty', {
                 'item_id': itemId,
                 'item_qty': $('#cart-' + itemId + '-qty').val()
             }, elem, this._updateItemQtyAfter);
@@ -91,13 +103,15 @@ define([
         },
 
         /**
-         * @param {Integer} itemQty
+         * @param {Array} itemData
          * @private
          */
-        _updateSubtotal: function (itemQty) {
-            var price = $('.item-' + this.item_id + ' .price span.price').text().replace('$', ''),
-                subtotal = price * itemQty;
-            $('.item-' + this.item_id + ' .subtotal span.price').text('$' + subtotal.toFixed(2));
+        _updateItemPrice: function (itemData) {
+            var price = priceUtils.formatPrice(itemData.price, this.priceFormat),
+                subtotal = priceUtils.formatPrice(itemData.subtotal, this.priceFormat);
+
+            $('.item-' + this.item_id + ' .price span.price').text(price);
+            $('.item-' + this.item_id + ' .subtotal span.price').text(subtotal);
         },
 
         /**
@@ -130,11 +144,12 @@ define([
             })
                 .done(function (response) {
                     var msg;
+
                     if (response.success) {
                         callback.call(this, elem, response);
                         var deferred = $.Deferred();
                         getTotalsAction([], deferred);
-                        this._updateSubtotal(data.item_qty);
+                        this._updateItemPrice(response.itemData);
                     } else {
                         msg = response['error_message'];
 
