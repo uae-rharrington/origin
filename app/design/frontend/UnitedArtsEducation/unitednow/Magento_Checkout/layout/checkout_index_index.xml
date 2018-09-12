@@ -34,5 +34,8 @@
                 </argument>
             </arguments>
         </referenceBlock>
+        <referenceBlock name="top.search" remove="true" />
+        <referenceBlock name="minicart" remove="true" />
+        <referenceBlock name="header.promo" remove="true" />
     </body>
 </page>
