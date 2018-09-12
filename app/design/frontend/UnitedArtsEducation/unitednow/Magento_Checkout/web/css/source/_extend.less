@@ -239,4 +239,16 @@
         line-height: 22px;
         z-index: 103;
     }
+    //keep "Checkout with PayPal" button from overflowing
+    .checkout-cart-index{
+        .cart-summary{
+            .checkout-methods-items{
+                .paypal{
+                    input{
+                        max-width:100%;
+                    }
+                }
+            }
+        }
+    }
 }
