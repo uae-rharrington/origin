@@ -259,8 +259,13 @@
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
     .page-products {
         .products-grid {
+            .product-items {
+                margin-left: -@indent__base;
+            }
             .product-item {
-                width: 24.42%;
+                width: 25%;
+                margin-left: 0;
+                padding-left: @indent__base;
             }
         }
     }
