@@ -255,12 +255,14 @@
             }
         }
     }
-    //float wishlist details when it is small.
-    .page-products{
+
+    .sidebar{
         .block-wishlist{
-            .product-item{
-                .product-item-details{
-                    float:left;
+            .product-items{
+                .product-item-info{
+                    .product-item-photo{
+                        float:none;
+                    }
                 }
             }
         }
@@ -273,11 +275,15 @@
                 width: 24.42%;
             }
         }
-        // unfloat wishlist details when wide.
+    }
+
+    .sidebar{
         .block-wishlist{
-            .product-item{
-                .product-item-details{
-                    float:none;
+            .product-items{
+                .product-item-info{
+                    .product-item-photo{
+                        float:left;
+                    }
                 }
             }
         }
