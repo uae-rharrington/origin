@@ -16,17 +16,15 @@ define([
              * @inheritdoc
              */
             _add: function (event, data) {
-                var newRowIndex = this.rowIndex + 1,
-                    self = this;
+                var self = this;
                 this.options.addBlockData.skuTabIndex = this.options.addBlockData.removeTabIndex
                     ? this.options.addBlockData.removeTabIndex + 1 : 1;
                 this.options.addBlockData.qtyTabIndex = this.options.addBlockData.skuTabIndex
                     ? this.options.addBlockData.skuTabIndex + 1 : 2;
                 this.options.addBlockData.removeTabIndex = this.options.addBlockData.qtyTabIndex
                     ? this.options.addBlockData.qtyTabIndex + 1 : 3;
-                this.options.itemsRenderCallbacks[newRowIndex] = data ? data.callback : function () {};
 
-                this._super();
+                this._super(event, data);
 
                 $('input').keydown(function(e) {
                     self._switch(e);

@@ -67,8 +67,11 @@
                 </argument>
             </arguments>
         </referenceBlock>
-        <referenceContainer name="checkout.cart.methods">
-            <block class="Magento\Framework\View\Element\Template" name="checkout.cart.methods.return" template="UAE_AdvancedCheckout::cart/back-link.phtml"/>
-        </referenceContainer>
+
+        <referenceBlock name="checkout.cart.empty">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">UAE_AdvancedCheckout::cart/noItems.phtml</argument>
+            </action>
+        </referenceBlock>
     </body>
 </page>

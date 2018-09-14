@@ -177,7 +177,10 @@ class ShippingInformationManagement
         if (!$isQuoteRequest) {
             try {
                 if ($quoteId = $this->cartTotalsRetriever->checkQuote($cartId)) {
-                    $result->setTotals($this->cartTotalsRetriever->getCartTotal($quoteId));
+                    $items = $result->getTotals()->getItems();
+                    $totals = $this->cartTotalsRetriever->getCartTotal($quoteId);
+                    $totals->setItems($items);
+                    $result->setTotals($totals);
                 }
             } catch (\Exception $e) {
                 $this->logger->critical($e->getMessage());

@@ -37,7 +37,7 @@
                 <block class="Aheadworks\Giftcard\Block\Customer\Giftcard\Codes" name="aw_giftcard_codes" as="giftcard_codes" />
             </block>
 	    <!-- Remove Magento_giftcard Section-->
-	    <block name="checkout.cart.giftcardaccount" remove="true"/>
+	    <referenceBlock name="checkout.cart.giftcardaccount" remove="true"/>
         </referenceContainer>
         <move element="checkout.cart.aw.giftcard" destination="cart.discount" after="-"/>
     </body>

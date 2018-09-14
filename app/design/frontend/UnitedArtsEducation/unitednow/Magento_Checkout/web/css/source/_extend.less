@@ -18,17 +18,19 @@
     }
 
     // Use default button styles for custom buttons in cart; reduce icon whitespace
-    .cart-container .form-cart .action.continue {
-        border-radius: @button__border-radius;
-        padding: @button__padding;
-        &:before {
-            margin-left: -14px;
-        }
-    }
-    .cart-container .form-cart .action.update {
-        padding: @button__padding;
-        &:before {
-            margin-left: -11px;
+    .cart-container {
+        .form-cart {
+            .actions.main {
+                .continue,
+                .clear {
+                    display: inline-block;
+                }
+            }
+            .action {
+                &.continue {
+                    padding: @button__padding;
+                }
+            }
         }
     }
 
