@@ -10,6 +10,9 @@ var config = {
             },
             'Magento_QuickOrder/js/sku/autocomplete': {
                 'UAE_OrderBySku/js/sku/autocomplete': true
+            },
+            'Magento_QuickOrder/js/multiple-skus': {
+                'UAE_OrderBySku/js/multiple-skus': true
             }
         }
     }
