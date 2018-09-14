@@ -17,7 +17,7 @@ define([
              * @private
              */
             _getValueArray: function () {
-                return $(this.options.textArea).val().split(/,|\s|\n/);
+                return $(this.options.textArea).val().split(/,\s*|\n/);
             }
         });
 
