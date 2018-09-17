@@ -176,6 +176,18 @@
             }
         }
     }
+    
+    .page-products{
+        .toolbar-products{
+            .sorter{
+                right: -4px;
+
+                .sorter-options{
+                    margin: 0 4px;
+                }
+            }
+        }
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
@@ -255,6 +267,18 @@
             }
         }
     }
+
+    .sidebar{
+        .block-wishlist{
+            .product-items{
+                .product-item-info{
+                    .product-item-photo{
+                        float:none;
+                    }
+                }
+            }
+        }
+    }
 }
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
     .page-products {
@@ -266,6 +290,18 @@
                 width: 25%;
                 margin-left: 0;
                 padding-left: @indent__base;
+            }
+        }
+    }
+
+    .sidebar{
+        .block-wishlist{
+            .product-items{
+                .product-item-info{
+                    .product-item-photo{
+                        float:left;
+                    }
+                }
             }
         }
     }
