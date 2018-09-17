@@ -153,6 +153,13 @@
         }
     }
 
+    .cvv{
+        .field-tooltip{
+            right:initial;
+            left:64px;
+        }
+    }
+
     .methods-shipping {
         .table-checkout-shipping-method {
             tbody {
@@ -181,6 +188,16 @@
         }
         .actions-toolbar {
             text-align: center;
+        }
+    }
+
+    .checkout-index-index{
+        .ccard{
+            .cvv{
+                &.field{
+                    margin-bottom:20px;
+                }
+            }
         }
     }
 }
@@ -230,6 +247,18 @@
         right: @layout-indent__width;
         margin-top: (@header-desktop__height - 22px) / 2 - 1px;
         line-height: 22px;
-        z-index: 11;
+        z-index: 103;
+    }
+    //keep "Checkout with PayPal" button from overflowing
+    .checkout-cart-index{
+        .cart-summary{
+            .checkout-methods-items{
+                .paypal{
+                    input{
+                        max-width:100%;
+                    }
+                }
+            }
+        }
     }
 }
