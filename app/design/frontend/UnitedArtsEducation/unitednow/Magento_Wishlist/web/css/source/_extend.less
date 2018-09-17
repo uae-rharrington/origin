@@ -1,0 +1,44 @@
+/**
+ * @category    ClassyLlama
+ * @copyright   Copyright (c) 2018 Classy Llama
+ */
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-multiple-wishlist{
+        .products-grid{
+            &.wishlist{
+                .product-item-photo{
+                    float:none;
+                }
+
+                .product-item-name,
+                .product-item-description,
+                .product-item .price-box,
+                .product-item-tooltip{
+                    margin-left:0;
+                }
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .page-multiple-wishlist{
+        .products-grid{
+            &.wishlist{
+                .product-item-info{
+                    .product-item-photo{
+                        float:left;
+                    }
+
+                    .product-item-name,
+                    .product-item-description,
+                    .product-item .price-box,
+                    .product-item-tooltip{
+                        margin-left:115px;
+                    }
+                }
+            }
+        }
+    }
+}
