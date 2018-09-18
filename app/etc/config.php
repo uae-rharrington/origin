@@ -238,6 +238,7 @@ return [
         'UAE_AdvancedCheckout' => 1,
         'UAE_GiftcardFieldUpdate' => 1,
         'UAE_GroupedProduct' => 1,
+        'UAE_NewsLetter' => 1,
         'UAE_OrderBySku' => 1,
         'UAE_OrderComments' => 1,
         'Xtento_XtCore' => 1,
