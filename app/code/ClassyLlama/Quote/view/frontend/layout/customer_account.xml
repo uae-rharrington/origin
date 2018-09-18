@@ -11,7 +11,7 @@
                 <arguments>
                     <argument name="path" xsi:type="string">quoterequest/order/history</argument>
                     <argument name="label" xsi:type="string" translate="true">My Quotes</argument>
-                    <argument name="sortOrder" xsi:type="number">230</argument>
+                    <argument name="sortOrder" xsi:type="number">240</argument>
                 </arguments>
             </block>
         </referenceBlock>

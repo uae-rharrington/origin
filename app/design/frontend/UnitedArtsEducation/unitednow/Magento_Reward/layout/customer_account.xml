@@ -9,7 +9,10 @@
     <body>
         <referenceBlock name="customer-account-navigation-reward-link">
             <arguments>
-                <argument name="path" xsi:type="string">http://www.unitedartandeducation.com/rewards</argument>
+                <argument name="path" xsi:type="string">https://www.unitednow.com/CRMRewards.aspx</argument>
+                <argument name="attributes" xsi:type="array">
+                   <item name="target" xsi:type="string">_blank</item>
+                </argument>
             </arguments>
         </referenceBlock>
     </body>
