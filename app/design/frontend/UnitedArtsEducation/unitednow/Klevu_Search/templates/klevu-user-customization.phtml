@@ -22,10 +22,10 @@
                 trackingParams = "";
 
             product = klevu_productCustomizations(product);
-            landingSequence = product.children ? product.children.toLowerCase().split(" ") : [];
+            landingSequence = product.children ? product.children.toUpperCase().split(" ") : [];
 
-            if (landingSequence.indexOf(keywords.toLowerCase()) !== -1) {
-                landingItemParam = '?item=' + keywords;
+            if (landingSequence.indexOf(keywords.toUpperCase()) !== -1) {
+                landingItemParam = '?item=' + keywords.toUpperCase();
             }
 
             if (product.productImage.trim().length === 0) {
@@ -165,10 +165,10 @@
                 landingItemParam = '';
 
             product = klevu_productCustomizations(product);
-            sequence = product.children ? product.children.toLowerCase().split(" ") : [];
+            sequence = product.children ? product.children.toUpperCase().split(" ") : [];
 
-            if (sequence.indexOf(klevu_searchedTerm.toLowerCase()) !== -1) {
-                landingItemParam = '?item=' + klevu_searchedTerm;
+            if (sequence.indexOf(klevu_searchedTerm.toUpperCase()) !== -1) {
+                landingItemParam = '?item=' + klevu_searchedTerm.toUpperCase();
             }
 
             if (product.productImage.trim().length === 0) {
@@ -299,10 +299,10 @@
             }
 
             if (klevu_activeSearchBox.form && response.result.length === 1) {
-                var sequence = response.result[0].children ? response.result[0].children.toLowerCase().split(" ") : [];
+                var sequence = response.result[0].children ? response.result[0].children.toUpperCase().split(" ") : [];
 
-                if (sequence.indexOf(klevu_searchedTerm.toLowerCase()) !== -1) {
-                    klevu_activeSearchBox.form.action = response.result[0].url + '?item=' + klevu_searchedTerm;
+                if (sequence.indexOf(klevu_searchedTerm.toUpperCase()) !== -1) {
+                    klevu_activeSearchBox.form.action = response.result[0].url + '?item=' + klevu_searchedTerm.toUpperCase();
                     klevu_activeSearchBox.form.method = "post";
                     if (doc.getElementById("klevu-loader-2")) {
                         doc.getElementById("klevu-loader-2").style.display = "none";
