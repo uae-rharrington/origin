@@ -21,4 +21,7 @@
     <event name="checkout_submit_before">
         <observer name="uae_quote_checkout_submit_before" instance="UAE\QuoteCustom\Observer\CheckoutSubmitBefore" />
     </event>
+    <event name="checkout_cart_update_items_after">
+        <observer name="uae_quote_apply_tier_prices" instance="UAE\QuoteCustom\Observer\ApplyTierPrices" />
+    </event>
 </config>
