@@ -1,0 +1,16 @@
+diff --git a/Model/Condition/Product/AbstractProduct.php b/Model/Condition/Product/AbstractProduct.php
+--- a/vendor/magento/module-rule/Model/Condition/Product/AbstractProduct.php
++++ b/vendor/magento/module-rule/Model/Condition/Product/AbstractProduct.php
+@@ -182,10 +182,8 @@
+         $attributes = [];
+         foreach ($productAttributes as $attribute) {
+             /* @var $attribute \Magento\Catalog\Model\ResourceModel\Eav\Attribute */
+-            if (!$attribute->isAllowedForRuleCondition() || !$attribute->getDataUsingMethod(
+-                $this->_isUsedForRuleProperty
+-            )
+-            ) {
++            if (!$attribute->getDataUsingMethod($this->_isUsedForRuleProperty)
++                || !$attribute->isAllowedForRuleCondition()) {
+                 continue;
+             }
+             $attributes[$attribute->getAttributeCode()] = $attribute->getFrontendLabel();

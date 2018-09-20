@@ -10,5 +10,10 @@ var config = {
                 'UAE_GroupedProduct/js/validation-custom': true
             }
         }
+    },
+    map: {
+        '*': {
+            highlightSku: 'UAE_GroupedProduct/js/highlight-sku'
+        }
     }
 };

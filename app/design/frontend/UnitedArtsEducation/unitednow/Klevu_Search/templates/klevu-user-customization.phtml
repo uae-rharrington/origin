@@ -7,7 +7,7 @@
 <script type="text/javascript">
     var klevu_uc = {
         // landing page
-        showLandingPageData : function ( product ){
+        showLandingPageData: function (product) {
             var toReturn = '',
                 toAppendwithSalePrice = '',
                 priceWithCurrency = '',
@@ -18,23 +18,23 @@
                 additionalParams = '',
                 landingSequence,
                 landingItemParam = '',
-                keywords = document.getElementById( 'searchedKeyword' ).value,
+                keywords = document.getElementById('searchedKeyword').value,
                 trackingParams = "";
 
-            product = klevu_productCustomizations( product );
-            landingSequence = product.children ? product.children.split(" ") : [];
+            product = klevu_productCustomizations(product);
+            landingSequence = product.children ? product.children.toUpperCase().split(" ") : [];
 
-            if( landingSequence.indexOf(keywords) !== -1 ) {
-                landingItemParam = '?item=' + keywords;
+            if (landingSequence.indexOf(keywords.toUpperCase()) !== -1) {
+                landingItemParam = '?item=' + keywords.toUpperCase();
             }
 
-            if( product.productImage.trim().length === 0 ){
+            if (product.productImage.trim().length === 0) {
                 product.productImage = klevu_userOptions.noImageUrl;
             }
 
-            if( klevu_userOptions.openProductClicksInNewWindow ){
+            if (klevu_userOptions.openProductClicksInNewWindow) {
                 additionalParams = ' target="_blank"';
-            } else{
+            } else {
                 additionalParams = ' onclick="klevu_analytics.stopClickDefault( event );"';
             }
             trackingParams = '{' +
@@ -43,7 +43,7 @@
                 'url: \'' + escape(product.productUrl) + '\',' +
                 'name: \'' + escape(product.productName) + '\',' +
                 'salePrice: \'' + escape(product.salePrice) + '\',' +
-                'rating: \''+ escape(product.rating) + '\',' +
+                'rating: \'' + escape(product.rating) + '\',' +
                 'position: ' + product.productPosition + ',' +
                 'category: \'' + escape(product.category) + '\'' +
                 '},' +
@@ -53,98 +53,98 @@
             // code for the result block
             toReturn += '<li>';
 
-            toReturn += '<div class="klevuImgWrap"><a href="' + product.productUrl.replace(/"/g,"%22") +
+            toReturn += '<div class="klevuImgWrap"><a href="' + product.productUrl.replace(/"/g, "%22") +
                 landingItemParam + '" target="_blank" ';
-            if( klevu_commons.isMobileDevice() ){
+            if (klevu_commons.isMobileDevice()) {
                 toReturn += ' onclick="return klevu_analytics.trackClickedProduct(event, ' + trackingParams + ');" >';
-            } else{
+            } else {
                 toReturn += ' onmousedown="return klevu_analytics.trackClickedProduct(event, ' + trackingParams + ');" ' + additionalParams + '>';
             }
 
             toReturn += '<img src="' +
                 product.productImage + '" onerror="this.onerror=null;this.src=\'' +
                 klevu_userOptions.noImageUrl + '\';" alt="' + klevu_commons.escapeHtml(product.productName) + '"/></a></div>';
-            if( 'undefined' !== typeof klevu_showDiscountBadge &&
+            if ('undefined' !== typeof klevu_showDiscountBadge &&
                 klevu_showDiscountBadge && product.discount != '' &&
-                product.discount != '0' && product.discount != '0.0' ){
-                if( klevu_uiLabels.discountBadgeText.indexOf("#") === -1 ){
+                product.discount != '0' && product.discount != '0.0') {
+                if (klevu_uiLabels.discountBadgeText.indexOf("#") === -1) {
                     toReturn += '<div class="kuDiscountBadge">' +
                         klevu_uiLabels.discountBadgeText + ' ' +
-                        Number( product.discount ).toFixed(0) +
+                        Number(product.discount).toFixed(0) +
                         '%</div>';
                 } else {
                     toReturn += '<div class="kuDiscountBadge">' +
-                        klevu_uiLabels.discountBadgeText.replace( "#", Number( product.discount ).toFixed(0) + "%" ) +
+                        klevu_uiLabels.discountBadgeText.replace("#", Number(product.discount).toFixed(0) + "%") +
                         '</div>';
                 }
             }
             toReturn += '<div class="kuNameDesc">';
-            toReturn += '<div class="kuName"><a href="' + product.productUrl.replace(/"/g,"%22") + landingItemParam +
+            toReturn += '<div class="kuName"><a href="' + product.productUrl.replace(/"/g, "%22") + landingItemParam +
                 '" target="_blank" ';
-            if( klevu_commons.isMobileDevice() ){
+            if (klevu_commons.isMobileDevice()) {
                 toReturn += ' onclick="return klevu_analytics.trackClickedProduct(event, ' + trackingParams + ');" >';
-            } else{
+            } else {
                 toReturn += ' onmousedown="return klevu_analytics.trackClickedProduct(event, ' + trackingParams + ');" ' + additionalParams + '>';
             }
             toReturn += product.productName + '</a></div>';
             toReturn += '<div class="kuDesc">' + product.productDescription + '</div>';
-            if( product.rating.trim().length > 0 && !isNaN(Number(product.rating)) &&
-                Number(product.rating) <= 5 && Number(product.rating) >= 0 ){
+            if (product.rating.trim().length > 0 && !isNaN(Number(product.rating)) &&
+                Number(product.rating) <= 5 && Number(product.rating) >= 0) {
                 var starWidth = 20 * Number(product.rating);
-                toReturn += '<div class="kuStarsSmall">'+
+                toReturn += '<div class="kuStarsSmall">' +
                     '<div class="kuRating" style="width:' + starWidth +
                     '%;"></div></div>';
             }
             toReturn += '</div>';
 
             toReturn += '<div class="kuPrice">';
-            if( klevu_showPrices ){
-                if( klevu_userOptions.showOnlyOriginalAndSalePrices ){
-                    toReturn += klevu_commons.showOriginalAndSalePrices( 'LANDING', product,
-                        salepriceClass, 'kuSalePrice kuSpecialPrice' );
+            if (klevu_showPrices) {
+                if (klevu_userOptions.showOnlyOriginalAndSalePrices) {
+                    toReturn += klevu_commons.showOriginalAndSalePrices('LANDING', product,
+                        salepriceClass, 'kuSalePrice kuSpecialPrice');
                 } else {
-                    toReturn += klevu_commons.showProductPrices( 'LANDING', product,
-                        salepriceClass, 'kuSalePrice kuSpecialPrice' );
+                    toReturn += klevu_commons.showProductPrices('LANDING', product,
+                        salepriceClass, 'kuSalePrice kuSpecialPrice');
                 }
             }
 
-            if( klevu_userOptions.vatCaption.trim().length > 0 ){
+            if (klevu_userOptions.vatCaption.trim().length > 0) {
                 toReturn += '<div class="klevu-vat-caption">(' + klevu_userOptions.vatCaption + ')</div>';
             }
 
-            if( product.totalProductVariants && product.totalProductVariants != '0' ){
-                if( klevu_uiLabels.variants.indexOf("#") === -1 ){
+            if (product.totalProductVariants && product.totalProductVariants != '0') {
+                if (klevu_uiLabels.variants.indexOf("#") === -1) {
                     toReturn += '<div class="klevu-variants">+' + product.totalProductVariants +
                         ' ' + klevu_uiLabels.variants + '</div>';
                 } else {
                     toReturn += '<div class="klevu-variants">' +
-                        klevu_uiLabels.variants.replace( "#", product.totalProductVariants) + '</div>';
+                        klevu_uiLabels.variants.replace("#", product.totalProductVariants) + '</div>';
                 }
             }
-            if( klevu_userOptions.outOfStockCaption.trim().length > 0 ){
-                if( ( product.inStock ) && product.inStock === 'no' ){
+            if (klevu_userOptions.outOfStockCaption.trim().length > 0) {
+                if ((product.inStock) && product.inStock === 'no') {
                     toReturn += '<div class="klevu-out-of-stock">' +
                         klevu_userOptions.outOfStockCaption + '</div>';
                 }
             }
 
             toReturn += '</div>';
-            if( klevu_commons.showAddToCartButton( product.inStock, product.hideAddToCart ) ){
-                if( !(product.isCustomOptionsAvailable && product.isCustomOptionsAvailable === "yes") &&
-                    (!product.totalProductVariants || product.totalProductVariants == '0') ){
+            if (klevu_commons.showAddToCartButton(product.inStock, product.hideAddToCart)) {
+                if (!(product.isCustomOptionsAvailable && product.isCustomOptionsAvailable === "yes") &&
+                    (!product.totalProductVariants || product.totalProductVariants == '0')) {
                     toReturn += '<div class="kuAddtocart">' +
                         '<input type="text" name="klevu-qty" id="klevu-qty-' +
-                        escape( product.productCode ) + '" placeholder="' +
+                        escape(product.productCode) + '" placeholder="' +
                         klevu_uiLabels.addToCartPlaceholder + '"/>' +
                         '<a href="javascript:klevu_lpSendProductToCart(\'' +
-                        escape( product.productCode ) + '\', \'' +
-                        escape( product.productUrl ) + '\', \'klevu-qty-' +
-                        escape( product.productCode ) + '\');" ' +
+                        escape(product.productCode) + '\', \'' +
+                        escape(product.productUrl) + '\', \'klevu-qty-' +
+                        escape(product.productCode) + '\');" ' +
                         'class="kuAddtocartBtn">' + klevu_userOptions.addToCartButton + '</a>' +
                         '</div>';
-                } else{
+                } else {
                     toReturn += '<div class="kuAddtocart">' +
-                        '<a href="' + product.productUrl.replace(/"/g,"%22") + landingItemParam +
+                        '<a href="' + product.productUrl.replace(/"/g, "%22") + landingItemParam +
                         '" class="kuAddtocartBtn">' + klevu_userOptions.addToCartButton + '</a>' +
                         '</div>';
                 }
@@ -156,7 +156,7 @@
             return toReturn;
         },
 
-        showAutocompleteProducts: function( product ){
+        showAutocompleteProducts: function (product) {
             var productHtml = '',
                 trackingParams = '',
                 imgAlt,
@@ -164,19 +164,19 @@
                 sequence,
                 landingItemParam = '';
 
-            product = klevu_productCustomizations( product );
-            sequence = product.children ? product.children.split(" ") : [];
+            product = klevu_productCustomizations(product);
+            sequence = product.children ? product.children.toUpperCase().split(" ") : [];
 
-            if( sequence.indexOf(klevu_searchedTerm) !== -1 ) {
-                landingItemParam = '?item=' + klevu_searchedTerm;
+            if (sequence.indexOf(klevu_searchedTerm.toUpperCase()) !== -1) {
+                landingItemParam = '?item=' + klevu_searchedTerm.toUpperCase();
             }
 
-            if( product.productImage.trim().length === 0 ){
+            if (product.productImage.trim().length === 0) {
                 product.productImage = klevu_userOptions.noImageUrl;
             }
-            if( klevu_userOptions.openProductClicksInNewWindow ){
+            if (klevu_userOptions.openProductClicksInNewWindow) {
                 additionalParams = ' target="_blank"';
-            } else{
+            } else {
                 additionalParams = ' onclick="klevu_analytics.stopClickDefault( event );"';
             }
             trackingParams = '{' +
@@ -185,8 +185,8 @@
                 'url: \'' + escape(product.productUrl) + '\',' +
                 'name: \'' + escape(product.productName) + '\',' +
                 'salePrice: \'' + escape(product.salePrice) + '\',' +
-                'rating: \''+ escape(product.rating) + '\',' +
-                'position: ' + product.productPosition + ','+
+                'rating: \'' + escape(product.rating) + '\',' +
+                'position: ' + product.productPosition + ',' +
                 'category: \'' + escape(product.category) + '\'' +
                 '}' +
                 '}';
@@ -195,10 +195,10 @@
             productHtml += '<li>';
 
 
-            productHtml += '<a href="' + product.productUrl.replace(/"/g,"%22") + landingItemParam + '" class="klevu-result-box-l2" ' ;
-            if( klevu_commons.isMobileDevice() ){
+            productHtml += '<a href="' + product.productUrl.replace(/"/g, "%22") + landingItemParam + '" class="klevu-result-box-l2" ';
+            if (klevu_commons.isMobileDevice()) {
                 productHtml += ' onclick="return  klevu_analytics.trackClickedProduct(event, ' + trackingParams + ');"  >';
-            } else{
+            } else {
                 productHtml += ' onmousedown="return  klevu_analytics.trackClickedProduct(event, ' + trackingParams + ');" ' +
                     additionalParams + ' >';
             }
@@ -206,16 +206,16 @@
             productHtml += '<div class="klevu-img-wrap-l2"><img src="' + product.productImage +
                 '" onerror="this.onerror=null;this.src=\'' + klevu_userOptions.noImageUrl +
                 '\';" alt="' + klevu_commons.escapeHtml(imgAlt) + '" /></div>';
-            if( 'undefined' !== typeof klevu_showDiscountBadge &&
+            if ('undefined' !== typeof klevu_showDiscountBadge &&
                 klevu_showDiscountBadge && product.discount != '' &&
-                product.discount != '0' && product.discount != '0.0' ){
-                if( klevu_uiLabels.discountBadgeText.indexOf("#") === -1 ){
+                product.discount != '0' && product.discount != '0.0') {
+                if (klevu_uiLabels.discountBadgeText.indexOf("#") === -1) {
                     productHtml += '<div class="klevu-discount-badge-l2">' +
-                        klevu_uiLabels.discountBadgeText + ' ' + Number( product.discount ).toFixed(0) +
+                        klevu_uiLabels.discountBadgeText + ' ' + Number(product.discount).toFixed(0) +
                         '%</div>';
-                } else{
+                } else {
                     productHtml += '<div class="klevu-discount-badge-l2">' +
-                        klevu_uiLabels.discountBadgeText.replace( "#", Number( product.discount ).toFixed(0) + "%" ) +
+                        klevu_uiLabels.discountBadgeText.replace("#", Number(product.discount).toFixed(0) + "%") +
                         '</div>';
 
                 }
@@ -225,36 +225,96 @@
                 '<div class="klevu-desc-l2">' + product.productDescription + '</div>';
 
             // show prices
-            if( klevu_showPrices ){
+            if (klevu_showPrices) {
                 productHtml += '<div class="klevu-price-l2">';
-                if( klevu_userOptions.showOnlyOriginalAndSalePrices ){
-                    productHtml += klevu_commons.showOriginalAndSalePrices( 'SLIM', product, 'klevu-saleprice-l2',
-                        'klevu-saleprice-l2 klevu-special-price-l2' );
+                if (klevu_userOptions.showOnlyOriginalAndSalePrices) {
+                    productHtml += klevu_commons.showOriginalAndSalePrices('SLIM', product, 'klevu-saleprice-l2',
+                        'klevu-saleprice-l2 klevu-special-price-l2');
                 } else {
-                    productHtml += klevu_commons.showProductPrices( 'SLIM', product, 'klevu-saleprice-l2',
-                        'klevu-saleprice-l2 klevu-special-price-l2' );
+                    productHtml += klevu_commons.showProductPrices('SLIM', product, 'klevu-saleprice-l2',
+                        'klevu-saleprice-l2 klevu-special-price-l2');
                 }
-                if( klevu_userOptions.vatCaption.trim().length > 0 ){
+                if (klevu_userOptions.vatCaption.trim().length > 0) {
                     productHtml += '<span class="klevu-vat-caption-l2">(' +
                         klevu_userOptions.vatCaption + ')</span>';
                 }
                 productHtml += '</div>';
             }
-            if( product.rating.trim().length > 0 && !isNaN(Number(product.rating)) &&
-                Number(product.rating) <= 5 && Number(product.rating) >= 0 ){
+            if (product.rating.trim().length > 0 && !isNaN(Number(product.rating)) &&
+                Number(product.rating) <= 5 && Number(product.rating) >= 0) {
                 var starWidth = 20 * Number(product.rating);
-                productHtml += '<div class="klevu-stars-small-l2">'+
+                productHtml += '<div class="klevu-stars-small-l2">' +
                     '<div class="klevu-rating-l2" style="width:' + starWidth +
                     '%;"></div></div>';
             }
-            if( klevu_userOptions.outOfStockCaption.trim().length > 0 ){
-                if( product.inStock && product.inStock === 'no' ){
+            if (klevu_userOptions.outOfStockCaption.trim().length > 0) {
+                if (product.inStock && product.inStock === 'no') {
                     productHtml += '<div class="klevu-out-of-stock-l2">' +
                         klevu_userOptions.outOfStockCaption + '</div>';
                 }
             }
-            productHtml +=  '</div><div class="klevu-clear-left"></div></a></li>';
+            productHtml += '</div><div class="klevu-clear-left"></div></a></li>';
             return productHtml;
+        },
+
+        showResultsData: function (response, callFrom) {
+            var doc = document, noOtherDataAvailable = true,
+                klevuSearchNoResult = doc.getElementById('klevuSearchNoResults'),
+                arrowDiv = doc.getElementById('klevuArrow');
+            // hide loader
+            this.hideLoader();
+            if (klevu_searchedTerm.length === 0) {
+                return;
+            }
+            //hide no-results div
+            if (klevuSearchNoResult) {
+                klevuSearchNoResult.style.display = "none";
+            }
+            // show autosuggestion
+            if (klevu_showAdvancedAutosuggestionLayout) {
+                this.showAdvancedAutoSuggestions(response.autoComplete, noOtherDataAvailable, response.meta);
+            } else {
+                this.showAutoSuggestions(response.autoComplete, response.meta);
+
+                // show cms content
+                this.showCmsContent(response.pages);
+
+                // show filters
+                this.showCategories(response.categories);
+
+                // check if other data is available
+                if ((response.autoComplete && response.autoComplete.length > 0) ||
+                    (response.categories && response.categories.length > 0) ||
+                    (response.pages && response.pages.length > 0)) {
+                    noOtherDataAvailable = false;
+                }
+                // show products
+                this.showProducts(response.meta, response.result, noOtherDataAvailable, response.popularProducts);
+
+                if (!noOtherDataAvailable || response.result.length > 0) {
+                    klevu_commons.showBannerAdForGivenTerm(klevu_searchedTerm);
+                } else {
+                    klevu_commons.showBannerAdForGivenTerm("");
+                }
+            }
+
+            if (klevu_activeSearchBox.form && response.result.length === 1) {
+                var sequence = response.result[0].children ? response.result[0].children.toUpperCase().split(" ") : [];
+
+                if (sequence.indexOf(klevu_searchedTerm.toUpperCase()) !== -1) {
+                    klevu_activeSearchBox.form.action = response.result[0].url + '?item=' + klevu_searchedTerm.toUpperCase();
+                    klevu_activeSearchBox.form.method = "post";
+                    if (doc.getElementById("klevu-loader-2")) {
+                        doc.getElementById("klevu-loader-2").style.display = "none";
+                    }
+                }
+            } else if (klevu_activeSearchBox.form) {
+                klevu_activeSearchBox.form.method = "get";
+            }
+            doc.getElementById('klevuSearchingArea').style.cssText += ";display : block !important;";
+            if (arrowDiv) {
+                arrowDiv.style.display = "none"; // removing !important added at the time of clearing results.
+            }
         }
     }
 </script>
