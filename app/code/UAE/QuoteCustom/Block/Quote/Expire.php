@@ -26,8 +26,6 @@ class Expire extends Template
     private $customerSession;
 
     /**
-     * Expire constructor.
-     *
      * @param Template\Context $context
      * @param Session $customerSession
      * @param array $data
