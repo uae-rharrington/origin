@@ -26,8 +26,6 @@ class ApplyQuote implements ObserverInterface
     private $resource;
 
     /**
-     * ApplyQuote constructor.
-     *
      * @param ResourceConnection $resource
      */
     public function __construct(

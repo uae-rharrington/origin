@@ -1,11 +1,11 @@
 <?php
 /**
- * @copyright   Copyright (c) 2018 Classy Llama Studios, LLC
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
  */
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'UAE_OrderExport',
+    'UAE_NewsLetter',
     __DIR__
 );
-

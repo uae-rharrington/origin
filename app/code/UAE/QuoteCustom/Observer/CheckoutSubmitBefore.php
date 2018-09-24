@@ -71,12 +71,14 @@ class CheckoutSubmitBefore implements ObserverInterface
     public function execute(Observer $observer)
     {
         $quote = $observer->getEvent()->getQuote();
-        if ($this->cartTotalsRetriever->checkQuote($quote->getId())) {
+        $quoteId = $quote->getId();
+        if ($this->cartTotalsRetriever->checkQuote($quoteId)) {
             try {
                 $originatingQuoteId = (int) $quote->getOriginatingQuoteId();
                 $order = $this->order->loadByIncrementId($originatingQuoteId);
                 $originQuote = $this->quoteRepository->get($order->getQuoteId());
                 $quote->setData($originQuote->getData());
+                $quote->setId($quoteId);
                 $quote->setShippingAddress($originQuote->getShippingAddress());
             } catch (\Exception $e) {
                 $this->logger->critical($e->getMessage());
