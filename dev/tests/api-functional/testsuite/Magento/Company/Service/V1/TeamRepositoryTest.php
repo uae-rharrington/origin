@@ -181,6 +181,59 @@ class TeamRepositoryTest extends WebapiAbstract
     }
 
     /**
+     * Test delete team with child nodes via WebAPI.
+     *
+     * @return void
+     * @magentoApiDataFixture Magento/NegotiableQuote/_files/company_with_customer_for_quote.php
+     * @expectedException \Exception
+     * @expectedExceptionMessage This team has child users or teams aligned to it and cannot be deleted.
+     */
+    public function testDeleteTeamWithChildren()
+    {
+        $customer = $this->customerRepository->get('email@companyquote.com');
+        $company = $this->companyManagement->getByCustomerId($customer->getId());
+
+        /** @var \Magento\Company\Api\TeamRepositoryInterface $teamRepository */
+        $teamRepository = $this->objectManager->get(
+            \Magento\Company\Api\TeamRepositoryInterface::class
+        );
+        /** @var \Magento\Company\Api\Data\TeamInterfaceFactory $teamFactory */
+        $teamFactory = $this->objectManager->get(
+            \Magento\Company\Api\Data\TeamInterfaceFactory::class
+        );
+        /** @var \Magento\Company\Model\Company\Structure $structureManagement */
+        $structureManagement = $this->objectManager->create(
+            \Magento\Company\Model\Company\Structure::class
+        );
+
+        $team1 = $teamFactory->create();
+        $team1->setName('Team 1');
+        $teamRepository->create($team1, $company->getId());
+
+        $team2 = $teamFactory->create();
+        $team2->setName('Team 2');
+        $teamRepository->create($team2, $company->getId());
+
+        $structureTeam1 = $structureManagement->getStructureByTeamId($team1->getId());
+        $structureTeam2 = $structureManagement->getStructureByTeamId($team2->getId());
+        $structureManagement->moveNode($structureTeam1->getId(), $structureTeam2->getId());
+
+        $serviceInfo = [
+            'rest' => [
+                'resourcePath' => '/V1/team/' . $team2->getId(),
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_DELETE,
+            ],
+            'soap' => [
+                'service' => self::SERVICE_READ_NAME,
+                'serviceVersion' => self::SERVICE_VERSION,
+                'operation' => self::SERVICE_READ_NAME . 'DeleteById',
+            ],
+        ];
+        $requestData = ['teamId' => $team2->getId()];
+        $this->_webApiCall($serviceInfo, $requestData);
+    }
+
+    /**
      * Test get team list via WebAPI.
      *
      * @return void
@@ -198,6 +251,7 @@ class TeamRepositoryTest extends WebapiAbstract
         $filter = $builder
             ->setField(\Magento\Company\Api\Data\TeamInterface::NAME)
             ->setValue($createdTeam->getName())
+            ->setConditionType('like')
             ->create();
 
         /** @var \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder */

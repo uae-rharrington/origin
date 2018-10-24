@@ -63,21 +63,6 @@ define([
             });
         });
 
-        describe('"_onFocus" method', function () {
-            it('Check for defined', function () {
-                expect(addUserObj._onFocus).toBeDefined();
-                expect(addUserObj._onFocus).toEqual(jasmine.any(Function));
-            });
-
-            it('Check setInitialValue method call', function () {
-                spyOn(addUserObj, 'setInitialValue');
-                addUserObj._onFocus();
-                expect(addUserObj.setInitialValue).not.toHaveBeenCalled();
-                addUserObj._onFocus(true);
-                expect(addUserObj.setInitialValue).toHaveBeenCalled();
-            });
-        });
-
         describe('"userChanges" method', function () {
             it('Check for defined', function () {
                 expect(addUserObj.userChanges).toBeDefined();
@@ -102,10 +87,13 @@ define([
                     return false;
                 };
 
+                spyOn(addUserObj, 'setInitialValue');
+
                 addUserObj.userChanges(null, event);
                 expect(addUserObj.value()).toEqual('1');
                 expect(mocks['Magento_Ui/js/lib/spinner'].get).not.toHaveBeenCalled();
                 expect(customerDataLoaded).toEqual(false);
+                expect(addUserObj.setInitialValue).not.toHaveBeenCalled();
 
                 /** Stub */
                 addUserObj.isValid = function () {

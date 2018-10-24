@@ -6,15 +6,32 @@
 namespace Magento\QuickOrder\Model;
 
 use Magento\TestFramework\Helper\Bootstrap;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\App\Config\MutableScopeConfigInterface;
+use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Customer\Model\CustomerRegistry;
+use Magento\SharedCatalog\Api\SharedCatalogManagementInterface;
+use Magento\SharedCatalog\Api\ProductManagementInterface;
+use Magento\SharedCatalog\Model\Config as SharedCatalogConfig;
+use Magento\Store\Model\ScopeInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Test for Cart class.
+ *
  * @magentoDataFixture Magento/Catalog/_files/multiple_products.php
+ * @magentoAppIsolation enabled
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class CartTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Magento\QuickOrder\Model\Cart
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    private $objectManager;
+
+    /**
+     * @var Cart
      */
     private $cart;
 
@@ -25,7 +42,9 @@ class CartTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUp()
     {
-        $this->cart = Bootstrap::getObjectManager()->create(\Magento\QuickOrder\Model\Cart::class);
+        $this->objectManager = Bootstrap::getObjectManager();
+
+        $this->cart = $this->objectManager->create(Cart::class);
     }
 
     /**
@@ -36,7 +55,7 @@ class CartTest extends \PHPUnit\Framework\TestCase
      * @param array $expectedItem
      * @return void
      */
-    public function testCheckItem($passedData, $expectedItem)
+    public function testCheckItem(array $passedData, array $expectedItem)
     {
         $this->cart->setContext(\Magento\AdvancedCheckout\Model\Cart::CONTEXT_FRONTEND);
         $result = $this->cart->checkItem($passedData['sku'], $passedData['qty']);
@@ -46,9 +65,64 @@ class CartTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * @param array $passedData
+     * @param array $expectedItem
+     * @return void
+     * @dataProvider checkItemDataProvider
+     * @covers \Magento\QuickOrder\Model\Cart::checkItem
+     * @see \Magento\SharedCatalog\Plugin\AdvancedCheckout\Model\HideProductsAbsentInSharedCatalogPlugin::afterCheckItem
+     */
+    public function testCheckItemWithSharedCatalog(array $passedData, array $expectedItem)
+    {
+        $storeManager = $this->objectManager->get(StoreManagerInterface::class);
+        $website = $storeManager->getWebsite();
+        $mutableConfig = $this->objectManager->get(MutableScopeConfigInterface::class);
+        $mutableConfig->setValue(
+            SharedCatalogConfig::CONFIG_SHARED_CATALOG,
+            1,
+            ScopeInterface::SCOPE_WEBSITE,
+            $website->getCode()
+        );
+
+        $productRepository = $this->objectManager->get(ProductRepositoryInterface::class);
+        try {
+            $product = $productRepository->get($passedData['sku']);
+
+            $sharedCatalogManagement = $this->objectManager->get(SharedCatalogManagementInterface::class);
+            $sharedCatalog = $sharedCatalogManagement->getPublicCatalog();
+            $productManagement = $this->objectManager->get(ProductManagementInterface::class);
+            $productManagement->assignProducts($sharedCatalog->getId(), [$product]);
+        } catch (NoSuchEntityException $e) {
+        }
+
+        $this->testCheckItem($passedData, $expectedItem);
+    }
+
+    /**
+     * @param array $passedData
+     * @param array $expectedItem
+     * @return void
+     * @dataProvider checkItemDataProvider
+     * @covers \Magento\QuickOrder\Model\Cart::checkItem
+     * @see \Magento\SharedCatalog\Plugin\AdvancedCheckout\Model\HideProductsAbsentInSharedCatalogPlugin::afterCheckItem
+     * @magentoConfigFixture current_store customer/create_account/auto_group_assign 1
+     * @magentoConfigFixture current_store customer/create_account/default_group 2
+     * @magentoDataFixture Magento/Catalog/_files/multiple_products.php
+     * @magentoDataFixture Magento/SharedCatalog/_files/assigned_company.php
+     */
+    public function testCheckItemWithSharedCatalogAndCompany(array $passedData, array $expectedItem)
+    {
+        $customerRegistry = $this->objectManager->get(CustomerRegistry::class);
+        $customer = $customerRegistry->retrieveByEmail('email1@companyquote.com');
+        $this->cart->setCustomer($customer);
+
+        $this->testCheckItemWithSharedCatalog($passedData, $expectedItem);
+    }
+
+    /**
      * @return array
      */
-    public function checkItemDataProvider()
+    public function checkItemDataProvider(): array
     {
         return [
             [
@@ -94,7 +168,7 @@ class CartTest extends \PHPUnit\Framework\TestCase
                     'sku' => 'not_existing_product',
                     'code' => \Magento\AdvancedCheckout\Helper\Data::ADD_ITEM_STATUS_FAILED_SKU
                 ]
-            ]
+            ],
         ];
     }
 }
