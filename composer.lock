@@ -607,16 +607,16 @@
         },
         {
             "name": "composer/spdx-licenses",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/spdx-licenses.git",
-                "reference": "cb17687e9f936acd7e7245ad3890f953770dec1b"
+                "reference": "7a9556b22bd9d4df7cad89876b00af58ef20d3a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/cb17687e9f936acd7e7245ad3890f953770dec1b",
-                "reference": "cb17687e9f936acd7e7245ad3890f953770dec1b",
+                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/7a9556b22bd9d4df7cad89876b00af58ef20d3a2",
+                "reference": "7a9556b22bd9d4df7cad89876b00af58ef20d3a2",
                 "shasum": ""
             },
             "require": {
@@ -664,7 +664,7 @@
                 "spdx",
                 "validator"
             ],
-            "time": "2018-04-30T10:33:04+00:00"
+            "time": "2018-11-01T09:45:54+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -891,12 +891,12 @@
         },
         {
             "name": "fastly/magento2",
-            "version": "1.2.63",
+            "version": "1.2.72",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.magento.com/archives/fastly/magento2/fastly-magento2-1.2.63.0.zip",
+                "url": "https://repo.magento.com/archives/fastly/magento2/fastly-magento2-1.2.72.0.zip",
                 "reference": null,
-                "shasum": "ee3212741f690350a99bc99298c0ccbef4bdd4ef"
+                "shasum": "bdf9c6c64ad232e8c24e2261671f0815a712d36e"
             },
             "require": {
                 "magento/framework": ">=100.0.0",
@@ -922,19 +922,20 @@
         },
         {
             "name": "graylog2/gelf-php",
-            "version": "1.5.5",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bzikarsky/gelf-php.git",
-                "reference": "c4e0743ba323459b6e62222107a0898e77d2fd6e"
+                "reference": "67ebd31ef46f2605f55782ede23b2a09a739132d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bzikarsky/gelf-php/zipball/c4e0743ba323459b6e62222107a0898e77d2fd6e",
-                "reference": "c4e0743ba323459b6e62222107a0898e77d2fd6e",
+                "url": "https://api.github.com/repos/bzikarsky/gelf-php/zipball/67ebd31ef46f2605f55782ede23b2a09a739132d",
+                "reference": "67ebd31ef46f2605f55782ede23b2a09a739132d",
                 "shasum": ""
             },
             "require": {
+                "paragonie/constant_time_encoding": "^1",
                 "php": ">=5.3.9",
                 "psr/log": "~1.0"
             },
@@ -942,7 +943,7 @@
                 "psr/log-implementation": "~1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.3",
+                "phpunit/phpunit": "~4.8.36",
                 "squizlabs/php_codesniffer": "~2.0"
             },
             "type": "library",
@@ -954,10 +955,7 @@
             "autoload": {
                 "psr-4": {
                     "Gelf\\": "src/Gelf"
-                },
-                "files": [
-                    "src/check_technical_requirements.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -974,7 +972,7 @@
                 }
             ],
             "description": "A php implementation to send log-messages to a GELF compatible backend like Graylog2.",
-            "time": "2017-06-24T10:38:25+00:00"
+            "time": "2018-10-25T06:47:27+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1732,16 +1730,16 @@
         },
         {
             "name": "klevu/module-addtocart",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/addtocart.git",
-                "reference": "c13cda01cf4825b583acb0f7b053e9e6f0b139fd"
+                "reference": "452df0f13033a497409c6d7420327bbedcb01bfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/addtocart/zipball/c13cda01cf4825b583acb0f7b053e9e6f0b139fd",
-                "reference": "c13cda01cf4825b583acb0f7b053e9e6f0b139fd",
+                "url": "https://api.github.com/repos/klevu/addtocart/zipball/452df0f13033a497409c6d7420327bbedcb01bfa",
+                "reference": "452df0f13033a497409c6d7420327bbedcb01bfa",
                 "shasum": ""
             },
             "require": {
@@ -1774,20 +1772,20 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2018-10-16T16:13:06+00:00"
+            "time": "2018-10-30T16:35:52+00:00"
         },
         {
             "name": "klevu/module-content",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/content.git",
-                "reference": "ed735ec7696e3119ad50cb03c8095c102905dc52"
+                "reference": "7cb872dea4c6b361bbed468decaf04a56a782f36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/content/zipball/ed735ec7696e3119ad50cb03c8095c102905dc52",
-                "reference": "ed735ec7696e3119ad50cb03c8095c102905dc52",
+                "url": "https://api.github.com/repos/klevu/content/zipball/7cb872dea4c6b361bbed468decaf04a56a782f36",
+                "reference": "7cb872dea4c6b361bbed468decaf04a56a782f36",
                 "shasum": ""
             },
             "require": {
@@ -1820,20 +1818,20 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2018-10-16T16:38:59+00:00"
+            "time": "2018-10-30T16:36:07+00:00"
         },
         {
             "name": "klevu/module-productsearch",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/productsearch.git",
-                "reference": "f19348f53c583fcad79e9310405c889fc465ee17"
+                "reference": "5909e989f3d6cc77f6924c6fb85346b4e08f037e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/productsearch/zipball/f19348f53c583fcad79e9310405c889fc465ee17",
-                "reference": "f19348f53c583fcad79e9310405c889fc465ee17",
+                "url": "https://api.github.com/repos/klevu/productsearch/zipball/5909e989f3d6cc77f6924c6fb85346b4e08f037e",
+                "reference": "5909e989f3d6cc77f6924c6fb85346b4e08f037e",
                 "shasum": ""
             },
             "require": {
@@ -1866,26 +1864,26 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2018-10-16T16:12:51+00:00"
+            "time": "2018-10-30T16:36:22+00:00"
         },
         {
             "name": "klevu/module-search",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/klevu-smart-search-M2.git",
-                "reference": "ffc857e431124de762070a4e7153ca43799edd09"
+                "reference": "15949b1928ae0484f45538e33786702e59c04e0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/klevu-smart-search-M2/zipball/ffc857e431124de762070a4e7153ca43799edd09",
-                "reference": "ffc857e431124de762070a4e7153ca43799edd09",
+                "url": "https://api.github.com/repos/klevu/klevu-smart-search-M2/zipball/15949b1928ae0484f45538e33786702e59c04e0c",
+                "reference": "15949b1928ae0484f45538e33786702e59c04e0c",
                 "shasum": ""
             },
             "require": {
-                "klevu/module-addtocart": "2.2.0",
-                "klevu/module-content": "2.2.0",
-                "klevu/module-productsearch": "2.2.0"
+                "klevu/module-addtocart": "2.2.1",
+                "klevu/module-content": "2.2.1",
+                "klevu/module-productsearch": "2.2.1"
             },
             "type": "metapackage",
             "notification-url": "https://packagist.org/downloads/",
@@ -1901,7 +1899,7 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2018-10-16T16:33:42+00:00"
+            "time": "2018-10-30T16:36:41+00:00"
         },
         {
             "name": "magento/composer",
@@ -11664,6 +11662,69 @@
             "time": "2017-03-28T22:19:25+00:00"
         },
         {
+            "name": "paragonie/constant_time_encoding",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/constant_time_encoding.git",
+                "reference": "2132f0f293d856026d7d11bd81b9f4a23a1dc1f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/2132f0f293d856026d7d11bd81b9f4a23a1dc1f6",
+                "reference": "2132f0f293d856026d7d11bd81b9f4a23a1dc1f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3|^7"
+            },
+            "require-dev": {
+                "paragonie/random_compat": "^1.4|^2",
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^0.3|^1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ParagonIE\\ConstantTime\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Steve 'Sc00bz' Thomas",
+                    "email": "steve@tobtu.com",
+                    "homepage": "https://www.tobtu.com",
+                    "role": "Original Developer"
+                }
+            ],
+            "description": "Constant-time Implementations of RFC 4648 Encoding (Base-64, Base-32, Base-16)",
+            "keywords": [
+                "base16",
+                "base32",
+                "base32_decode",
+                "base32_encode",
+                "base64",
+                "base64_decode",
+                "base64_encode",
+                "bin2hex",
+                "encoding",
+                "hex",
+                "hex2bin",
+                "rfc4648"
+            ],
+            "time": "2018-04-30T17:57:16+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v2.99.99",
             "source": {
@@ -13042,7 +13103,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.9.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -13100,16 +13161,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.9.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8"
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d0cd638f4634c16d8df4508e847f14e9e43168b8",
-                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
                 "shasum": ""
             },
             "require": {
@@ -13155,7 +13216,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2018-09-21T13:07:52+00:00"
         },
         {
             "name": "symfony/process",
