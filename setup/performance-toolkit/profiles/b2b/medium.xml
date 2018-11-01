@@ -17,8 +17,11 @@
             <config>
                 <attributes>
                     <attribute>
-                        <options>5</options>
+                        <options>3</options>
                         <swatches>image</swatches>
+                    </attribute>
+                    <attribute>
+                        <options>8</options>
                     </attribute>
                     <attribute>
                         <options>5</options>

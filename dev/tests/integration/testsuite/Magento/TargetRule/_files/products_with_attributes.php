@@ -63,6 +63,7 @@ $eavSetup->addAttribute(
         'used_in_product_listing' => 1,
         'used_for_promo_rules' => 1,
         'input' => 'text',
+        'group' => 'attributes', // attribute set is required to be set for attribute, which used for target rule
     ]
 );
 $eavSetup->addAttribute(
@@ -77,6 +78,7 @@ $eavSetup->addAttribute(
         'used_for_promo_rules' => 1,
         'input' => 'text',
         'type' => 'int',
+        'group' => 'attributes', // attribute set is required to be set for attribute, which used for target rule
     ]
 );
 /** @var \Magento\Eav\Model\Config $eavConfig */
