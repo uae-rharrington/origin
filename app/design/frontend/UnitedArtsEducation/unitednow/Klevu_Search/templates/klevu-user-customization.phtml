@@ -3,10 +3,15 @@
  * @category    ClassyLlama
  * @copyright   Copyright (c) 2018 Classy Llama
  */
+/*
+* Updated by UAE
+* 11/01/2018
+* JS made by Klevu
+*/
 ?>
 <script type="text/javascript">
-    var klevu_uc = {
-        // landing page
+    var klevu_uc = { 
+   
         showLandingPageData: function (product) {
             var toReturn = '',
                 toAppendwithSalePrice = '',
@@ -50,7 +55,7 @@
                 'apiKey: null,' +
                 'keywordsLP: \'' + escape(keywords) + '\'' +
                 '}';
-            // code for the result block
+            
             toReturn += '<li>';
 
             toReturn += '<div class="klevuImgWrap"><a href="' + product.productUrl.replace(/"/g, "%22") +
@@ -96,6 +101,12 @@
                     '%;"></div></div>';
             }
             toReturn += '</div>';
+
+            if (product.children && product.children != '') {
+
+              toReturn += '<div class="startingAt"> Starting At</div>';
+
+            }
 
             toReturn += '<div class="kuPrice">';
             if (klevu_showPrices) {
@@ -224,7 +235,7 @@
             productHtml += '<div class="klevu-name-l2">' + product.productName + '</div>' +
                 '<div class="klevu-desc-l2">' + product.productDescription + '</div>';
 
-            // show prices
+            
             if (klevu_showPrices) {
                 productHtml += '<div class="klevu-price-l2">';
                 if (klevu_userOptions.showOnlyOriginalAndSalePrices) {
@@ -261,34 +272,34 @@
             var doc = document, noOtherDataAvailable = true,
                 klevuSearchNoResult = doc.getElementById('klevuSearchNoResults'),
                 arrowDiv = doc.getElementById('klevuArrow');
-            // hide loader
+            
             this.hideLoader();
             if (klevu_searchedTerm.length === 0) {
                 return;
             }
-            //hide no-results div
+            
             if (klevuSearchNoResult) {
                 klevuSearchNoResult.style.display = "none";
             }
-            // show autosuggestion
+            
             if (klevu_showAdvancedAutosuggestionLayout) {
                 this.showAdvancedAutoSuggestions(response.autoComplete, noOtherDataAvailable, response.meta);
             } else {
                 this.showAutoSuggestions(response.autoComplete, response.meta);
 
-                // show cms content
+                
                 this.showCmsContent(response.pages);
 
-                // show filters
+                
                 this.showCategories(response.categories);
 
-                // check if other data is available
+                
                 if ((response.autoComplete && response.autoComplete.length > 0) ||
                     (response.categories && response.categories.length > 0) ||
                     (response.pages && response.pages.length > 0)) {
                     noOtherDataAvailable = false;
                 }
-                // show products
+                
                 this.showProducts(response.meta, response.result, noOtherDataAvailable, response.popularProducts);
 
                 if (!noOtherDataAvailable || response.result.length > 0) {
@@ -300,6 +311,11 @@
 
             if (klevu_activeSearchBox.form && response.result.length === 1) {
                 var sequence = response.result[0].children ? response.result[0].children.toUpperCase().split(" ") : [];
+               
+
+                if (!response.result[0].children && response.result[0].sku) {
+                    var otherMatch = response.result[0].sku.toUpperCase();
+                }
 
                 if (sequence.indexOf(klevu_searchedTerm.toUpperCase()) !== -1) {
                     klevu_activeSearchBox.form.action = response.result[0].url + '?item=' + klevu_searchedTerm.toUpperCase();
@@ -308,13 +324,22 @@
                         doc.getElementById("klevu-loader-2").style.display = "none";
                     }
                 }
+                else if ((otherMatch == klevu_searchedTerm.toUpperCase()) && (otherMatch.length == klevu_searchedTerm.length)) {
+                    klevu_activeSearchBox.form.action = response.result[0].url;
+                    klevu_activeSearchBox.form.method = "post";
+                    if (doc.getElementById("klevu-loader-2")) {
+                        doc.getElementById("klevu-loader-2").style.display = "none";
+                    }                  
+                }
+
+
             } else if (klevu_activeSearchBox.form) {
                 klevu_activeSearchBox.form.method = "get";
             }
             doc.getElementById('klevuSearchingArea').style.cssText += ";display : block !important;";
             if (arrowDiv) {
-                arrowDiv.style.display = "none"; // removing !important added at the time of clearing results.
+                arrowDiv.style.display = "none"; 
             }
         }
-    }
+}
 </script>
