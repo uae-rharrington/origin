@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4feb1b4729fe26f3d9e6a346b36e9943",
+    "content-hash": "051941d0f832bd0e757572d3f1df5dd4",
     "packages": [
         {
             "name": "aheadworks/module-giftcard",
@@ -11468,16 +11468,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.23.0",
+            "version": "1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4"
+                "reference": "bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
-                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266",
+                "reference": "bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266",
                 "shasum": ""
             },
             "require": {
@@ -11542,7 +11542,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2017-06-19T01:22:40+00:00"
+            "time": "2018-11-05T09:00:11+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -11899,16 +11899,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.11",
+            "version": "2.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "7053f06f91b3de78e143d430e55a8f7889efc08b"
+                "reference": "8814dc7841db159daed0b32c2b08fb7e03c6afe7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/7053f06f91b3de78e143d430e55a8f7889efc08b",
-                "reference": "7053f06f91b3de78e143d430e55a8f7889efc08b",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/8814dc7841db159daed0b32c2b08fb7e03c6afe7",
+                "reference": "8814dc7841db159daed0b32c2b08fb7e03c6afe7",
                 "shasum": ""
             },
             "require": {
@@ -11987,7 +11987,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2018-04-15T16:55:05+00:00"
+            "time": "2018-11-04T05:45:48+00:00"
         },
         {
             "name": "psr/container",
@@ -12640,17 +12640,17 @@
         },
         {
             "name": "shipperhq/module-option",
-            "version": "20.3.1",
+            "version": "20.3.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:webshopapps/module-option.git",
-                "reference": "22c8eb03e5c6bef6c1b8de63f3341ac3ebc33ef4"
+                "reference": "d6c7d7947b8e88b432aeab351e3811bf00362265"
             },
             "dist": {
                 "type": "tar",
-                "url": "https://packages.shipperhq.com/dist/shipperhq/module-option/shipperhq-module-option-22c8eb03e5c6bef6c1b8de63f3341ac3ebc33ef4-zip-63c983.tar",
-                "reference": "22c8eb03e5c6bef6c1b8de63f3341ac3ebc33ef4",
-                "shasum": "97648764a4be3fafcdec4aa8cb541c7fe622fa46"
+                "url": "https://packages.shipperhq.com/dist/shipperhq/module-option/shipperhq-module-option-d6c7d7947b8e88b432aeab351e3811bf00362265-zip-5c7801.tar",
+                "reference": "d6c7d7947b8e88b432aeab351e3811bf00362265",
+                "shasum": "984d904ee50f3ab6bb61988456b520e26bc222d6"
             },
             "require": {
                 "shipperhq/module-common": "^20.0",
@@ -12696,10 +12696,10 @@
             "description": "ShipperHQ Option functionality",
             "support": {
                 "documentation": "http://docs.shipperhq.com",
-                "source": "https://github.com/webshopapps/module-option/tree/20.3.1",
+                "source": "https://github.com/webshopapps/module-option/tree/20.3.2",
                 "issues": "https://github.com/webshopapps/module-option/issues"
             },
-            "time": "2018-08-15T13:52:16+00:00"
+            "time": "2018-11-02T12:38:23+00:00"
         },
         {
             "name": "shipperhq/module-shipper",
@@ -12826,16 +12826,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.46",
+            "version": "v2.8.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "aca0dcc0c75496e17e2aa0303bb9c8e6d79ed789"
+                "reference": "48ed63767c4add573fb3e9e127d3426db27f78e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/aca0dcc0c75496e17e2aa0303bb9c8e6d79ed789",
-                "reference": "aca0dcc0c75496e17e2aa0303bb9c8e6d79ed789",
+                "url": "https://api.github.com/repos/symfony/console/zipball/48ed63767c4add573fb3e9e127d3426db27f78e8",
+                "reference": "48ed63767c4add573fb3e9e127d3426db27f78e8",
                 "shasum": ""
             },
             "require": {
@@ -12883,7 +12883,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-09-30T03:33:07+00:00"
+            "time": "2018-10-30T14:26:34+00:00"
         },
         {
             "name": "symfony/debug",
@@ -12944,16 +12944,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.46",
+            "version": "v2.8.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "84ae343f39947aa084426ed1138bb96bf94d1f12"
+                "reference": "76494bc38ff38d90d01913d23b5271acd4d78dd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/84ae343f39947aa084426ed1138bb96bf94d1f12",
-                "reference": "84ae343f39947aa084426ed1138bb96bf94d1f12",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/76494bc38ff38d90d01913d23b5271acd4d78dd3",
+                "reference": "76494bc38ff38d90d01913d23b5271acd4d78dd3",
                 "shasum": ""
             },
             "require": {
@@ -13000,11 +13000,11 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T09:03:18+00:00"
+            "time": "2018-10-20T23:16:31+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.17",
+            "version": "v3.4.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -13054,7 +13054,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.17",
+            "version": "v3.4.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -13220,16 +13220,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.46",
+            "version": "v2.8.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "f09e21b7c5aba06c47bbfad9cbcf13ac7f0db0a6"
+                "reference": "a15cb61190c6fe37168600922e82295eb5e5449b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/f09e21b7c5aba06c47bbfad9cbcf13ac7f0db0a6",
-                "reference": "f09e21b7c5aba06c47bbfad9cbcf13ac7f0db0a6",
+                "url": "https://api.github.com/repos/symfony/process/zipball/a15cb61190c6fe37168600922e82295eb5e5449b",
+                "reference": "a15cb61190c6fe37168600922e82295eb5e5449b",
                 "shasum": ""
             },
             "require": {
@@ -13265,7 +13265,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2018-09-06T17:11:15+00:00"
+            "time": "2018-10-05T07:35:28+00:00"
         },
         {
             "name": "symfony/translation",
@@ -13602,6 +13602,60 @@
                 "proprietary"
             ],
             "description": "Vertex Tax Links for Magento 2"
+        },
+        {
+            "name": "wyomind/core",
+            "version": "4.1.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.wyomind.com/wyomind-core-4.1.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "magento/framework": ">=100.0.0",
+                "php": "~5.5.0|~5.6.0|>=7.0.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Wyomind\\Core\\": ""
+                }
+            },
+            "license": [
+                "Commercial License - Copyright 2016  - WYOMIND Sarl - Purchasing any product (Software) from the Wyomind.com web-site means buyer agree to the following statements (see LICENSE.TXT)"
+            ]
+        },
+        {
+            "name": "wyomind/googlecustomerreviews",
+            "version": "3.3.0.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.wyomind.com/wyomind-googlecustomerreviews-3.3.0.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "magento/framework": ">=100.0.0",
+                "php": "~5.5.0|~5.6.0|>=7.0.0",
+                "wyomind/core": ">=3.0.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Wyomind\\GoogleCustomerReviews\\": ""
+                }
+            },
+            "license": [
+                "Commercial License - Copyright 2016  - WYOMIND Sarl - Purchasing any product (Software) from the Wyomind.com web-site means buyer agree to the following statements (see LICENSE.TXT)"
+            ],
+            "description": "The Google Customer Reviews extension makes your life easier by automatically adding the codes to each page of your website in order to display the Google Customer Reviews badge and the Opt-in module in the order confirmation."
         },
         {
             "name": "xtento/module-stockimport",

@@ -245,6 +245,8 @@ return [
         'UAE_QuoteCustom' => 1,
         'UAE_Theme' => 1,
         'Vertex_Tax' => 1,
+        'Wyomind_Core' => 1,
+        'Wyomind_GoogleCustomerReviews' => 1,
         'Xtento_OrderExport' => 1,
         'Xtento_StockImport' => 1,
         'Xtento_TrackingImport' => 1,
