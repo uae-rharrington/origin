@@ -1,0 +1,14 @@
+diff --git a/vendor/magento/framework/Search/Adapter/Mysql/TemporaryStorage.php b/vendor/magento/framework/Search/Adapter/Mysql/TemporaryStorage.php
+index dcb977b..13c21b5 100644
+--- a/vendor/magento/framework/Search/Adapter/Mysql/TemporaryStorage.php
++++ b/vendor/magento/framework/Search/Adapter/Mysql/TemporaryStorage.php
+@@ -67,7 +67,7 @@ class TemporaryStorage
+     {
+         $data = [];
+         foreach ($documents as $document) {
+-            $data[] = [
++            $data[$document->getId()] = [
+                 $document->getId(),
+                 $document->getCustomAttribute('score')->getValue(),
+             ];
+--
