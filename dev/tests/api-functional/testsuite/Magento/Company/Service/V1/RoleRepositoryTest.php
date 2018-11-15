@@ -93,12 +93,22 @@ class RoleRepositoryTest extends WebapiAbstract
     }
 
     /**
+     * @return array
+     */
+    public function defaultRolePermissionsDataProvider(): array
+    {
+        return include __DIR__ . '/../../_files/default_role_permissions.php';
+    }
+
+    /**
      * Test role get list via WebAPI.
      *
+     * @param array $expectedPermissions
      * @return void
      * @magentoApiDataFixture Magento/NegotiableQuote/_files/company_with_customer_for_quote.php
+     * @dataProvider defaultRolePermissionsDataProvider
      */
-    public function testGetRoleList()
+    public function testGetRoleList(array $expectedPermissions)
     {
         $customer = $this->customerRepository->get('email@companyquote.com');
         $company = $this->companyManagement->getByCustomerId($customer->getId());
@@ -108,8 +118,8 @@ class RoleRepositoryTest extends WebapiAbstract
             ->create(\Magento\Framework\Api\FilterBuilder::class);
 
         $filter = $builder
-            ->setField(\Magento\Company\Api\Data\RoleInterface::ROLE_ID)
-            ->setValue($role->getId())
+            ->setField(\Magento\Company\Api\Data\RoleInterface::COMPANY_ID)
+            ->setValue($company->getId())
             ->create();
 
         /** @var \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder */
@@ -139,17 +149,21 @@ class RoleRepositoryTest extends WebapiAbstract
         ];
 
         $response = $this->_webApiCall($serviceInfo, $requestData);
+        $this->assertEquals(1, $response['total_count']);
         $this->assertEquals($response['items'][0]['id'], $role->getId());
         $this->assertEquals($response['items'][0]['role_name'], $role->getRoleName());
+        $this->assertRolePermissions($expectedPermissions, $response['items'][0]['permissions']);
     }
 
     /**
      * Test role creation via WebAPI.
      *
+     * @param array $expectedPermissions
      * @return void
      * @magentoApiDataFixture Magento/NegotiableQuote/_files/company_with_customer_for_quote.php
+     * @dataProvider createRolePermissionsDataProvider
      */
-    public function testCreateRole()
+    public function testCreateRole(array $expectedPermissions)
     {
         $customer = $this->customerRepository->get('email@companyquote.com');
         $company = $this->companyManagement->getByCustomerId($customer->getId());
@@ -179,21 +193,40 @@ class RoleRepositoryTest extends WebapiAbstract
         );
         $requestData = ['role' => $roleDataObject];
         $response = $this->_webApiCall($serviceInfo, $requestData);
+
         $this->assertEquals($response['role_name'], $role->getRoleName());
+        $this->assertEquals($response['company_id'], $role->getCompanyId());
+        $this->assertRolePermissions($expectedPermissions, $response['permissions']);
+    }
+
+    /**
+     * @return array
+     */
+    public function createRolePermissionsDataProvider(): array
+    {
+        return include __DIR__ . '/../../_files/role_create_permissions.php';
     }
 
     /**
      * Test role update via WebAPI.
      *
+     * @param array $requestPermissions
+     * @param array $responsePermissions
      * @return void
      * @magentoApiDataFixture Magento/NegotiableQuote/_files/company_with_customer_for_quote.php
+     * @dataProvider updateRolePermissionsDataProvider
      */
-    public function testUpdateRole()
+    public function testUpdateRole(array $requestPermissions, array $responsePermissions)
     {
         $customer = $this->customerRepository->get('email@companyquote.com');
         $company = $this->companyManagement->getByCustomerId($customer->getId());
         $role = $this->roleManagement->getCompanyDefaultRole($company->getId());
+
         $role->setRoleName('Updated Role');
+        foreach ($requestPermissions as &$permission) {
+            $permission['role_id'] = $role->getId();
+        }
+        $role->setPermissions($requestPermissions);
 
         $serviceInfo = [
             'rest' => [
@@ -215,6 +248,15 @@ class RoleRepositoryTest extends WebapiAbstract
         $response = $this->_webApiCall($serviceInfo, $requestData);
         $this->assertEquals($response['id'], $role->getId());
         $this->assertEquals($response['role_name'], $role->getRoleName());
+        $this->assertRolePermissions($responsePermissions, $response['permissions']);
+    }
+
+    /**
+     * @return array
+     */
+    public function updateRolePermissionsDataProvider(): array
+    {
+        return include __DIR__ . '/../../_files/role_update_permissions.php';
     }
 
     /**
@@ -253,5 +295,21 @@ class RoleRepositoryTest extends WebapiAbstract
         $requestData = ['roleId' => $role->getId()];
         $response = $this->_webApiCall($serviceInfo, $requestData);
         $this->assertEquals($response, 1);
+    }
+
+    /**
+     * Verify role permissions match expected.
+     *
+     * @param array $expectedPermissions
+     * @param array $actualPermissions
+     * @return void
+     */
+    private function assertRolePermissions(array $expectedPermissions, array $actualPermissions)
+    {
+        $actualPermissions = array_map(function ($value) {
+            return ['permission' => $value['permission'], 'resource_id' => $value['resource_id']];
+        }, $actualPermissions);
+
+        $this->assertEquals($expectedPermissions, $actualPermissions, 'Permissions data mismatch');
     }
 }

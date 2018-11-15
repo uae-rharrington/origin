@@ -142,6 +142,11 @@ class SharedCatalogsFixture extends Fixture
         $this->setSharedCatalogPrices($customerGroupId);
         $this->assignPermissionsToCategories();
         $this->assignCategoriesPermissionsToIndex();
+
+        // forcing mysql to calculate statistic for tier price table
+        $this->getDbConnection()->query(
+            sprintf('ANALYZE TABLE %s', $this->getTable('catalog_product_entity_tier_price'))
+        );
     }
 
     /**

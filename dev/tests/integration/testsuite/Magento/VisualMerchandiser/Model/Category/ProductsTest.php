@@ -7,6 +7,7 @@ namespace Magento\VisualMerchandiser\Model\Category;
 
 /**
  * @magentoAppArea adminhtml
+ * @magentoDbIsolation disabled
  */
 class ProductsTest extends \PHPUnit\Framework\TestCase
 {

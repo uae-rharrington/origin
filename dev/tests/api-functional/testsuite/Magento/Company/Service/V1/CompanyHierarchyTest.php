@@ -6,6 +6,7 @@
 
 namespace Magento\Company\Service\V1;
 
+use Magento\Company\Api\Data\CompanyCustomerInterfaceFactory;
 use Magento\TestFramework\TestCase\WebapiAbstract;
 
 /**
@@ -131,5 +132,73 @@ class CompanyHierarchyTest extends WebapiAbstract
 
         $response = $this->_webApiCall($serviceInfo, $requestData);
         $this->assertTrue(empty($response));
+    }
+
+    /**
+     * Test customer move into the team via WebAPI.
+     *
+     * @return void
+     * @magentoApiDataFixture Magento/NegotiableQuote/_files/company_with_customer_for_quote.php
+     * @magentoApiDataFixture Magento/Customer/_files/customer_with_website.php
+     */
+    public function testCustomerMove()
+    {
+        $customerAdmin = $this->customerRepository->get('email@companyquote.com');
+        $company = $this->companyManagement->getByCustomerId($customerAdmin->getId());
+
+        $companyCustomerAttributesFactory = $this->objectManager->get(CompanyCustomerInterfaceFactory::class);
+        $companyAttributes = $companyCustomerAttributesFactory->create();
+        $companyAttributes->setCompanyId($company->getId());
+
+        $extensionAttributes = $this->objectManager->get(\Magento\Customer\Api\Data\CustomerExtension::class);
+        $extensionAttributes->setCompanyAttributes($companyAttributes);
+
+        $customer = $this->customerRepository->get('john.doe@magento.com');
+        $customer->getExtensionAttributes()->setCompanyAttributes($companyAttributes);
+        $this->customerRepository->save($customer);
+
+        /** @var \Magento\Company\Api\TeamRepositoryInterface $teamRepository */
+        $teamRepository = $this->objectManager->get(
+            \Magento\Company\Api\TeamRepositoryInterface::class
+        );
+        /** @var \Magento\Company\Api\Data\TeamInterfaceFactory $teamFactory */
+        $teamFactory = $this->objectManager->get(
+            \Magento\Company\Api\Data\TeamInterfaceFactory::class
+        );
+        /** @var \Magento\Company\Model\Company\Structure $structureManagement */
+        $structureManagement = $this->objectManager->get(
+            \Magento\Company\Model\Company\Structure::class
+        );
+
+        $team = $teamFactory->create();
+        $team->setName('Team 2');
+        $teamRepository->create($team, $company->getId());
+        $customer = $this->customerRepository->get('john.doe@magento.com');
+
+        $structureCustomer = $structureManagement->getStructureByCustomerId($customer->getId());
+        $structureTeam = $structureManagement->getStructureByTeamId($team->getId());
+
+        $serviceInfo = [
+            'rest' => [
+                'resourcePath' => '/V1/hierarchy/move/' . $structureCustomer->getId(),
+                'httpMethod' => \Magento\Framework\Webapi\Rest\Request::HTTP_METHOD_PUT,
+            ],
+            'soap' => [
+                'service' => self::SERVICE_READ_NAME,
+                'serviceVersion' => self::SERVICE_VERSION,
+                'operation' => self::SERVICE_READ_NAME . 'MoveNode',
+            ],
+        ];
+
+        $requestData = [
+            'id' => $structureCustomer->getId(),
+            'newParentId' => $structureTeam->getId(),
+        ];
+
+        $response = $this->_webApiCall($serviceInfo, $requestData);
+        $this->assertTrue(empty($response));
+
+        $updatedStructureCustomer = $structureManagement->getStructureByCustomerId($customer->getId());
+        $this->assertEquals($structureTeam->getId(), $updatedStructureCustomer->getParentId());
     }
 }

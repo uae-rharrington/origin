@@ -293,7 +293,7 @@ class PaymentMethodCompanyCreditTest extends AbstractCompanyCreditTest
     /**
      * @param string $orderInjectable
      * @param array $arguments
-     * @return \Magento\Mtf\Fixture\FixtureInterface
+     * @return \Magento\Sales\Test\Fixture\OrderInjectable
      */
     private function createOrderFixture($orderInjectable, array $arguments)
     {

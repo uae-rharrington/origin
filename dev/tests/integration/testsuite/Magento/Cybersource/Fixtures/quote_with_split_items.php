@@ -4,12 +4,16 @@
  * See COPYING.txt for license details.
  */
 use Magento\Quote\Model\Quote;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use Magento\TestFramework\ObjectManager;
 use Magento\Quote\Api\CartRepositoryInterface;
 
 /** @var ObjectManager $objectManager */
 $objectManager = Bootstrap::getObjectManager();
+
+/** @var StoreManagerInterface $storeManager */
+$storeManager = $objectManager->get(StoreManagerInterface::class);
 
 /** @var Quote $quote */
 $quote = $objectManager->create(Quote::class);
@@ -19,7 +23,9 @@ require __DIR__ . '/../../../Magento/Multishipping/Fixtures/billing_address.php'
 require __DIR__ . '/payment_method.php';
 require __DIR__ . '/../../../Magento/Multishipping/Fixtures/items.php';
 
+$store = $storeManager->getStore();
 $quote->setReservedOrderId('multishipping_quote_id')
+    ->setStoreId($store->getId())
     ->setCustomerEmail('customer001@test.com');
 
 /** @var CartRepositoryInterface $quoteRepository */

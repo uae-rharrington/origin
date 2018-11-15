@@ -4,32 +4,54 @@
  */
 
 define([
-    'Magento_SharedCatalog/js/tier-price/fields-with-currency'
-], function (FieldWithCurrency) {
+    'squire'
+], function (Squire) {
     'use strict';
 
     describe('Magento_SharedCatalog/js/tier-price/fields-with-currency', function () {
-        var sourceParams, field;
-
-        beforeEach(function () {
-            sourceParams = {
-                data: {
-                    'base_currencies': [{
-                        'website_id': 1
-                    }]
-                }
-            };
-            field = new FieldWithCurrency({
-                dataScope: '',
-                provider: 'provName',
-                parent: {
-                    'website_id': true
+        var injector = new Squire(),
+            mocks = {
+                'Magento_Ui/js/lib/registry/registry': {
+                    /** Method stub. */
+                    get: function () {
+                        return {
+                            get: jasmine.createSpy(),
+                            set: jasmine.createSpy(),
+                            data: {
+                                'base_currencies': [{
+                                    'website_id': 1
+                                }]
+                            }
+                        };
+                    },
+                    create: jasmine.createSpy(),
+                    set: jasmine.createSpy(),
+                    async: jasmine.createSpy()
                 },
+                '/mage/utils/wrapper': jasmine.createSpy()
+            },
+            field,
+            dataScope = 'abstract';
 
-                /** @inheritdoc */
-                source: function () {
-                    return sourceParams;
-                }
+        beforeEach(function (done) {
+            injector.mock(mocks);
+            injector.require([
+                'Magento_SharedCatalog/js/tier-price/fields-with-currency',
+                'mageUtils',
+                'moment',
+                'knockoutjs/knockout-es5'
+            ], function (Constr) {
+                field = new Constr({
+                    provider: 'provName',
+                    name: '',
+                    index: '',
+                    dataScope: dataScope,
+                    parent: {
+                        'website_id': true
+                    }
+                });
+
+                done();
             });
         });
 
