@@ -922,20 +922,20 @@
         },
         {
             "name": "graylog2/gelf-php",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bzikarsky/gelf-php.git",
-                "reference": "67ebd31ef46f2605f55782ede23b2a09a739132d"
+                "reference": "2a1c3b8d77d6c301b844715fd15d971ec075947d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bzikarsky/gelf-php/zipball/67ebd31ef46f2605f55782ede23b2a09a739132d",
-                "reference": "67ebd31ef46f2605f55782ede23b2a09a739132d",
+                "url": "https://api.github.com/repos/bzikarsky/gelf-php/zipball/2a1c3b8d77d6c301b844715fd15d971ec075947d",
+                "reference": "2a1c3b8d77d6c301b844715fd15d971ec075947d",
                 "shasum": ""
             },
             "require": {
-                "paragonie/constant_time_encoding": "^1",
+                "paragonie/constant_time_encoding": "^1|^2",
                 "php": ">=5.3.9",
                 "psr/log": "~1.0"
             },
@@ -972,7 +972,7 @@
                 }
             ],
             "description": "A php implementation to send log-messages to a GELF compatible backend like Graylog2.",
-            "time": "2018-10-25T06:47:27+00:00"
+            "time": "2018-11-13T09:33:26+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1932,17 +1932,18 @@
         },
         {
             "name": "magento/ece-tools",
-            "version": "2002.0.14",
+            "version": "2002.0.15",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.magento.com/archives/magento/ece-tools/magento-ece-tools-2002.0.14.0.zip",
+                "url": "https://repo.magento.com/archives/magento/ece-tools/magento-ece-tools-2002.0.15.0.zip",
                 "reference": null,
-                "shasum": "2d5f9dd9a85ca63d850657c66177eab82f675306"
+                "shasum": "5bc50df8ab5ac63a1e16319db9ec7246fe3307c3"
             },
             "require": {
                 "composer/composer": "@stable",
                 "composer/semver": "^1.4",
                 "ext-json": "*",
+                "ext-pdo": "*",
                 "graylog2/gelf-php": "^1.4.2",
                 "guzzlehttp/guzzle": "^6.2",
                 "illuminate/config": "^5.5",
@@ -1953,7 +1954,8 @@
                 "psr/container": "^1.0",
                 "psr/log": "^1.0",
                 "symfony/console": "^2.6||^4.0",
-                "symfony/yaml": "^2.3||^3.3"
+                "symfony/yaml": "^2.3||^3.3",
+                "twig/twig": "^1.0||^2.0"
             },
             "replace": {
                 "magento/ece-patches": "*",
@@ -1978,6 +1980,18 @@
                     [
                         "dist/.magento.env.yaml",
                         ".magento.env.yaml.dist"
+                    ],
+                    [
+                        "dist/Makefile",
+                        "Makefile"
+                    ],
+                    [
+                        "dist/docker/mnt",
+                        "docker/mnt"
+                    ],
+                    [
+                        "dist/docker/mysql",
+                        "docker/mysql"
                     ],
                     [
                         "dist/docker/config.php",
@@ -11546,16 +11560,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.34.0",
+            "version": "1.35.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "1dbd3cb01c5645f3e7deda7aa46ef780d95fcc33"
+                "reference": "5c05a2be472b22f63291d192410df9f0e0de3b19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/1dbd3cb01c5645f3e7deda7aa46ef780d95fcc33",
-                "reference": "1dbd3cb01c5645f3e7deda7aa46ef780d95fcc33",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/5c05a2be472b22f63291d192410df9f0e0de3b19",
+                "reference": "5c05a2be472b22f63291d192410df9f0e0de3b19",
                 "shasum": ""
             },
             "require": {
@@ -11563,8 +11577,11 @@
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2",
                 "phpunit/phpunit": "^4.8.35 || ^5.7"
+            },
+            "suggest": {
+                "friendsofphp/php-cs-fixer": "Needed for the `composer phpcs` command. Allow to automatically fix code style.",
+                "phpstan/phpstan": "Needed for the `composer phpstan` command. Allow to detect potential errors."
             },
             "type": "library",
             "extra": {
@@ -11597,7 +11614,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-09-20T19:36:25+00:00"
+            "time": "2018-11-14T21:55:58+00:00"
         },
         {
             "name": "oyejorge/less.php",
@@ -11663,25 +11680,24 @@
         },
         {
             "name": "paragonie/constant_time_encoding",
-            "version": "v1.0.4",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/constant_time_encoding.git",
-                "reference": "2132f0f293d856026d7d11bd81b9f4a23a1dc1f6"
+                "reference": "eccf915f45f911bfb189d1d1638d940ec6ee6e33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/2132f0f293d856026d7d11bd81b9f4a23a1dc1f6",
-                "reference": "2132f0f293d856026d7d11bd81b9f4a23a1dc1f6",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/eccf915f45f911bfb189d1d1638d940ec6ee6e33",
+                "reference": "eccf915f45f911bfb189d1d1638d940ec6ee6e33",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3|^7"
+                "php": "^7"
             },
             "require-dev": {
-                "paragonie/random_compat": "^1.4|^2",
-                "phpunit/phpunit": "4.*|5.*",
-                "vimeo/psalm": "^0.3|^1"
+                "phpunit/phpunit": "^6|^7",
+                "vimeo/psalm": "^1"
             },
             "type": "library",
             "autoload": {
@@ -11722,7 +11738,7 @@
                 "hex2bin",
                 "rfc4648"
             ],
-            "time": "2018-04-30T17:57:16+00:00"
+            "time": "2018-03-10T19:47:49+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -13540,6 +13556,73 @@
             "time": "2018-01-15T15:26:51+00:00"
         },
         {
+            "name": "twig/twig",
+            "version": "v2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "6a5f676b77a90823c2d4eaf76137b771adf31323"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/6a5f676b77a90823c2d4eaf76137b771adf31323",
+                "reference": "6a5f676b77a90823c2d4eaf76137b771adf31323",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "symfony/polyfill-ctype": "^1.8",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "require-dev": {
+                "psr/container": "^1.0",
+                "symfony/debug": "^2.7",
+                "symfony/phpunit-bridge": "^3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                },
+                "psr-4": {
+                    "Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "https://twig.symfony.com/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "https://twig.symfony.com",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2018-07-13T07:18:09+00:00"
+        },
+        {
             "name": "vertex/module-tax",
             "version": "2.1.10",
             "dist": {
@@ -13605,10 +13688,10 @@
         },
         {
             "name": "wyomind/core",
-            "version": "4.1.1",
+            "version": "4.1.1.1",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.wyomind.com/wyomind-core-4.1.1.zip",
+                "url": "https://repo.wyomind.com/wyomind-core-4.1.1.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -13702,11 +13785,11 @@
         },
         {
             "name": "xtento/orderexport",
-            "version": "2.7.0",
+            "version": "2.7.1",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_orderexport/h/bd60f8c8b7d0f2a67b0179c0b1850e57/v/2.7.0",
-                "reference": "0b64b5a081e4ddc35d4262bdbbc315dd54ad01ae",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_orderexport/h/08bb2d38b158646224b0e70b82a9ef59/v/2.7.1",
+                "reference": "4c63b0471c541cb5f1fb840f57fcf0314fec603d",
                 "shasum": null
             },
             "require": {
@@ -13741,15 +13824,15 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-10-15T11:58:45+00:00"
+            "time": "2018-11-08T12:23:40+00:00"
         },
         {
             "name": "xtento/trackingimport",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_trackingimport/h/19f93d3ee2d5c6a5abbbbdfea18bbb51/v/2.5.1",
-                "reference": "45c82439d5c88cf241233e9227e324114fc80b98",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_trackingimport/h/b543853832f709c246dc3d094f2e781a/v/2.5.2",
+                "reference": "6139f2abae45a6685614e88b6f090b912c4754f4",
                 "shasum": null
             },
             "require": {
@@ -13784,7 +13867,7 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-10-09T09:49:07+00:00"
+            "time": "2018-11-09T13:33:25+00:00"
         },
         {
             "name": "xtento/xtcore",
