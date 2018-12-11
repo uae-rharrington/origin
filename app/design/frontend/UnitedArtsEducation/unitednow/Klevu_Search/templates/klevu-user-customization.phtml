@@ -5,7 +5,7 @@
  */
 /*
 * Updated by UAE
-* 11/01/2018
+* 12/06/2018
 * JS made by Klevu
 */
 ?>
@@ -271,7 +271,8 @@
         showResultsData: function (response, callFrom) {
             var doc = document, noOtherDataAvailable = true,
                 klevuSearchNoResult = doc.getElementById('klevuSearchNoResults'),
-                arrowDiv = doc.getElementById('klevuArrow');
+                arrowDiv = doc.getElementById('klevuArrow'),
+                redirectUrl = klevu_commons.getRedirectUrlForSearchedTerm(klevu_searchedTerm);
             
             this.hideLoader();
             if (klevu_searchedTerm.length === 0) {
@@ -284,16 +285,12 @@
             
             if (klevu_showAdvancedAutosuggestionLayout) {
                 this.showAdvancedAutoSuggestions(response.autoComplete, noOtherDataAvailable, response.meta);
-            } else {
+            } 
+            else {
                 this.showAutoSuggestions(response.autoComplete, response.meta);
-
-                
                 this.showCmsContent(response.pages);
-
-                
                 this.showCategories(response.categories);
 
-                
                 if ((response.autoComplete && response.autoComplete.length > 0) ||
                     (response.categories && response.categories.length > 0) ||
                     (response.pages && response.pages.length > 0)) {
@@ -314,7 +311,7 @@
                
 
                 if (!response.result[0].children && response.result[0].sku) {
-                    var otherMatch = response.result[0].sku.toUpperCase();
+                    var otherMatch = response.result[0].sku.toUpperCase().replace(/[^A-Z0-9]/ig, "");
                 }
 
                 if (sequence.indexOf(klevu_searchedTerm.toUpperCase()) !== -1) {
@@ -324,8 +321,14 @@
                         doc.getElementById("klevu-loader-2").style.display = "none";
                     }
                 }
-                else if ((otherMatch == klevu_searchedTerm.toUpperCase()) && (otherMatch.length == klevu_searchedTerm.length)) {
-                    klevu_activeSearchBox.form.action = response.result[0].url;
+                else if (otherMatch == klevu_searchedTerm.toUpperCase().replace(/[^A-Z0-9]/ig, "") ) {
+                    console.log('match');
+                    if( redirectUrl !== null ){
+                        klevu_activeSearchBox.form.action = redirectUrl;
+                    }
+                    else {
+                        klevu_activeSearchBox.form.action = response.result[0].url;
+                    }
                     klevu_activeSearchBox.form.method = "post";
                     if (doc.getElementById("klevu-loader-2")) {
                         doc.getElementById("klevu-loader-2").style.display = "none";
