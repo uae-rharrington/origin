@@ -271,13 +271,15 @@
         showResultsData: function (response, callFrom) {
             var doc = document, noOtherDataAvailable = true,
                 klevuSearchNoResult = doc.getElementById('klevuSearchNoResults'),
-                arrowDiv = doc.getElementById('klevuArrow'),
-                redirectUrl = klevu_commons.getRedirectUrlForSearchedTerm(klevu_searchedTerm);
+                arrowDiv = doc.getElementById('klevuArrow');
+                
             
             this.hideLoader();
             if (klevu_searchedTerm.length === 0) {
                 return;
             }
+
+            var redirectUrl = klevu_commons.getRedirectUrlForSearchedTerm(klevu_searchedTerm);
             
             if (klevuSearchNoResult) {
                 klevuSearchNoResult.style.display = "none";
@@ -306,42 +308,53 @@
                 }
             }
 
-            if (klevu_activeSearchBox.form && response.result.length === 1) {
-                var sequence = response.result[0].children ? response.result[0].children.toUpperCase().split(" ") : [];
-               
-
-                if (!response.result[0].children && response.result[0].sku) {
-                    var otherMatch = response.result[0].sku.toUpperCase().replace(/[^A-Z0-9]/ig, "");
-                }
-
-                if (sequence.indexOf(klevu_searchedTerm.toUpperCase()) !== -1) {
-                    klevu_activeSearchBox.form.action = response.result[0].url + '?item=' + klevu_searchedTerm.toUpperCase();
+            if (klevu_activeSearchBox.form) {
+                if(redirectUrl !== null) {
+                    //console.log(redirectUrl);
+                    klevu_activeSearchBox.form.action = redirectUrl;
                     klevu_activeSearchBox.form.method = "post";
                     if (doc.getElementById("klevu-loader-2")) {
                         doc.getElementById("klevu-loader-2").style.display = "none";
                     }
                 }
-                else if (otherMatch == klevu_searchedTerm.toUpperCase().replace(/[^A-Z0-9]/ig, "") ) {
-                    console.log('match');
-                    if( redirectUrl !== null ){
-                        klevu_activeSearchBox.form.action = redirectUrl;
+                else if(response.result.length === 1) {
+                    var childSkus = response.result[0].children,
+                        directUrl = response.result[0].url,
+                        directSku = response.result[0].sku,
+                        sequence = childSkus ? childSkus.toUpperCase().split(" ") : [],
+                        upperCaseSearchedTerm = klevu_searchedTerm.toUpperCase();
+
+                    //console.log(sequence);
+                    //console.log(upperCaseSearchedTerm)
+                    //If Exact Child SKU Match
+                    if (sequence.indexOf(upperCaseSearchedTerm) !== -1) {
+                        klevu_activeSearchBox.form.action = directUrl + '?item=' + upperCaseSearchedTerm;
+                        klevu_activeSearchBox.form.method = "post";
+                        if (doc.getElementById("klevu-loader-2")) {
+                            doc.getElementById("klevu-loader-2").style.display = "none";
+                        }
                     }
-                    else {
-                        klevu_activeSearchBox.form.action = response.result[0].url;
+
+                    // Single Result Exact SKU Match
+                    else if (!childSkus && directSku) {
+                        var otherMatch = directSku.toUpperCase().replace(/[^A-Z0-9]/ig, "");
+                        if (otherMatch === upperCaseSearchedTerm.replace(/[^A-Z0-9]/ig, "") ) {
+                            //console.log('match');
+                            klevu_activeSearchBox.form.action = directUrl;
+                            klevu_activeSearchBox.form.method = "post";
+                            if (doc.getElementById("klevu-loader-2")) {
+                                doc.getElementById("klevu-loader-2").style.display = "none";
+                            }
+                        }                  
                     }
-                    klevu_activeSearchBox.form.method = "post";
-                    if (doc.getElementById("klevu-loader-2")) {
-                        doc.getElementById("klevu-loader-2").style.display = "none";
-                    }                  
+                    else if (klevu_activeSearchBox.form) {
+                        klevu_activeSearchBox.form.method = "get";
+                    }
                 }
-
-
-            } else if (klevu_activeSearchBox.form) {
-                klevu_activeSearchBox.form.method = "get";
-            }
-            doc.getElementById('klevuSearchingArea').style.cssText += ";display : block !important;";
-            if (arrowDiv) {
-                arrowDiv.style.display = "none"; 
+                doc.getElementById('klevuSearchingArea').style.cssText += ";display : block !important;";
+                if (arrowDiv) {
+                    arrowDiv.style.display = "none"; 
+                }
             }
         }
 }
