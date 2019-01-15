@@ -272,11 +272,14 @@
             var doc = document, noOtherDataAvailable = true,
                 klevuSearchNoResult = doc.getElementById('klevuSearchNoResults'),
                 arrowDiv = doc.getElementById('klevuArrow');
+                
             
             this.hideLoader();
             if (klevu_searchedTerm.length === 0) {
                 return;
             }
+
+            var redirectUrl = klevu_commons.getRedirectUrlForSearchedTerm(klevu_searchedTerm);
             
             if (klevuSearchNoResult) {
                 klevuSearchNoResult.style.display = "none";
@@ -284,16 +287,12 @@
             
             if (klevu_showAdvancedAutosuggestionLayout) {
                 this.showAdvancedAutoSuggestions(response.autoComplete, noOtherDataAvailable, response.meta);
-            } else {
+            } 
+            else {
                 this.showAutoSuggestions(response.autoComplete, response.meta);
-
-                
                 this.showCmsContent(response.pages);
-
-                
                 this.showCategories(response.categories);
 
-                
                 if ((response.autoComplete && response.autoComplete.length > 0) ||
                     (response.categories && response.categories.length > 0) ||
                     (response.pages && response.pages.length > 0)) {
@@ -309,36 +308,48 @@
                 }
             }
 
-            if (klevu_activeSearchBox.form && response.result.length === 1) {
-                var sequence = response.result[0].children ? response.result[0].children.toUpperCase().split(" ") : [];
-               
-
-                if (!response.result[0].children && response.result[0].sku) {
-                    var otherMatch = response.result[0].sku.toUpperCase();
-                }
-
-                if (sequence.indexOf(klevu_searchedTerm.toUpperCase()) !== -1) {
-                    klevu_activeSearchBox.form.action = response.result[0].url + '?item=' + klevu_searchedTerm.toUpperCase();
+            if (klevu_activeSearchBox.form) {
+                if(redirectUrl !== null) {
+                    klevu_activeSearchBox.form.action = redirectUrl;
                     klevu_activeSearchBox.form.method = "post";
                     if (doc.getElementById("klevu-loader-2")) {
                         doc.getElementById("klevu-loader-2").style.display = "none";
                     }
                 }
-                else if ((otherMatch == klevu_searchedTerm.toUpperCase()) && (otherMatch.length == klevu_searchedTerm.length)) {
-                    klevu_activeSearchBox.form.action = response.result[0].url;
-                    klevu_activeSearchBox.form.method = "post";
-                    if (doc.getElementById("klevu-loader-2")) {
-                        doc.getElementById("klevu-loader-2").style.display = "none";
-                    }                  
+                else if(response.result.length === 1) {
+                    var childSkus = response.result[0].children,
+                        directUrl = response.result[0].url,
+                        directSku = response.result[0].sku,
+                        sequence = childSkus ? childSkus.toUpperCase().split(" ") : [],
+                        upperCaseSearchedTerm = klevu_searchedTerm.toUpperCase();
+
+                    //If Exact Child SKU Match
+                    if (sequence.indexOf(upperCaseSearchedTerm) !== -1) {
+                        klevu_activeSearchBox.form.action = directUrl + '?item=' + upperCaseSearchedTerm;
+                        klevu_activeSearchBox.form.method = "post";
+                        if (doc.getElementById("klevu-loader-2")) {
+                            doc.getElementById("klevu-loader-2").style.display = "none";
+                        }
+                    }
+                    // Single Result Exact SKU Match
+                    else if (directSku) {
+                        var otherMatch = directSku.toUpperCase().replace(/[^A-Z0-9]/ig, "");
+                        if (otherMatch === upperCaseSearchedTerm.replace(/[^A-Z0-9]/ig, "") ) {
+                            klevu_activeSearchBox.form.action = directUrl;
+                            klevu_activeSearchBox.form.method = "post";
+                            if (doc.getElementById("klevu-loader-2")) {
+                                doc.getElementById("klevu-loader-2").style.display = "none";
+                            }
+                        }                  
+                    }
+                    else if (klevu_activeSearchBox.form) {
+                        klevu_activeSearchBox.form.method = "get";
+                    }
                 }
-
-
-            } else if (klevu_activeSearchBox.form) {
-                klevu_activeSearchBox.form.method = "get";
-            }
-            doc.getElementById('klevuSearchingArea').style.cssText += ";display : block !important;";
-            if (arrowDiv) {
-                arrowDiv.style.display = "none"; 
+                doc.getElementById('klevuSearchingArea').style.cssText += ";display : block !important;";
+                if (arrowDiv) {
+                    arrowDiv.style.display = "none"; 
+                }
             }
         }
 }
