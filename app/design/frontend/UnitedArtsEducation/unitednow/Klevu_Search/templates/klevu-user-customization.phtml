@@ -310,7 +310,6 @@
 
             if (klevu_activeSearchBox.form) {
                 if(redirectUrl !== null) {
-                    //console.log(redirectUrl);
                     klevu_activeSearchBox.form.action = redirectUrl;
                     klevu_activeSearchBox.form.method = "post";
                     if (doc.getElementById("klevu-loader-2")) {
@@ -324,8 +323,6 @@
                         sequence = childSkus ? childSkus.toUpperCase().split(" ") : [],
                         upperCaseSearchedTerm = klevu_searchedTerm.toUpperCase();
 
-                    //console.log(sequence);
-                    //console.log(upperCaseSearchedTerm)
                     //If Exact Child SKU Match
                     if (sequence.indexOf(upperCaseSearchedTerm) !== -1) {
                         klevu_activeSearchBox.form.action = directUrl + '?item=' + upperCaseSearchedTerm;
@@ -334,12 +331,10 @@
                             doc.getElementById("klevu-loader-2").style.display = "none";
                         }
                     }
-
                     // Single Result Exact SKU Match
-                    else if (!childSkus && directSku) {
+                    else if (directSku) {
                         var otherMatch = directSku.toUpperCase().replace(/[^A-Z0-9]/ig, "");
                         if (otherMatch === upperCaseSearchedTerm.replace(/[^A-Z0-9]/ig, "") ) {
-                            //console.log('match');
                             klevu_activeSearchBox.form.action = directUrl;
                             klevu_activeSearchBox.form.method = "post";
                             if (doc.getElementById("klevu-loader-2")) {
