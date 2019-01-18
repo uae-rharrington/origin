@@ -1,0 +1,18 @@
+diff --git a/view/frontend/web/js/view/messages.js b/view/frontend/web/js/view/messages.js
+index e6d3bc8..ddb9a99 100644
+--- a/view/frontend/web/js/view/messages.js
++++ b/view/frontend/web/js/view/messages.js
+@@ -50,7 +50,12 @@ define([
+             if (isHidden) {
+                 setTimeout(function () {
+                     $(self.selector).hide('blind', {}, 500)
+-                }, 5000);
++                }, 30000);
++                try {
++                    $(self.selector)[0].scrollIntoView();
++                } catch (error) {
++                    // Do nothing
++                }
+             }
+         }
+     });
