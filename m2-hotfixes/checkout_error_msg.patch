@@ -1,7 +1,7 @@
 diff --git a/vendor/magento/module-ui/view/frontend/web/js/view/messages.js b/vendor/magento/module-ui/view/frontend/web/js/view/messages.js
 index e6d3bc8..ddb9a99 100644
---- a/view/frontend/web/js/view/messages.js
-+++ b/view/frontend/web/js/view/messages.js
+--- a/vendor/magento/module-ui/view/frontend/web/js/view/messages.js
++++ b/vendor/magento/module-ui/view/frontend/web/js/view/messages.js
 @@ -50,7 +50,12 @@ define([
              if (isHidden) {
                  setTimeout(function () {
