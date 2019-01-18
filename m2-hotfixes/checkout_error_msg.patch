@@ -2,8 +2,7 @@ diff --git a/vendor/magento/module-ui/view/frontend/web/js/view/messages.js b/ve
 index e6d3bc8..ddb9a99 100644
 --- a/vendor/magento/module-ui/view/frontend/web/js/view/messages.js
 +++ b/vendor/magento/module-ui/view/frontend/web/js/view/messages.js
-@@ -50,7 +50,12 @@ define([
-             if (isHidden) {
+@@ -68,7 +68,11 @@ if (isHidden) {
                  setTimeout(function () {
                      $(self.selector).hide('blind', {}, 500)
 -                }, 5000);
@@ -13,6 +12,5 @@ index e6d3bc8..ddb9a99 100644
 +                } catch (error) {
 +                    // Do nothing
 +                }
-             }
-         }
-     });
+              }
+
