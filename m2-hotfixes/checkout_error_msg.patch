@@ -11,7 +11,7 @@ index e6d3bc8..ddb9a99 100644
 +                try {
 +                $(self.selector)[0].scrollIntoView();
 +                } catch (error) {
-+                  // Do nothing
++                  console.log(error)
 +                }
              }
          }
