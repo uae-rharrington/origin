@@ -7,7 +7,7 @@ index e6d3bc8..ddb9a99 100644
                      fullScreenLoader.stopLoader();
                      globalMessageList.addErrorMessage({
 -                        message: $t('An error occurred on the server. Please try to place the order again.')
-+                        message: $t('Credit card error. Check billing zipcode and card infromation.')
++                        message: $t('Credit card error. Please check billing zip code and card information.')
                      });
                  }
              );
