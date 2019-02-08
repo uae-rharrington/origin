@@ -4,50 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "051941d0f832bd0e757572d3f1df5dd4",
+    "content-hash": "bf0b155fbdf120ea3eaf8ced6ed09cf1",
     "packages": [
-        {
-            "name": "aheadworks/module-giftcard",
-            "version": "1.2.6",
-            "dist": {
-                "type": "zip",
-                "url": "https://dist.aheadworks.com/packages/aheadworks/module-giftcard/module-giftcard-1.2.6.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "magento/framework": ">100.0",
-                "magento/module-backend": ">100.0",
-                "magento/module-catalog": ">100.0",
-                "magento/module-checkout": ">100.0",
-                "magento/module-config": ">100.0",
-                "magento/module-customer": ">100.0",
-                "magento/module-directory": ">100.0",
-                "magento/module-eav": ">100.0",
-                "magento/module-quote": ">100.0",
-                "magento/module-sales": ">100.0",
-                "magento/module-store": ">100.0",
-                "magento/module-tax": ">100.0",
-                "magento/module-ui": ">100.0"
-            },
-            "type": "magento2-module",
-            "autoload": {
-                "files": [
-                    "registration.php"
-                ],
-                "psr-4": {
-                    "Aheadworks\\Giftcard\\": ""
-                }
-            },
-            "license": [
-                "proprietary"
-            ],
-            "description": "N/A",
-            "support": {
-                "email": "support@aheadworks.com",
-                "docs": "http://confluence.aheadworks.com/display/EUDOC/Documentation+Home"
-            }
-        },
         {
             "name": "amzn/amazon-pay-and-login-with-amazon-core-module",
             "version": "2.1.0",
@@ -131,16 +89,16 @@
         },
         {
             "name": "amzn/amazon-pay-sdk-php",
-            "version": "3.3.2",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amzn/amazon-pay-sdk-php.git",
-                "reference": "77f494f164be8d5b189fe01ba08c503e89cc5e86"
+                "reference": "af6ef40eb66561d63d1ffbdc0c44f38bd66bae2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amzn/amazon-pay-sdk-php/zipball/77f494f164be8d5b189fe01ba08c503e89cc5e86",
-                "reference": "77f494f164be8d5b189fe01ba08c503e89cc5e86",
+                "url": "https://api.github.com/repos/amzn/amazon-pay-sdk-php/zipball/af6ef40eb66561d63d1ffbdc0c44f38bd66bae2a",
+                "reference": "af6ef40eb66561d63d1ffbdc0c44f38bd66bae2a",
                 "shasum": ""
             },
             "require": {
@@ -177,7 +135,7 @@
                 "payment",
                 "payments"
             ],
-            "time": "2018-08-31T15:51:31+00:00"
+            "time": "2019-02-05T16:35:26+00:00"
         },
         {
             "name": "amzn/login-with-amazon-module",
@@ -14686,16 +14644,16 @@
         },
         {
             "name": "zendframework/zend-http",
-            "version": "2.8.3",
+            "version": "2.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-http.git",
-                "reference": "e70ed2a51f37b848c8c3829739d1b1f803854ffa"
+                "reference": "d160aedc096be230af0fe9c31151b2b33ad4e807"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-http/zipball/e70ed2a51f37b848c8c3829739d1b1f803854ffa",
-                "reference": "e70ed2a51f37b848c8c3829739d1b1f803854ffa",
+                "url": "https://api.github.com/repos/zendframework/zend-http/zipball/d160aedc096be230af0fe9c31151b2b33ad4e807",
+                "reference": "d160aedc096be230af0fe9c31151b2b33ad4e807",
                 "shasum": ""
             },
             "require": {
@@ -14737,7 +14695,7 @@
                 "zend",
                 "zf"
             ],
-            "time": "2019-01-08T15:55:38+00:00"
+            "time": "2019-02-07T17:47:08+00:00"
         },
         {
             "name": "zendframework/zend-hydrator",
