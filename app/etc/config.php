@@ -250,8 +250,7 @@ return [
         'Xtento_OrderExport' => 1,
         'Xtento_StockImport' => 1,
         'Xtento_TrackingImport' => 1,
-        'UAE_OrderExport' => 1,
-        'Xumulus_FastGalleryLoad' => 1
+        'UAE_OrderExport' => 1
     ],
     'system' => [
         'default' => [

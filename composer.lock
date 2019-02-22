@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "66e5e825d59616298973ddfc24697ac0",
+    "content-hash": "051941d0f832bd0e757572d3f1df5dd4",
     "packages": [
         {
             "name": "aheadworks/module-giftcard",
@@ -14011,41 +14011,6 @@
             "time": "2018-12-03T15:55:23+00:00"
         },
         {
-            "name": "xumulus/magento2-fast-product-images",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:xumulus/magento2-fast-product-images.git",
-                "reference": "90a28fe4950f5ae9c0b3b2c52c9ee7aab9a6a913"
-            },
-            "require": {
-                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0"
-            },
-            "type": "magento2-module",
-            "autoload": {
-                "files": [
-                    "registration.php"
-                ],
-                "psr-4": {
-                    "Xumulus\\FastGalleryLoad\\": ""
-                }
-            },
-            "license": [
-                "OSL-3.0",
-                "AFL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Kozlowski",
-                    "email": "daniel.kozlowski@xumulus.com",
-                    "homepage": "-",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Load the gallery images faster.",
-            "time": "2018-07-03T20:14:29+00:00"
-        },
-        {
             "name": "zendframework/zend-captcha",
             "version": "2.8.0",
             "source": {
@@ -15976,9 +15941,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "alpha",
-    "stability-flags": {
-        "xumulus/magento2-fast-product-images": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
