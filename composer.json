@@ -31,6 +31,10 @@
         "wyomind": {
             "type": "composer",
             "url": "https://repo.wyomind.com"
+        },
+        "magento2-fast-product-images": {
+            "type": "git",
+            "url": "git@github.com:xumulus/magento2-fast-product-images.git"
         }
     },
     "require": {
@@ -44,7 +48,8 @@
         "aheadworks/module-giftcard": "^1.2",
         "klevu/module-search": "^2.1",
         "xtento/module-stockimport": "2.4.3",
-        "wyomind/googlecustomerreviews": "3.3.0.3"
+        "wyomind/googlecustomerreviews": "3.3.0.3",
+        "xumulus/magento2-fast-product-images": "dev-master"
     },
     "config": {
         "use-include-path": true
@@ -78,4 +83,3 @@
         "magento-deploystrategy": "copy"
     }
 }
-
