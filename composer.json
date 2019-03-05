@@ -49,7 +49,8 @@
         "klevu/module-search": "^2.1",
         "xtento/module-stockimport": "2.4.3",
         "wyomind/googlecustomerreviews": "3.3.0.3",
-        "xumulus/magento2-fast-product-images": "dev-master"
+        "xumulus/magento2-fast-product-images": "dev-master",
+        "taxjar/module-taxjar": "^1.2"
     },
     "config": {
         "use-include-path": true
