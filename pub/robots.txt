@@ -80,3 +80,8 @@ Disallow: /*.Svn$
 Disallow: /*.Idea$
 Disallow: /*.Sql$
 Disallow: /*.Tgz$
+
+# Disabled AhrefBot 
+User-agent: AhrefsBot
+Disallow:/
+

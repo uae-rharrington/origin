@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "66e5e825d59616298973ddfc24697ac0",
+    "content-hash": "afb58fb263fb753a6ec558ab621b56d6",
     "packages": [
         {
             "name": "aheadworks/module-giftcard",
@@ -13502,6 +13502,39 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2018-01-20T15:04:53+00:00"
+        },
+        {
+            "name": "taxjar/module-taxjar",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/taxjar/taxjar-magento2-extension.git",
+                "reference": "82691bd3f8724b2f9fbad4c98b7ef5c8efa1a482"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/taxjar/taxjar-magento2-extension/zipball/82691bd3f8724b2f9fbad4c98b7ef5c8efa1a482",
+                "reference": "82691bd3f8724b2f9fbad4c98b7ef5c8efa1a482",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": "^100.1.0|^101.0.0|^102.0.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Taxjar\\SalesTax\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "TaxJar Sales Tax Module for Magento 2",
+            "time": "2019-02-19T23:07:52+00:00"
         },
         {
             "name": "tedivm/jshrink",

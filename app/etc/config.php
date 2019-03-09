@@ -235,6 +235,7 @@ return [
         'ShipperHQ_Shipper' => 1,
         'ShipperHQ_Option' => 1,
         'Temando_Shipping' => 1,
+        'Taxjar_SalesTax' => 1,
         'UAE_AdvancedCheckout' => 1,
         'UAE_GiftcardFieldUpdate' => 1,
         'UAE_GroupedProduct' => 1,
