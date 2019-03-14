@@ -12522,16 +12522,16 @@
         },
         {
             "name": "shipperhq/library-shipper",
-            "version": "20.9.0",
+            "version": "20.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/library-shipper.git",
-                "reference": "b6cd139a45980a0968e6a86843d46e505dcb873b"
+                "reference": "a03c410361242379376c61db8168432b9b874e96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/b6cd139a45980a0968e6a86843d46e505dcb873b",
-                "reference": "b6cd139a45980a0968e6a86843d46e505dcb873b",
+                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/a03c410361242379376c61db8168432b9b874e96",
+                "reference": "a03c410361242379376c61db8168432b9b874e96",
                 "shasum": ""
             },
             "type": "magento2-library",
@@ -12559,7 +12559,7 @@
                 }
             ],
             "description": "ShipperHQ Library",
-            "time": "2018-08-02T15:20:19+00:00"
+            "time": "2019-03-14T11:36:30+00:00"
         },
         {
             "name": "shipperhq/library-ws",
@@ -12604,23 +12604,23 @@
         },
         {
             "name": "shipperhq/module-common",
-            "version": "20.7.0",
+            "version": "20.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/module-common.git",
-                "reference": "c23948b2c10495ee5f2ae2921ff6bd67506ababf"
+                "reference": "6372807ddde7faa5a5fd8e35268b3bfb45bce353"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/module-common/zipball/c23948b2c10495ee5f2ae2921ff6bd67506ababf",
-                "reference": "c23948b2c10495ee5f2ae2921ff6bd67506ababf",
+                "url": "https://api.github.com/repos/shipperhq/module-common/zipball/6372807ddde7faa5a5fd8e35268b3bfb45bce353",
+                "reference": "6372807ddde7faa5a5fd8e35268b3bfb45bce353",
                 "shasum": ""
             },
             "require": {
                 "magento/framework": ">=100.0",
                 "magento/module-store": ">=100.0",
-                "shipperhq/library-shipper": "^20.0",
-                "shipperhq/library-ws": "^20.0"
+                "shipperhq/library-shipper": "^20.10",
+                "shipperhq/library-ws": "^20.4"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "~2.1.1",
@@ -12662,7 +12662,7 @@
                 }
             ],
             "description": "ShipperHQ Common",
-            "time": "2018-06-25T09:39:35+00:00"
+            "time": "2019-03-14T16:58:46+00:00"
         },
         {
             "name": "shipperhq/module-logger",
