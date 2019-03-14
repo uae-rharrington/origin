@@ -16,7 +16,7 @@
     <div class="block filter" id="layered-filter-block" data-mage-init='{"collapsible":{"openedState": "active", "collapsible": true, "active": false, "collateral": { "openedState": "filter-active", "element": "body" } }}'>
         <?php $filtered = count($block->getLayer()->getState()->getFilters()) ?>
         <div class="block-title filter-title" data-count="<?= /* @escapeNotVerified */ $filtered ?>">
-            <strong data-role="title"><?= /* @escapeNotVerified */ __('Shop By') ?></strong>
+            <strong data-role="title"><?= /* @escapeNotVerified */ __('Filter') ?></strong>
         </div>
         <div class="block-content filter-content">
             <?= $block->getChildHtml('state') ?>
@@ -31,7 +31,7 @@
                <?php if ($filter->getItemsCount()): ?>
                    <?php if (!$wrapOptions): ?>
                       <?php $collapsibleRange = implode(' ', range(0, $filter->getItemsCount())); ?>
-                      <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle"><?php /* @escapeNotVerified */ echo __('Shopping Options') ?></strong>
+                      <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle"><?php /* @escapeNotVerified */ echo __('Filter') ?></strong>
                       <div class="filter-options" id="narrow-by-list" data-role="content" data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": "<?php echo $collapsibleRange ?>", "multipleCollapsible": true}}'>
                    <?php  $wrapOptions = true; endif; ?>
                    <div data-role="collapsible" class="filter-options-item">
