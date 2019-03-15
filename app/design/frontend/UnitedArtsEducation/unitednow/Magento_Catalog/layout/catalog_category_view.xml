@@ -1,9 +1,0 @@
-
-<!-- CUSTOM XML CODE CREATED BY UAE 3/15/2019 --->
-
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <body>
-	<move element="category.description" destination="content" before="category.products" />
-        <move element="category.image" destination="content" before="category.description" />
-    </body>
-</page>
