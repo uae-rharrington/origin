@@ -15,6 +15,17 @@
         }
     }
 
+//////////////// BEGIN UAE EDIT
+
+    //
+    // Add to cart and other action buttons
+    //  _____________________________________________
+
+    .action.primary.tocart, .action.primary.checkout, a.kuAddtocartBtn, .action.subscribe.primary { background: #F29500; border-color: #F29500; }
+    .action.primary.tocart:hover, .action.primary.tocart:active, .action.primary.checkout:hover, .action.primary.checkout:active, a.kuAddtocartBtn:hover, a.kuAddtocartBtn:active, .action.subscribe.primary:hover, .action.subscribe.primary:active { background: #F2A01C; border-color: #F2A01C; }
+    
+//////////////// END UAE EDIT
+
     //
     // Navigation
     //  _____________________________________________
@@ -192,6 +203,17 @@
             }
         }
     }
+
+//////////////// BEGIN UAE EDIT
+    //
+    // Category descriptions
+    //  _____________________________________________
+
+    .category-view .category-description p { padding-left: 0; }
+
+
+//////////////// END UAE EDIT
+
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
