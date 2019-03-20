@@ -24,7 +24,7 @@ require([
                 } else {
                     message = 'To use our instant quote feature please fill out the form below. We will email you a '
                         + 'quote which is valid for ' + quoteLifetime + ' days. To be able to view the quote from the "my account" section '
-                        + 'our website to access later, be sure to log in now or create an account after you submit the quote.';
+                        + 'of our website to access later, be sure to log in now or create an account after you submit the quote.';
                 }
 
                 checkoutShippingStepElement.prepend(
