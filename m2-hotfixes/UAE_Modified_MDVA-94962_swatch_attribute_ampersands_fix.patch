@@ -2,7 +2,6 @@ diff --git a/view/adminhtml/web/js/product-attributes.js b/view/adminhtml/web/js
 index 1a58e4b..a7ac451 100644
 --- a/vendor/magento/module-swatches/view/adminhtml/web/js/product-attributes.js
 +++ b/vendor/magento/module-swatches/view/adminhtml/web/js/product-attributes.js
-
 @@ -46,7 +46,7 @@
                  get tabsFront() {
                      return this.attrTabsFront.length ? this.attrTabsFront.closest('li') : $('#front_fieldset-wrapper');
