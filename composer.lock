@@ -607,24 +607,23 @@
         },
         {
             "name": "composer/spdx-licenses",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/spdx-licenses.git",
-                "reference": "7a9556b22bd9d4df7cad89876b00af58ef20d3a2"
+                "reference": "a1aa51cf3ab838b83b0867b14e56fc20fbd55b3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/7a9556b22bd9d4df7cad89876b00af58ef20d3a2",
-                "reference": "7a9556b22bd9d4df7cad89876b00af58ef20d3a2",
+                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/a1aa51cf3ab838b83b0867b14e56fc20fbd55b3d",
+                "reference": "a1aa51cf3ab838b83b0867b14e56fc20fbd55b3d",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.2 || ^7.0"
+                "php": "^5.3.2 || ^7.0 || ^8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5",
-                "phpunit/phpunit-mock-objects": "2.3.0 || ^3.0"
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || 6.5 - 7"
             },
             "type": "library",
             "extra": {
@@ -664,7 +663,7 @@
                 "spdx",
                 "validator"
             ],
-            "time": "2018-11-01T09:45:54+00:00"
+            "time": "2019-03-26T10:23:26+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -1260,7 +1259,7 @@
         },
         {
             "name": "illuminate/config",
-            "version": "v5.8.4",
+            "version": "v5.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/config.git",
@@ -1304,7 +1303,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.8.4",
+            "version": "v5.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1349,16 +1348,16 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.8.4",
+            "version": "v5.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "3e3a9a654adbf798e05491a5dbf90112df1effde"
+                "reference": "7224ed316427ae5f67c4888679bbf7f6e7773660"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/3e3a9a654adbf798e05491a5dbf90112df1effde",
-                "reference": "3e3a9a654adbf798e05491a5dbf90112df1effde",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/7224ed316427ae5f67c4888679bbf7f6e7773660",
+                "reference": "7224ed316427ae5f67c4888679bbf7f6e7773660",
                 "shasum": ""
             },
             "require": {
@@ -1389,20 +1388,20 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2019-02-18T18:37:54+00:00"
+            "time": "2019-03-06T19:39:19+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.8.4",
+            "version": "v5.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "07062f5750872a31e086ff37a7c50ac18b8c417c"
+                "reference": "e275519c58246cc4011c798f9b0a0f83aae2aab7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/07062f5750872a31e086ff37a7c50ac18b8c417c",
-                "reference": "07062f5750872a31e086ff37a7c50ac18b8c417c",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/e275519c58246cc4011c798f9b0a0f83aae2aab7",
+                "reference": "e275519c58246cc4011c798f9b0a0f83aae2aab7",
                 "shasum": ""
             },
             "require": {
@@ -1450,7 +1449,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2019-03-12T13:17:00+00:00"
+            "time": "2019-04-01T19:02:05+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -1734,16 +1733,16 @@
         },
         {
             "name": "klevu/module-addtocart",
-            "version": "2.2.8",
+            "version": "2.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/addtocart.git",
-                "reference": "1f3a6d547c56448a07332786aafc8bee3f280839"
+                "reference": "25dfeb35a2862291dd7095c49f06bc36652b0201"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/addtocart/zipball/1f3a6d547c56448a07332786aafc8bee3f280839",
-                "reference": "1f3a6d547c56448a07332786aafc8bee3f280839",
+                "url": "https://api.github.com/repos/klevu/addtocart/zipball/25dfeb35a2862291dd7095c49f06bc36652b0201",
+                "reference": "25dfeb35a2862291dd7095c49f06bc36652b0201",
                 "shasum": ""
             },
             "require": {
@@ -1776,20 +1775,20 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-02-21T10:17:05+00:00"
+            "time": "2019-04-03T13:35:55+00:00"
         },
         {
             "name": "klevu/module-content",
-            "version": "2.2.8",
+            "version": "2.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/content.git",
-                "reference": "7b05a0bc2b5438ff895eaf8631f3a34b03fe89f7"
+                "reference": "700a1b07d90ddb7088629158a3ab39e2b5d154c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/content/zipball/7b05a0bc2b5438ff895eaf8631f3a34b03fe89f7",
-                "reference": "7b05a0bc2b5438ff895eaf8631f3a34b03fe89f7",
+                "url": "https://api.github.com/repos/klevu/content/zipball/700a1b07d90ddb7088629158a3ab39e2b5d154c2",
+                "reference": "700a1b07d90ddb7088629158a3ab39e2b5d154c2",
                 "shasum": ""
             },
             "require": {
@@ -1822,20 +1821,20 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-02-21T10:16:53+00:00"
+            "time": "2019-04-03T13:36:08+00:00"
         },
         {
             "name": "klevu/module-productsearch",
-            "version": "2.2.8",
+            "version": "2.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/productsearch.git",
-                "reference": "35b0dc1fba6758085af35603c6b433c4c6b7b81c"
+                "reference": "dddaeba7707b2b3e3cd3c25c07aecb8649329eda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/productsearch/zipball/35b0dc1fba6758085af35603c6b433c4c6b7b81c",
-                "reference": "35b0dc1fba6758085af35603c6b433c4c6b7b81c",
+                "url": "https://api.github.com/repos/klevu/productsearch/zipball/dddaeba7707b2b3e3cd3c25c07aecb8649329eda",
+                "reference": "dddaeba7707b2b3e3cd3c25c07aecb8649329eda",
                 "shasum": ""
             },
             "require": {
@@ -1868,26 +1867,26 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-02-21T10:16:03+00:00"
+            "time": "2019-04-03T13:37:16+00:00"
         },
         {
             "name": "klevu/module-search",
-            "version": "2.2.8",
+            "version": "2.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/klevu-smart-search-M2.git",
-                "reference": "ba86d849d86d317ce5cd5da5b7e88ad69649d9f7"
+                "reference": "e4c6ac473b9babe6f7d57d66287658a2e535006b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/klevu-smart-search-M2/zipball/ba86d849d86d317ce5cd5da5b7e88ad69649d9f7",
-                "reference": "ba86d849d86d317ce5cd5da5b7e88ad69649d9f7",
+                "url": "https://api.github.com/repos/klevu/klevu-smart-search-M2/zipball/e4c6ac473b9babe6f7d57d66287658a2e535006b",
+                "reference": "e4c6ac473b9babe6f7d57d66287658a2e535006b",
                 "shasum": ""
             },
             "require": {
-                "klevu/module-addtocart": "2.2.8",
-                "klevu/module-content": "2.2.8",
-                "klevu/module-productsearch": "2.2.8"
+                "klevu/module-addtocart": "2.2.9",
+                "klevu/module-content": "2.2.9",
+                "klevu/module-productsearch": "2.2.9"
             },
             "type": "metapackage",
             "notification-url": "https://packagist.org/downloads/",
@@ -1903,7 +1902,7 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-02-21T10:16:37+00:00"
+            "time": "2019-04-03T13:39:40+00:00"
         },
         {
             "name": "magento/composer",
@@ -1936,12 +1935,12 @@
         },
         {
             "name": "magento/ece-tools",
-            "version": "2002.0.16",
+            "version": "2002.0.17",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.magento.com/archives/magento/ece-tools/magento-ece-tools-2002.0.16.0.zip",
+                "url": "https://repo.magento.com/archives/magento/ece-tools/magento-ece-tools-2002.0.17.0.zip",
                 "reference": null,
-                "shasum": "ce8d65e50e19b2a7386f2ca950ccfda55dc05835"
+                "shasum": "10bc2c558f2d34dcd10cdc65663c5f5e889eb745"
             },
             "require": {
                 "composer/composer": "@stable",
@@ -12637,16 +12636,16 @@
         },
         {
             "name": "shipperhq/library-ws",
-            "version": "20.4.0",
+            "version": "20.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/library-ws.git",
-                "reference": "424a24fb339af4a10f785b121ab27927b32fbf90"
+                "reference": "fdd2f569802fb51299c738bbec1a6e9c949a2e74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/library-ws/zipball/424a24fb339af4a10f785b121ab27927b32fbf90",
-                "reference": "424a24fb339af4a10f785b121ab27927b32fbf90",
+                "url": "https://api.github.com/repos/shipperhq/library-ws/zipball/fdd2f569802fb51299c738bbec1a6e9c949a2e74",
+                "reference": "fdd2f569802fb51299c738bbec1a6e9c949a2e74",
                 "shasum": ""
             },
             "type": "magento2-library",
@@ -12674,7 +12673,7 @@
                 }
             ],
             "description": "ShipperHQ WS Library",
-            "time": "2018-06-21T15:25:10+00:00"
+            "time": "2019-03-27T15:42:43+00:00"
         },
         {
             "name": "shipperhq/module-common",
@@ -13031,7 +13030,7 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.2.4",
+            "version": "v4.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -13201,7 +13200,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.23",
+            "version": "v3.4.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -13251,7 +13250,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.23",
+            "version": "v3.4.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -13899,12 +13898,12 @@
         },
         {
             "name": "vertex/sdk",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.magento.com/archives/vertex/sdk/vertex-sdk-1.0.0.0.zip",
+                "url": "https://repo.magento.com/archives/vertex/sdk/vertex-sdk-1.1.0.0.zip",
                 "reference": null,
-                "shasum": "6c7ed091879e66d75faf95fed7e48751693c68c7"
+                "shasum": "85c38829f8233c14865912e092a2c5c6c80146ec"
             },
             "require": {
                 "ext-mbstring": "*",
@@ -13931,10 +13930,10 @@
         },
         {
             "name": "wyomind/core",
-            "version": "4.2.0.1",
+            "version": "4.3.0.2",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.wyomind.com/wyomind-core-4.2.0.1.zip",
+                "url": "https://repo.wyomind.com/wyomind-core-4.3.0.2.zip",
                 "reference": null,
                 "shasum": null
             },

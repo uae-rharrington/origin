@@ -4,6 +4,9 @@
  * @copyright   Copyright (c) 2018 Classy Llama
  */
 /**  @var $block \Magento\Checkout\Block\Cart */
+/**
+* Modify by UAE April2019
+*/
 ?>
 <div class="cart-empty">
     <?= $block->getChildHtml('checkout_cart_empty_widget') ?>
@@ -15,6 +18,11 @@
            data-mage-init='{"backButton":{"cartUpdates":"<?= $block->getCartUpdates() ?>"}}'
            title="<?= $block->escapeHtml(__('Continue Shopping')) ?>">
             <span><?= /* @escapeNotVerified */ __('Continue Shopping') ?></span>
+        </a>
+    </p>
+    <p>
+        <?php //Add Tax Exempt Msg ?>
+        <?= /* @escapeNotVerified */ __('Learn more about ') ?><a href="/tax-exemption" title = "tax exempt"><span><?= /* @escapeNotVerified */ __('Tax Exemption') ?></span>
         </a>
     </p>
     <?= $block->getChildHtml('shopping.cart.table.after') ?>
