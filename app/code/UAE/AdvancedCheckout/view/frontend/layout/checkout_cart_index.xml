@@ -30,7 +30,6 @@
                             <item name="config" xsi:type="array">
                                 <item name="componentDisabled" xsi:type="boolean">true</item>
                             </item>
-
                         </item>
                     </item>
                 </argument>
@@ -67,7 +66,12 @@
                 </argument>
             </arguments>
         </referenceBlock>
-
+        <referenceBlock name="checkout.cart.message">
+          <arguments>
+            <argument name="path" xsi:type="string">/tax-exemption<argument>
+            <argument name="label" xsi:type="string">Need Tax Exempt?<argument>
+          </arguments>
+        </referenceBlock>    
         <referenceBlock name="checkout.cart.empty">
             <action method="setTemplate">
                 <argument name="template" xsi:type="string">UAE_AdvancedCheckout::cart/noItems.phtml</argument>
