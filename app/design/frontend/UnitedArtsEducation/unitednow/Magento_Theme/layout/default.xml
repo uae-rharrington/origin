@@ -46,7 +46,9 @@
                 </block>
             </container>
         </referenceContainer>
-               
+        <referenceContainer name="before.body.end">
+           <block class="\Magento\Framework\View\Element\Template" template="Magento_Theme::js.phtml" name="module_js"/>
+       </referenceContainer>       
 
         <!-- Remove product comparison -->
         <!-- Header - view link -->
