@@ -1,11 +1,11 @@
 <?php
 
-namespace Klevu\Search\Model\Product;
-use Magento\Framework\DataObject;
+namespace UAE\KlevuProduct\Model\Product;
+use Klevu\Search\Model\Product\Product as Klevuproduct;
 
 
 
-class Product extends DataObject implements ProductInterface
+class Product extends Klevuproduct
 {/**
  * Get the list of prices based on customer group
  *

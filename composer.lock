@@ -12595,16 +12595,16 @@
         },
         {
             "name": "shipperhq/library-shipper",
-            "version": "20.10.0",
+            "version": "20.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/library-shipper.git",
-                "reference": "a03c410361242379376c61db8168432b9b874e96"
+                "reference": "298e61d5a44d37a2727f392c9c4af1a492c3b307"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/a03c410361242379376c61db8168432b9b874e96",
-                "reference": "a03c410361242379376c61db8168432b9b874e96",
+                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/298e61d5a44d37a2727f392c9c4af1a492c3b307",
+                "reference": "298e61d5a44d37a2727f392c9c4af1a492c3b307",
                 "shasum": ""
             },
             "type": "magento2-library",
@@ -12632,7 +12632,7 @@
                 }
             ],
             "description": "ShipperHQ Library",
-            "time": "2019-03-14T11:36:30+00:00"
+            "time": "2019-04-29T09:39:00+00:00"
         },
         {
             "name": "shipperhq/library-ws",
@@ -13770,16 +13770,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.8.1",
+            "version": "v2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "91cc2594d3143761ce0399c1caffd0b500ffe5b9"
+                "reference": "82a1c055c8ed4c4705023bfd0405f3c74db6e3ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/91cc2594d3143761ce0399c1caffd0b500ffe5b9",
-                "reference": "91cc2594d3143761ce0399c1caffd0b500ffe5b9",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
+                "reference": "82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
                 "shasum": ""
             },
             "require": {
@@ -13795,7 +13795,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev"
+                    "dev-master": "2.9-dev"
                 }
             },
             "autoload": {
@@ -13833,7 +13833,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-04-16T17:14:24+00:00"
+            "time": "2019-04-28T06:57:38+00:00"
         },
         {
             "name": "vertex/module-tax",
