@@ -28,7 +28,6 @@ class Product extends Klevuproduct
                   $priceGroupData[$product->getCustomerGroupId()]= $result;
               }
           }
-          echo "works!";
           return $priceGroupData;
     }
 
