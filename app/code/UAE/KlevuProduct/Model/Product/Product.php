@@ -14,7 +14,7 @@ class Product extends Klevuproduct
  * @return array
  */
     protected function getGroupPrices($proData) {
-      $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/getGroupPricesUAE.log');
+      $writer = new \Zend\Log\Writer\Stream('/var/log/getGroupPricesUAE.log');
       $logger = new \Zend\Log\Logger();
       $logger->addWriter($writer);
 
