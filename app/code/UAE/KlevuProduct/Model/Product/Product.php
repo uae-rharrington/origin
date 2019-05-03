@@ -13,22 +13,40 @@ class Product extends Klevuproduct
  *
  * @return array
  */
-    protected function getGroupPrices($proData)
-    {
-        $customer = \Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Customer\Model\ResourceModel\Group\Collection');
-        $priceGroupData = array();
-        foreach($customer as $type)
-        {
-            $product = \Magento\Framework\App\ObjectManager::getInstance()->create('\Magento\Catalog\Model\Product')->setCustomerGroupId($type->getCustomerGroupId())->load($proData->getId());
-            $final_price = $product->getFinalprice();
-            $processed_final_price = $this->_priceHelper->processPrice($final_price,'final_price',$product,$this->_storeModelStoreManagerInterface->getStore());
-            if($processed_final_price){
-                  $result['label'] = $type->getCustomerGroupCode();
-                  $result['values'] = $processed_final_price;
-                  $priceGroupData[$product->getCustomerGroupId()]= $result;
-              }
-          }
-          return $priceGroupData;
-    }
+    protected function getGroupPrices($proData) {
+      $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/getGroupPricesUAE.log');
+      $logger = new \Zend\Log\Logger();
+      $logger->addWriter($writer);
+
+      $customer = \Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Customer\Model\ResourceModel\Group\Collection');
+      $priceGroupData = array();
+
+      $logger->info( ' ************************************************************************ ' );
+
+      foreach ($customer as $type) {
+
+        $logger->info( '********************* Product ID: '.$proData->getId() .' ********************* ');
+        $logger->info( 'Product SKU: '.$proData->getSku() );
+        $logger->info( 'CustomGroupID: '.$type->getCustomerGroupId() );
+        $logger->info( 'ProductPriceBefore: '.$proData->getFinalprice() );
+
+        $product = \Magento\Framework\App\ObjectManager::getInstance()->create('\Magento\Catalog\Model\Product')->setCustomerGroupId( $type->getCustomerGroupId())->load( $proData->getId() );
+
+        $logger->info( 'ProductFinalPriceAfter: '.$product->getFinalprice() );
+
+        $final_price = $product->getFinalprice();
+        $processed_final_price = $this->_priceHelper->processPrice($final_price, 'final_price', $product, $this->_storeModelStoreManagerInterface->getStore());
+
+        $logger->info( 'ProductPriceProcessAfter: '.$processed_final_price );
+
+         if ($processed_final_price) {
+             $result['label'] = $type->getCustomerGroupCode();
+             $result['values'] = $processed_final_price;
+             $priceGroupData[$product->getCustomerGroupId()] = $result;
+         }
+         $logger->info( ' ****************************************** ' );
+     }
+     return $priceGroupData;
+   }
 
 }
