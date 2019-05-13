@@ -3,8 +3,6 @@
 namespace UAE\KlevuProduct\Model\Product;
 use Klevu\Search\Model\Product\Product as Klevuproduct;
 
-
-
 class Product extends Klevuproduct
 {/**
  * Get the list of prices based on customer group
