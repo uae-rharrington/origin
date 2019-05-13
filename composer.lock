@@ -1935,12 +1935,12 @@
         },
         {
             "name": "magento/ece-tools",
-            "version": "2002.0.17",
+            "version": "2002.0.18",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.magento.com/archives/magento/ece-tools/magento-ece-tools-2002.0.17.0.zip",
+                "url": "https://repo.magento.com/archives/magento/ece-tools/magento-ece-tools-2002.0.18.0.zip",
                 "reference": null,
-                "shasum": "10bc2c558f2d34dcd10cdc65663c5f5e889eb745"
+                "shasum": "7d5cbe9535c6f07839bc7bee099a889f682762da"
             },
             "require": {
                 "composer/composer": "@stable",
@@ -1965,6 +1965,8 @@
                 "magento/magento-cloud-configuration": "*"
             },
             "require-dev": {
+                "codeception/codeception": "^2.5.3",
+                "consolidation/robo": "^1.2",
                 "php-mock/php-mock-phpunit": "^2.0",
                 "phpmd/phpmd": "@stable",
                 "phpunit/php-code-coverage": "^5.2",
@@ -1994,20 +1996,20 @@
                         "docker/mnt"
                     ],
                     [
+                        "dist/docker/tmp",
+                        "docker/tmp"
+                    ],
+                    [
                         "dist/docker/mysql",
                         "docker/mysql"
                     ],
                     [
-                        "dist/docker/config.php",
-                        "docker/config.php.dist"
-                    ],
-                    [
-                        "dist/docker/global.php",
-                        "docker/global.php.dist"
-                    ],
-                    [
                         "dist/docker/README.md",
                         "docker/README.md"
+                    ],
+                    [
+                        "dist/docker-sync.yml",
+                        "docker-sync.yml"
                     ]
                 ]
             },
@@ -13585,16 +13587,16 @@
         },
         {
             "name": "taxjar/module-taxjar",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/taxjar/taxjar-magento2-extension.git",
-                "reference": "82691bd3f8724b2f9fbad4c98b7ef5c8efa1a482"
+                "reference": "607028385f6fc60a5b433a72a24484a7a1da3d6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/taxjar/taxjar-magento2-extension/zipball/82691bd3f8724b2f9fbad4c98b7ef5c8efa1a482",
-                "reference": "82691bd3f8724b2f9fbad4c98b7ef5c8efa1a482",
+                "url": "https://api.github.com/repos/taxjar/taxjar-magento2-extension/zipball/607028385f6fc60a5b433a72a24484a7a1da3d6f",
+                "reference": "607028385f6fc60a5b433a72a24484a7a1da3d6f",
                 "shasum": ""
             },
             "require": {
@@ -13614,7 +13616,7 @@
                 "OSL-3.0"
             ],
             "description": "TaxJar Sales Tax Module for Magento 2",
-            "time": "2019-02-19T23:07:52+00:00"
+            "time": "2019-05-11T00:32:39+00:00"
         },
         {
             "name": "tedivm/jshrink",
@@ -14113,11 +14115,11 @@
         },
         {
             "name": "xtento/xtcore",
-            "version": "2.4.0",
+            "version": "2.5.0",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.xtento.com/composer/download/file/m/xtento_xtcore/h/f49f5512df095d99a572307a44fc9931/v/2.4.0",
-                "reference": "e75da1106d885a71d13d6755b58f159de05612da",
+                "url": "https://repo.xtento.com/composer/download/file/m/xtento_xtcore/h/4a1f495f22ab36d3a5db4a31bf4b6655/v/2.5.0",
+                "reference": "05adb2a8aed9dc3a4aacc05b267fee968378bdbc",
                 "shasum": null
             },
             "require": {
@@ -14150,7 +14152,7 @@
             "support": {
                 "email": "info@xtento.com"
             },
-            "time": "2018-12-03T15:55:23+00:00"
+            "time": "2019-05-07T15:19:36+00:00"
         },
         {
             "name": "xumulus/magento2-fast-product-images",
