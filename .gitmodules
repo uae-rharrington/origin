@@ -1,0 +1,9 @@
+[submodule "app/code/Klevu/Addtocart/addtocart"]
+	path = app/code/Klevu/Addtocart/addtocart
+	url = git@github.com:klevu/addtocart.git
+[submodule "app/code/Klevu/Content/content"]
+	path = app/code/Klevu/Content/content
+	url = git@github.com:klevu/content.git
+[submodule "app/code/Klevu/Search/productsearch"]
+	path = app/code/Klevu/Search/productsearch
+	url = git@github.com:klevu/productsearch.git
