@@ -46,7 +46,6 @@
         "shipperhq/module-shipper": "20.19.0",
         "shipperhq/module-option": "^20.2",
         "aheadworks/module-giftcard": "^1.2",
-        "klevu/module-search": "^2.1",
         "xtento/module-stockimport": "2.4.3",
         "wyomind/googlecustomerreviews": "3.3.0.3",
         "xumulus/magento2-fast-product-images": "dev-master",
