@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "472f7aa3109c7e186d90b8caa22c4970",
+    "content-hash": "495d1c2b5f3b843cbbdcbb192da621f1",
     "packages": [
         {
             "name": "aheadworks/module-giftcard",
@@ -1730,6 +1730,179 @@
                 }
             ],
             "description": "Klarna Order Management Magento 2 Extension"
+        },
+        {
+            "name": "klevu/module-addtocart",
+            "version": "2.2.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/klevu/addtocart.git",
+                "reference": "3ee9dcb997d46dce8491d2f1e95c369cd5c1aa31"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/klevu/addtocart/zipball/3ee9dcb997d46dce8491d2f1e95c369cd5c1aa31",
+                "reference": "3ee9dcb997d46dce8491d2f1e95c369cd5c1aa31",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": "@stable",
+                "magento/module-backend": "@stable",
+                "magento/module-catalog": "@stable",
+                "magento/module-eav": "@stable",
+                "magento/module-store": "@stable",
+                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0"
+            },
+            "type": "magento-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Klevu\\Addtocart\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Klevu Oy",
+                    "email": "niraj.aswani@klevu.com",
+                    "homepage": "https://www.klevu.com/"
+                }
+            ],
+            "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
+            "time": "2019-05-13T15:35:53+00:00"
+        },
+        {
+            "name": "klevu/module-content",
+            "version": "2.2.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/klevu/content.git",
+                "reference": "728cd69d5070e76b892839cd50f88ac023a09d0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/klevu/content/zipball/728cd69d5070e76b892839cd50f88ac023a09d0d",
+                "reference": "728cd69d5070e76b892839cd50f88ac023a09d0d",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": "@stable",
+                "magento/module-backend": "@stable",
+                "magento/module-catalog": "@stable",
+                "magento/module-eav": "@stable",
+                "magento/module-store": "@stable",
+                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0"
+            },
+            "type": "magento-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Klevu\\Content\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Klevu Oy",
+                    "email": "niraj.aswani@klevu.com",
+                    "homepage": "https://www.klevu.com/"
+                }
+            ],
+            "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
+            "time": "2019-05-13T15:36:06+00:00"
+        },
+        {
+            "name": "klevu/module-productsearch",
+            "version": "2.2.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/klevu/productsearch.git",
+                "reference": "611d4919f935b4b7787b5859acf3b3ffb1393825"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/klevu/productsearch/zipball/611d4919f935b4b7787b5859acf3b3ffb1393825",
+                "reference": "611d4919f935b4b7787b5859acf3b3ffb1393825",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": "@stable",
+                "magento/module-backend": "@stable",
+                "magento/module-catalog": "@stable",
+                "magento/module-eav": "@stable",
+                "magento/module-store": "@stable",
+                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0"
+            },
+            "type": "magento-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Klevu\\Search\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Klevu Oy",
+                    "email": "niraj.aswani@klevu.com",
+                    "homepage": "https://www.klevu.com/"
+                }
+            ],
+            "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
+            "time": "2019-05-13T15:37:20+00:00"
+        },
+        {
+            "name": "klevu/module-search",
+            "version": "2.2.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/klevu/klevu-smart-search-M2.git",
+                "reference": "df54cb3409cecb7a02ceb65dd637ccca0f6d1a74"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/klevu/klevu-smart-search-M2/zipball/df54cb3409cecb7a02ceb65dd637ccca0f6d1a74",
+                "reference": "df54cb3409cecb7a02ceb65dd637ccca0f6d1a74",
+                "shasum": ""
+            },
+            "require": {
+                "klevu/module-addtocart": "2.2.10",
+                "klevu/module-content": "2.2.10",
+                "klevu/module-productsearch": "2.2.10"
+            },
+            "type": "metapackage",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Klevu Oy",
+                    "email": "niraj.aswani@klevu.com",
+                    "homepage": "https://www.klevu.com/"
+                }
+            ],
+            "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
+            "time": "2019-05-13T15:38:11+00:00"
         },
         {
             "name": "magento/composer",
