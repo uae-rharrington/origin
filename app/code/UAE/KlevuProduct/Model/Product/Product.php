@@ -15,7 +15,7 @@ class Product extends Klevuproduct
   protected function getGroupPrices($proData)
   {
     $customer = \Magento\Framework\App\ObjectManager::getInstance()->create('Magento\Customer\Model\ResourceModel\Group\Collection');
-    echo "<script>console.log('.$customer.')</script>"
+    print_r($customer);
     $priceGroupData = array();
     foreach($customer as $type)
       {
@@ -27,7 +27,7 @@ class Product extends Klevuproduct
                  $result['values'] = $processed_final_price;
                  $priceGroupData[$product->getCustomerGroupId()]= $result;
         }
-        echo "<script>console.log('.$final_price.')</script>";
+        print_r($final_price);
       }
          return $priceGroupData;
 
