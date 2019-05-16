@@ -5,6 +5,6 @@
  */
 \Magento\Framework\Component\ComponentRegistrar::register(
 \Magento\Framework\Component\ComponentRegistrar::MODULE,
-'KlevuProduct',
+'UAE_KlevuProduct',
 __DIR__
 );

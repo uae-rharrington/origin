@@ -1,6 +1,6 @@
 <?php
 
-namespace KlevuProduct\Model\Product;
+namespace UAE\KlevuProduct\Model\Product;
 use Klevu\Search\Model\Product\Product as Klevuproduct;
 
 class Product extends Klevuproduct
