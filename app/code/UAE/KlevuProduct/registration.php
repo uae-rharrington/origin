@@ -3,8 +3,11 @@
 /**
  * Modified UAE
  */
-\Magento\Framework\Component\ComponentRegistrar::register(
-\Magento\Framework\Component\ComponentRegistrar::MODULE,
-'UAE_KlevuProduct',
-__DIR__
+
+use Magento\Framework\Component\ComponentRegistrar;
+
+ComponentRegistrar::register(
+    ComponentRegistrar::MODULE,
+    'UAE_KlevuProduct',
+    __DIR__
 );
