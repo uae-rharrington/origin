@@ -6,6 +6,30 @@
 */
 ?>
 <script>
-  _etmc.push(["setOrgId", "20207"]);
-  _etmc.push(["trackPageView"]);
+
+  define([
+    "jquery","Magento_Customer/js/customer_data"
+  ], function($, customerDate){
+    "use strict";
+    return function (config, element){
+      var email = customerData.get('customer')().email;
+      if (typeof (email) == "undefined"){
+        customerData.reload('customer');
+      }
+      var check = setInterval(function(){
+        var email = customerData.get('customer')().email;
+        if (email){
+          $(element).text(email + 'set');
+          clearInterval(check);
+        }
+      },500);
+      _etmc.push(["setOrgId", "20207"]);
+      _etmc.push(["setUserInfo", {"email": email}]);
+      _etmc.push(["trackPageView"]);
+    };
+
+  });
+
+
+
 </script>
