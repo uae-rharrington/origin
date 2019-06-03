@@ -1,0 +1,246 @@
+diff --git a/vendor/magento/module-paypal/Model/Cart.php b/vendor/magento/module-paypal/Model/Cart.php
+index b65fcd340d5..c8e4a6acf46 100644
+--- a/vendor/magento/module-paypal/Model/Cart.php
++++ b/vendor/magento/module-paypal/Model/Cart.php
+@@ -177,7 +177,7 @@ class Cart extends \Magento\Payment\Model\Cart
+     ) {
+         $dataContainer = $salesEntity->getTaxContainer();
+         $this->addTax((double)$dataContainer->getBaseDiscountTaxCompensationAmount());
+-        $this->addTax((double)$dataContainer->getBaseShippingDiscountTaxCompensationAmount());
++        $this->addTax((double)$dataContainer->getBaseShippingDiscountTaxCompensationAmnt());
+     }
+ 
+     /**
+diff --git a/vendor/magento/module-paypal/Model/Payflow/Transparent.php b/vendor/magento/module-paypal/Model/Payflow/Transparent.php
+index c161580c1b7..3676e54624e 100644
+--- a/vendor/magento/module-paypal/Model/Payflow/Transparent.php
++++ b/vendor/magento/module-paypal/Model/Payflow/Transparent.php
+@@ -3,11 +3,14 @@
+  * Copyright © Magento, Inc. All rights reserved.
+  * See COPYING.txt for license details.
+  */
++declare(strict_types=1);
++
+ namespace Magento\Paypal\Model\Payflow;
+ 
+ use Magento\Payment\Helper\Formatter;
+ use Magento\Payment\Model\InfoInterface;
+ use Magento\Paypal\Model\Payflowpro;
++use Magento\Sales\Api\Data\OrderInterface;
+ use Magento\Sales\Api\Data\OrderPaymentExtensionInterfaceFactory;
+ use Magento\Sales\Model\Order\Payment;
+ use Magento\Paypal\Model\Payflow\Service\Gateway;
+@@ -59,6 +62,11 @@ class Transparent extends Payflowpro implements TransparentInterface
+     private $paymentExtensionFactory;
+ 
+     /**
++     * @var \Magento\Paypal\Model\CartFactory
++     */
++    private $payPalCartFactory;
++
++    /**
+      * @param \Magento\Framework\Model\Context $context
+      * @param \Magento\Framework\Registry $registry
+      * @param \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory
+@@ -75,6 +83,7 @@ class Transparent extends Payflowpro implements TransparentInterface
+      * @param ResponseValidator $responseValidator
+      * @param PaymentTokenInterfaceFactory $paymentTokenFactory
+      * @param OrderPaymentExtensionInterfaceFactory $paymentExtensionFactory
++     * @param \Magento\Paypal\Model\CartFactory $payPalCartFactory
+      * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
+      * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
+      * @param array $data
+@@ -97,6 +106,7 @@ class Transparent extends Payflowpro implements TransparentInterface
+         ResponseValidator $responseValidator,
+         PaymentTokenInterfaceFactory $paymentTokenFactory,
+         OrderPaymentExtensionInterfaceFactory $paymentExtensionFactory,
++        \Magento\Paypal\Model\CartFactory $payPalCartFactory,
+         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
+         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
+         array $data = []
+@@ -122,9 +132,12 @@ class Transparent extends Payflowpro implements TransparentInterface
+         $this->responseValidator = $responseValidator;
+         $this->paymentTokenFactory = $paymentTokenFactory;
+         $this->paymentExtensionFactory = $paymentExtensionFactory;
++        $this->payPalCartFactory = $payPalCartFactory;
+     }
+ 
+     /**
++     * Returns Payflow ResponseValidator instance.
++     *
+      * @return ResponseValidator
+      */
+     public function getResponceValidator()
+@@ -161,19 +174,25 @@ class Transparent extends Payflowpro implements TransparentInterface
+         $this->addRequestOrderInfo($request, $order);
+         $request = $this->fillCustomerContacts($order, $request);
+ 
++        $payPalCart = $this->payPalCartFactory->create(['salesModel' => $order]);
++        $payPalCart->getAmounts();
++
+         $token = $payment->getAdditionalInformation(self::PNREF);
+         $request->setData('trxtype', self::TRXTYPE_AUTH_ONLY);
+         $request->setData('origid', $token);
+         $request->setData('amt', $this->formatPrice($amount));
+         $request->setData('currency', $order->getBaseCurrencyCode());
+-        $request->setData('taxamt', $this->formatPrice($order->getBaseTaxAmount()));
+-        $request->setData('freightamt', $this->formatPrice($order->getBaseShippingAmount()));
++        $request->setData('itemamt', $this->formatPrice($payPalCart->getSubtotal()));
++        $request->setData('taxamt', $this->formatPrice($payPalCart->getTax()));
++        $request->setData('freightamt', $this->formatPrice($payPalCart->getShipping()));
++        $request->setData('discount', $this->formatPrice($payPalCart->getDiscount()));
+ 
+         $response = $this->postRequest($request, $this->getConfig());
+         $this->processErrors($response);
+ 
+         try {
+             $this->responseValidator->validate($response, $this);
++            // phpcs:ignore Magento2.Exceptions.ThrowCatch
+         } catch (LocalizedException $exception) {
+             $payment->setParentTransactionId($response->getData(self::PNREF));
+             $this->void($payment);
+@@ -199,10 +218,12 @@ class Transparent extends Payflowpro implements TransparentInterface
+     }
+ 
+     /**
++     * Creates vault payment token.
++     *
+      * @param Payment $payment
+      * @param string $token
+-     * @throws LocalizedException
+      * @return void
++     * @throws \Exception
+      */
+     protected function createPaymentToken(Payment $payment, $token)
+     {
+@@ -221,8 +242,11 @@ class Transparent extends Payflowpro implements TransparentInterface
+     }
+ 
+     /**
++     * Generates CC expiration date by year and month provided in payment.
++     *
+      * @param Payment $payment
+      * @return string
++     * @throws \Exception
+      */
+     private function getExpirationDate(Payment $payment)
+     {
+@@ -241,6 +265,8 @@ class Transparent extends Payflowpro implements TransparentInterface
+     }
+ 
+     /**
++     * Returns payment extension attributes instance.
++     *
+      * @param Payment $payment
+      * @return \Magento\Sales\Api\Data\OrderPaymentExtensionInterface
+      */
+diff --git a/vendor/magento/module-sales-rule/Model/Validator.php b/vendor/magento/module-sales-rule/Model/Validator.php
+index 201df99aa51..ec9fefda30d 100644
+--- a/vendor/magento/module-sales-rule/Model/Validator.php
++++ b/vendor/magento/module-sales-rule/Model/Validator.php
+@@ -184,6 +184,8 @@ class Validator extends \Magento\Framework\Model\AbstractModel
+     }
+ 
+     /**
++     * Address id getter.
++     *
+      * @param Address $address
+      * @return string
+      */
+@@ -329,21 +331,7 @@ class Validator extends \Magento\Framework\Model\AbstractModel
+                     $baseDiscountAmount = $rule->getDiscountAmount();
+                     break;
+                 case \Magento\SalesRule\Model\Rule::CART_FIXED_ACTION:
+-                    $cartRules = $address->getCartFixedRules();
+-                    if (!isset($cartRules[$rule->getId()])) {
+-                        $cartRules[$rule->getId()] = $rule->getDiscountAmount();
+-                    }
+-                    if ($cartRules[$rule->getId()] > 0) {
+-                        $quoteAmount = $this->priceCurrency->convert($cartRules[$rule->getId()], $quote->getStore());
+-                        $discountAmount = min($shippingAmount - $address->getShippingDiscountAmount(), $quoteAmount);
+-                        $baseDiscountAmount = min(
+-                            $baseShippingAmount - $address->getBaseShippingDiscountAmount(),
+-                            $cartRules[$rule->getId()]
+-                        );
+-                        $cartRules[$rule->getId()] -= $baseDiscountAmount;
+-                    }
+-
+-                    $address->setCartFixedRules($cartRules);
++                    // Shouldn't be proceed according to MAGETWO-96403
+                     break;
+             }
+ 
+@@ -521,6 +509,8 @@ class Validator extends \Magento\Framework\Model\AbstractModel
+     }
+ 
+     /**
++     * Rule total items getter.
++     *
+      * @param int $key
+      * @return array
+      * @throws \Magento\Framework\Exception\LocalizedException
+@@ -535,6 +525,7 @@ class Validator extends \Magento\Framework\Model\AbstractModel
+     }
+ 
+     /**
++     * Decrease rule items count.
+      * @param int $key
+      * @return $this
+      */
+diff --git a/vendor/magento/module-sales-rule/view/adminhtml/ui_component/sales_rule_form.xml b/vendor/magento/module-sales-rule/view/adminhtml/ui_component/sales_rule_form.xml
+index 9b579f47759..570eb0bf151 100644
+--- a/vendor/magento/module-sales-rule/view/adminhtml/ui_component/sales_rule_form.xml
++++ b/vendor/magento/module-sales-rule/view/adminhtml/ui_component/sales_rule_form.xml
+@@ -452,7 +452,7 @@
+                 <dataScope>discount_step</dataScope>
+             </settings>
+         </field>
+-        <field name="apply_to_shipping" component="Magento_Ui/js/form/element/single-checkbox-toggle-notice" formElement="checkbox">
++        <field name="apply_to_shipping" component="Magento_SalesRule/js/form/element/apply_to_shipping" formElement="checkbox">
+             <argument name="data" xsi:type="array">
+                 <item name="config" xsi:type="array">
+                     <item name="source" xsi:type="string">sales_rule</item>
+diff --git a/vendor/magento/module-sales-rule/view/adminhtml/web/js/form/element/apply_to_shipping.js b/vendor/magento/module-sales-rule/view/adminhtml/web/js/form/element/apply_to_shipping.js
+new file mode 100644
+index 00000000000..71ecd8fc38b
+--- /dev/null
++++ b/vendor/magento/module-sales-rule/view/adminhtml/web/js/form/element/apply_to_shipping.js
+@@ -0,0 +1,37 @@
++/**
++ * Copyright © Magento, Inc. All rights reserved.
++ * See COPYING.txt for license details.
++ */
++
++define([
++    'Magento_Ui/js/form/element/single-checkbox-toggle-notice'
++], function (Checkbox) {
++    'use strict';
++
++    return Checkbox.extend({
++        defaults: {
++            imports: {
++                toggleDisabled: '${ $.parentName }.simple_action:value'
++            }
++        },
++
++        /**
++         * Toggle element disabled state according to simple action value.
++         *
++         * @param {String} action
++         */
++        toggleDisabled: function (action) {
++            switch (action) {
++                case 'cart_fixed':
++                    this.disabled(true);
++                    break;
++                default:
++                    this.disabled(false);
++            }
++
++            if (this.disabled()) {
++                this.checked(false);
++            }
++        }
++    });
++});
+\ No newline at end of file
