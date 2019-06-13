@@ -420,6 +420,7 @@ footer {
   background-position: center;
   background-size: cover;
   padding: 0;
+  margin: 0;
 }
 
 footer > div {
@@ -430,20 +431,17 @@ footer > div {
     margin-bottom: 0px;
 }
 
-.page-footer {
-  margin: 0;
-}
 
 footer ul > li > a {
   color: white;
 }
 
-div.footer {
+.footer {
   display: flex;
   flex-direction: column;
 }
 
-div.newsletter {
+.newsletter {
   width: 100%
   margin: 0;
   float: none;
@@ -461,7 +459,7 @@ div.content {
 }
 
 // media queries
-div.newsletter {
+.newsletter {
   width: 75%;
   margin: 0 auto;
   padding: 10px 0;
@@ -469,21 +467,21 @@ div.newsletter {
 
 #flex {
   display: flex;
-  fles-direction: row;
+  flex-direction: row;
   justify-content: center;
 }
 
-div#flex > a {
+#flex > a {
   color: white;
 }
-.fas {
+.fab {
   font-size: 30px;
   transition: transform, color .5s;
   color: white;
   padding: 0 5px;
 }
 
-.fas:hover {
+.fab:hover {
   color: darkred;
   transform: scale(1.08);
 }
