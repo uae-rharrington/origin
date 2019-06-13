@@ -7,29 +7,16 @@
 ?>
 <script>
 
-  define([
-    "jquery","Magento_Customer/js/customer_data"
-  ], function($, customerDate){
-    "use strict";
-    return function (config, element){
-      var email = customerData.get('customer')().email;
-      if (typeof (email) == "undefined"){
-        customerData.reload('customer');
+      let urlstr = window.location.pathname.split('');
+      if (window.location.href.includes('@')) {
+  	     let email = urlstr;
+	       email.shift();
+	       email = email.join('');
+	       console.log(email)
+         _etmc.push(["setOrgId", "20207"]);
+         _etmc.push(["setUserInfo", {"email": email}]);
+         _etmc.push(["trackPageView"])
       }
-      var check = setInterval(function(){
-        var email = customerData.get('customer')().email;
-        if (email){
-          $(element).text(email + 'set');
-          clearInterval(check);
-        }
-      },500);
-      _etmc.push(["setOrgId", "20207"]);
-      _etmc.push(["setUserInfo", {"email": email}]);
-      _etmc.push(["trackPageView"]);
-    };
-
-  });
-
 
 
 </script>

@@ -23,7 +23,7 @@
 
     .action.primary, a.kuAddtocartBtn { background: #F29500 !important; border-color: #F29500 !important; color: #FFFFFF !important; }
     .action.primary:hover, .action.primary:active, a.kuAddtocartBtn:hover, a.kuAddtocartBtn:active { background: #F2A01C !important; border-color: #F2A01C !important; color: #FFFFFF !important; }
-    
+
 //////////////// END UAE EDIT
 
     //
@@ -398,3 +398,75 @@
         }
     }
 }
+
+// 2019 changes by Bailey
+
+// change shopping cart and search icon for hover effects
+// shopping cart: <i class="fas fa-shopping-cart"></i>
+// magnifying glass: <i class="fas fa-search"></i>
+
+
+
+// aesthetic changes to 3 categories on homepage
+
+// evenly distribute 'outdoor fun'/season items on homepage
+
+// changes to 4 6 bottom boxes?
+
+// aesthetic changes to footer
+footer {
+  background-image: url(https://res.cloudinary.com/djad06sng/image/upload/v1560433872/mike-petrucci-57647-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 0;
+}
+
+footer ul > li > a {
+  color: white;
+}
+
+div.footer {
+  display: flex;
+  flex-direction: column;
+}
+
+div.newsletter {
+  width: 100%
+  margin: 0;
+  float: none;
+}
+
+div.content {
+  background-color: rgba(0, 0, 0, .5);
+}
+
+#socia-media-block {
+  display: flex;
+  flex-direction: column;
+}
+
+// media queries
+div.newsletter {
+  width: 75%;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+#flex {
+  display: flex;
+  fles-direction: row;
+}
+.fas {
+  font-size: 30px;
+  transition: transform, color .5s;
+  color: white;
+  padding: 0 5px;
+}
+
+.fas:hover {
+  color: darkred;
+  transform: scale(1.08);
+}
+
+// general item/link hover effects on subpages and item effects on home page
