@@ -404,7 +404,8 @@
 // change shopping cart and search icon for hover effects
 // shopping cart: <i class="fas fa-shopping-cart"></i>
 // magnifying glass: <i class="fas fa-search"></i>
-
+// blue logo color: rgb(48, 106, 173)
+// red logo color: rgb(221, 79, 55)
 
 
 // aesthetic changes to 3 categories on homepage
@@ -423,8 +424,23 @@ footer {
   margin: 0;
 }
 
+.footer.content {
+    background-color: rgba(0, 0, 0, .3);
+}
+
+div.footer > div.block > div.content {
+    padding: 10px;
+    border-radius: 10px;
+}
+
 footer > div {
   padding: 2rem 4rem;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.page-footer {
+  background-color: none;
+  padding: 0;
 }
 
 .block.newsletter {
@@ -436,19 +452,27 @@ footer ul > li > a {
   color: white;
 }
 
+footer h4 {
+  color: white;
+  font-size: 18px;
+}
+
 .footer {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0 2rem;
 }
 
 .newsletter {
-  width: 100%
+  width: 95%
   margin: 0;
   float: none;
+  padding: 10px 0;
 }
 
-div.content {
-  background-color: rgba(0, 0, 0, .5);
+
+div.block > div.content {
+    background-color: black;
 }
 
 #social-media-block {
@@ -456,14 +480,14 @@ div.content {
   flex-direction: column;
   width: 100%;
   text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
-// media queries
-.newsletter {
-  width: 75%;
-  margin: 0 auto;
-  padding: 10px 0;
+.footer.content .links a {
+    color: white;
 }
+
 
 #flex {
   display: flex;
@@ -478,12 +502,87 @@ div.content {
   font-size: 30px;
   transition: transform, color .5s;
   color: white;
-  padding: 0 5px;
+  padding: 0 10px;
 }
 
 .fab:hover {
-  color: darkred;
+  color: rgb(221, 79, 55);
   transform: scale(1.08);
+  -webkit-transform: scale(1.08);
+      -ms-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+
+div.footer > section {
+  max-width: none;
+  padding: 0;
+}
+
+.footer.content .links a {
+  color: white;
+  transition: color, transform .3s;
+}
+
+
+.footer.content .links a:hover {
+    color: rgb(221, 79, 55);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    text-decoration: none;
+}
+
+// MEDIA QUERIES
+
+@media screen and (min-width: 600px) {
+  .footer {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 5rem;
+  }
+  #social-media-block {
+    grid-column-end: 3;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  #social-media-block {
+    grid-column-end: 4;
+  }
+  .footer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #social-media-block {
+    grid-column-end: 5;
+  }
+  .footer {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  #flex {
+    padding: 1rem 0 2rem 0;
+  }
+  footer section {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .newsletter {
+    width: 75%;
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+  #social-media-block {
+    grid-column-end: 6;
+  }
+  .footer {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 2rem 5rem 5rem 5rem;
+  }
 }
 
 // general item/link hover effects on subpages and item effects on home page
