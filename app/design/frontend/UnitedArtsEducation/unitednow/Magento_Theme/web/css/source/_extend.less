@@ -460,30 +460,53 @@ footer h4 {
 }
 
 .footer {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   padding: 0 2rem;
+  overflow-x: hidden;
+}
+
+.links {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0 2rem;
+}
+.links >section {
+    text-align: center;
 }
 
 .newsletter {
-  width: 95%
   margin: 0;
   float: none;
   padding: 10px 0;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .block.newsletter .form.subscribe {
-    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100;
-    justify-content: center;
+    width: 100vw;
+    padding: 0 10vw;
 }
 
-.block.newsletter .field {
-    min-width: 250px;
+.block.newsletter .field .control {
+    width: Calc(100vw - 300px);
 }
+
+.block.newsletter .action.subscribe:hover {
+  transition: background-color, .5s;
+}
+
+.block.newsletter .action.subscribe:hover {
+    background-color: rgb(221, 79, 55) !important;
+    border-color: rgb(221, 79, 55) !important;
+    transform: scaleX(1.15);
+    -webkit-transform: scaleX(1.15);
+    -ms-transform: scaleX(1.15);
+}
+
 
 
 div.block > div.content {
@@ -541,10 +564,12 @@ div.block > div.content {
 div.footer > section {
   max-width: none;
   padding: 0;
+  text-align: center;
 }
 
 .footer.content .links a {
   color: white;
+  font-weight: 650;
   transition: color, transform .3s;
 }
 
@@ -568,11 +593,17 @@ div.footer > section {
   #social-media-block {
     grid-column-end: 3;
   }
+  .links {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media screen and (min-width: 700px) {
   #social-media-block {
     grid-column-end: 4;
+  }
+  .links {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
@@ -581,10 +612,27 @@ div.footer > section {
     background: reset;
   }
 }
+// overwriting css
+@media (min-width: 768px), print
+.block.newsletter {
+    width: reset;
+}
+
+@media (min-width: 768px), print
+.footer.content .links section {
+    /* flex-basis: 25%; */
+    /* max-width: 25%; */
+}
+.footer.content, {
+    max-width: none;
+}
 
 @media screen and (min-width: 800px) {
   #social-media-block {
-    grid-column-end: 5;
+    grid-column-end: 6;
+  }
+  .links {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
   #flex {
     padding: 1rem 0 2rem 0;
@@ -596,16 +644,18 @@ div.footer > section {
 
 @media screen and (min-width: 900px) {
   .newsletter {
-    width: 75%;
     margin: 0 auto;
     padding: 10px 0;
-  }
-  #social-media-block {
-    grid-column-end: 6;
   }
   .footer {
     padding: 2rem 5rem 5rem 5rem;
   }
+}
+
+@media (min-width: 1024px), print
+.footer.content .links section {
+    flex-basis: reset;
+    max-width: reset;
 }
 
 // general item/link hover effects on subpages and item effects on home page
