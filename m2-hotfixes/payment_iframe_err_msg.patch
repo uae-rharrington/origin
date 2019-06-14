@@ -1,0 +1,13 @@
+diff --git a/vendor/magento/module-payment/view/frontend/templates/transparent/iframe.phtml b/vendor/magento/module-payment/view/frontend/templates/transparent/iframe.phtml
+index e6d3bc8..ddb9a99 100644
+--- a/vendor/magento/module-payment/view/frontend/templates/transparent/iframe.phtml	2018-09-04 16:51:20.000000000 -0400
++++ b/vendor/magento/module-payment/view/frontend/templates/transparent/iframe.phtml	2019-01-29 06:55:03.719068543 -0500
+@@ -40,7 +40,7 @@
+                     $(parent).trigger('clearTimeout');
+                     fullScreenLoader.stopLoader();
+                     globalMessageList.addErrorMessage({
+-                        message: $t('An error occurred on the server. Please try to place the order again.')
++                        message: $t('Credit card error. Please check billing zip code and card information.')
+                     });
+                 }
+             );

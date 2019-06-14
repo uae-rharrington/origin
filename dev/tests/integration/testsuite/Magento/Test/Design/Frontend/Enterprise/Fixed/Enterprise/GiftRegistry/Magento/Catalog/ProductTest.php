@@ -9,6 +9,7 @@ class ProductTest extends \Magento\TestFramework\TestCase\AbstractController
 {
     /**
      * @magentoDataFixture Magento/Bundle/_files/product.php
+     * @magentoDbIsolation disabled
      */
     public function testViewActionBundle()
     {

@@ -27,10 +27,18 @@
         "aheadworks": {
             "type": "composer",
             "url": "https://dist.aheadworks.com/"
+        },
+        "wyomind": {
+            "type": "composer",
+            "url": "https://repo.wyomind.com"
+        },
+        "magento2-fast-product-images": {
+            "type": "git",
+            "url": "git@github.com:xumulus/magento2-fast-product-images.git"
         }
     },
     "require": {
-        "magento/magento-cloud-metapackage": "2.2.5",
+        "magento/magento-cloud-metapackage": "2.2.7",
         "fastly/magento2": "^1.2",
         "magento/extension-b2b": "^1.0",
         "xtento/orderexport": "^2.5",
@@ -38,8 +46,11 @@
         "shipperhq/module-shipper": "20.19.0",
         "shipperhq/module-option": "^20.2",
         "aheadworks/module-giftcard": "^1.2",
-        "klevu/module-search": "^2.1",
-        "xtento/module-stockimport": "2.4.3"
+        "xtento/module-stockimport": "2.4.3",
+        "wyomind/googlecustomerreviews": "3.3.0.3",
+        "xumulus/magento2-fast-product-images": "dev-master",
+        "taxjar/module-taxjar": "^1.2",
+        "klevu/module-search": "^2.2"
     },
     "config": {
         "use-include-path": true
@@ -73,4 +84,3 @@
         "magento-deploystrategy": "copy"
     }
 }
-

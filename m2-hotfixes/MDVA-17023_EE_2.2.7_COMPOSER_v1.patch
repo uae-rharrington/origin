@@ -1,0 +1,60 @@
+diff --git a/vendor/magento/module-checkout/view/frontend/web/js/model/checkout-data-resolver.js b/vendor/magento/module-checkout/view/frontend/web/js/model/checkout-data-resolver.js
+index 73f4df56790..74fc78a0845 100644
+--- a/vendor/magento/module-checkout/view/frontend/web/js/model/checkout-data-resolver.js
++++ b/vendor/magento/module-checkout/view/frontend/web/js/model/checkout-data-resolver.js
+@@ -60,7 +60,6 @@ define([
+                     this.resolveBillingAddress();
+                 }
+             }
+-
+         },
+ 
+         /**
+@@ -218,16 +217,31 @@ define([
+          * Apply resolved billing address to quote
+          */
+         applyBillingAddress: function () {
+-            var shippingAddress;
++            var shippingAddress,
++                isBillingAddressInitialized;
+ 
+             if (quote.billingAddress()) {
+                 selectBillingAddress(quote.billingAddress());
+ 
+                 return;
+             }
++
++            if (quote.isVirtual() || !quote.billingAddress()) {
++                isBillingAddressInitialized = addressList.some(function (addrs) {
++                    if (addrs.isDefaultBilling()) {
++                        selectBillingAddress(addrs);
++
++                        return true;
++                    }
++
++                    return false;
++                });
++            }
++
+             shippingAddress = quote.shippingAddress();
+ 
+-            if (shippingAddress &&
++            if (!isBillingAddressInitialized &&
++                shippingAddress &&
+                 shippingAddress.canUseForBilling() &&
+                 (shippingAddress.isDefaultShipping() || !quote.isVirtual())
+             ) {
+diff --git a/vendor/magento/module-checkout/view/frontend/web/js/model/shipping-save-processor/default.js b/vendor/magento/module-checkout/view/frontend/web/js/model/shipping-save-processor/default.js
+index 3a6574bff89..e34f861f771 100644
+--- a/vendor/magento/module-checkout/view/frontend/web/js/model/shipping-save-processor/default.js
++++ b/vendor/magento/module-checkout/view/frontend/web/js/model/shipping-save-processor/default.js
+@@ -35,7 +35,7 @@ define([
+         saveShippingInformation: function () {
+             var payload;
+ 
+-            if (!quote.billingAddress()) {
++            if (!quote.billingAddress() && quote.shippingAddress().canUseForBilling()) {
+                 selectBillingAddressAction(quote.shippingAddress());
+             }
+ 
+

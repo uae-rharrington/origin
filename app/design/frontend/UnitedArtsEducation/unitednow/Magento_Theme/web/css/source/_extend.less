@@ -15,6 +15,17 @@
         }
     }
 
+//////////////// BEGIN UAE EDIT
+
+    //
+    // Add to cart and other action buttons
+    //  _____________________________________________
+
+    .action.primary, a.kuAddtocartBtn { background: #F29500 !important; border-color: #F29500 !important; color: #FFFFFF !important; }
+    .action.primary:hover, .action.primary:active, a.kuAddtocartBtn:hover, a.kuAddtocartBtn:active { background: #F2A01C !important; border-color: #F2A01C !important; color: #FFFFFF !important; }
+
+//////////////// END UAE EDIT
+
     //
     // Navigation
     //  _____________________________________________
@@ -34,7 +45,7 @@
     .header-promo {
         margin-bottom: 25px;
         padding: 7px;
-        background: @header-panel__background-color;
+        background: #306AAC;// @header-panel__background-color;
         color: @color-white;
         font-size: 16px;
         text-align: center;
@@ -192,6 +203,17 @@
             }
         }
     }
+
+//////////////// BEGIN UAE EDIT
+    //
+    // Category descriptions
+    //  _____________________________________________
+
+    #UAE_description { display: none; }
+
+
+//////////////// END UAE EDIT
+
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
@@ -200,6 +222,22 @@
             height: auto;
         }
     }
+
+//////////////// BEGIN UAE EDIT
+    //
+    //  Search
+    //  _____________________________________________
+
+    input#search {
+	font-size: 120%;
+	background: #FFFFBB;
+	border-radius: 8px;
+    }
+
+    .header.content .block.block-search {
+	max-width: 296px;
+    }
+//////////////// END UAE EDIT
 
     //
     // Header
@@ -316,6 +354,24 @@
     }
 }
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+
+//////////////// BEGIN UAE EDIT
+    //
+    //  Search
+    //  _____________________________________________
+
+    input#search {
+	font-size: 120%;
+	background: #FFFFBB;
+	border-radius: 8px;
+    }
+
+    .header.content .block.block-search {
+	width: 100%;
+	max-width: 520px;
+    }
+//////////////// END UAE EDIT
+
     //
     // Navigation
     //  _____________________________________________
@@ -342,3 +398,264 @@
         }
     }
 }
+
+// 2019 changes by Bailey
+
+// change shopping cart and search icon for hover effects
+// shopping cart: <i class="fas fa-shopping-cart"></i>
+// magnifying glass: <i class="fas fa-search"></i>
+// blue logo color: rgb(48, 106, 173)
+// red logo color: rgb(221, 79, 55)
+
+
+// aesthetic changes to 3 categories on homepage
+
+// evenly distribute 'outdoor fun'/season items on homepage
+
+// changes to 4 6 bottom boxes?
+
+// aesthetic changes to footer
+footer {
+  background-image: url(https://res.cloudinary.com/djad06sng/image/upload/v1560433872/mike-petrucci-57647-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 0;
+  margin: 0;
+}
+
+.footer.content {
+    background-color: rgba(0, 0, 0, .3);
+}
+
+div.footer>div.block>div.content {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 5rem;
+}
+
+footer > div {
+  padding: 2rem 4rem;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.page-footer {
+  background-color: none;
+  padding: 0;
+}
+
+.block.newsletter {
+    margin-bottom: 0px;
+}
+
+
+footer ul > li > a {
+  color: white;
+}
+
+footer h4 {
+  color: white;
+  font-size: 18px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  overflow-x: hidden;
+}
+
+.links {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0 2rem;
+}
+.links >section {
+    text-align: center;
+}
+
+.newsletter {
+  margin: 0;
+  float: none;
+  padding: 10px 0;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.block.newsletter .form.subscribe {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100vw;
+    padding: 0 10vw;
+}
+
+.block.newsletter .field .control {
+    width: Calc(100vw - 300px);
+}
+
+.block.newsletter .action.subscribe:hover {
+  transition: background-color, .5s;
+}
+
+.block.newsletter .action.subscribe:hover {
+    background-color: rgb(221, 79, 55) !important;
+    border-color: rgb(221, 79, 55) !important;
+    transform: scaleX(1.15);
+    -webkit-transform: scaleX(1.15);
+    -ms-transform: scaleX(1.15);
+}
+
+
+
+div.block > div.content {
+    background-color: black;
+}
+
+#social-media-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#social-media-block p {
+    color: white;
+    font-size: 18px;
+}
+
+.footer.content .links a {
+    color: white;
+}
+
+.footer.content .links a:visited {
+    color: white;
+}
+
+
+#flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#flex > a {
+  color: white;
+}
+.fab {
+  font-size: 30px;
+  transition: transform, color .5s;
+  color: white;
+  padding: 0 10px;
+}
+
+.fab:hover {
+  color: rgb(221, 79, 55);
+  transform: scale(1.08);
+  -webkit-transform: scale(1.08);
+      -ms-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+
+div.footer > section {
+  max-width: none;
+  padding: 0;
+  text-align: center;
+}
+
+.footer.content .links a {
+  color: white;
+  font-weight: 650;
+  transition: color, transform .3s;
+}
+
+
+.footer.content .links a:hover {
+    color: rgb(221, 79, 55);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    text-decoration: none;
+}
+
+.copyright {
+  background-color: black;
+}
+
+// MEDIA QUERIES
+
+@media screen and (min-width: 600px) {
+  #social-media-block {
+    grid-column-end: 3;
+  }
+  .links {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  #social-media-block {
+    grid-column-end: 4;
+  }
+  .links {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 768px) {
+.page-footer {
+    background: reset;
+  }
+}
+// overwriting css
+@media (min-width: 768px), print
+.block.newsletter {
+    width: reset;
+}
+
+@media (min-width: 768px), print
+.footer.content .links section {
+    /* flex-basis: 25%; */
+    /* max-width: 25%; */
+}
+.footer.content, {
+    max-width: none;
+}
+
+@media screen and (min-width: 800px) {
+  #social-media-block {
+    grid-column-end: 6;
+  }
+  .links {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  #flex {
+    padding: 1rem 0 2rem 0;
+  }
+  footer section {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .newsletter {
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+  .footer {
+    padding: 2rem 5rem 5rem 5rem;
+  }
+}
+
+@media (min-width: 1024px), print
+.footer.content .links section {
+    flex-basis: reset;
+    max-width: reset;
+}
+
+// general item/link hover effects on subpages and item effects on home page

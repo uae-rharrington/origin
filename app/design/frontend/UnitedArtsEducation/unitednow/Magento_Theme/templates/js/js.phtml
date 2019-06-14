@@ -1,0 +1,22 @@
+<?php
+/*
+* Updated by UAE
+* 04/26/2019
+* JS made by Marketing_Cloud
+*/
+?>
+<script>
+
+      let urlstr = window.location.pathname.split('');
+      if (window.location.href.includes('@')) {
+  	     let email = urlstr;
+	       email.shift();
+	       email = email.join('');
+	       console.log(email)
+         _etmc.push(["setOrgId", "20207"]);
+         _etmc.push(["setUserInfo", {"email": email}]);
+         _etmc.push(["trackPageView"])
+      }
+
+
+</script>

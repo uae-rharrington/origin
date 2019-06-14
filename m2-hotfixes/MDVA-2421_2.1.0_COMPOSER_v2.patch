@@ -1,0 +1,19 @@
+diff --git a/vendor/magento/module-elasticsearch/Model/ResourceModel/Index.php b/vendor/magento/module-elasticsearch/Model/ResourceModel/Index.php
+index 59519eb..e9c1359 100644
+--- a/vendor/magento/module-elasticsearch/Model/ResourceModel/Index.php
++++ b/vendor/magento/module-elasticsearch/Model/ResourceModel/Index.php
+@@ -83,6 +83,14 @@ public function getFullProductIndexData($productId, $indexData)
+                         $value = $indexData[$attribute->getAttributeId()][$productId];
+                     } else {
+                         $value = implode(' ', $indexData[$attribute->getAttributeId()]);
++                        if ($attribute->getBackendType() == 'datetime' || $attribute->getBackendType() == 'decimal') {
++                            $value = array_unique($indexData[$attribute->getAttributeId()], SORT_STRING);
++                            if (count($value) === 1) {
++                                $value = array_shift($value);
++                            } else {
++                                $value = null;
++                            }
++                        }
+                     }
+                 } else {
+                     $value = $indexData[$attribute->getAttributeId()];

@@ -1,0 +1,62 @@
+diff --git a/vendor/magento/module-paypal/Controller/Transparent/RequestSecureToken.php b/vendor/magento/module-paypal/Controller/Transparent/RequestSecureToken.php
+index 2efae34a964..1c05ff62335 100644
+--- a/vendor/magento/module-paypal/Controller/Transparent/RequestSecureToken.php
++++ b/vendor/magento/module-paypal/Controller/Transparent/RequestSecureToken.php
+@@ -6,9 +6,11 @@
+ namespace Magento\Paypal\Controller\Transparent;
+ 
+ use Magento\Framework\App\Action\Context;
++use Magento\Framework\App\ObjectManager;
+ use Magento\Framework\Controller\Result\Json;
+ use Magento\Framework\Controller\Result\JsonFactory;
+ use Magento\Framework\Controller\ResultInterface;
++use Magento\Framework\Data\Form\FormKey\Validator;
+ use Magento\Framework\Session\Generic;
+ use Magento\Framework\Session\SessionManager;
+ use Magento\Paypal\Model\Payflow\Service\Request\SecureToken;
+@@ -49,12 +51,18 @@ class RequestSecureToken extends \Magento\Framework\App\Action\Action
+     private $transparent;
+ 
+     /**
++     * @var Validator
++     */
++    private $formKeyValidator;
++
++    /**
+      * @param Context $context
+      * @param JsonFactory $resultJsonFactory
+      * @param Generic $sessionTransparent
+      * @param SecureToken $secureTokenService
+      * @param SessionManager $sessionManager
+      * @param Transparent $transparent
++     * @param Validator $formKeyValidator
+      */
+     public function __construct(
+         Context $context,
+@@ -62,13 +70,15 @@ class RequestSecureToken extends \Magento\Framework\App\Action\Action
+         Generic $sessionTransparent,
+         SecureToken $secureTokenService,
+         SessionManager $sessionManager,
+-        Transparent $transparent
++        Transparent $transparent,
++        Validator $formKeyValidator = null
+     ) {
+         $this->resultJsonFactory = $resultJsonFactory;
+         $this->sessionTransparent = $sessionTransparent;
+         $this->secureTokenService = $secureTokenService;
+         $this->sessionManager = $sessionManager;
+         $this->transparent = $transparent;
++        $this->formKeyValidator = $formKeyValidator ?: ObjectManager::getInstance()->get(Validator::class);
+         parent::__construct($context);
+     }
+ 
+@@ -82,7 +92,7 @@ class RequestSecureToken extends \Magento\Framework\App\Action\Action
+         /** @var Quote $quote */
+         $quote = $this->sessionManager->getQuote();
+ 
+-        if (!$quote or !$quote instanceof Quote) {
++        if (!$quote || !$quote instanceof Quote || !$this->formKeyValidator->validate($this->getRequest())) {
+             return $this->getErrorResponse();
+         }
+ 
+

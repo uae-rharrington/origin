@@ -15,9 +15,6 @@ $store = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create(\Ma
 if ($store->load('shared_catalog', 'code')->getId()) {
     $store->delete();
 }
-$objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();
-/* Refresh stores memory cache */
-$objectManager->get('Magento\Store\Model\StoreManagerInterface')->reinitStores();
 
 $registry->unregister('isSecureArea');
 $registry->register('isSecureArea', false);
