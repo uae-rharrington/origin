@@ -62,6 +62,7 @@ return [
         'Amazon_Payment' => 1,
         'Magento_CheckoutAgreements' => 1,
         'Magento_CheckoutStaging' => 1,
+        'Magento_CloudComponents' => 1,
         'Magento_Vault' => 1,
         'Magento_CmsStaging' => 1,
         'Magento_CmsUrlRewrite' => 1,
