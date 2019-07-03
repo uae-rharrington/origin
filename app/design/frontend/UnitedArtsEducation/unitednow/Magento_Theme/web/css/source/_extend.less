@@ -399,213 +399,248 @@
     }
 }
 
+
 // 2019 changes by Bailey
 
-// change shopping cart and search icon for hover effects
-// shopping cart: <i class="fas fa-shopping-cart"></i>
-// magnifying glass: <i class="fas fa-search"></i>
-// blue logo color: rgb(48, 106, 173)
-// red logo color: rgb(221, 79, 55)
-
-
-// aesthetic changes to 3 categories on homepage
-
-// evenly distribute 'outdoor fun'/season items on homepage
-
-// changes to 4 6 bottom boxes?
-
-// aesthetic changes to footer
+// FOOTER
 footer {
-  background-image: url(https://res.cloudinary.com/djad06sng/image/upload/v1560433872/mike-petrucci-57647-unsplash.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  padding: 0;
-  margin: 0;
+ background-image: url(https://res.cloudinary.com/djad06sng/image/upload/v1560433872/mike-petrucci-57647-unsplash.jpg);
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+ background-attachment: fixed;
+ padding: 0;
+ margin: 0;
 }
 
 .footer.content {
-    background-color: rgba(0, 0, 0, .3);
+   background-color: rgba(0, 0, 0, .3);
+   margin: 0!important;
+   padding: 0 0 3vh 0;
 }
 
 div.footer>div.block>div.content {
-    padding: 10px;
-    border-radius: 10px;
-    margin: 0 5rem;
+   padding: 10px;
+   border-radius: 10px;
+   margin: 0 5rem;
 }
 
 footer > div {
-  padding: 2rem 4rem;
-  background-color: rgba(0, 0, 0, .5);
+ padding: 2rem 4rem;
+ background-color: rgba(0, 0, 0, .5);
 }
 
 .page-footer {
-  background-color: none;
-  padding: 0;
+ background-color: none;
+ padding: 0;
 }
 
 .block.newsletter {
-    margin-bottom: 0px;
+   margin-bottom: 0px;
 }
 
 
 footer ul > li > a {
-  color: white;
+ color: white;
 }
 
 footer h4 {
-  color: white;
-  font-size: 18px;
+ color: white;
+ font-size: 18px;
 }
 
 .footer {
-  display: grid;
-  grid-template-columns: 1fr;
-  padding: 0 2rem;
+ display: flex;
+ flex-direction: column;
+ padding: 0 2rem;
+ overflow-x: hidden;
+}
+
+.links {
+   display: grid;
+   grid-template-columns: 1fr;
+   padding: 0 2rem;
+}
+.links >section {
+   text-align: center;
 }
 
 .newsletter {
-  width: 95%
-  margin: 0;
-  float: none;
-  padding: 10px 0;
+ margin: 0;
+ float: none;
+ padding: 10px 0;
+ width: 100vw;
+ overflow-x: hidden;
 }
 
 .block.newsletter .form.subscribe {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100;
-    justify-content: center;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   width: 100vw;
+   padding: 0 10vw;
 }
 
-.block.newsletter .field {
-    min-width: 250px;
+.block.newsletter .field .control {
+   width: Calc(100vw - 300px);
 }
+
+.block.newsletter .action.subscribe:hover {
+ transition: background-color, .5s;
+}
+
+.block.newsletter .action.subscribe:hover {
+   background-color: rgb(221, 79, 55) !important;
+   border-color: rgb(221, 79, 55) !important;
+   transform: scaleX(1.15);
+   -webkit-transform: scaleX(1.15);
+   -ms-transform: scaleX(1.15);
+}
+
 
 
 div.block > div.content {
-    background-color: black;
+   background-color: black;
 }
 
 #social-media-block {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  text-align: center;
-  grid-column-start: 1;
-  grid-column-end: 3;
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ text-align: center;
+ grid-column-start: 1;
+ grid-column-end: 2;
 }
 
 #social-media-block p {
-    color: white;
-    font-size: 18px;
+   color: white;
+   font-size: 18px;
 }
 
+
 .footer.content .links a {
-    color: white;
+   color: white;
 }
 
 .footer.content .links a:visited {
-    color: white;
+   color: white;
 }
 
 
 #flex {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
 }
 
 #flex > a {
-  color: white;
+ color: white;
 }
 .fab {
-  font-size: 30px;
-  transition: transform, color .5s;
-  color: white;
-  padding: 0 10px;
+ font-size: 30px;
+ transition: transform, color .5s;
+ color: white;
+ padding: 0 10px;
 }
 
 .fab:hover {
-  color: rgb(221, 79, 55);
-  transform: scale(1.08);
-  -webkit-transform: scale(1.08);
-      -ms-transform: scale(1.08);
-          transform: scale(1.08);
+ color: rgb(221, 79, 55);
+ transform: scale(1.08);
+ -webkit-transform: scale(1.08);
+     -ms-transform: scale(1.08);
+         transform: scale(1.08);
 }
 
 
 div.footer > section {
-  max-width: none;
-  padding: 0;
+ max-width: none;
+ padding: 0;
+ text-align: center;
 }
 
 .footer.content .links a {
-  color: white;
-  transition: color, transform .3s;
+ color: white;
+ font-weight: 750;
+ transition: color, transform .3s;
 }
 
 
 .footer.content .links a:hover {
-    color: rgb(221, 79, 55);
-    transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
-    text-decoration: none;
+   color: rgb(221, 79, 55);
+   transform: scale(1.1);
+   -webkit-transform: scale(1.1);
+       -ms-transform: scale(1.1);
+           transform: scale(1.1);
+   text-decoration: none;
 }
 
-.copyright {
-  background-color: black;
+// very necessary rule
+.footer.content {
+   max-width: calc(100vw - (100vw - 100%));;
 }
 
 // MEDIA QUERIES
 
-@media screen and (min-width: 600px) {
-  #social-media-block {
-    grid-column-end: 3;
-  }
+@media only screen and (min-width: 460px) {
+ #social-media-block {
+   grid-column-end: 3!important;
+ }
+ .links {
+   grid-template-columns: repeat(2, 50%)!important;
+ }
 }
 
-@media screen and (min-width: 700px) {
-  #social-media-block {
-    grid-column-end: 4;
-  }
+@media only screen and (min-width: 700px) {
+ #social-media-block {
+   grid-column-end: 4;
+ }
+ .links {
+   grid-template-columns: 1fr 1fr 1fr;
+ }
 }
 
-@media screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) {
 .page-footer {
-    background: reset;
-  }
+   background: reset;
+ }
+ .block.newsletter {
+    width: reset;
+ }
+ .footer.content .links section {
+   flex-basis: 100%!important;
+   max-width: 100%!important;
+ }
 }
 
-@media screen and (min-width: 800px) {
-  #social-media-block {
-    grid-column-end: 5;
-  }
-  #flex {
-    padding: 1rem 0 2rem 0;
-  }
-  footer section {
-    padding: 0 10px;
-  }
+
+@media only screen and (min-width: 800px) {
+ #social-media-block {
+   grid-column-end: 6;
+ }
+ .links {
+   grid-template-columns: repeat(5, 20%);
+ }
+ #flex {
+   padding: 1rem 0 2rem 0;
+ }
+ footer section {
+   padding: 0 10px;
+ }
 }
 
-@media screen and (min-width: 900px) {
-  .newsletter {
-    width: 75%;
-    margin: 0 auto;
-    padding: 10px 0;
-  }
-  #social-media-block {
-    grid-column-end: 6;
-  }
-  .footer {
-    padding: 2rem 5rem 5rem 5rem;
-  }
+@media only screen and (min-width: 900px) {
+ .newsletter {
+   margin: 0 auto;
+   padding: 10px 0;
+ }
+ .footer {
+   padding: 2rem 5rem 5rem 5rem;
+ }
 }
 
-// general item/link hover effects on subpages and item effects on home page
+@media only screen and (min-width: 1024px) {
+  .footer.content .links section {
+      flex-basis: 100%;
+      max-width: 100%;
+  }
+}
