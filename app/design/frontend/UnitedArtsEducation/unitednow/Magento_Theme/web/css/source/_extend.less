@@ -400,6 +400,7 @@
 }
 
 
+
 // 2019 changes by Bailey
 
 // FOOTER
@@ -411,6 +412,17 @@ footer {
  background-attachment: fixed;
  padding: 0;
  margin: 0;
+}
+
+div.footer>div.block>div.content {
+    padding: 0!important;
+    border-radius: none!important;
+    margin: 0!important;
+}
+
+
+.block.newsletter .field .control {
+    width: calc(100vw - 113px))!important;
 }
 
 .footer.content {
@@ -477,12 +489,7 @@ footer h4 {
    display: flex;
    flex-direction: row;
    align-items: center;
-   width: 100vw;
    padding: 0 10vw;
-}
-
-.block.newsletter .field .control {
-   width: Calc(100vw - 300px);
 }
 
 .block.newsletter .action.subscribe:hover {
@@ -558,6 +565,10 @@ div.footer > section {
  text-align: center;
 }
 
+.footer.links {
+    display: grid!important;
+}
+
 .footer.content .links a {
  color: white;
  font-weight: 750;
@@ -576,14 +587,25 @@ div.footer > section {
 
 // very necessary rule
 .footer.content {
-   max-width: calc(100vw - (100vw - 100%));;
+   max-width: calc(100vw - (100vw - 100%);
+}
+
+.copyright {
+    background-color: black!important;
 }
 
 // MEDIA QUERIES
 
+@media only screen and (max-width: 479px) {
+  .footer.content .footer.links section {
+    flex-basis: 100%;
+    max-width: 100%;
+	}
+}
+
 @media only screen and (min-width: 460px) {
  #social-media-block {
-   grid-column-end: 3!important;
+   grid-column-end: 4!important;
  }
  .links {
    grid-template-columns: repeat(2, 50%)!important;
@@ -592,19 +614,23 @@ div.footer > section {
 
 @media only screen and (min-width: 700px) {
  #social-media-block {
-   grid-column-end: 4;
+   grid-column-end: 4!important;;
  }
  .links {
-   grid-template-columns: 1fr 1fr 1fr;
+   grid-template-columns: 1fr 1fr 1fr!important;
  }
+}
+
+@media only screen and (max-width: 767px) {
+  .footer.content .links section {
+    flex-basis: 100%;
+    max-width: 100%;
+}
 }
 
 @media only screen and (min-width: 768px) {
 .page-footer {
    background: reset;
- }
- .block.newsletter {
-    width: reset;
  }
  .footer.content .links section {
    flex-basis: 100%!important;
@@ -614,12 +640,12 @@ div.footer > section {
 
 
 @media only screen and (min-width: 800px) {
- #social-media-block {
-   grid-column-end: 6;
- }
- .links {
-   grid-template-columns: repeat(5, 20%);
- }
+  .footer.links {
+      grid-template-columns: repeat(5, 20%)!important;
+  }
+  div#social-media-block {
+      grid-column-end: 6!important;
+  }
  #flex {
    padding: 1rem 0 2rem 0;
  }
