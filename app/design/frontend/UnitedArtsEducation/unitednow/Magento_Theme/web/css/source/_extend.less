@@ -604,108 +604,34 @@ div.footer > section {
 
 }
 
-
-.footer.links {
-    display: block!important;
-  }
-
-  .block.newsletter .form.subscribe {
-    padding: 0;
-  }
-
-  .block.newsletter {
-    width: auto!important;
-  }
-
-  .block.content {
-    border-radius: 0;
-  }
-
-  .newsletter {
-    width: 30vw;
-  }
-
-
-  .block.newsletter .field .control {
-    width: auto !important;
+.footer.content .links section {
+    flex-basis: auto !important;
+    max-width: none !important;
 }
-
-
-
-#flex {
-  flex-wrap: wrap;
-
-}
-
-#flex section {
-  width: 200px!important;
-  text-align: center;
-}
-
-.content {
-  border-radius: 0;
-}
-
-
 
 
 // MEDIA QUERIES
 
-@media only screen and (max-width: 479px) {
-  .footer.content .footer.links section {
-    flex-basis: 100%;
-    max-width: 100%;
-	}
-}
-
-@media (min-width: 768px) {
-  .block.newsletter {
-    width: 100%;
-  }
-  .newsletter {
-      width: 100%;
-  }
-}
 
 
 
-@media only screen and (min-width: 768px) {
-  .footer.content .links section {
-      flex-basis: auto!important;
-      max-width: none!important;
-  }
-}
 
-
-@media only screen and (max-width: 767px) {
-  .footer.content .links section {
-      flex-basis: auto;
-      max-width: none;
-  }
-}
-
-
-
-@media only screen and (max-width: 767px) {
-  .footer.content .links section {
-    flex-basis: 100%;
-    max-width: 100%;
-}
-}
 
 @media only screen and (min-width: 768px) {
 .page-footer {
    background: reset;
  }
- .footer.content .links section {
-   flex-basis: 100%!important;
-   max-width: 100%!important;
- }
  .block.newsletter {
      width: 100%;
  }
-}
+ .newsletter {
+     width: auto;
+ }
+ form#newsletter-validate-detail {
+   padding: 0 10px;
+ }
 
+}
 
 @media only screen and (min-width: 800px) {
 
@@ -725,11 +651,4 @@ div.footer > section {
  .footer {
    padding: 2rem 5rem 5rem 5rem;
  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .footer.content .links section {
-      flex-basis: 100%;
-      max-width: 100%;
-  }
 }
