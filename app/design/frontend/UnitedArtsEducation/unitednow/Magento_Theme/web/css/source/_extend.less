@@ -404,15 +404,7 @@
 // 2019 changes by Bailey
 
 // FOOTER
-footer {
- background-image: url(https://res.cloudinary.com/djad06sng/image/upload/v1560433872/mike-petrucci-57647-unsplash.jpg);
- background-repeat: no-repeat;
- background-position: center;
- background-size: cover;
- background-attachment: fixed;
- padding: 0;
- margin: 0;
-}
+
 
 div.footer>div.block>div.content {
     padding: 0!important;
@@ -468,11 +460,7 @@ footer h4 {
  overflow-x: hidden;
 }
 
-.links {
-   display: grid;
-   grid-template-columns: 1fr;
-   padding: 0 2rem;
-}
+
 .links >section {
    text-align: center;
 }
@@ -515,8 +503,6 @@ div.block > div.content {
  flex-direction: column;
  width: 100%;
  text-align: center;
- grid-column-start: 1;
- grid-column-end: 2;
 }
 
 #social-media-block p {
@@ -565,9 +551,7 @@ div.footer > section {
  text-align: center;
 }
 
-.footer.links {
-    display: grid!important;
-}
+
 
 .footer.content .links a {
  color: white;
@@ -603,23 +587,8 @@ div.footer > section {
 	}
 }
 
-@media only screen and (min-width: 460px) {
- #social-media-block {
-   grid-column-end: 4!important;
- }
- .links {
-   grid-template-columns: repeat(2, 50%)!important;
- }
-}
 
-@media only screen and (min-width: 700px) {
- #social-media-block {
-   grid-column-end: 4!important;;
- }
- .links {
-   grid-template-columns: 1fr 1fr 1fr!important;
- }
-}
+
 
 @media only screen and (max-width: 767px) {
   .footer.content .links section {
@@ -640,12 +609,7 @@ div.footer > section {
 
 
 @media only screen and (min-width: 800px) {
-  .footer.links {
-      grid-template-columns: repeat(5, 20%)!important;
-  }
-  div#social-media-block {
-      grid-column-end: 6!important;
-  }
+
  #flex {
    padding: 1rem 0 2rem 0;
  }
