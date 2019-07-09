@@ -6,7 +6,7 @@
  */
 
 namespace UAE\Customer\Controller\Account;
-class Index extends \Magento\Customer\Controller\Account
+class LoginPost extends \Magento\Customer\Controller\Account
 {
   /**
    * Login post action
@@ -75,5 +75,5 @@ class Index extends \Magento\Customer\Controller\Account
 
       return $this->accountRedirect->getRedirect();
   }
-    
+
 }
