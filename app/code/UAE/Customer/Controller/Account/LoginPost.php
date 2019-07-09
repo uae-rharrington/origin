@@ -6,6 +6,7 @@
  */
 
 namespace UAE\Customer\Controller\Account;
+
 class LoginPost extends \Magento\Customer\Controller\Account
 {
   /**
