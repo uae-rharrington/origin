@@ -7,8 +7,117 @@
 
 namespace UAE\Customer\Controller\Account;
 
-class LoginPost extends Vendor\Magento\Customer\Controller\Account
+class LoginPost extends \Magento\Customer\Controller\Account
 {
+  /**
+   * @var \Magento\Customer\Api\AccountManagementInterface
+   */
+  protected $customerAccountManagement;
+
+  /**
+   * @var \Magento\Framework\Data\Form\FormKey\Validator
+   */
+  protected $formKeyValidator;
+
+  /**
+   * @var AccountRedirect
+   */
+  protected $accountRedirect;
+
+  /**
+   * @var Session
+   */
+  protected $session;
+
+  /**
+   * @var ScopeConfigInterface
+   */
+  private $scopeConfig;
+
+  /**
+   * @var \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory
+   */
+  private $cookieMetadataFactory;
+
+  /**
+   * @var \Magento\Framework\Stdlib\Cookie\PhpCookieManager
+   */
+  private $cookieMetadataManager;
+
+  /**
+   * @param Context $context
+   * @param Session $customerSession
+   * @param AccountManagementInterface $customerAccountManagement
+   * @param CustomerUrl $customerHelperData
+   * @param Validator $formKeyValidator
+   * @param AccountRedirect $accountRedirect
+   */
+  public function __construct(
+      Context $context,
+      Session $customerSession,
+      AccountManagementInterface $customerAccountManagement,
+      CustomerUrl $customerHelperData,
+      Validator $formKeyValidator,
+      AccountRedirect $accountRedirect
+  ) {
+      $this->session = $customerSession;
+      $this->customerAccountManagement = $customerAccountManagement;
+      $this->customerUrl = $customerHelperData;
+      $this->formKeyValidator = $formKeyValidator;
+      $this->accountRedirect = $accountRedirect;
+      parent::__construct($context);
+  }
+
+  /**
+   * Get scope config
+   *
+   * @return ScopeConfigInterface
+   * @deprecated 100.0.10
+   */
+  private function getScopeConfig()
+  {
+      if (!($this->scopeConfig instanceof \Magento\Framework\App\Config\ScopeConfigInterface)) {
+          return \Magento\Framework\App\ObjectManager::getInstance()->get(
+              \Magento\Framework\App\Config\ScopeConfigInterface::class
+          );
+      } else {
+          return $this->scopeConfig;
+      }
+  }
+
+  /**
+   * Retrieve cookie manager
+   *
+   * @deprecated 100.1.0
+   * @return \Magento\Framework\Stdlib\Cookie\PhpCookieManager
+   */
+  private function getCookieManager()
+  {
+      if (!$this->cookieMetadataManager) {
+          $this->cookieMetadataManager = \Magento\Framework\App\ObjectManager::getInstance()->get(
+              \Magento\Framework\Stdlib\Cookie\PhpCookieManager::class
+          );
+      }
+      return $this->cookieMetadataManager;
+  }
+
+  /**
+   * Retrieve cookie metadata factory
+   *
+   * @deprecated 100.1.0
+   * @return \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory
+   */
+  private function getCookieMetadataFactory()
+  {
+      if (!$this->cookieMetadataFactory) {
+          $this->cookieMetadataFactory = \Magento\Framework\App\ObjectManager::getInstance()->get(
+              \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory::class
+          );
+      }
+      return $this->cookieMetadataFactory;
+  }
+
+
   /**
    * Login post action
    *
