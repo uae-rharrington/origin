@@ -240,7 +240,6 @@ return [
         'Temando_Shipping' => 1,
         'Taxjar_SalesTax' => 1,
         'UAE_AdvancedCheckout' => 1,
-        'UAE_Customer' => 1,
         'UAE_GiftcardFieldUpdate' => 1,
         'UAE_GroupedProduct' => 1,
         'UAE_NewsLetter' => 1,
