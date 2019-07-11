@@ -418,7 +418,7 @@ div.footer>div.block>div.content {
 }
 
 .footer.content {
-   background-color: rgba(0, 0, 0, .3);
+   background: linear-gradient(30deg, rgba(55, 197, 221, 0.5), 20%, rgba(161, 86, 1, 0.7));
    margin: 0!important;
    padding: 0 0 3vh 0;
 }
@@ -538,7 +538,7 @@ div.block > div.content {
 }
 
 .fab:hover {
- color: rgb(221, 79, 55);
+ color: #37c5dd;
  transform: scale(1.08);
  -webkit-transform: scale(1.08);
      -ms-transform: scale(1.08);
@@ -562,7 +562,7 @@ div.footer > section {
 
 
 .footer.content .links a:hover {
-   color: rgb(221, 79, 55);
+   color: #37c5dd;
    transform: scale(1.1);
    -webkit-transform: scale(1.1);
        -ms-transform: scale(1.1);
@@ -583,16 +583,16 @@ div.footer > section {
     display: block!important;
   }
 
-  .block.newsletter .form.subscribe {
+.block.newsletter .form.subscribe {
     padding: 0;
-  }
+}
 
-  .newsletter {
-    width: Calc(100% - 113px);
-  }
+.newsletter {
+  width: Calc(100% - 113px);
+}
 
-  .block.newsletter .field .control {
-    width: auto!important;
+.block.newsletter .field .control {
+  width: auto!important;
 }
 
 #flex {
@@ -619,6 +619,7 @@ form#newsletter-validate-detail {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  backround-color: #37c5dd;
 }
 
 .content {
@@ -636,11 +637,6 @@ form#newsletter-validate-detail {
 
 
 // MEDIA QUERIES
-
-
-
-
-
 
 @media only screen and (min-width: 768px) {
 .page-footer {
