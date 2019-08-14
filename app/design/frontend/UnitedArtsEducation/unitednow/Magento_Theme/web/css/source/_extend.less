@@ -495,7 +495,7 @@ footer h4 {
 
 
 div.block > div.content {
-   background-color: #37c5dd;
+   background-color: #204773;
    width: 100vw;
 }
 
@@ -538,7 +538,7 @@ div.block > div.content {
 }
 
 .fab:hover {
- color: #37c5dd;
+ color: #204773;
  transform: scale(1.08);
  -webkit-transform: scale(1.08);
      -ms-transform: scale(1.08);
@@ -562,7 +562,7 @@ div.footer > section {
 
 
 .footer.content .links a:hover {
-   color: #37c5dd;
+   color: #204773;
    transform: scale(1.1);
    -webkit-transform: scale(1.1);
        -ms-transform: scale(1.1);
@@ -576,7 +576,7 @@ div.footer > section {
 }
 
 .copyright {
-    background-color: #37c5dd!important;
+    background-color: #204773!important;
 }
 
 .footer.links {
@@ -619,7 +619,7 @@ form#newsletter-validate-detail {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  backround-color: #37c5dd;
+  backround-color: #204773;
 }
 
 .content {
@@ -634,6 +634,186 @@ form#newsletter-validate-detail {
 .field.newsletter {
     width: 198px;
 }
+// 3 image panel across the top
+
+#trifecta-container {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+ }
+
+.overlay-container {
+  overflow:hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.overlay-fade {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.35);
+  width: 100%;
+  height: 100%;
+  /* for positioning the text inside */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background-color 0.5s;
+  cursor: pointer;
+  padding: 25vh 0;
+}
+
+.overlay-fade:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.overlay-fade:hover > h1 {
+  transform: scale(1.1);
+}
+
+.overlay-fade:hover h1 {
+  transition: transform, .5s;
+}
+
+#image-1 {
+  background-image: url(https://res.cloudinary.com/djad06sng/image/upload/v1560522827/rhondak-native-florida-folk-artist-83553-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform, .5s;
+}
+
+#image-2 {
+  background-image: url(https://res.cloudinary.com/djad06sng/image/upload/v1560458119/thought-catalog-217861-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform, .5s;
+ }
+
+#image-1:hover,
+#image-2:hover,
+#image-3:hover {
+  transform: scale(1.1);
+}
+
+
+#image-3 {
+  background-image: url(https://res.cloudinary.com/djad06sng/image/upload/v1560458109/michal-parzuchowski-224092-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform, .5s;
+}
+
+.container {
+  overflow: hidden;
+}
+
+
+
+.overlay-container a {
+  text-decoration: none;
+}
+
+#shop-call {
+  color: black;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.overlay-container .fas {
+  font-size: 25px;
+  transition: color, .3s;
+}
+
+#shop-call:hover > i {
+  color: #204773;
+  transform: scale(1.1);
+}
+
+nav > ul {
+  background-color: #204773;
+}
+
+nav span {
+  color: white;
+}
+
+#ui-id-11,
+#ui-id-10 {
+  color: white;
+}
+
+.header-promo {
+  margin-bottom: 0px;
+}
+
+.header-promo small {
+  color: black;
+}
+
+div.nav-sections {
+  background-color: #204773;
+  color: white;
+}
+
+.header-promo {
+  background-color: #ffff33;
+  color: black;
+}
+
+ul.level0.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all,
+ul.level1.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded,
+ul.level2.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded {
+  background-color: #204773;
+}
+
+
+ul.level0.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all a,
+ul.level1.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a,
+ul.level2.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a {
+  transition: all .3s;
+}
+
+ul.level0.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all a:hover,
+ul.level1.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a:hover,
+ul.level2.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a:hover {
+  /* background-color: #21a9c0; */
+  background-color: white;
+  font-size: 15px;
+}
+
+ul.level0.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all a:hover span,
+ul.level1.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a:hover span,
+ul.level2.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a:hover span {
+  color: #204773;
+}
+
+
+.overlay-fade h1 {
+  color: white;
+  margin: 0;
+  font-size: 25px;
+  font-weight: 550;
+  padding: 20vh 0;
+}
+
+.navigation, .breadcrumbs, .page-header .header.panel, .header.content, .footer.content, .page-wrapper>.widget, .page-wrapper>.page-bottom, .block.category.event, .top-container, .page-main {
+   margin-left: 0px;
+   margin-right: 0px;
+   max-width: none;
+   padding-left: 0px;
+   padding-right: 0px;
+   width: auto;
+}
+
+#shop-call:hover > i {
+  color: #f2a01c;
+  transform: scale(1.1);
+}
+
+.overlay-fade {
+  padding: 0;
+}
+
 
 
 // MEDIA QUERIES
@@ -665,6 +845,24 @@ form#newsletter-validate-detail {
 }
 
 @media only screen and (min-width: 900px) {
+  .overlay-container {
+    max-width: 34vw;
+    }
+    #trifecta-container {
+      flex-direction: row;
+    }
+
+    #image-1,
+    #image-2,
+    #image-3 {
+      background-position: center;
+      max-width: 34vw;
+    }
+
+    #trifect-container p {
+      padding: 0 2vw;
+    }
+
  .newsletter {
    margin: 0 auto;
    padding: 10px 0;
