@@ -45,7 +45,7 @@
     .header-promo {
         margin-bottom: 25px;
         padding: 7px;
-        background: #306AAC;// @header-panel__background-color;
+        background: @blue;// @header-panel__background-color;
         color: @color-white;
         font-size: 16px;
         text-align: center;
@@ -403,6 +403,45 @@
 
 // 2019 changes by Bailey
 
+// variables
+
+@blue: @blue;
+
+.top-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// enhancements to search input
+
+input#search {
+  background-color: none;
+}
+
+// changes to cart icon and number of items in cart
+
+.action.showcart:before {
+  color: black;
+  font-size: 32px;
+  transition: transform, color .3s;
+  &:hover {
+    color: @blue;
+    -webkit-transform: scale(1.08);
+        -ms-transform: scale(1.08);
+            transform: scale(1.08);
+  }
+}
+
+.minicart-wrapper .action.showcar .counter.qty {
+  height: auto;
+  font-size: inherit;
+  line-height: 20px;
+  margin: 2px 5px;
+  -webkit-transform: scale(1.4);
+      -ms-transform: scale(1.4);
+  transform: scale(1.4);
+}
+
 // FOOTER
 
 
@@ -495,7 +534,7 @@ footer h4 {
 
 
 div.block > div.content {
-   background-color: #306aac;
+   background-color: rgba(48, 106, 172, 0.85);
    width: 100vw;
 }
 
@@ -538,7 +577,7 @@ div.block > div.content {
 }
 
 .fab:hover {
- color: #306aac;
+ color: @blue;
  transform: scale(1.08);
  -webkit-transform: scale(1.08);
      -ms-transform: scale(1.08);
@@ -557,12 +596,11 @@ div.footer > section {
 .footer.content .links a {
  color: white;
  font-weight: 750;
- transition: color, transform .3s;
+ transition: transform .3s;
 }
 
 
 .footer.content .links a:hover {
-   color: #306aac;
    transform: scale(1.1);
    -webkit-transform: scale(1.1);
        -ms-transform: scale(1.1);
@@ -576,7 +614,7 @@ div.footer > section {
 }
 
 .copyright {
-    background-color: #306aac!important;
+    background-color: rgba(48, 106, 172, 0.85)!important;
 }
 
 .footer.links {
@@ -619,7 +657,7 @@ form#newsletter-validate-detail {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  backround-color: #306aac;
+  backround-color: @blue;
 }
 
 .content {
@@ -634,7 +672,18 @@ form#newsletter-validate-detail {
 .field.newsletter {
     width: 198px;
 }
+
+// changes to sale link
+li.level0.nav-6 {
+  background-color: #DE5038;
+  padding: 0 5px;
+}
+
 // 3 image panel across the top
+
+main#maincontent {
+  max-width: none;
+}
 
 #trifecta-container {
   display: flex;
@@ -711,6 +760,11 @@ form#newsletter-validate-detail {
 
 .overlay-container a {
   text-decoration: none;
+  p {
+    line-height: 1.75;
+    width: 75%;
+    margin: 10px auto;
+  }
 }
 
 #shop-call {
@@ -725,12 +779,12 @@ form#newsletter-validate-detail {
 }
 
 #shop-call:hover > i {
-  color: #306aac;
+  color: @blue;
   transform: scale(1.1);
 }
 
-nav > ul {
-  background-color: #306aac;
+nav.navigation > ul {
+  background-color: @blue;
 }
 
 nav span {
@@ -742,16 +796,12 @@ nav span {
   color: white;
 }
 
-.header-promo {
-  margin-bottom: 0px;
-}
-
 .header-promo small {
   color: black;
 }
 
 div.nav-sections {
-  background-color: #306aac;
+  background-color: @blue;
   color: white;
 }
 
@@ -763,7 +813,7 @@ div.nav-sections {
 ul.level0.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all,
 ul.level1.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded,
 ul.level2.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded {
-  background-color: #306aac;
+  background-color: @blue;
 }
 
 
@@ -784,7 +834,7 @@ ul.level2.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a:h
 ul.level0.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all a:hover span,
 ul.level1.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a:hover span,
 ul.level2.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a:hover span {
-  color: #306aac;
+  color: @blue;
 }
 
 
@@ -812,8 +862,86 @@ ul.level2.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a:h
 
 .overlay-fade {
   padding: 0;
+  max-height: 310.4px;
 }
 
+// changes to side bar links on pages like unitednow.com/education
+
+.breadcrumbs .items {
+  font-size: 1.5rem;
+}
+
+nav#UAE_categories_list > ul {
+    border: none;
+    > li {
+      text-indent: 0;
+      padding: 0px;
+      > a {
+        font-size: 1.6rem;
+        color: @blue;
+        font-weight: 600;
+        transition: transform .3s;
+        &:hover {
+          text-decoration: none;
+          transform: scale(1.08);
+          -webkit-transform: scale(1.08);
+              -ms-transform: scale(1.08);
+                  transform: scale(1.08);
+        }
+      }
+    }
+}
+
+// changes to images on pages like unitednow.com/education
+
+div#UAE_categories > div.UAE_category_tile {
+  overflow: hidden;
+  a > img {
+    padding-bottom: 10px;
+    transition: transform .3s;
+    margin: 0px;
+    width: 100%;
+    border-radius: 0px;
+    &:hover {
+      -webkit-transform: scale(1.08);
+          -ms-transform: scale(1.08);
+              transform: scale(1.08);
+    }
+  }
+}
+
+// removing yellow on hover and text underline
+.UAE_category_tile:hover {
+  background: none;
+}
+
+UAE_category_tile a:hover {
+  text-decoration: none;
+}
+
+// enhancing link hover action on pages like unitednow.com/education/activity-coloring-books
+
+.block-subtitle.filter-subtitle {
+  font-size: 24px;
+}
+
+div.filter-options-title {
+  font-size: 1.8rem;
+}
+
+div.filter-options-content > ol > li > a {
+  font-size: 2.5rem;
+  color: black;
+  font-weight: 600;
+  transition: color, transform .3s;
+  &:hover {
+    background-color: none;
+    color: @blue;
+    -webkit-transform: scale(1.08);
+        -ms-transform: scale(1.08);
+            transform: scale(1.08);
+  }
+}
 
 
 // MEDIA QUERIES
