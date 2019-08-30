@@ -415,21 +415,22 @@
 // enhancements to search input
 
 input#search {
-  background-color: none;
+  background-color: white;
 }
 
-// changes to cart icon and number of items in cart
+// changes to .action.showcart icon and number of items in cart
 
 .action.showcart:before {
-  color: black;
-  font-size: 32px;
+  color: black!important;
+  font-size: 32px!important;
   transition: transform, color .3s;
-  &:hover {
-    color: @blue;
+}
+
+.action.showcart:hover:before {
+    color: @blue!important;
     -webkit-transform: scale(1.08);
         -ms-transform: scale(1.08);
             transform: scale(1.08);
-  }
 }
 
 .minicart-wrapper .action.showcar .counter.qty {
@@ -440,6 +441,10 @@ input#search {
   -webkit-transform: scale(1.4);
       -ms-transform: scale(1.4);
   transform: scale(1.4);
+}
+
+.level-top {
+    color: white !important;
 }
 
 // FOOTER
@@ -601,6 +606,7 @@ div.footer > section {
 
 
 .footer.content .links a:hover {
+  color: white;
    transform: scale(1.1);
    -webkit-transform: scale(1.1);
        -ms-transform: scale(1.1);
@@ -682,7 +688,9 @@ li.level0.nav-6 {
 // 3 image panel across the top
 
 main#maincontent {
-  max-width: none;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #trifecta-container {
@@ -756,15 +764,14 @@ main#maincontent {
   overflow: hidden;
 }
 
-
-
-.overlay-container a {
-  text-decoration: none;
-  p {
+.overlay-container p {
     line-height: 1.75;
     width: 75%;
     margin: 10px auto;
-  }
+}
+
+.overlay-container a {
+  text-decoration: none;
 }
 
 #shop-call {
@@ -795,7 +802,9 @@ nav span {
 #ui-id-10 {
   color: white;
 }
-
+.header-promo {
+  margin-bottom: 0px;
+}
 .header-promo small {
   color: black;
 }
@@ -862,7 +871,7 @@ ul.level2.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a:h
 
 .overlay-fade {
   padding: 0;
-  max-height: 310.4px;
+  max-height: 305px;
 }
 
 // changes to side bar links on pages like unitednow.com/education
@@ -882,21 +891,36 @@ nav#UAE_categories_list > ul {
         font-weight: 600;
         transition: transform .3s;
         &:hover {
-          text-decoration: none;
-          transform: scale(1.08);
-          -webkit-transform: scale(1.08);
-              -ms-transform: scale(1.08);
-                  transform: scale(1.08);
+          text-decoration: none!important;
+          color: @blue!important;
+          transform: scale(1.08)!important;
+          -webkit-transform: scale(1.08)!important;
+              -ms-transform: scale(1.08)!important;
+                  transform: scale(1.08)!important;
         }
       }
     }
 }
 
+nav#UAE_categories_list > ul > li > a:hover li {
+  background-color: white;
+  border: none;
+}
+
+.UAE_category_tile:hover {
+    background-color: white !important;
+}
+
+
 // changes to images on pages like unitednow.com/education
 
 div#UAE_categories > div.UAE_category_tile {
   overflow: hidden;
-  a > img {
+  a {
+    font-size: 1.75rem;
+    text-decoration: none!important;
+  }
+  img {
     padding-bottom: 10px;
     transition: transform .3s;
     margin: 0px;
@@ -930,17 +954,18 @@ div.filter-options-title {
 }
 
 div.filter-options-content > ol > li > a {
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   color: black;
   font-weight: 600;
   transition: color, transform .3s;
-  &:hover {
-    background-color: none;
-    color: @blue;
-    -webkit-transform: scale(1.08);
-        -ms-transform: scale(1.08);
-            transform: scale(1.08);
-  }
+}
+
+div.filter-options-content > ol > li > a:hover {
+  background-color: white;
+  color: @blue;
+  -webkit-transform: scale(1.08);
+      -ms-transform: scale(1.08);
+          transform: scale(1.08);
 }
 
 
