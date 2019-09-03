@@ -969,6 +969,53 @@ div.filter-options-content > ol > li > a:hover {
 }
 
 
+// ENHANCEMENTS TO PINK/BLUE BOXES THAT WERE ABOVE THE FOOTER ON THE HOMEPAGE
+
+
+#tiles {
+  text-align: right;
+  padding: 8vw;
+  background-image: url(https://res.cloudinary.com/djad06sng/image/upload/v1562693011/leone-venter-mTkXSSScrzw-unsplash.jpg), linear-gradient(-120deg, #37c5dd, 30%, rgba(161, 86, 1, 0.7));
+  background-blend-mode: overlay;
+  background-position: left;
+  background-size: cover;
+}
+
+#tiles h3 {
+  font-size: 20px;
+  color: white;
+  padding-top: 8vh;
+}
+
+#tiles p {
+  color: white;
+  font-weight: 700;
+}
+
+.left {
+  text-align: left;
+}
+
+
+
+/* CLASSES FOR JS EFFECTS */
+
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition-property: translate opacity;
+  transition-duration: .8s;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.left.fade button {
+  margin: 10px 30px;
+}
+
 // MEDIA QUERIES
 
 @media only screen and (min-width: 768px) {
