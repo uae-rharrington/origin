@@ -967,6 +967,95 @@ div.filter-options-content > ol > li > a:hover {
           transform: scale(1.08);
 }
 
+// ENHANCEMENTS TO CHANGING CONTENT ON THE homepage
+
+.always_updating {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  width: 100%;
+}
+
+.always_updating div {
+    font-family: 'News Cycle', sans-serif;
+    color: white;
+  }
+
+.always_updating div img {
+   width: 85%;
+}
+
+.always_updating button {
+  color: #24bcd6;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid #24bcd6;
+  transition: all .3s;
+  &:hover {
+    color: white;
+    border-color: white;
+    background-color: #24bcd6;
+
+  }
+}
+
+#pencils,
+#drawing {
+  width: 100vw;
+  min-height: 300px;
+  padding: 10vh 0;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#pencils {
+  background-image: url("https://res.cloudinary.com/djad06sng/image/upload/v1560775551/j-kelly-brito-603267-unsplash.jpg");
+}
+
+#drawing {
+  background-image: url("https://res.cloudinary.com/djad06sng/image/upload/v1567617564/aaron-burden-1zR3WNSTnvY-unsplash.jpg");
+}
+
+.img_father {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  background-image: linear-gradient(150deg,
+rgba(120,216,232, 0.5), #24bcd6);
+  width: 100%;
+  padding: 30px 0;
+}
+
+.text-border {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+.text-border-child {
+  padding: 8vh;
+  margin: 8vh 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: luminosity;
+  // filter: grayscale(0.90);
+  button {
+    box-shadow: black 10px 5px 30px;
+  }
+  h2 {
+    font-size: 2rem;
+    text-shadow: black 10px 5px 10px;
+  }
+}
+
 
 // ENHANCEMENTS TO PINK/BLUE BOXES THAT WERE ABOVE THE FOOTER ON THE HOMEPAGE
 
