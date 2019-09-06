@@ -969,9 +969,8 @@ div.filter-options-content > ol > li > a:hover {
 // ENHANCEMENTS TO CHANGING CONTENT ON THE homepage
 
 .always_updating {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -1003,7 +1002,7 @@ div.filter-options-content > ol > li > a:hover {
 
 #pencils,
 #drawing {
-  width: 100vw;
+  width: 100%;
   min-height: 300px;
   padding: 10vh 0;
   background-position: center;
@@ -1050,7 +1049,6 @@ rgba(48, 106, 172, 0.5), @blue);
   margin: 8vh 0;
   background-color: rgba(0, 0, 0, 0.3);
   background-blend-mode: luminosity;
-  // filter: grayscale(0.90);
   button {
     box-shadow: black 10px 5px 30px;
   }
@@ -1148,6 +1146,10 @@ rgba(48, 106, 172, 0.5), @blue);
    padding: 0 10px;
  }
 
+ #pencils,
+ #drawing {
+   width: 50%;
+ }
 
 
  .text-border-child {
