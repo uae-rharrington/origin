@@ -13978,10 +13978,10 @@
         },
         {
             "name": "wyomind/core",
-            "version": "4.4.2.3",
+            "version": "4.4.2.4",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.wyomind.com/wyomind-core-4.4.2.3.zip",
+                "url": "https://repo.wyomind.com/wyomind-core-4.4.2.4.zip",
                 "reference": null,
                 "shasum": null
             },
