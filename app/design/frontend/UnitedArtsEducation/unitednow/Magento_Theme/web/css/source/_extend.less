@@ -1008,7 +1008,6 @@ div.filter-options-content > ol > li > a:hover {
   background-position: center;
   background-size: cover;
   text-align: center;
-  min-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1045,8 +1044,8 @@ rgba(48, 106, 172, 0.5), @blue);
 }
 
 .text-border-child {
-  padding: 8vh;
-  margin: 8vh 0;
+  padding: 5vw;
+  margin: 5vw 0;
   background-color: rgba(0, 0, 0, 0.3);
   background-blend-mode: luminosity;
   button {
@@ -1146,9 +1145,22 @@ rgba(48, 106, 172, 0.5), @blue);
    padding: 0 10px;
  }
 
+ .always_updating {
+   flex-direction: row;
+   img {
+     width: 55%;
+   }
+ }
+
  #pencils,
- #drawing {
+ #drawing,
+ .img_father {
    width: 50%;
+   min-width: 0px;
+ }
+
+ .img_father {
+   padding: 0px;
  }
 
 
