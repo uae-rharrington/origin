@@ -12643,16 +12643,16 @@
         },
         {
             "name": "shipperhq/library-shipper",
-            "version": "20.11.0",
+            "version": "20.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/library-shipper.git",
-                "reference": "aefaf566b5e46e70dab506a8941636ea71b8562b"
+                "reference": "a8a0508ccf889526c0f870d6f955887a4946d178"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/aefaf566b5e46e70dab506a8941636ea71b8562b",
-                "reference": "aefaf566b5e46e70dab506a8941636ea71b8562b",
+                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/a8a0508ccf889526c0f870d6f955887a4946d178",
+                "reference": "a8a0508ccf889526c0f870d6f955887a4946d178",
                 "shasum": ""
             },
             "type": "magento2-library",
@@ -12680,7 +12680,7 @@
                 }
             ],
             "description": "ShipperHQ Library",
-            "time": "2019-06-12T17:10:54+00:00"
+            "time": "2019-09-12T17:41:24+00:00"
         },
         {
             "name": "shipperhq/library-ws",
