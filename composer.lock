@@ -13633,16 +13633,16 @@
         },
         {
             "name": "taxjar/module-taxjar",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/taxjar/taxjar-magento2-extension.git",
-                "reference": "ce1916b73113f8582b59dee28bccc13c5e7916b4"
+                "reference": "b3ff9cfe30cbd6fc11dafad1d6d761998f21f45a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/taxjar/taxjar-magento2-extension/zipball/ce1916b73113f8582b59dee28bccc13c5e7916b4",
-                "reference": "ce1916b73113f8582b59dee28bccc13c5e7916b4",
+                "url": "https://api.github.com/repos/taxjar/taxjar-magento2-extension/zipball/b3ff9cfe30cbd6fc11dafad1d6d761998f21f45a",
+                "reference": "b3ff9cfe30cbd6fc11dafad1d6d761998f21f45a",
                 "shasum": ""
             },
             "require": {
@@ -13662,7 +13662,7 @@
                 "OSL-3.0"
             ],
             "description": "TaxJar Sales Tax Module for Magento 2",
-            "time": "2019-07-31T22:13:33+00:00"
+            "time": "2019-09-20T23:39:42+00:00"
         },
         {
             "name": "tedivm/jshrink",
