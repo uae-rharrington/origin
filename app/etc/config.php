@@ -59,7 +59,7 @@ return [
         'Magento_GiftCard' => 1,
         'Magento_UrlRewrite' => 1,
         'Magento_CatalogWidget' => 1,
-        'Amazon_Payment' => 1,
+        'Amazon_Payment' => 1, 
         'Magento_CheckoutAgreements' => 1,
         'Magento_CheckoutStaging' => 1,
         'Magento_CloudComponents' => 1,
