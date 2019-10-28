@@ -6,7 +6,6 @@ index e6d3bc8..ddb9a99 100644
 -<?php
 -namespace Klevu\Search\Console\Command;
 -
--
 -use Magento\Framework\Exception\LocalizedException;
 -use Magento\Framework\App\ObjectManager;
 -use Symfony\Component\Console\Command\Command;
