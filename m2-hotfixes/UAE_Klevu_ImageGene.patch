@@ -15,7 +15,7 @@ index e6d3bc8..ddb9a99 100644
 -use Exception;
 -use Klevu\Search\Helper\Image as Image;
 -use Magento\Store\Model\StoreManagerInterface as StoreManagerInterface;
--
+- 
 -
 -class ImageGeneration extends Command
 -{
@@ -30,16 +30,16 @@ index e6d3bc8..ddb9a99 100644
 -
 -    protected function execute(InputInterface $input, OutputInterface $output)
 -    {
--
+-            
 -        try {
 -            $state = ObjectManager::getInstance()->get('\Magento\Framework\App\State');
 -            $state->setAreaCode('frontend');
 -
 -            //Sync Data
 -            $image = ObjectManager::getInstance()->get(Image::class);
--
+-                
 -            if ($input->hasParameterOption('--regenerate')) {
--				$collections = ObjectManager::getInstance()->get('Magento\Catalog\Model\Product')->getCollection();
+-				$collections = ObjectManager::getInstance()->get('Magento\Catalog\Model\Product')->getCollection(); 
 -				$objectManager = ObjectManager::getInstance();
 -				foreach($collections as $collection){
 -					$productModel = $objectManager->create('Magento\Catalog\Model\Product');
@@ -48,18 +48,18 @@ index e6d3bc8..ddb9a99 100644
 -				}
 -            }
 -            if ($input->hasParameterOption('--regenerate')) {
--
+-				
 -                $output->writeln('<info> Klevu images regenrated successfuly commandline</info>');
--
+-				
 -            }
--
+-			
 -        } catch (LocalizedException $e) {
 -            $output->writeln('<error>' . $e->getMessage() . '</error>');
 -        } catch (Exception $e) {
 -            $output->writeln('<error>Not able to update</error>');
 -            $output->writeln('<error>' . $e->getMessage() . '</error>');
 -        }
--
+-        
 -    }
 -
 -    public function getInputList()
@@ -87,7 +87,7 @@ index e6d3bc8..ddb9a99 100644
 +use Exception;
 +use Klevu\Search\Helper\Image as Image;
 +use Magento\Store\Model\StoreManagerInterface as StoreManagerInterface;
-+
++ 
 +
 +class ImageGeneration extends Command
 +{
@@ -102,16 +102,16 @@ index e6d3bc8..ddb9a99 100644
 +
 +    protected function execute(InputInterface $input, OutputInterface $output)
 +    {
-+
++            
 +        try {
 +            $state = ObjectManager::getInstance()->get('\Magento\Framework\App\State');
 +            $state->setAreaCode('frontend');
 +
 +            //Sync Data
 +            $image = ObjectManager::getInstance()->get(Image::class);
-+
++                
 +            if ($input->hasParameterOption('--regenerate')) {
-+				$collections = ObjectManager::getInstance()->get('Magento\Catalog\Model\Product')->getCollection();
++				$collections = ObjectManager::getInstance()->get('Magento\Catalog\Model\Product')->getCollection(); 
 +				$objectManager = ObjectManager::getInstance();
 +				foreach($collections as $collection){
 +					$productModel = $objectManager->create('Magento\Catalog\Model\Product');
@@ -120,18 +120,18 @@ index e6d3bc8..ddb9a99 100644
 +				}
 +            }
 +            if ($input->hasParameterOption('--regenerate')) {
-+
++				
 +                $output->writeln('<info> Klevu images regenrated successfuly commandline</info>');
-+
++				
 +            }
-+
++			
 +        } catch (LocalizedException $e) {
 +            $output->writeln('<error>' . $e->getMessage() . '</error>');
 +        } catch (Exception $e) {
 +            $output->writeln('<error>Not able to update</error>');
 +            $output->writeln('<error>' . $e->getMessage() . '</error>');
 +        }
-+
++        
 +    }
 +
 +    public function getInputList()
