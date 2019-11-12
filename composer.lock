@@ -699,16 +699,16 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "v1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "5527a48b7313d15261292c149e55e26eae771b0a"
+                "reference": "ec3a55242203ffa6a4b27c58176da97ff0a7aec1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5527a48b7313d15261292c149e55e26eae771b0a",
-                "reference": "5527a48b7313d15261292c149e55e26eae771b0a",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/ec3a55242203ffa6a4b27c58176da97ff0a7aec1",
+                "reference": "ec3a55242203ffa6a4b27c58176da97ff0a7aec1",
                 "shasum": ""
             },
             "require": {
@@ -734,16 +734,16 @@
             ],
             "authors": [
                 {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
                 {
                     "name": "Benjamin Eberlei",
                     "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
                 },
                 {
                     "name": "Jonathan Wage",
@@ -762,7 +762,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2018-01-09T20:05:19+00:00"
+            "time": "2019-10-30T19:59:35+00:00"
         },
         {
             "name": "dotmailer/dotmailer-magento2-extension",
@@ -1739,16 +1739,16 @@
         },
         {
             "name": "klevu/module-addtocart",
-            "version": "2.2.16",
+            "version": "2.2.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/addtocart.git",
-                "reference": "b58a1cc537e313aeb682fe4646f992231f92d13e"
+                "reference": "4e9d5eb7483c06f25773b7b0bae7c5e04c23cfd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/addtocart/zipball/b58a1cc537e313aeb682fe4646f992231f92d13e",
-                "reference": "b58a1cc537e313aeb682fe4646f992231f92d13e",
+                "url": "https://api.github.com/repos/klevu/addtocart/zipball/4e9d5eb7483c06f25773b7b0bae7c5e04c23cfd5",
+                "reference": "4e9d5eb7483c06f25773b7b0bae7c5e04c23cfd5",
                 "shasum": ""
             },
             "require": {
@@ -1757,7 +1757,7 @@
                 "magento/module-catalog": "@stable",
                 "magento/module-eav": "@stable",
                 "magento/module-store": "@stable",
-                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0"
+                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0|~7.3.0"
             },
             "type": "magento-module",
             "autoload": {
@@ -1781,20 +1781,20 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-10-08T19:50:56+00:00"
+            "time": "2019-11-11T17:31:13+00:00"
         },
         {
             "name": "klevu/module-content",
-            "version": "2.2.16",
+            "version": "2.2.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/content.git",
-                "reference": "2d484d4c914f2d4944737bd7f0aad660fcd41780"
+                "reference": "c66e67f5731e184133fb59a8dab0f313898d2f92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/content/zipball/2d484d4c914f2d4944737bd7f0aad660fcd41780",
-                "reference": "2d484d4c914f2d4944737bd7f0aad660fcd41780",
+                "url": "https://api.github.com/repos/klevu/content/zipball/c66e67f5731e184133fb59a8dab0f313898d2f92",
+                "reference": "c66e67f5731e184133fb59a8dab0f313898d2f92",
                 "shasum": ""
             },
             "require": {
@@ -1803,7 +1803,7 @@
                 "magento/module-catalog": "@stable",
                 "magento/module-eav": "@stable",
                 "magento/module-store": "@stable",
-                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0"
+                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0|~7.3.0"
             },
             "type": "magento-module",
             "autoload": {
@@ -1827,20 +1827,20 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-10-08T19:51:25+00:00"
+            "time": "2019-11-11T17:31:33+00:00"
         },
         {
             "name": "klevu/module-productsearch",
-            "version": "2.2.16",
+            "version": "2.2.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/productsearch.git",
-                "reference": "0ac3188475d6927ff63cb70ec237493125d4ae59"
+                "reference": "4535a36cb80658de67a6ffcd8e8aba4ce87078ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/productsearch/zipball/0ac3188475d6927ff63cb70ec237493125d4ae59",
-                "reference": "0ac3188475d6927ff63cb70ec237493125d4ae59",
+                "url": "https://api.github.com/repos/klevu/productsearch/zipball/4535a36cb80658de67a6ffcd8e8aba4ce87078ee",
+                "reference": "4535a36cb80658de67a6ffcd8e8aba4ce87078ee",
                 "shasum": ""
             },
             "require": {
@@ -1849,7 +1849,7 @@
                 "magento/module-catalog": "@stable",
                 "magento/module-eav": "@stable",
                 "magento/module-store": "@stable",
-                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0"
+                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0|~7.3.0"
             },
             "type": "magento-module",
             "autoload": {
@@ -1873,26 +1873,26 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-10-08T19:51:54+00:00"
+            "time": "2019-11-11T17:32:27+00:00"
         },
         {
             "name": "klevu/module-search",
-            "version": "2.2.16",
+            "version": "2.2.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/klevu-smart-search-M2.git",
-                "reference": "c6814c0ce3d929e08b0e953a9f9a35f89be9011e"
+                "reference": "421ccdd583a64cb22d8d312d3ab00a3aafe13931"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/klevu-smart-search-M2/zipball/c6814c0ce3d929e08b0e953a9f9a35f89be9011e",
-                "reference": "c6814c0ce3d929e08b0e953a9f9a35f89be9011e",
+                "url": "https://api.github.com/repos/klevu/klevu-smart-search-M2/zipball/421ccdd583a64cb22d8d312d3ab00a3aafe13931",
+                "reference": "421ccdd583a64cb22d8d312d3ab00a3aafe13931",
                 "shasum": ""
             },
             "require": {
-                "klevu/module-addtocart": "2.2.16",
-                "klevu/module-content": "2.2.16",
-                "klevu/module-productsearch": "2.2.16"
+                "klevu/module-addtocart": "2.2.17",
+                "klevu/module-content": "2.2.17",
+                "klevu/module-productsearch": "2.2.17"
             },
             "type": "metapackage",
             "notification-url": "https://packagist.org/downloads/",
@@ -1908,7 +1908,7 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-10-08T19:52:14+00:00"
+            "time": "2019-11-11T17:40:52+00:00"
         },
         {
             "name": "magento/composer",
@@ -13079,7 +13079,7 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.3.6",
+            "version": "v4.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -13249,7 +13249,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.33",
+            "version": "v3.4.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -13299,7 +13299,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.33",
+            "version": "v3.4.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -13819,16 +13819,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.12.1",
+            "version": "v2.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5"
+                "reference": "d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
-                "reference": "ddd4134af9bfc6dba4eff7c8447444ecc45b9ee5",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed",
+                "reference": "d761fd1f1c6b867ae09a7d8119a6d95d06dc44ed",
                 "shasum": ""
             },
             "require": {
@@ -13882,7 +13882,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-10-17T07:34:53+00:00"
+            "time": "2019-11-11T16:52:09+00:00"
         },
         {
             "name": "vertex/module-tax",
