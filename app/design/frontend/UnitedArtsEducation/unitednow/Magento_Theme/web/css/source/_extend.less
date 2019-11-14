@@ -701,7 +701,7 @@ li.item.product.product-item {
   background-color: white;
 }
 
-product-item-info {
+product-item {
   transition: all .4s;
 }
 
@@ -735,7 +735,6 @@ main#maincontent {
   justify-content: center;
   transition: background-color 0.5s;
   cursor: pointer;
-  padding: 25vh 0;
 }
 
 .overlay-fade:hover {
@@ -743,6 +742,8 @@ main#maincontent {
 }
 
 .overlay-fade:hover > h1 {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
 
@@ -768,6 +769,8 @@ main#maincontent {
 #image-2:hover,
 #image-3:hover {
   transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+      -ms-transform:scale(1.1);
 }
 
 
@@ -780,6 +783,12 @@ main#maincontent {
 
 .container {
   overflow: hidden;
+}
+
+#image-1,
+#image-2,
+#image-3 {
+  height: 300px;
 }
 
 .overlay-container p {
@@ -806,6 +815,8 @@ main#maincontent {
 #shop-call:hover > i {
   color: @blue;
   transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
 }
 
 nav.navigation > ul {
@@ -869,7 +880,6 @@ ul.level2.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a:h
   margin: 0;
   font-size: 25px;
   font-weight: 550;
-  padding: 20vh 0;
 }
 
 .navigation, .breadcrumbs, .page-header .header.panel, .header.content, .footer.content, .page-wrapper>.widget, .page-wrapper>.page-bottom, .block.category.event, .top-container, .page-main {
@@ -884,11 +894,12 @@ ul.level2.submenu.ui-menu.ui-widget.ui-widget-content.ui-corner-all.expanded a:h
 #shop-call:hover > i {
   color: #f2a01c;
   transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
 }
 
 .overlay-fade {
   padding: 0;
-  max-height: 305px;
 }
 
 // changes to side bar links on pages like unitednow.com/education
@@ -916,8 +927,7 @@ nav#UAE_categories_list > ul {
           color: @blue!important;
           transform: scale(1.08)!important;
           -webkit-transform: scale(1.08)!important;
-              -ms-transform: scale(1.08)!important;
-                  transform: scale(1.08)!important;
+          -ms-transform: scale(1.08)!important;
         }
       }
     }
@@ -1048,6 +1058,8 @@ div.filter-options-content > ol > li > a:hover {
   transition: all .3s;
   &:hover {
     transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
     background-color: white;
     color: @blue;
     border-color: @blue;
@@ -1075,6 +1087,8 @@ div#block-collapsible-nav {
 
 .fade {
   opacity: 0;
+  -webkit-transform: translateY(30px);
+  -ms-transform:translateY(30px);
   transform: translateY(30px);
   transition-property: translate opacity;
   transition-duration: .8s;
@@ -1082,6 +1096,8 @@ div#block-collapsible-nav {
 
 .fade-in {
   opacity: 1;
+  -webkit-transform: translateY(0px);
+  -ms-transform:translateY(0px);
   transform: translateY(0px);
 }
 
