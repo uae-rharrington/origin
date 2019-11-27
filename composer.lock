@@ -132,16 +132,16 @@
         },
         {
             "name": "amzn/amazon-pay-sdk-php",
-            "version": "3.5.0",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amzn/amazon-pay-sdk-php.git",
-                "reference": "3b05458e3f121859fcb5f1960ac053a97a847ddd"
+                "reference": "9b59f3a5b258df8a35f5f4b912a4596b3f118d7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amzn/amazon-pay-sdk-php/zipball/3b05458e3f121859fcb5f1960ac053a97a847ddd",
-                "reference": "3b05458e3f121859fcb5f1960ac053a97a847ddd",
+                "url": "https://api.github.com/repos/amzn/amazon-pay-sdk-php/zipball/9b59f3a5b258df8a35f5f4b912a4596b3f118d7c",
+                "reference": "9b59f3a5b258df8a35f5f4b912a4596b3f118d7c",
                 "shasum": ""
             },
             "require": {
@@ -178,7 +178,7 @@
                 "payment",
                 "payments"
             ],
-            "time": "2019-08-19T20:59:59+00:00"
+            "time": "2019-11-21T21:15:11+00:00"
         },
         {
             "name": "amzn/login-with-amazon-module",
@@ -695,6 +695,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -891,20 +892,20 @@
         },
         {
             "name": "fastly/magento2",
-            "version": "1.2.72",
+            "version": "1.2.120",
             "dist": {
                 "type": "zip",
-                "url": "https://repo.magento.com/archives/fastly/magento2/fastly-magento2-1.2.72.0.zip",
+                "url": "https://repo.magento.com/archives/fastly/magento2/fastly-magento2-1.2.120.0.zip",
                 "reference": null,
-                "shasum": "bdf9c6c64ad232e8c24e2261671f0815a712d36e"
+                "shasum": "411d39a925bf697adb500bfbe6772e97581e1597"
             },
             "require": {
-                "magento/framework": ">=100.0.0",
+                "magento/framework": ">=101.0.0",
                 "magento/module-cache-invalidate": ">=100.0.0",
                 "magento/module-config": ">=100.0.0",
                 "magento/module-page-cache": ">=100.0.0",
                 "magento/module-store": ">=100.0.0",
-                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0"
+                "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0|~7.3.0|~7.4.0"
             },
             "type": "magento2-module",
             "autoload": {
@@ -12685,16 +12686,16 @@
         },
         {
             "name": "shipperhq/library-shipper",
-            "version": "20.11.1",
+            "version": "20.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/library-shipper.git",
-                "reference": "a8a0508ccf889526c0f870d6f955887a4946d178"
+                "reference": "ef576f2e29460f0c05c91e4dbe1fad2be743ea23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/a8a0508ccf889526c0f870d6f955887a4946d178",
-                "reference": "a8a0508ccf889526c0f870d6f955887a4946d178",
+                "url": "https://api.github.com/repos/shipperhq/library-shipper/zipball/ef576f2e29460f0c05c91e4dbe1fad2be743ea23",
+                "reference": "ef576f2e29460f0c05c91e4dbe1fad2be743ea23",
                 "shasum": ""
             },
             "type": "magento2-library",
@@ -12722,7 +12723,7 @@
                 }
             ],
             "description": "ShipperHQ Library",
-            "time": "2019-09-12T17:41:24+00:00"
+            "time": "2019-11-20T15:46:35+00:00"
         },
         {
             "name": "shipperhq/library-ws",
@@ -12767,22 +12768,22 @@
         },
         {
             "name": "shipperhq/module-common",
-            "version": "20.8.0",
+            "version": "20.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/shipperhq/module-common.git",
-                "reference": "6372807ddde7faa5a5fd8e35268b3bfb45bce353"
+                "reference": "627b46edcf45d43f319c9ce0fa71265a2cace270"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/shipperhq/module-common/zipball/6372807ddde7faa5a5fd8e35268b3bfb45bce353",
-                "reference": "6372807ddde7faa5a5fd8e35268b3bfb45bce353",
+                "url": "https://api.github.com/repos/shipperhq/module-common/zipball/627b46edcf45d43f319c9ce0fa71265a2cace270",
+                "reference": "627b46edcf45d43f319c9ce0fa71265a2cace270",
                 "shasum": ""
             },
             "require": {
                 "magento/framework": ">=100.0",
                 "magento/module-store": ">=100.0",
-                "shipperhq/library-shipper": "^20.10",
+                "shipperhq/library-shipper": "^20.12",
                 "shipperhq/library-ws": "^20.4"
             },
             "require-dev": {
@@ -12825,7 +12826,7 @@
                 }
             ],
             "description": "ShipperHQ Common",
-            "time": "2019-03-14T16:58:46+00:00"
+            "time": "2019-11-20T15:58:33+00:00"
         },
         {
             "name": "shipperhq/module-logger",
@@ -13059,32 +13060,32 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.3.8",
+            "version": "v4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "8267214841c44d315a55242ea867684eb43c42ce"
+                "reference": "f08e1c48e1f05d07c32f2d8599ed539e62105beb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/8267214841c44d315a55242ea867684eb43c42ce",
-                "reference": "8267214841c44d315a55242ea867684eb43c42ce",
+                "url": "https://api.github.com/repos/symfony/config/zipball/f08e1c48e1f05d07c32f2d8599ed539e62105beb",
+                "reference": "f08e1c48e1f05d07c32f2d8599ed539e62105beb",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1.3",
-                "symfony/filesystem": "~3.4|~4.0",
+                "symfony/filesystem": "^3.4|^4.0|^5.0",
                 "symfony/polyfill-ctype": "~1.8"
             },
             "conflict": {
                 "symfony/finder": "<3.4"
             },
             "require-dev": {
-                "symfony/dependency-injection": "~3.4|~4.0",
-                "symfony/event-dispatcher": "~3.4|~4.0",
-                "symfony/finder": "~3.4|~4.0",
-                "symfony/messenger": "~4.1",
-                "symfony/yaml": "~3.4|~4.0"
+                "symfony/event-dispatcher": "^3.4|^4.0|^5.0",
+                "symfony/finder": "^3.4|^4.0|^5.0",
+                "symfony/messenger": "^4.1|^5.0",
+                "symfony/service-contracts": "^1.1|^2",
+                "symfony/yaml": "^3.4|^4.0|^5.0"
             },
             "suggest": {
                 "symfony/yaml": "To use the yaml reference dumper"
@@ -13092,7 +13093,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -13119,7 +13120,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2019-11-08T08:31:27+00:00"
+            "time": "2019-11-16T15:22:42+00:00"
         },
         {
             "name": "symfony/console",
@@ -13184,16 +13185,16 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.3.8",
+            "version": "v4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "f4b3ff6a549d9ed28b2b0ecd1781bf67cf220ee9"
+                "reference": "64acec7e0d67125e9f4656c68d4a38a42ab5a0b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/f4b3ff6a549d9ed28b2b0ecd1781bf67cf220ee9",
-                "reference": "f4b3ff6a549d9ed28b2b0ecd1781bf67cf220ee9",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/64acec7e0d67125e9f4656c68d4a38a42ab5a0b7",
+                "reference": "64acec7e0d67125e9f4656c68d4a38a42ab5a0b7",
                 "shasum": ""
             },
             "require": {
@@ -13202,7 +13203,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -13233,7 +13234,7 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2019-10-02T08:36:26+00:00"
+            "time": "2019-10-12T00:35:04+00:00"
         },
         {
             "name": "symfony/debug",
@@ -13523,16 +13524,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.12.0",
+            "version": "v1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "550ebaac289296ce228a706d0867afc34687e3f4"
+                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/550ebaac289296ce228a706d0867afc34687e3f4",
-                "reference": "550ebaac289296ce228a706d0867afc34687e3f4",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
+                "reference": "f8f0b461be3385e56d6de3dbb5a0df24c0c275e3",
                 "shasum": ""
             },
             "require": {
@@ -13544,7 +13545,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -13577,20 +13578,20 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2019-08-06T08:03:45+00:00"
+            "time": "2019-11-27T13:56:44+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.12.0",
+            "version": "v1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "b42a2f66e8f1b15ccf25652c3424265923eb4f17"
+                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/b42a2f66e8f1b15ccf25652c3424265923eb4f17",
-                "reference": "b42a2f66e8f1b15ccf25652c3424265923eb4f17",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7b4aab9743c30be783b73de055d24a39cf4b954f",
+                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f",
                 "shasum": ""
             },
             "require": {
@@ -13602,7 +13603,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -13636,7 +13637,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2019-08-06T08:03:45+00:00"
+            "time": "2019-11-27T14:18:11+00:00"
         },
         {
             "name": "symfony/process",
@@ -15198,19 +15199,20 @@
         },
         {
             "name": "zendframework/zend-i18n",
-            "version": "2.9.2",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-i18n.git",
-                "reference": "e17a54b3aee333ab156958f570cde630acee8b07"
+                "reference": "561a815ce32c86b0f1de11135477e637926d56b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-i18n/zipball/e17a54b3aee333ab156958f570cde630acee8b07",
-                "reference": "e17a54b3aee333ab156958f570cde630acee8b07",
+                "url": "https://api.github.com/repos/zendframework/zend-i18n/zipball/561a815ce32c86b0f1de11135477e637926d56b6",
+                "reference": "561a815ce32c86b0f1de11135477e637926d56b6",
                 "shasum": ""
             },
             "require": {
+                "ext-intl": "*",
                 "php": "^5.6 || ^7.0",
                 "zendframework/zend-stdlib": "^2.7 || ^3.0"
             },
@@ -15226,7 +15228,6 @@
                 "zendframework/zend-view": "^2.6.3"
             },
             "suggest": {
-                "ext-intl": "Required for most features of Zend\\I18n; included in default builds of PHP",
                 "zendframework/zend-cache": "Zend\\Cache component",
                 "zendframework/zend-config": "Zend\\Config component",
                 "zendframework/zend-eventmanager": "You should install this package to use the events in the translator",
@@ -15239,8 +15240,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.9.x-dev",
-                    "dev-develop": "2.10.x-dev"
+                    "dev-master": "2.10.x-dev",
+                    "dev-develop": "2.11.x-dev"
                 },
                 "zf": {
                     "component": "Zend\\I18n",
@@ -15262,7 +15263,7 @@
                 "i18n",
                 "zf"
             ],
-            "time": "2019-09-30T12:04:37+00:00"
+            "time": "2019-11-18T20:31:29+00:00"
         },
         {
             "name": "zendframework/zend-inputfilter",
