@@ -285,9 +285,9 @@ return [
         'document_root_is_pub' => true
     ],
     'general' => [
-       'locale' => [
-           'code' => 'en_US',
-           'timezone' => 'UTC'
-         ]
-     ]
+        'locale' => [
+            'code' => 'en_US',
+            'timezone' => 'UTC'
+        ]
+    ]
 ];
