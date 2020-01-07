@@ -13,7 +13,6 @@
 <div class="block block-customer-login">
     <div class="block-title">
         <strong id="block-customer-login-heading" role="heading" aria-level="2"><?= $block->escapeHtml(__('Registered Customers')) ?></strong><br>
-        <small><b><?= $block->escapeHtml(__('Welcome! If you have not visited since 9/30/18, you will need to request a new password due to our recently upgraded site. Please click '))?><a class="action remind" href="<?= $block->escapeUrl($block->getForgotPasswordUrl()) ?>"><?= $block->escapeHtml(__('Reset My Password')) ?></a></b></small>
     </div>
     <div class="block-content" aria-labelledby="block-customer-login-heading">
         <form class="form form-login"
@@ -45,4 +44,3 @@
         </form>
     </div>
 </div>
-
