@@ -1741,16 +1741,16 @@
         },
         {
             "name": "klevu/module-addtocart",
-            "version": "2.2.17",
+            "version": "2.2.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/addtocart.git",
-                "reference": "4e9d5eb7483c06f25773b7b0bae7c5e04c23cfd5"
+                "reference": "ba7f1fb108c5adefa8750e8e40e82bfb88756011"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/addtocart/zipball/4e9d5eb7483c06f25773b7b0bae7c5e04c23cfd5",
-                "reference": "4e9d5eb7483c06f25773b7b0bae7c5e04c23cfd5",
+                "url": "https://api.github.com/repos/klevu/addtocart/zipball/ba7f1fb108c5adefa8750e8e40e82bfb88756011",
+                "reference": "ba7f1fb108c5adefa8750e8e40e82bfb88756011",
                 "shasum": ""
             },
             "require": {
@@ -1783,20 +1783,20 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-11-11T17:31:13+00:00"
+            "time": "2020-01-09T18:33:18+00:00"
         },
         {
             "name": "klevu/module-content",
-            "version": "2.2.17",
+            "version": "2.2.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/content.git",
-                "reference": "c66e67f5731e184133fb59a8dab0f313898d2f92"
+                "reference": "3ad4ab19d431caf318efd7f415349f26aefd9063"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/content/zipball/c66e67f5731e184133fb59a8dab0f313898d2f92",
-                "reference": "c66e67f5731e184133fb59a8dab0f313898d2f92",
+                "url": "https://api.github.com/repos/klevu/content/zipball/3ad4ab19d431caf318efd7f415349f26aefd9063",
+                "reference": "3ad4ab19d431caf318efd7f415349f26aefd9063",
                 "shasum": ""
             },
             "require": {
@@ -1829,20 +1829,20 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-11-11T17:31:33+00:00"
+            "time": "2020-01-09T18:33:40+00:00"
         },
         {
             "name": "klevu/module-productsearch",
-            "version": "2.2.17",
+            "version": "2.2.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/productsearch.git",
-                "reference": "4535a36cb80658de67a6ffcd8e8aba4ce87078ee"
+                "reference": "50a1681dd95e1dd0b759b80512c9a3f1501049ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/productsearch/zipball/4535a36cb80658de67a6ffcd8e8aba4ce87078ee",
-                "reference": "4535a36cb80658de67a6ffcd8e8aba4ce87078ee",
+                "url": "https://api.github.com/repos/klevu/productsearch/zipball/50a1681dd95e1dd0b759b80512c9a3f1501049ac",
+                "reference": "50a1681dd95e1dd0b759b80512c9a3f1501049ac",
                 "shasum": ""
             },
             "require": {
@@ -1875,26 +1875,26 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-11-11T17:32:27+00:00"
+            "time": "2020-01-09T18:34:11+00:00"
         },
         {
             "name": "klevu/module-search",
-            "version": "2.2.17",
+            "version": "2.2.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/klevu/klevu-smart-search-M2.git",
-                "reference": "421ccdd583a64cb22d8d312d3ab00a3aafe13931"
+                "reference": "dc0c9e1ab413586b2acda8b2153321e0d2d062b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/klevu/klevu-smart-search-M2/zipball/421ccdd583a64cb22d8d312d3ab00a3aafe13931",
-                "reference": "421ccdd583a64cb22d8d312d3ab00a3aafe13931",
+                "url": "https://api.github.com/repos/klevu/klevu-smart-search-M2/zipball/dc0c9e1ab413586b2acda8b2153321e0d2d062b6",
+                "reference": "dc0c9e1ab413586b2acda8b2153321e0d2d062b6",
                 "shasum": ""
             },
             "require": {
-                "klevu/module-addtocart": "2.2.17",
-                "klevu/module-content": "2.2.17",
-                "klevu/module-productsearch": "2.2.17"
+                "klevu/module-addtocart": "2.2.18",
+                "klevu/module-content": "2.2.18",
+                "klevu/module-productsearch": "2.2.18"
             },
             "type": "metapackage",
             "notification-url": "https://packagist.org/downloads/",
@@ -1910,7 +1910,7 @@
                 }
             ],
             "description": "Search that learns, generates sales. Fastest, most advanced cloud-based search, autocomplete, instant search",
-            "time": "2019-11-11T17:40:52+00:00"
+            "time": "2020-01-09T18:36:48+00:00"
         },
         {
             "name": "magento/composer",
@@ -14683,6 +14683,7 @@
                 "crypt",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-crypt",
             "time": "2016-02-03T23:46:30+00:00"
         },
         {
@@ -16156,6 +16157,7 @@
                 "text",
                 "zf"
             ],
+            "abandoned": "laminas/laminas-text",
             "time": "2019-10-16T20:36:27+00:00"
         },
         {
